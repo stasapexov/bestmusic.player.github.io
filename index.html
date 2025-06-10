@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Better Player - Ваша музыка</title>
+    <title>Harmony Player - Р’Р°С€Р° РјСѓР·С‹РєР°</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -556,13 +556,13 @@
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-music"></i> Best music Player</h1>
-        <p>Ваш персональный музыкальный плеер с настраиваемыми треками</p>
+        <h1><i class="fas fa-music"></i> Harmony Player</h1>
+        <p>Р’Р°С€ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РјСѓР·С‹РєР°Р»СЊРЅС‹Р№ РїР»РµРµСЂ СЃ РЅР°СЃС‚СЂР°РёРІР°РµРјС‹РјРё С‚СЂРµРєР°РјРё</p>
     </header>
 
     <div class="container">
         <section class="player-section">
-            <h2 class="section-title"><i class="fas fa-play-circle"></i> Сейчас играет</h2>
+            <h2 class="section-title"><i class="fas fa-play-circle"></i> РЎРµР№С‡Р°СЃ РёРіСЂР°РµС‚</h2>
             <div class="now-playing">
                 <div class="album-art" id="album-art">
                     <i class="fas fa-music"></i>
@@ -571,8 +571,8 @@
                     </div>
                 </div>
                 <div class="song-info">
-                    <div class="song-title" id="song-title">Выберите трек</div>
-                    <div class="song-artist" id="song-artist">Из вашего плейлиста</div>
+                    <div class="song-title" id="song-title">Р’С‹Р±РµСЂРёС‚Рµ С‚СЂРµРє</div>
+                    <div class="song-artist" id="song-artist">РР· РІР°С€РµРіРѕ РїР»РµР№Р»РёСЃС‚Р°</div>
                 </div>
             </div>
 
@@ -604,15 +604,15 @@
             </div>
 
             <div class="visualizer" id="visualizer">
-
+                
             </div>
         </section>
 
         <section class="playlist-section">
-            <h2 class="section-title"><i class="fas fa-list"></i> Ваш плейлист</h2>
+            <h2 class="section-title"><i class="fas fa-list"></i> Р’Р°С€ РїР»РµР№Р»РёСЃС‚</h2>
             <div class="tabs">
-                <div class="tab active" data-tab="user">Ваша музыка</div>
-                <div class="tab" data-tab="popular">Популярное</div>
+                <div class="tab active" data-tab="user">Р’Р°С€Р° РјСѓР·С‹РєР°</div>
+                <div class="tab" data-tab="popular">РџРѕРїСѓР»СЏСЂРЅРѕРµ</div>
             </div>
 
             <div class="tab-content active" id="user-playlist">
@@ -622,8 +622,8 @@
                             <i class="fas fa-music"></i>
                         </div>
                         <div class="song-details">
-                            <div class="title">Выберите трек из популярных</div>
-                            <div class="artist">Или добавьте свои</div>
+                            <div class="title">Р’С‹Р±РµСЂРёС‚Рµ С‚СЂРµРє РёР· РїРѕРїСѓР»СЏСЂРЅС‹С…</div>
+                            <div class="artist">РР»Рё РґРѕР±Р°РІСЊС‚Рµ СЃРІРѕРё</div>
                         </div>
                         <div class="duration">0:00</div>
                     </li>
@@ -632,29 +632,30 @@
 
             <div class="tab-content" id="popular-playlist">
                 <ul class="playlist" id="popular-list">
+                    
                 </ul>
             </div>
         </section>
     </div>
 
     <section class="popular-section">
-        <h2 class="section-title"><i class="fas fa-fire"></i> Популярная музыка</h2>
-        <p>Настройте эти треки, добавив свои аудиофайлы через код</p>
+        <h2 class="section-title"><i class="fas fa-fire"></i> РџРѕРїСѓР»СЏСЂРЅР°СЏ РјСѓР·С‹РєР°</h2>
+        <p>РќР°СЃС‚СЂРѕР№С‚Рµ СЌС‚Рё С‚СЂРµРєРё, РґРѕР±Р°РІРёРІ СЃРІРѕРё Р°СѓРґРёРѕС„Р°Р№Р»С‹ С‡РµСЂРµР· РєРѕРґ</p>
         <div class="popular-grid" id="popular-grid">
-
+            
         </div>
     </section>
 
     <footer>
-        <p>Harmony Player © 2023 | Создано с любовью к музыке</p>
+        <p>Harmony Player В© 2023 | РЎРѕР·РґР°РЅРѕ СЃ Р»СЋР±РѕРІСЊСЋ Рє РјСѓР·С‹РєРµ</p>
     </footer>
 
-    <!-- Аудио элемент для воспроизведения -->
+    <!-- РђСѓРґРёРѕ СЌР»РµРјРµРЅС‚ РґР»СЏ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ -->
     <audio id="audio-player"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Массив популярных песен
+            // РњР°СЃСЃРёРІ РїРѕРїСѓР»СЏСЂРЅС‹С… РїРµСЃРµРЅ
             const popularSongs = [
                 {
                     id: 1,
@@ -690,7 +691,7 @@
                 }
             ];
 
-            // Элементы DOM
+            // Р­Р»РµРјРµРЅС‚С‹ DOM
             const playPauseBtn = document.getElementById('play-pause');
             const prevBtn = document.getElementById('prev');
             const nextBtn = document.getElementById('next');
@@ -710,30 +711,30 @@
             const tabContents = document.querySelectorAll('.tab-content');
             const audioPlayer = document.getElementById('audio-player');
 
-            // Текущее состояние
+            // РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
             let isPlaying = false;
             let currentSongIndex = 0;
             let visualizerBars = [];
             let playlist = [];
 
-            // Установка громкости по умолчанию 10%
+            // РЈСЃС‚Р°РЅРѕРІРєР° РіСЂРѕРјРєРѕСЃС‚Рё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 10%
             volumeSlider.value = 0.1;
             audioPlayer.volume = 0.1;
 
-            // Переключение вкладок
+            // РџРµСЂРµРєР»СЋС‡РµРЅРёРµ РІРєР»Р°РґРѕРє
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // Удаляем активный класс у всех вкладок
+                    // РЈРґР°Р»СЏРµРј Р°РєС‚РёРІРЅС‹Р№ РєР»Р°СЃСЃ Сѓ РІСЃРµС… РІРєР»Р°РґРѕРє
                     tabs.forEach(t => t.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active'));
 
-                    // Добавляем активный класс текущей вкладке
+                    // Р”РѕР±Р°РІР»СЏРµРј Р°РєС‚РёРІРЅС‹Р№ РєР»Р°СЃСЃ С‚РµРєСѓС‰РµР№ РІРєР»Р°РґРєРµ
                     tab.classList.add('active');
                     document.getElementById(`${tab.dataset.tab}-playlist`).classList.add('active');
                 });
             });
 
-            // Инициализация визуализатора
+            // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІРёР·СѓР°Р»РёР·Р°С‚РѕСЂР°
             function initVisualizer() {
                 visualizer.innerHTML = '';
                 visualizerBars = [];
@@ -746,7 +747,7 @@
                 }
             }
 
-            // Обновление визуализатора
+            // РћР±РЅРѕРІР»РµРЅРёРµ РІРёР·СѓР°Р»РёР·Р°С‚РѕСЂР°
             function updateVisualizer() {
                 if (!isPlaying) return;
 
@@ -759,36 +760,36 @@
                 requestAnimationFrame(updateVisualizer);
             }
 
-            // Загрузка песни
+            // Р—Р°РіСЂСѓР·РєР° РїРµСЃРЅРё
             function loadSong(index) {
                 if (playlist.length === 0) return;
 
                 const song = playlist[index];
-                songTitle.textContent = song.title || "Неизвестный трек";
-                songArtist.textContent = song.artist || "Неизвестный исполнитель";
+                songTitle.textContent = song.title || "РќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚СЂРµРє";
+                songArtist.textContent = song.artist || "РќРµРёР·РІРµСЃС‚РЅС‹Р№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ";
 
-                // Обновление обложки
+                // РћР±РЅРѕРІР»РµРЅРёРµ РѕР±Р»РѕР¶РєРё
                 if (song.cover) {
                     albumArt.innerHTML = `
-                            <img src="${song.cover}" alt="${song.title}">
-                            <div class="overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        `;
+                        <img src="${song.cover}" alt="${song.title}">
+                        <div class="overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    `;
                 } else {
                     albumArt.innerHTML = `
-                            <i class="fas fa-music"></i>
-                            <div class="overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        `;
+                        <i class="fas fa-music"></i>
+                        <div class="overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    `;
                 }
 
-                // Установка источника аудио
+                // РЈСЃС‚Р°РЅРѕРІРєР° РёСЃС‚РѕС‡РЅРёРєР° Р°СѓРґРёРѕ
                 audioPlayer.src = song.url;
                 audioPlayer.load();
 
-                // Обновление активного элемента плейлиста
+                // РћР±РЅРѕРІР»РµРЅРёРµ Р°РєС‚РёРІРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїР»РµР№Р»РёСЃС‚Р°
                 document.querySelectorAll('.playlist-item').forEach((item, idx) => {
                     if (idx === index) {
                         item.classList.add('active');
@@ -797,16 +798,16 @@
                     }
                 });
 
-                // Воспроизведение, если плеер был включен
+                // Р’РѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ, РµСЃР»Рё РїР»РµРµСЂ Р±С‹Р» РІРєР»СЋС‡РµРЅ
                 if (isPlaying) {
-                    audioPlayer.play().catch(e => console.error("Ошибка воспроизведения:", e));
+                    audioPlayer.play().catch(e => console.error("РћС€РёР±РєР° РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ:", e));
                 }
             }
 
-            // Воспроизведение/пауза
+            // Р’РѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ/РїР°СѓР·Р°
             function togglePlay() {
                 if (playlist.length === 0) {
-                    alert("Пожалуйста, выберите трек из плейлиста!");
+                    alert("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ С‚СЂРµРє РёР· РїР»РµР№Р»РёСЃС‚Р°!");
                     return;
                 }
 
@@ -814,7 +815,7 @@
 
                 if (isPlaying) {
                     playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    audioPlayer.play().catch(e => console.error("Ошибка воспроизведения:", e));
+                    audioPlayer.play().catch(e => console.error("РћС€РёР±РєР° РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ:", e));
                     updateVisualizer();
                 } else {
                     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
@@ -822,7 +823,7 @@
                 }
             }
 
-            // Предыдущая песня
+            // РџСЂРµРґС‹РґСѓС‰Р°СЏ РїРµСЃРЅСЏ
             function prevSong() {
                 if (playlist.length === 0) return;
 
@@ -833,7 +834,7 @@
                 loadSong(currentSongIndex);
             }
 
-            // Следующая песня
+            // РЎР»РµРґСѓСЋС‰Р°СЏ РїРµСЃРЅСЏ
             function nextSong() {
                 if (playlist.length === 0) return;
 
@@ -844,7 +845,7 @@
                 loadSong(currentSongIndex);
             }
 
-            // Обновление прогресс-бара
+            // РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕРіСЂРµСЃСЃ-Р±Р°СЂР°
             function updateProgress(e) {
                 if (playlist.length === 0) return;
 
@@ -852,50 +853,50 @@
                 const clickX = e.offsetX;
                 const duration = audioPlayer.duration;
 
-                // Расчет нового времени
+                // Р Р°СЃС‡РµС‚ РЅРѕРІРѕРіРѕ РІСЂРµРјРµРЅРё
                 const newTime = (clickX / width) * duration;
                 audioPlayer.currentTime = newTime;
             }
 
-            // Обновление времени
+            // РћР±РЅРѕРІР»РµРЅРёРµ РІСЂРµРјРµРЅРё
             function updateTime() {
-                // Обновляем текущее время
+                // РћР±РЅРѕРІР»СЏРµРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ
                 const currentMinutes = Math.floor(audioPlayer.currentTime / 60);
                 const currentSeconds = Math.floor(audioPlayer.currentTime % 60);
                 currentTimeEl.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
 
-                // Обновляем длительность
+                // РћР±РЅРѕРІР»СЏРµРј РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ
                 const durationMinutes = Math.floor(audioPlayer.duration / 60);
                 const durationSeconds = Math.floor(audioPlayer.duration % 60);
                 durationEl.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
 
-                // Обновляем прогресс-бар
+                // РћР±РЅРѕРІР»СЏРµРј РїСЂРѕРіСЂРµСЃСЃ-Р±Р°СЂ
                 const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
                 progressBar.style.width = `${progressPercent}%`;
             }
 
-            // Установка громкости
+            // РЈСЃС‚Р°РЅРѕРІРєР° РіСЂРѕРјРєРѕСЃС‚Рё
             function setVolume() {
                 audioPlayer.volume = volumeSlider.value;
             }
 
-            // Генерация популярного плейлиста
+            // Р“РµРЅРµСЂР°С†РёСЏ РїРѕРїСѓР»СЏСЂРЅРѕРіРѕ РїР»РµР№Р»РёСЃС‚Р°
             function generatePopularPlaylist() {
                 popularSongs.forEach((song, index) => {
-                    // Для списка в плейлисте
+                    // Р”Р»СЏ СЃРїРёСЃРєР° РІ РїР»РµР№Р»РёСЃС‚Рµ
                     const li = document.createElement('li');
                     li.className = 'playlist-item';
 
                     li.innerHTML = `
-                            <div class="play-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="song-details">
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                            </div>
-                            <div class="duration">${song.duration}</div>
-                        `;
+                        <div class="play-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="song-details">
+                            <div class="title">${song.title}</div>
+                            <div class="artist">${song.artist}</div>
+                        </div>
+                        <div class="duration">${song.duration}</div>
+                    `;
 
                     li.addEventListener('click', () => {
                         addSongToPlaylist(song);
@@ -903,25 +904,25 @@
 
                     popularListEl.appendChild(li);
 
-                    // Для сетки популярной музыки
+                    // Р”Р»СЏ СЃРµС‚РєРё РїРѕРїСѓР»СЏСЂРЅРѕР№ РјСѓР·С‹РєРё
                     const songCard = document.createElement('div');
                     songCard.className = 'popular-song';
                     songCard.innerHTML = `
-                            <div class="cover">
-                                ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
+                        <div class="cover">
+                            ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
+                            <div class="overlay">
+                                <i class="fas fa-play"></i>
                             </div>
-                            <div class="title">${song.title}</div>
-                            <div class="artist">${song.artist}</div>
-                            <div class="duration">${song.duration}</div>
-                            <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
-                                <div class="play-btn" data-id="${song.id}">
-                                    <i class="fas fa-play"></i>
-                                </div>
+                        </div>
+                        <div class="title">${song.title}</div>
+                        <div class="artist">${song.artist}</div>
+                        <div class="duration">${song.duration}</div>
+                        <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                            <div class="play-btn" data-id="${song.id}">
+                                <i class="fas fa-play"></i>
                             </div>
-                        `;
+                        </div>
+                    `;
 
                     songCard.addEventListener('click', () => {
                         addSongToPlaylist(song);
@@ -931,30 +932,30 @@
                 });
             }
 
-            // Добавление песни в плейлист
+            // Р”РѕР±Р°РІР»РµРЅРёРµ РїРµСЃРЅРё РІ РїР»РµР№Р»РёСЃС‚
             function addSongToPlaylist(song) {
-                // Проверяем, есть ли песня уже в плейлисте
+                // РџСЂРѕРІРµСЂСЏРµРј, РµСЃС‚СЊ Р»Рё РїРµСЃРЅСЏ СѓР¶Рµ РІ РїР»РµР№Р»РёСЃС‚Рµ
                 const songExists = playlist.some(s => s.id === song.id);
 
                 if (!songExists) {
                     playlist.push(song);
 
-                    // Обновляем плейлист
+                    // РћР±РЅРѕРІР»СЏРµРј РїР»РµР№Р»РёСЃС‚
                     playlistEl.innerHTML = '';
                     generateUserPlaylist();
                 }
 
-                // Устанавливаем текущую песню
+                // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С‚РµРєСѓС‰СѓСЋ РїРµСЃРЅСЋ
                 currentSongIndex = playlist.findIndex(s => s.id === song.id);
                 loadSong(currentSongIndex);
 
-                // Начинаем воспроизведение
+                // РќР°С‡РёРЅР°РµРј РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ
                 if (!isPlaying) {
                     togglePlay();
                 }
             }
 
-            // Генерация пользовательского плейлиста
+            // Р“РµРЅРµСЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РїР»РµР№Р»РёСЃС‚Р°
             function generateUserPlaylist() {
                 playlist.forEach((song, index) => {
                     const li = document.createElement('li');
@@ -964,15 +965,15 @@
                     }
 
                     li.innerHTML = `
-                            <div class="play-icon">
-                                <i class="fas fa-music"></i>
-                            </div>
-                            <div class="song-details">
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                            </div>
-                            <div class="duration">${song.duration}</div>
-                        `;
+                        <div class="play-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="song-details">
+                            <div class="title">${song.title}</div>
+                            <div class="artist">${song.artist}</div>
+                        </div>
+                        <div class="duration">${song.duration}</div>
+                    `;
 
                     li.addEventListener('click', () => {
                         currentSongIndex = index;
@@ -986,16 +987,16 @@
                 });
             }
 
-            // Инициализация
+            // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
             function init() {
                 initVisualizer();
                 generatePopularPlaylist();
                 generateUserPlaylist();
 
-                // Добавляем обработчик для кнопки play/pause
+                // Р”РѕР±Р°РІР»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ РєРЅРѕРїРєРё play/pause
                 playPauseBtn.addEventListener('click', togglePlay);
-
-                // Обработчики событий
+                
+                // РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
                 prevBtn.addEventListener('click', prevSong);
                 nextBtn.addEventListener('click', nextSong);
                 volumeSlider.addEventListener('input', setVolume);
@@ -1003,7 +1004,7 @@
                 audioPlayer.addEventListener('timeupdate', updateTime);
                 audioPlayer.addEventListener('ended', nextSong);
 
-                // Загрузка первой песни при наличии
+                // Р—Р°РіСЂСѓР·РєР° РїРµСЂРІРѕР№ РїРµСЃРЅРё РїСЂРё РЅР°Р»РёС‡РёРё
                 if (playlist.length > 0) {
                     loadSong(currentSongIndex);
                 }
