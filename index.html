@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harmony Player - Плейлисты</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,39 +24,83 @@
             overflow-x: hidden;
         }
 
-            body::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: radial-gradient(circle at 10% 20%, rgba(255, 200, 124, 0.1) 0%, rgba(255, 200, 124, 0) 20%), radial-gradient(circle at 80% 80%, rgba(143, 0, 255, 0.1) 0%, rgba(143, 0, 255, 0) 20%);
-                z-index: -1;
-            }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 200, 124, 0.1) 0%, rgba(255, 200, 124, 0) 20%), radial-gradient(circle at 80% 80%, rgba(143, 0, 255, 0.1) 0%, rgba(143, 0, 255, 0) 20%);
+            z-index: -1;
+        }
 
         header {
             text-align: center;
             padding: 20px 0;
             margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-            header h1 {
-                font-size: 2.8rem;
-                margin-bottom: 10px;
-                background: linear-gradient(to right, #ff7e5f, #feb47b);
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-                text-shadow: 0 0 10px rgba(255, 126, 95, 0.3);
-            }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+        }
 
-            header p {
-                font-size: 1.1rem;
-                color: #e0e0e0;
-                max-width: 600px;
-                margin: 0 auto 15px;
-            }
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 126, 95, 0.5);
+            box-shadow: 0 0 10px rgba(255, 126, 95, 0.3);
+        }
+
+        .search-container i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 126, 95, 0.3);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
 
         .container {
             display: flex;
@@ -100,9 +144,9 @@
             gap: 10px;
         }
 
-            .section-title i {
-                font-size: 1.3rem;
-            }
+        .section-title i {
+            font-size: 1.3rem;
+        }
 
         .tabs {
             display: flex;
@@ -122,10 +166,10 @@
             font-weight: 500;
         }
 
-            .tab.active {
-                background: linear-gradient(135deg, #ff7e5f, #feb47b);
-                box-shadow: 0 4px 10px rgba(255, 126, 95, 0.3);
-            }
+        .tab.active {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            box-shadow: 0 4px 10px rgba(255, 126, 95, 0.3);
+        }
 
         .tab-content {
             display: none;
@@ -134,23 +178,23 @@
             padding-right: 10px;
         }
 
-            .tab-content::-webkit-scrollbar {
-                width: 8px;
-            }
+        .tab-content::-webkit-scrollbar {
+            width: 8px;
+        }
 
-            .tab-content::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 10px;
-            }
+        .tab-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
 
-            .tab-content::-webkit-scrollbar-thumb {
-                background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-                border-radius: 10px;
-            }
+        .tab-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+            border-radius: 10px;
+        }
 
-            .tab-content.active {
-                display: block;
-            }
+        .tab-content.active {
+            display: block;
+        }
 
         .playlist-grid {
             display: grid;
@@ -166,51 +210,52 @@
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
 
-            .playlist-item-card:hover {
-                transform: translateY(-5px);
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            }
+        .playlist-item-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-            .playlist-item-card .cover {
-                width: 100%;
-                aspect-ratio: 1/1;
-                border-radius: 10px;
-                margin-bottom: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                position: relative;
-                background: linear-gradient(45deg, #ff7e5f, #feb47b);
-            }
+        .playlist-item-card .cover {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+        }
 
-                .playlist-item-card .cover img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
+        .playlist-item-card .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-                .playlist-item-card .cover i {
-                    font-size: 2.5rem;
-                    color: rgba(255, 255, 255, 0.8);
-                }
+        .playlist-item-card .cover i {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
 
-            .playlist-item-card .name {
-                font-size: 0.95rem;
-                font-weight: 500;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+        .playlist-item-card .name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-            .playlist-item-card .count {
-                font-size: 0.8rem;
-                color: #aaa;
-                margin-top: 5px;
-            }
+        .playlist-item-card .count {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
 
         .now-playing {
             text-align: center;
@@ -231,39 +276,50 @@
             font-size: 4rem;
             color: rgba(255, 255, 255, 0.8);
             position: relative;
+            transition: opacity 0.5s ease;
         }
 
-            .album-art img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+        .album-art.fade {
+            opacity: 0;
+        }
 
-            .album-art .overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.4);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
+        .album-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-            .album-art:hover .overlay {
-                opacity: 1;
-            }
+        .album-art:hover img {
+            transform: scale(1.05);
+        }
 
-            .album-art .overlay i {
-                font-size: 3rem;
-                color: white;
-            }
+        .album-art .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .album-art:hover .overlay {
+            opacity: 1;
+        }
+
+        .album-art .overlay i {
+            font-size: 3rem;
+            color: white;
+        }
 
         .song-info {
             margin-bottom: 15px;
+            transition: opacity 0.3s ease;
         }
 
         .song-title {
@@ -273,11 +329,13 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            transition: all 0.3s ease;
         }
 
         .song-artist {
             font-size: 1.2rem;
             color: #ccc;
+            transition: all 0.3s ease;
         }
 
         .progress-container {
@@ -332,18 +390,18 @@
             transition: all 0.3s ease;
         }
 
-            .control-btn:hover {
-                background: rgba(255, 255, 255, 0.1);
-                transform: scale(1.1);
-            }
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
 
-            .control-btn.play-pause {
-                width: 70px;
-                height: 70px;
-                background: linear-gradient(135deg, #ff7e5f, #feb47b);
-                box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
-                font-size: 1.8rem;
-            }
+        .control-btn.play-pause {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+            font-size: 1.8rem;
+        }
 
         .volume-container {
             display: flex;
@@ -361,14 +419,14 @@
             outline: none;
         }
 
-            .volume-slider::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                width: 16px;
-                height: 16px;
-                border-radius: 50%;
-                background: #ff7e5f;
-                cursor: pointer;
-            }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ff7e5f;
+            cursor: pointer;
+        }
 
         .playlist {
             list-style: none;
@@ -383,46 +441,87 @@
             background: rgba(255, 255, 255, 0.05);
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
         }
 
-            .playlist-item:hover {
-                background: rgba(255, 255, 255, 0.1);
-                transform: translateX(5px);
-            }
+        .playlist-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
 
-            .playlist-item.active {
-                background: linear-gradient(90deg, rgba(255, 126, 95, 0.3), rgba(254, 180, 123, 0.1));
-                border-left: 4px solid #ff7e5f;
-            }
+        .playlist-item.active {
+            background: linear-gradient(90deg, rgba(255, 126, 95, 0.3), rgba(254, 180, 123, 0.1));
+            border-left: 4px solid #ff7e5f;
+        }
 
-            .playlist-item .play-icon {
-                margin-right: 15px;
-                color: #ff7e5f;
-                font-size: 1.2rem;
-            }
+        .playlist-item .play-icon {
+            margin-right: 15px;
+            color: #ff7e5f;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            overflow: hidden;
+        }
 
-            .playlist-item .song-details {
-                flex: 1;
-            }
+        .playlist-item .play-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-                .playlist-item .song-details .title {
-                    font-size: 1.1rem;
-                    font-weight: 500;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
+        .playlist-item .song-details {
+            flex: 1;
+            min-width: 0;
+        }
 
-                .playlist-item .song-details .artist {
-                    font-size: 0.9rem;
-                    color: #aaa;
-                }
+        .playlist-item .song-details .title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-            .playlist-item .duration {
-                color: #aaa;
-                font-size: 0.9rem;
-                margin-left: 10px;
-            }
+        .playlist-item .song-details .artist {
+            font-size: 0.9rem;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .playlist-item .duration {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            margin-right: 30px;
+        }
+
+        .playlist-item .delete-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .playlist-item:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .playlist-item .delete-btn:hover {
+            color: #ff7e5f;
+        }
 
         .visualizer {
             width: 100%;
@@ -465,89 +564,101 @@
             padding: 20px;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
 
-            .popular-song:hover {
-                transform: translateY(-5px);
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            }
+        .popular-song:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-            .popular-song .cover {
-                width: 100%;
-                aspect-ratio: 1/1;
-                border-radius: 10px;
-                background: linear-gradient(45deg, #ff7e5f, #feb47b);
-                margin-bottom: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                position: relative;
-            }
+        .popular-song .cover {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-                .popular-song .cover img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
+        .popular-song .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
 
-                .popular-song .cover .overlay {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.4);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    opacity: 0;
-                    transition: opacity 0.3s;
-                }
+        .popular-song:hover .cover img {
+            transform: scale(1.05);
+        }
 
-            .popular-song:hover .cover .overlay {
-                opacity: 1;
-            }
+        .popular-song .cover .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
-            .popular-song .cover .overlay i {
-                font-size: 2rem;
-                color: white;
-            }
+        .popular-song:hover .cover .overlay {
+            opacity: 1;
+        }
 
-            .popular-song .title {
-                font-size: 1.1rem;
-                font-weight: 600;
-                margin-bottom: 5px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+        .popular-song .cover .overlay i {
+            font-size: 2rem;
+            color: white;
+        }
 
-            .popular-song .artist {
-                font-size: 0.9rem;
-                color: #aaa;
-                margin-bottom: 10px;
-            }
+        .popular-song .title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-            .popular-song .play-btn {
-                background: rgba(255, 255, 255, 0.1);
-                border: none;
-                color: #ff7e5f;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
+        .popular-song .artist {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-                .popular-song .play-btn:hover {
-                    background: rgba(255, 126, 95, 0.3);
-                    transform: scale(1.1);
-                }
+        .popular-song .play-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #ff7e5f;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .popular-song .play-btn:hover {
+            background: rgba(255, 126, 95, 0.3);
+            transform: scale(1.1);
+        }
 
         footer {
             text-align: center;
@@ -555,6 +666,95 @@
             padding: 20px;
             color: #aaa;
             font-size: 0.9rem;
+        }
+
+        .context-menu {
+            position: absolute;
+            background: rgba(40, 40, 70, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            min-width: 200px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .context-menu-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .context-menu-item:hover {
+            background: rgba(255, 126, 95, 0.3);
+        }
+
+        /* Стили для вкладки "Популярное" в разделе плейлистов */
+        #popular-playlist .playlist-item {
+            padding: 12px;
+        }
+
+        #popular-playlist .playlist-item .play-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        #popular-playlist .playlist-item .song-details .title {
+            font-size: 1rem;
+        }
+
+        #popular-playlist .playlist-item .song-details .artist {
+            font-size: 0.85rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgba(30,30,60,0.95);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: #feb47b;
+        }
+
+        #playlist-options {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-right: 10px;
         }
 
         @media (max-width: 768px) {
@@ -582,13 +782,30 @@
             .tabs {
                 flex-direction: column;
             }
+
+            .header-content {
+                flex-direction: column;
+            }
+
+            .search-container {
+                margin: 15px 0 0 0;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-music"></i> Harmony Player</h1>
-        <p>Ваш персональный музыкальный плеер с плейлистами</p>
+        <div class="header-content">
+            <div>
+                <h1><i class="fas fa-music"></i> Harmony Player</h1>
+                <p>Ваш персональный музыкальный плеер с плейлистами</p>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Поиск песен, плейлистов...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
     </header>
 
     <div class="container">
@@ -688,6 +905,25 @@
         <p>Harmony Player © 2023 | Создано с любовью к музыке</p>
     </footer>
 
+    <!-- Контекстное меню -->
+    <div class="context-menu" id="context-menu">
+        <div class="context-menu-item" id="add-to-playlist-btn">Добавить в плейлист</div>
+        <div class="context-menu-item" id="remove-song-btn">Удалить из плейлиста</div>
+    </div>
+
+    <!-- Модальное окно выбора плейлиста -->
+    <div class="modal" id="playlist-modal">
+        <div class="modal-content">
+            <h2>Выберите плейлист</h2>
+            <div id="playlist-options">
+                <!-- Плейлисты будут добавлены здесь -->
+            </div>
+            <div class="modal-buttons">
+                <button id="cancel-modal">Отмена</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Аудио элемент для воспроизведения -->
     <audio id="audio-player"></audio>
 
@@ -728,69 +964,69 @@
                     url: "music/photo.mp3"
                 },
                 {
-                id: 6,
-                title: "Иннопланетянин",
-                artist: "Gone Flud",
-                duration: "3:15",
-                cover: "https://images.genius.com/3cfcbdade3b26179f136d1c6c34cd0dd.1000x1000x1.png",
-                url: "music/alien.mp3"
+                    id: 6,
+                    title: "Иннопланетянин",
+                    artist: "Gone Flud",
+                    duration: "3:15",
+                    cover: "https://images.genius.com/3cfcbdade3b26179f136d1c6c34cd0dd.1000x1000x1.png",
+                    url: "music/alien.mp3"
                 },
-            {
-                id: 7,
-                title: "Poke it out",
-                artist: "Playboi carty",
-                duration: "4:29",
-                cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
-                url: "music/Poke it out.mp3"
-            },
-            {
-                id: 8,
-                title: "Fuk sumn",
-                artist: "Kanye west",
-                duration: "3:29",
-                cover: "https://hypeddit-gates-prod.s3.amazonaws.com/lrw2xe_coverartmanual",
-                url: "music/fuk sumn.mp3"
-            },
-            {
-                id: 9,
-                title: "Location",
-                artist: "Playboi carty",
-                duration: "3:32",
-                cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
-                url: "music/location.mp3"
-            },
-            {
-                id: 10,
-                title: "FOMdJ",
-                artist: "playboi carty",
-                duration: "3:20",
-                cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
-                url: "music/fomdj.mp3"
-            },
-            {
-                id: 11,
-                title: "FEIN",
-                artist: "playboi carty",
-                duration: "3:11",
-                cover: "https://i1.sndcdn.com/artworks-lk6F9QhbgtCM-0-t500x500.jpg",
-                url: "music/fein.mp3"
-            },
-            {
-                id: 12,
-                title: "Rather lie",
-                artist: "playboi carty, Weeknd",
-                duration: "3:09",
-                cover: "https://i1.sndcdn.com/artworks-xX6KXJuZXaQanrsP-X8ep7g-t500x500.jpg",
-                url: "music/ratherlife.mp3"
-            },
-            {
-                id: 13,
-                title: "Ameli",
-                artist: "Big Babe Tape",
-                duration: "2:39",
-                cover: "https://images.genius.com/3c0be727f05563c85daea580c688d316.1000x1000x1.png",
-                url: "music/ameli.mp3"
-            },
+                {
+                    id: 7,
+                    title: "Poke it out",
+                    artist: "Playboi carty",
+                    duration: "4:29",
+                    cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
+                    url: "music/Poke it out.mp3"
+                },
+                {
+                    id: 8,
+                    title: "Fuk sumn",
+                    artist: "Kanye west",
+                    duration: "3:29",
+                    cover: "https://hypeddit-gates-prod.s3.amazonaws.com/lrw2xe_coverartmanual",
+                    url: "music/fuk sumn.mp3"
+                },
+                {
+                    id: 9,
+                    title: "Location",
+                    artist: "Playboi carty",
+                    duration: "3:32",
+                    cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
+                    url: "music/location.mp3"
+                },
+                {
+                    id: 10,
+                    title: "FOMdJ",
+                    artist: "playboi carty",
+                    duration: "3:20",
+                    cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                    url: "music/fomdj.mp3"
+                },
+                {
+                    id: 11,
+                    title: "FEIN",
+                    artist: "playboi carty",
+                    duration: "3:11",
+                    cover: "https://i1.sndcdn.com/artworks-lk6F9QhbgtCM-0-t500x500.jpg",
+                    url: "music/fein.mp3"
+                },
+                {
+                    id: 12,
+                    title: "Rather lie",
+                    artist: "playboi carty, Weeknd",
+                    duration: "3:09",
+                    cover: "https://i1.sndcdn.com/artworks-xX6KXJuZXaQanrsP-X8ep7g-t500x500.jpg",
+                    url: "music/ratherlife.mp3"
+                },
+                {
+                    id: 13,
+                    title: "Ameli",
+                    artist: "Big Babe Tape",
+                    duration: "2:39",
+                    cover: "https://images.genius.com/3c0be727f05563c85daea580c688d316.1000x1000x1.png",
+                    url: "music/ameli.mp3"
+                },
             ];
 
             // Массив плейлистов
@@ -881,76 +1117,76 @@
                     ]
                 },
                 {
-                        id: 2,
-    name: "Ru микс",
-    cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/800px-Flag_of_Russia.svg.png",
-    songs: [
-        {
-            id: 201,
-            title: "Плохая ****",
-            artist: "Gone Flud",
-            duration: "2:08",
-            url: "music/Плохая Сука.mp3"
-        },
-        {
-            id: 202,
-            title: "Иннопланетянин",
-            artist: "Gone Flud",
-            duration: "3:15",
-            url: "music/alien.mp3"
-        },
-        {
-            id: 203,
-            title: "Cadilac",
-            artist: "Morgenshtern",
-            duration: "2:57",
-            url: "music/Cadillac.mp3"
-        },
-        {
-            id: 204,
-            title: "Leck",
-            artist: "Morgenshtern",
-            duration: "2:31",
-            url: "music/leck.mp3"
-        },
-        {
-            id: 205,
-            title: "ICE",
-            artist: "Morgenshtern",
-            duration: "2:05",
-            url: "music/ice.mp3"
-        },
-        {
-            id: 206,
-            title: "Dinero",
-            artist: "Morgenshtern",
-            duration: "2:38",
-            url: "music/DINERO.mp3"
-        },
-        {
-            id: 207,
-            title: "SHOW",
-            artist: "Morgenshtern",
-            duration: "1:38",
-            url: "music/show.mp3"
-        },
-        {
-            id: 208,
-            title: "Aristocrat",
-            artist: "Morgenshtern",
-            duration: "2:06",
-            cover: "https://upload.wikimedia.org/wikipedia/ru/c/cd/Million_Dollar-_Business.jpg",
-            url: "music/ARISTOCRAT.mp3"
-        },
-        {
-            id: 208,
-            title: "Ameli",
-            artist: "Morgenshtern",
-            duration: "2:06",
-            url: "music/ameli.mp3"
-        },
-    ]
-},
+                    id: 2,
+                    name: "Ru микс",
+                    cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/800px-Flag_of_Russia.svg.png",
+                    songs: [
+                        {
+                            id: 201,
+                            title: "Плохая ****",
+                            artist: "Gone Flud",
+                            duration: "2:08",
+                            url: "music/Плохая Сука.mp3"
+                        },
+                        {
+                            id: 202,
+                            title: "Иннопланетянин",
+                            artist: "Gone Flud",
+                            duration: "3:15",
+                            url: "music/alien.mp3"
+                        },
+                        {
+                            id: 203,
+                            title: "Cadilac",
+                            artist: "Morgenshtern",
+                            duration: "2:57",
+                            url: "music/Cadillac.mp3"
+                        },
+                        {
+                            id: 204,
+                            title: "Leck",
+                            artist: "Morgenshtern",
+                            duration: "2:31",
+                            url: "music/leck.mp3"
+                        },
+                        {
+                            id: 205,
+                            title: "ICE",
+                            artist: "Morgenshtern",
+                            duration: "2:05",
+                            url: "music/ice.mp3"
+                        },
+                        {
+                            id: 206,
+                            title: "Dinero",
+                            artist: "Morgenshtern",
+                            duration: "2:38",
+                            url: "music/DINERO.mp3"
+                        },
+                        {
+                            id: 207,
+                            title: "SHOW",
+                            artist: "Morgenshtern",
+                            duration: "1:38",
+                            url: "music/show.mp3"
+                        },
+                        {
+                            id: 208,
+                            title: "Aristocrat",
+                            artist: "Morgenshtern",
+                            duration: "2:06",
+                            cover: "https://upload.wikimedia.org/wikipedia/ru/c/cd/Million_Dollar-_Business.jpg",
+                            url: "music/ARISTOCRAT.mp3"
+                        },
+                        {
+                            id: 209,
+                            title: "Ameli",
+                            artist: "Morgenshtern",
+                            duration: "2:06",
+                            url: "music/ameli.mp3"
+                        },
+                    ]
+                },
                 {
                     id: 3,
                     name: "Ямаш хит",
@@ -983,7 +1219,7 @@
                             artist: "Нурминский",
                             duration: "3:03",
                             url: "music/ауф.mp3"
-                        }
+                        },
                         {
                             id: 305,
                             title: "блинская натура",
@@ -1002,7 +1238,7 @@
                 },
                 {
                     id: 4,
-                    name: " Хит",
+                    name: "Ретро Хит",
                     cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                     songs: [
                         {
@@ -1030,6 +1266,39 @@
                 }
             ];
 
+            // Создаем плейлист "Все треки"
+            const allTracksPlaylist = {
+                id: 0,
+                name: "Все треки",
+                cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                songs: []
+            };
+
+            // Добавляем все песни из плейлистов
+            playlists.forEach(pl => {
+                pl.songs.forEach(song => {
+                    // Проверяем, нет ли уже этой песни в плейлисте
+                    const exists = allTracksPlaylist.songs.some(s => s.id === song.id);
+                    if (!exists) {
+                        allTracksPlaylist.songs.push({
+                            ...song,
+                            playlistCover: pl.cover
+                        });
+                    }
+                });
+            });
+
+            // Добавляем все популярные песни
+            popularSongs.forEach(song => {
+                const exists = allTracksPlaylist.songs.some(s => s.id === song.id);
+                if (!exists) {
+                    allTracksPlaylist.songs.push(song);
+                }
+            });
+
+            // Добавляем плейлист "Все треки" в начало списка плейлистов
+            playlists.unshift(allTracksPlaylist);
+
             // Элементы DOM
             const playPauseBtn = document.getElementById('play-pause');
             const prevBtn = document.getElementById('prev');
@@ -1050,29 +1319,34 @@
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
             const audioPlayer = document.getElementById('audio-player');
+            const searchInput = document.getElementById('search-input');
+            const contextMenu = document.getElementById('context-menu');
+            const addToPlaylistBtn = document.getElementById('add-to-playlist-btn');
+            const removeSongBtn = document.getElementById('remove-song-btn');
+            const playlistModal = document.getElementById('playlist-modal');
+            const playlistOptions = document.getElementById('playlist-options');
+            const cancelModal = document.getElementById('cancel-modal');
 
             // Текущее состояние
             let isPlaying = false;
             let currentSongIndex = 0;
             let visualizerBars = [];
             let playlist = [];
+            let contextMenuSong = null;
+            let searchQuery = '';
 
-            // Установка громкости по умолчанию 10%
-            volumeSlider.value = 0.1;
-            audioPlayer.volume = 0.1;
+            // Загрузка плейлиста "Ваша музыка" из localStorage
+            function loadUserPlaylistFromStorage() {
+                const savedPlaylist = localStorage.getItem('userPlaylist');
+                if (savedPlaylist) {
+                    playlist = JSON.parse(savedPlaylist);
+                }
+            }
 
-            // Переключение вкладок
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Удаляем активный класс у всех вкладок
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-
-                    // Добавляем активный класс текущей вкладке
-                    tab.classList.add('active');
-                    document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
-                });
-            });
+            // Сохранение плейлиста "Ваша музыка" в localStorage
+            function saveUserPlaylistToStorage() {
+                localStorage.setItem('userPlaylist', JSON.stringify(playlist));
+            }
 
             // Инициализация визуализатора
             function initVisualizer() {
@@ -1100,48 +1374,70 @@
                 requestAnimationFrame(updateVisualizer);
             }
 
-            // Загрузка песни
+            // Плавная загрузка песни с анимацией
             function loadSong(index) {
                 if (playlist.length === 0) return;
 
                 const song = playlist[index];
-                songTitle.textContent = song.title || "Неизвестный трек";
-                songArtist.textContent = song.artist || "Неизвестный исполнитель";
+                
+                // Анимация исчезновения
+                albumArt.classList.add('fade');
+                songTitle.style.opacity = '0';
+                songArtist.style.opacity = '0';
+                
+                setTimeout(() => {
+                    songTitle.textContent = song.title || "Неизвестный трек";
+                    songArtist.textContent = song.artist || "Неизвестный исполнитель";
 
-                // Обновление обложки
-                if (song.cover) {
-                    albumArt.innerHTML = `
+                    // Обновление обложки
+                    if (song.cover) {
+                        albumArt.innerHTML = `
                             <img src="${song.cover}" alt="${song.title}">
                             <div class="overlay">
                                 <i class="fas fa-play"></i>
                             </div>
                         `;
-                } else {
-                    albumArt.innerHTML = `
+                    } else if (song.playlistCover) {
+                        albumArt.innerHTML = `
+                            <img src="${song.playlistCover}" alt="${song.title}">
+                            <div class="overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        `;
+                    } else {
+                        albumArt.innerHTML = `
                             <i class="fas fa-music"></i>
                             <div class="overlay">
                                 <i class="fas fa-play"></i>
                             </div>
                         `;
-                }
-
-                // Установка источника аудио
-                audioPlayer.src = song.url;
-                audioPlayer.load();
-
-                // Обновление активного элемента плейлиста
-                document.querySelectorAll('.playlist-item').forEach((item, idx) => {
-                    if (idx === index) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
                     }
-                });
 
-                // Воспроизведение, если плеер был включен
-                if (isPlaying) {
-                    audioPlayer.play().catch(e => console.error("Ошибка воспроизведения:", e));
-                }
+                    // Установка источника аудио
+                    audioPlayer.src = song.url;
+                    audioPlayer.load();
+
+                    // Обновление активного элемента плейлиста
+                    document.querySelectorAll('.playlist-item').forEach((item, idx) => {
+                        if (idx === index) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+
+                    // Воспроизведение, если плеер был включен
+                    if (isPlaying) {
+                        audioPlayer.play().catch(e => console.error("Ошибка воспроизведения:", e));
+                    }
+
+                    // Анимация появления
+                    albumArt.classList.remove('fade');
+                    setTimeout(() => {
+                        songTitle.style.opacity = '1';
+                        songArtist.style.opacity = '1';
+                    }, 300);
+                }, 300);
             }
 
             // Воспроизведение/пауза
@@ -1222,19 +1518,24 @@
 
             // Генерация плейлистов
             function generatePlaylists() {
-                playlists.forEach(playlist => {
+                playlistsGrid.innerHTML = '';
+                playlists.forEach(pl => {
+                    if (searchQuery && !pl.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        return;
+                    }
+                    
                     const playlistCard = document.createElement('div');
                     playlistCard.className = 'playlist-item-card';
                     playlistCard.innerHTML = `
-                            <div class="cover">
-                                <img src="${playlist.cover}" alt="${playlist.name}">
-                            </div>
-                            <div class="name">${playlist.name}</div>
-                            <div class="count">${playlist.songs.length} треков</div>
-                        `;
+                        <div class="cover">
+                            ${pl.cover ? `<img src="${pl.cover}" alt="${pl.name}">` : '<i class="fas fa-music"></i>'}
+                        </div>
+                        <div class="name">${pl.name}</div>
+                        <div class="count">${pl.songs.length} треков</div>
+                    `;
 
                     playlistCard.addEventListener('click', () => {
-                        loadPlaylist(playlist);
+                        loadPlaylist(pl);
                     });
 
                     playlistsGrid.appendChild(playlistCard);
@@ -1250,7 +1551,8 @@
                 playlistData.songs.forEach(song => {
                     playlist.push({
                         ...song,
-                        cover: playlistData.cover
+                        cover: song.cover || playlistData.cover,
+                        playlistCover: playlistData.cover
                     });
                 });
 
@@ -1273,51 +1575,80 @@
                 if (!isPlaying) {
                     togglePlay();
                 }
+                
+                // Сохраняем плейлист
+                saveUserPlaylistToStorage();
             }
 
-            // Генерация популярного плейлиста
-            function generatePopularPlaylist() {
+            // Генерация популярного плейлиста для вкладки
+            function generatePopularPlaylistForTab() {
+                popularListEl.innerHTML = '';
+                
                 popularSongs.forEach((song, index) => {
+                    if (searchQuery && 
+                        !song.title.toLowerCase().includes(searchQuery.toLowerCase()) && 
+                        !song.artist.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        return;
+                    }
+                    
                     // Для списка в плейлисте
                     const li = document.createElement('li');
                     li.className = 'playlist-item';
 
                     li.innerHTML = `
-                            <div class="play-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="song-details">
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                            </div>
-                            <div class="duration">${song.duration}</div>
-                        `;
+                        <div class="play-icon">
+                            ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-star"></i>'}
+                        </div>
+                        <div class="song-details">
+                            <div class="title">${song.title}</div>
+                            <div class="artist">${song.artist}</div>
+                        </div>
+                        <div class="duration">${song.duration}</div>
+                    `;
 
                     li.addEventListener('click', () => {
                         addSongToPlaylist(song);
                     });
 
                     popularListEl.appendChild(li);
+                });
+            }
 
+            // Генерация популярной сетки для нижней секции
+            function generatePopularGrid() {
+                popularGridEl.innerHTML = '';
+                
+                popularSongs.forEach((song, index) => {
+                    if (searchQuery && 
+                        !song.title.toLowerCase().includes(searchQuery.toLowerCase()) && 
+                        !song.artist.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        return;
+                    }
+                    
                     // Для сетки популярной музыки
                     const songCard = document.createElement('div');
                     songCard.className = 'popular-song';
                     songCard.innerHTML = `
-                            <div class="cover">
-                                ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
+                        <div class="cover">
+                            ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
+                            <div class="overlay">
+                                <i class="fas fa-play"></i>
                             </div>
-                            <div class="title">${song.title}</div>
-                            <div class="artist">${song.artist}</div>
-                            <div class="duration">${song.duration}</div>
-                            <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
-                                <div class="play-btn" data-id="${song.id}">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        `;
+                        </div>
+                        <div class="title">${song.title}</div>
+                        <div class="artist">${song.artist}</div>
+                        <div class="duration">${song.duration}</div>
+                        <div class="play-btn" data-id="${song.id}">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    `;
+
+                    songCard.addEventListener('click', function(e) {
+                        // Проверяем, не была ли нажата кнопка play
+                        if (!e.target.closest('.play-btn')) {
+                            addSongToPlaylist(song);
+                        }
+                    });
 
                     songCard.querySelector('.play-btn').addEventListener('click', function (e) {
                         e.stopPropagation();
@@ -1349,45 +1680,174 @@
                 if (!isPlaying) {
                     togglePlay();
                 }
+                
+                // Сохраняем плейлист
+                saveUserPlaylistToStorage();
+            }
+
+            // Удаление песни из плейлиста
+            function removeSongFromPlaylist(songId) {
+                const index = playlist.findIndex(s => s.id === songId);
+                if (index !== -1) {
+                    // Если удаляемая песня сейчас играет, останавливаем воспроизведение
+                    if (currentSongIndex === index) {
+                        isPlaying = false;
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        audioPlayer.pause();
+                        currentSongIndex = 0;
+                    }
+                    
+                    playlist.splice(index, 1);
+                    
+                    // Обновляем отображение плейлиста
+                    playlistEl.innerHTML = '';
+                    generateUserPlaylist();
+                    
+                    // Загружаем новую текущую песню, если есть
+                    if (playlist.length > 0) {
+                        if (currentSongIndex >= playlist.length) {
+                            currentSongIndex = playlist.length - 1;
+                        }
+                        loadSong(currentSongIndex);
+                    } else {
+                        // Сбрасываем плеер, если плейлист пуст
+                        songTitle.textContent = "Выберите трек";
+                        songArtist.textContent = "Из вашего плейлиста";
+                        albumArt.innerHTML = `
+                            <i class="fas fa-music"></i>
+                            <div class="overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        `;
+                        progressBar.style.width = '0%';
+                        currentTimeEl.textContent = '0:00';
+                        durationEl.textContent = '0:00';
+                    }
+                    
+                    // Сохраняем плейлист
+                    saveUserPlaylistToStorage();
+                }
             }
 
             // Генерация пользовательского плейлиста
             function generateUserPlaylist() {
+                playlistEl.innerHTML = '';
+                
                 playlist.forEach((song, index) => {
+                    if (searchQuery && 
+                        !song.title.toLowerCase().includes(searchQuery.toLowerCase()) && 
+                        !song.artist.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        return;
+                    }
+                    
                     const li = document.createElement('li');
                     li.className = 'playlist-item';
                     if (index === currentSongIndex) {
                         li.classList.add('active');
                     }
 
-                    li.innerHTML = `
-                            <div class="play-icon">
-                                <i class="fas fa-music"></i>
-                            </div>
-                            <div class="song-details">
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                            </div>
-                            <div class="duration">${song.duration}</div>
-                        `;
+                    // Используем обложку песни, обложку плейлиста или иконку ноты
+                    let coverContent = '<i class="fas fa-music"></i>';
+                    if (song.cover) {
+                        coverContent = `<img src="${song.cover}" alt="${song.title}">`;
+                    } else if (song.playlistCover) {
+                        coverContent = `<img src="${song.playlistCover}" alt="${song.title}">`;
+                    }
 
-                    li.addEventListener('click', () => {
-                        currentSongIndex = index;
-                        loadSong(currentSongIndex);
-                        if (!isPlaying) {
-                            togglePlay();
+                    li.innerHTML = `
+                        <div class="play-icon">
+                            ${coverContent}
+                        </div>
+                        <div class="song-details">
+                            <div class="title">${song.title}</div>
+                            <div class="artist">${song.artist}</div>
+                        </div>
+                        <div class="duration">${song.duration}</div>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+
+                    li.addEventListener('click', (e) => {
+                        if (!e.target.closest('.delete-btn')) {
+                            currentSongIndex = index;
+                            loadSong(currentSongIndex);
+                            if (!isPlaying) {
+                                togglePlay();
+                            }
                         }
+                    });
+
+                    li.querySelector('.delete-btn').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        removeSongFromPlaylist(song.id);
+                    });
+
+                    // Добавляем обработчик контекстного меню
+                    li.addEventListener('contextmenu', (e) => {
+                        e.preventDefault();
+                        contextMenuSong = song;
+                        contextMenu.style.display = 'block';
+                        contextMenu.style.left = `${e.pageX}px`;
+                        contextMenu.style.top = `${e.pageY}px`;
                     });
 
                     playlistEl.appendChild(li);
                 });
+                
+                if (playlist.length === 0) {
+                    playlistEl.innerHTML = `
+                        <li class="playlist-item">
+                            <div class="play-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="song-details">
+                                <div class="title">Плейлист пуст</div>
+                                <div class="artist">Добавьте песни из других плейлистов</div>
+                            </div>
+                            <div class="duration">0:00</div>
+                        </li>
+                    `;
+                }
+            }
+
+            // Показать модальное окно для добавления в плейлист
+            function showAddToPlaylistModal() {
+                playlistOptions.innerHTML = '';
+                
+                playlists.forEach(pl => {
+                    if (pl.id === 0) return; // Пропускаем плейлист "Все треки"
+                    
+                    const option = document.createElement('div');
+                    option.className = 'context-menu-item';
+                    option.textContent = pl.name;
+                    option.addEventListener('click', () => {
+                        // Проверяем, нет ли уже этой песни в плейлисте
+                        const exists = pl.songs.some(s => s.id === contextMenuSong.id);
+                        if (!exists) {
+                            pl.songs.push(contextMenuSong);
+                            alert(`Песня добавлена в плейлист "${pl.name}"`);
+                        } else {
+                            alert(`Эта песня уже есть в плейлисте "${pl.name}"`);
+                        }
+                        playlistModal.style.display = 'none';
+                    });
+                    
+                    playlistOptions.appendChild(option);
+                });
+                
+                playlistModal.style.display = 'flex';
             }
 
             // Инициализация
             function init() {
+                // Загружаем плейлист из localStorage
+                loadUserPlaylistFromStorage();
+                
                 initVisualizer();
                 generatePlaylists();
-                generatePopularPlaylist();
+                generatePopularPlaylistForTab(); // Для вкладки "Популярное"
+                generatePopularGrid(); // Для нижней секции
                 generateUserPlaylist();
 
                 // Добавляем обработчик для кнопки play/pause
@@ -1400,6 +1860,63 @@
                 progressContainer.addEventListener('click', updateProgress);
                 audioPlayer.addEventListener('timeupdate', updateTime);
                 audioPlayer.addEventListener('ended', nextSong);
+                
+                // Поиск
+                searchInput.addEventListener('input', function() {
+                    searchQuery = this.value;
+                    generatePlaylists();
+                    generatePopularPlaylistForTab();
+                    generateUserPlaylist();
+                    generatePopularGrid();
+                });
+                
+                // Контекстное меню
+                document.addEventListener('click', () => {
+                    contextMenu.style.display = 'none';
+                });
+                
+                addToPlaylistBtn.addEventListener('click', () => {
+                    contextMenu.style.display = 'none';
+                    showAddToPlaylistModal();
+                });
+                
+                removeSongBtn.addEventListener('click', () => {
+                    contextMenu.style.display = 'none';
+                    if (contextMenuSong) {
+                        removeSongFromPlaylist(contextMenuSong.id);
+                    }
+                });
+                
+                cancelModal.addEventListener('click', () => {
+                    playlistModal.style.display = 'none';
+                });
+
+                // Обработчики вкладок
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Удаляем активный класс у всех вкладок
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tabContents.forEach(c => c.classList.remove('active'));
+
+                        // Добавляем активный класс текущей вкладке
+                        tab.classList.add('active');
+                        
+                        // Активируем соответствующее содержимое
+                        const tabId = tab.dataset.tab;
+                        if (tabId === 'user') {
+                            document.getElementById('user-playlist').classList.add('active');
+                            generateUserPlaylist();
+                        } 
+                        else if (tabId === 'playlists') {
+                            document.getElementById('playlists-tab').classList.add('active');
+                            generatePlaylists();
+                        } 
+                        else if (tabId === 'popular') {
+                            document.getElementById('popular-playlist').classList.add('active');
+                            generatePopularPlaylistForTab();
+                        }
+                    });
+                });
 
                 // Загрузка первой песни при наличии
                 if (playlist.length > 0) {
