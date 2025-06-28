@@ -1600,6 +1600,9 @@
             let contextMenuSong = null;
             let searchQuery = '';
 
+            volumeSlider.value = 0.1;
+            audioPlayer.volume = 0.1;
+
             // Загрузка плейлиста "Ваша музыка" из localStorage
             function loadUserPlaylistFromStorage() {
                 const savedPlaylist = localStorage.getItem('userPlaylist');
