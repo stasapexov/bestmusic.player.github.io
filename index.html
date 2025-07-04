@@ -586,6 +586,135 @@
                 flex-direction: column;
             }
         }
+         @media (max-width: 480px) {
+     body {
+         padding: 10px;
+         background: linear-gradient(135deg, #000, #333); /* Упрощаем градиент */
+     }
+
+     header h1 {
+         font-size: 1.8rem; /* Уменьшаем размер заголовка */
+         margin-bottom: 5px;
+     }
+
+     header p {
+         font-size: 0.9rem; /* Уменьшаем подзаголовок */
+     }
+
+     .container {
+         gap: 15px;
+     }
+
+     .player-section,
+     .playlist-section,
+     .popular-section {
+         padding: 15px;
+         border-radius: 15px;
+     }
+
+     .album-art {
+         width: 180px;
+         height: 180px; /* Уменьшаем обложку */
+         font-size: 3rem;
+     }
+
+     .song-title {
+         font-size: 1.4rem; /* Уменьшаем размер названия трека */
+     }
+
+     .song-artist {
+         font-size: 1rem;
+     }
+
+     .controls {
+         gap: 15px;
+     }
+
+     .control-btn {
+         width: 45px;
+         height: 45px;
+         font-size: 1rem;
+     }
+
+         .control-btn.play-pause {
+             width: 60px;
+             height: 60px;
+             font-size: 1.5rem;
+         }
+
+     .visualizer {
+         height: 80px; /* Уменьшаем визуализатор */
+         margin-top: 20px;
+     }
+
+     .bar {
+         width: 4px; /* Более тонкие бары */
+     }
+
+     .playlist-item {
+         padding: 10px; /* Уменьшаем отступы */
+     }
+
+     .playlist-grid {
+         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Меньшие карточки */
+         gap: 10px;
+     }
+
+     .popular-grid {
+         grid-template-columns: 1fr; /* Одна колонка в популярном */
+     }
+
+     .section-title {
+         font-size: 1.3rem; /* Уменьшаем заголовки секций */
+     }
+
+     .tabs {
+         flex-direction: column; /* Вертикальные табы */
+         padding: 3px;
+     }
+
+     .tab {
+         padding: 10px;
+         margin-bottom: 5px;
+     }
+
+     .tab-content {
+         height: 400px; /* Уменьшаем высоту контента */
+     }
+
+     /* Улучшаем доступность элементов управления */
+     .progress-bar,
+     .volume-slider {
+         height: 8px;
+     }
+
+         .volume-slider::-webkit-slider-thumb {
+             width: 18px;
+             height: 18px;
+         }
+ }
+
+ /* Дополнительные улучшения для маленьких экранов */
+ @media (max-width: 360px) {
+     .album-art {
+         width: 150px;
+         height: 150px;
+     }
+
+     .song-title {
+         font-size: 1.2rem;
+     }
+
+     .control-btn {
+         width: 40px;
+         height: 40px;
+     }
+
+         .control-btn.play-pause {
+             width: 55px;
+             height: 55px;
+         }
+ }
     </style>
 </head>
 <body>
