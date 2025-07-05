@@ -169,7 +169,7 @@
         }
 
             .playlist-item-card:hover {
-                transform: translateY(-5px);
+                transform: scale(1.02);
                 background: rgba(255, 255, 255, 0.1);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             }
@@ -387,12 +387,12 @@
 
             .playlist-item:hover {
                 background: rgba(255, 255, 255, 0.1);
-                transform: translateX(5px);
+                transform: translateX(3px);
             }
 
             .playlist-item.active {
                 background: linear-gradient(135deg, #000000, #414141);
-                box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+                box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.4);
                 border-left: 4px solid #ffffff;
             }
 
@@ -470,7 +470,7 @@
         }
 
             .popular-song:hover {
-                transform: translateY(-5px);
+                transform: scale(1.05);
                 background: rgba(255, 255, 255, 0.1);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             }
@@ -552,6 +552,91 @@
                     transform: scale(1.1);
                 }
 
+        /* Стили для вкладки "Артисты" */
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .artist-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+            .artist-card:hover {
+                transform: scale(1.02);
+                background: rgba(255 255, 255, 0.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .artist-card .avatar {
+                width: 100%;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                position: relative;
+                background: linear-gradient(45deg, #900000, #ff0000);
+            }
+
+                .artist-card .avatar img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .artist-card .avatar i {
+                    font-size: 2.5rem;
+                    color: rgba(255, 255, 255, 0.8);
+                }
+
+            .artist-card .name {
+                font-size: 0.95rem;
+                font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .artist-card .genre {
+                font-size: 0.8rem;
+                color: #aaa;
+                margin-top: 5px;
+            }
+
+        
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                top: 20px;
+            }
+
+            90% {
+                opacity: 1;
+                top: 20px;
+            }
+
+            100% {
+                opacity: 0;
+                top: 0;
+            }
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -585,136 +670,152 @@
             .tabs {
                 flex-direction: column;
             }
+
+            .artists-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
         }
-         @media (max-width: 480px) {
-     body {
-         padding: 10px;
-         background: linear-gradient(135deg, #000, #333); /* Упрощаем градиент */
-     }
 
-     header h1 {
-         font-size: 1.8rem; /* Уменьшаем размер заголовка */
-         margin-bottom: 5px;
-     }
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                background: linear-gradient(135deg, #000, #333);
+            }
 
-     header p {
-         font-size: 0.9rem; /* Уменьшаем подзаголовок */
-     }
+            header h1 {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
 
-     .container {
-         gap: 15px;
-     }
+            header p {
+                font-size: 0.9rem;
+            }
 
-     .player-section,
-     .playlist-section,
-     .popular-section {
-         padding: 15px;
-         border-radius: 15px;
-     }
+            .container {
+                gap: 15px;
+            }
 
-     .album-art {
-         width: 180px;
-         height: 180px; /* Уменьшаем обложку */
-         font-size: 3rem;
-     }
+            .player-section,
+            .playlist-section,
+            .popular-section {
+                padding: 15px;
+                border-radius: 15px;
+            }
 
-     .song-title {
-         font-size: 1.4rem; /* Уменьшаем размер названия трека */
-     }
+            .album-art {
+                width: 180px;
+                height: 180px;
+                font-size: 3rem;
+            }
 
-     .song-artist {
-         font-size: 1rem;
-     }
+            .song-title {
+                font-size: 1.4rem;
+            }
 
-     .controls {
-         gap: 15px;
-     }
+            .song-artist {
+                font-size: 1rem;
+            }
 
-     .control-btn {
-         width: 45px;
-         height: 45px;
-         font-size: 1rem;
-     }
+            .controls {
+                gap: 15px;
+            }
 
-         .control-btn.play-pause {
-             width: 60px;
-             height: 60px;
-             font-size: 1.5rem;
-         }
+            .control-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
 
-     .visualizer {
-         height: 80px; /* Уменьшаем визуализатор */
-         margin-top: 20px;
-     }
+                .control-btn.play-pause {
+                    width: 60px;
+                    height: 60px;
+                    font-size: 1.5rem;
+                }
 
-     .bar {
-         width: 4px; /* Более тонкие бары */
-     }
+            .visualizer {
+                height: 80px;
+                margin-top: 20px;
+            }
 
-     .playlist-item {
-         padding: 10px; /* Уменьшаем отступы */
-     }
+            .bar {
+                width: 4px;
+            }
 
-     .playlist-grid {
-         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Меньшие карточки */
-         gap: 10px;
-     }
+            .playlist-item {
+                padding: 10px;
+            }
 
-     .popular-grid {
-         grid-template-columns: 1fr; /* Одна колонка в популярном */
-     }
+            .playlist-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+            }
 
-     .section-title {
-         font-size: 1.3rem; /* Уменьшаем заголовки секций */
-     }
+            .popular-grid {
+                grid-template-columns: 1fr;
+            }
 
-     .tabs {
-         flex-direction: column; /* Вертикальные табы */
-         padding: 3px;
-     }
+            .section-title {
+                font-size: 1.3rem;
+            }
 
-     .tab {
-         padding: 10px;
-         margin-bottom: 5px;
-     }
+            .tabs {
+                flex-direction: column;
+                padding: 3px;
+            }
 
-     .tab-content {
-         height: 400px; /* Уменьшаем высоту контента */
-     }
+            .tab {
+                padding: 10px;
+                margin-bottom: 5px;
+            }
 
-     /* Улучшаем доступность элементов управления */
-     .progress-bar,
-     .volume-slider {
-         height: 8px;
-     }
+            .tab-content {
+                height: 400px;
+            }
 
-         .volume-slider::-webkit-slider-thumb {
-             width: 18px;
-             height: 18px;
-         }
- }
+            .progress-bar,
+            .volume-slider {
+                height: 8px;
+            }
 
- /* Дополнительные улучшения для маленьких экранов */
- @media (max-width: 360px) {
-     .album-art {
-         width: 150px;
-         height: 150px;
-     }
+                .volume-slider::-webkit-slider-thumb {
+                    width: 18px;
+                    height: 18px;
+                }
 
-     .song-title {
-         font-size: 1.2rem;
-     }
+            .artists-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+            }
 
-     .control-btn {
-         width: 40px;
-         height: 40px;
-     }
+            .artist-card {
+                padding: 10px;
+            }
 
-         .control-btn.play-pause {
-             width: 55px;
-             height: 55px;
-         }
- }
+                .artist-card .name {
+                    font-size: 0.85rem;
+                }
+        }
+
+        @media (max-width: 360px) {
+            .album-art {
+                width: 150px;
+                height: 150px;
+            }
+
+            .song-title {
+                font-size: 1.2rem;
+            }
+
+            .control-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+                .control-btn.play-pause {
+                    width: 55px;
+                    height: 55px;
+                }
+        }
     </style>
 </head>
 <body>
@@ -776,7 +877,7 @@
             <div class="tabs">
                 <div class="tab active" data-tab="user">Ваша музыка</div>
                 <div class="tab" data-tab="playlists">Плейлисты</div>
-                <div class="tab" data-tab="popular">Популярное</div>
+                <div class="tab" data-tab="artists">Артисты</div>
             </div>
 
             <div class="tab-content active" id="user-playlist">
@@ -800,10 +901,10 @@
                 </div>
             </div>
 
-            <div class="tab-content" id="popular-playlist">
-                <ul class="playlist" id="popular-list">
-                    <!-- Popular playlist items will be here -->
-                </ul>
+            <div class="tab-content" id="artists-tab">
+                <div class="artists-grid" id="artists-grid">
+                    <!-- Artists will be added here -->
+                </div>
             </div>
         </section>
     </div>
@@ -904,7 +1005,7 @@
                     title: "FEIN",
                     artist: "playboi carty",
                     duration: "3:11",
-                    cover: "https://i.discogs.com/zQ7mruJ7NWmlQHtfPTeSBl_-eFIvNw-tREXoGyMFXdA/rs:fit/g:sm/q:90/h:536/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4MDAz/NDY3LTE2OTIzMTUy/OTQtOTQ1NS5qcGVn.jpeg",
+                    cover: "https://i.discogs.com/zQ7mruJ7NWmlQHtfPTeSBl_-eFIvNw-tREXoGyMFXdA/rs:fit/g:sm/q:90/h:536/w:600/czM6Ly9kaXNjb2dz/LWRatGFiYXNlLWlt/YWdlcy9SLTI4MDAz/NDY3LTE2OTIzMTUy/OTQtOTQ1NS5qcGVn.jpeg",
                     url: "music/fein.mp3"
                 },
                 {
@@ -995,8 +1096,376 @@
                     cover: "https://upload.wikimedia.org/wikipedia/en/b/b4/Travis_Scott_-_Highest_in_the_Room.png",
                     url: "music/SICKO MODE.mp3"
                 },
+            ];
 
-
+            // Массив артистов с их треками
+            const artists = [
+                {
+                    id: 1,
+                    name: "Playboi Carti",
+                    avatar: "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
+                    genre: "Rap",
+                    songs: [
+                        {
+                            id: 2,
+                            title: "over",
+                            artist: "playboi carty",
+                            duration: "2:46",
+                            cover: "https://upload.wikimedia.org/wikipedia/ru/b/b9/Whole_Lotta_Red.png",
+                            url: "music/over.mp3"
+                        },
+                        {
+                            id: 3,
+                            title: "Evil jordan",
+                            artist: "playboi carty",
+                            duration: "2:44",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/evil jordan.mp3"
+                        },
+                        {
+                            id: 4,
+                            title: "Photo",
+                            artist: "playboi craty",
+                            duration: "2:52",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/photo.mp3"
+                        },
+                        {
+                            id: 10,
+                            title: "FOMdJ",
+                            artist: "playboi carty",
+                            duration: "3:20",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/fomdj.mp3"
+                        },
+                        {
+                            id: 11,
+                            title: "FEIN",
+                            artist: "playboi carty",
+                            duration: "3:11",
+                            cover: "https://i.discogs.com/zQ7mruJ7NWmlQHtfPTeSBl_-eFIvNw-tREXoGyMFXdA/rs:fit/g:sm/q:90/h:536/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4MDAz/NDY3LTE2OTIzMTUy/OTQtOTQ1NS5qcGVn.jpeg",
+                            url: "music/fein.mp3"
+                        },
+                        {
+                            id: 12,
+                            title: "Poke it out",
+                            artist: "Playboi carty",
+                            duration: "4:29",
+                            cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
+                            url: "music/Poke it out.mp3"
+                        },
+                        {
+                            id: 13,
+                            title: "Location",
+                            artist: "Playboi carty",
+                            duration: "3:32",
+                            cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
+                            url: "music/location.mp3"
+                        },
+                        {
+                            id: 14,
+                            title: "Rather lie",
+                            artist: "playboi carty, Weeknd",
+                            duration: "3:09",
+                            cover: "https://imamusicmogul.com/cdn/shop/articles/playboi-carti-the-weeknd-rather-lie-remake-instrumental-logic-pro-tutorial-drum-kit_af9c6d97-71ee-48b2-ac29-fd1e3712db3e.jpg?v=1743191274",
+                            url: "music/ratherlife.mp3"
+                        },
+                        {
+                            id: 1,
+                            title: "CRASH",
+                            artist: "playboi carty",
+                            duration: "2:53",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/crash.mp3"
+                        },
+                        {
+                            id: 15,
+                            title: "NO FACE",
+                            artist: "playboi carty",
+                            duration: "2:33",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/no face.mp3"
+                        },
+                        {
+                            id: 16,
+                            title: "Mognolia",
+                            artist: "playboi carty",
+                            duration: "3:01",
+                            cover: "https://cdn-image.zvuk.com/pic?type=release&id=5030288&size=medium&hash=547073a2-e2de-438a-b9be-fa85ed720149",
+                            url: "music/mognolia.mp3"
+                        },
+                        {
+                            id: 17,
+                            title: "Fell in luv",
+                            artist: "playboi carty",
+                            duration: "3:26",
+                            cover: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
+                            url: "music/fell in love.mp3"
+                        },
+                        {
+                            id: 18,
+                            title: "Sky",
+                            artist: "playboi carty",
+                            duration: "3:13",
+                            cover: "https://images.genius.com/5a4516e086091510752ca9a49bc5bfef.1000x1000x1.png",
+                            url: "music/sky.mp3"
+                        },
+                        {
+                            id: 19,
+                            title: "Crank master",
+                            artist: "playboi carty",
+                            duration: "2:28",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/crank master.mp3"
+                        },
+                        {
+                            id: 113,
+                            title: "24 song",
+                            artist: "playboi carty",
+                            duration: "3:09",
+                            cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
+                            url: "music/24song.mp3"
+                        },
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "Travis Scott",
+                    avatar: "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
+                    genre: "Hip-Hop",
+                    songs: [
+                        {
+                            id: 1,
+                            title: "franchise",
+                            artist: "travis scott",
+                            duration: "3:55",
+                            cover: "https://upload.wikimedia.org/wikipedia/ru/f/f7/Travis_Scott_-_Franchise.png",
+                            url: "music/franchise.mp3"
+                        },
+                        {
+                            id: 20,
+                            title: "butterfly effect",
+                            artist: "Travis scott",
+                            duration: "3:10",
+                            cover: "https://upload.wikimedia.org/wikipedia/en/3/33/Travis_Scott_Butterfly_Effect.jpg",
+                            url: "music/butterfly effect.mp3"
+                        },
+                        {
+                            id: 21,
+                            title: "HIGHEST IN THE ROOM",
+                            artist: "Travis scott",
+                            duration: "2:55",
+                            cover: "https://upload.wikimedia.org/wikipedia/en/b/b4/Travis_Scott_-_Highest_in_the_Room.png",
+                            url: "music/HIGHEST IN THE ROOM.mp3"
+                        },
+                        {
+                            id: 22,
+                            title: "SICKO MODE",
+                            artist: "Travis scott",
+                            duration: "5:05",
+                            cover: "https://upload.wikimedia.org/wikipedia/en/b/b4/Travis_Scott_-_Highest_in_the_Room.png",
+                            url: "music/SICKO MODE.mp3"
+                        },
+                        {
+                            id: 23,
+                            title: "HYAENA",
+                            artist: "Travis scott",
+                            duration: "3:42",
+                            cover: "https://upload.wikimedia.org/wikipedia/en/b/b4/Travis_Scott_-_Highest_in_the_Room.png",
+                            url: "music/hyaena.mp3"
+                        },
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "Morgenshtern",
+                    avatar: "https://ss.sport-express.ru/userfiles/materials/177/1774394/volga.jpg",
+                    genre: "Rap",
+                    songs: [
+                        {
+                            id: 203,
+                            title: "Cadilac",
+                            artist: "Morgenshtern",
+                            duration: "2:57",
+                            url: "music/Cadillac.mp3"
+                        },
+                        
+                        
+                        {
+                            id: 206,
+                            title: "Dinero",
+                            artist: "Morgenshtern",
+                            duration: "2:38",
+                            url: "music/DINERO.mp3"
+                        },
+                        {
+                            id: 204,
+                            title: "Leck",
+                            artist: "Morgenshtern",
+                            duration: "2:31",
+                            url: "music/leck.mp3"
+                        },
+                        {
+                            id: 205,
+                            title: "ICE",
+                            artist: "Morgenshtern",
+                            duration: "2:05",
+                            url: "music/ice.mp3"
+                        },
+                        
+                        {
+                            id: 207,
+                            title: "SHOW",
+                            artist: "Morgenshtern",
+                            duration: "1:38",
+                            url: "music/show.mp3"
+                        },
+                        {
+                            id: 208,
+                            title: "Aristocrat",
+                            artist: "Morgenshtern",
+                            duration: "2:06",
+                            cover: "https://upload.wikimedia.org/wikipedia/ru/c/cd/Million_Dollar-_Business.jpg",
+                            url: "music/ARISTOCRAT.mp3"
+                        },
+                    ]
+                },
+                {
+                    id: 4,
+                    name: "Gone Fludd",
+                    avatar: "https://showbi.ru/upload/2020/11/18/20201118170848-51d9621b.jpg",
+                    genre: "Hip-Hop",
+                    songs: [
+                        {
+                            id: 6,
+                            title: "Иннопланетянин",
+                            artist: "Gone Flud",
+                            duration: "3:15",
+                            cover: "https://images.genius.com/3cfcbdade3b26179f136d1c6c34cd0dd.1000x1000x1.png",
+                            url: "music/alien.mp3"
+                        },
+                        {
+                            id: 201,
+                            title: "Плохая ****",
+                            artist: "Gone Flud",
+                            duration: "2:08",
+                            url: "music/Плохая Сука.mp3"
+                        },
+                        {
+                            id: 213,
+                            title: "DREAM GARDEN",
+                            artist: "Gone Flud",
+                            duration: "2:04",
+                            url: "music/DREAM GARDEN.mp3"
+                        },
+                        {
+                            id: 214,
+                            title: "CHILL",
+                            artist: "Gone Flud",
+                            duration: "2:07",
+                            url: "music/CHILL.mp3"
+                        }
+                    ]
+                },
+                {
+                    id: 4,
+                    name: "Mayot",
+                    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTYASTNElqbve2gdOgWtMAyP2nBzWjglNZ1A&s",
+                    genre: "Hip-Hop",
+                    songs: [
+                        {
+                            id: 409,
+                            title: "Внутри",
+                            artist: "Mayot",
+                            duration: "3:33",
+                            url: "music/Внутри.mp3"
+                        },
+                        {
+                            id: 410,
+                            title: "Мотылек",
+                            artist: "Mayot",
+                            duration: "2:51",
+                            url: "music/мотылек.mp3"
+                        },
+                        {
+                            id: 411,
+                            title: "ночь",
+                            artist: "Mayot",
+                            duration: "3:03",
+                            url: "music/ночь.mp3"
+                        },
+                        {
+                            id: 412,
+                            title: "на память",
+                            artist: "Mayot",
+                            duration: "1:18",
+                            url: "music/на память.mp3"
+                        },
+                        {
+                            id: 413,
+                            title: "не надо",
+                            artist: "Mayot",
+                            duration: "2:14",
+                            url: "music/не надо.mp3"
+                        },
+                        {
+                            id: 414,
+                            title: "не надо",
+                            artist: "Mayot",
+                            duration: "2:14",
+                            url: "music/на память.mp3"
+                        },
+                        {
+                            id: 415,
+                            title: "до сих пор",
+                            artist: "Mayot",
+                            duration: "3:11",
+                            url: "music/до сих пор.mp3"
+                        },
+                        {
+                            id: 416,
+                            title: "друг(ой)",
+                            artist: "Mayot",
+                            duration: "2:16",
+                            url: "music/drugoy.mp3"
+                        },
+                        {
+                            id: 417,
+                            title: "Киллер",
+                            artist: "Mayot",
+                            duration: "1:09",
+                            url: "music/киллер.mp3"
+                        },
+                        {
+                            id: 418,
+                            title: "В моих мыслях",
+                            artist: "Mayot",
+                            duration: "2:14",
+                            url: "music/моих мыслях.mp3"
+                        },
+                        {
+                            id: 419,
+                            title: "Ауди",
+                            artist: "Mayot",
+                            duration: "2:35",
+                            url: "music/ауди.mp3"
+                        },
+                        {
+                            id: 420,
+                            title: "Снег",
+                            artist: "Mayot",
+                            duration: "3:06",
+                            url: "music/снег.mp3"
+                        },
+                        {
+                            id: 421,
+                            title: "Ты",
+                            artist: "Mayot",
+                            duration: "2:08",
+                            url: "music/ты.mp3"
+                        },
+                    ]
+                },
             ];
 
             // Массив плейлистов
@@ -1094,8 +1563,6 @@
                             cover: "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
                             url: "music/24song.mp3"
                         },
-
-
                         {
                             id: 114,
                             title: "CRASH",
@@ -1232,9 +1699,6 @@
                             cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgbI1UghR4RMkN2Xnx470wfUkwHyNQDroFEw&s",
                             url: "music/go crazy.mp3"
                         },
-                        
-
-
                     ]
                 },
                 {
@@ -1358,7 +1822,6 @@
                             cover: "https://upload.wikimedia.org/wikipedia/ru/2/2a/Watafuk%3F%21.jpg",
                             url: "music/WATAFUK.mp3"
                         },
-                        
                     ]
                 },
                 {
@@ -1408,7 +1871,6 @@
                             duration: "3:03",
                             url: "music/валим.mp3"
                         },
-
                     ]
                 },
                 {
@@ -1530,7 +1992,6 @@
                         },
                     ]
                 }
-
             ];
 
             // Элементы DOM
@@ -1546,7 +2007,7 @@
             const songArtist = document.getElementById('song-artist');
             const albumArt = document.getElementById('album-art');
             const playlistEl = document.getElementById('playlist');
-            const popularListEl = document.getElementById('popular-list');
+            const artistsGrid = document.getElementById('artists-grid');
             const popularGridEl = document.getElementById('popular-grid');
             const playlistsGrid = document.getElementById('playlists-grid');
             const visualizer = document.getElementById('visualizer');
@@ -1628,18 +2089,18 @@
                 // Обновление обложки
                 if (song.cover) {
                     albumArt.innerHTML = `
-                            <img src="${song.cover}" alt="${song.title}">
-                            <div class="overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        `;
+                                <img src="${song.cover}" alt="${song.title}">
+                                <div class="overlay">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            `;
                 } else {
                     albumArt.innerHTML = `
-                            <i class="fas fa-music"></i>
-                            <div class="overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        `;
+                                <i class="fas fa-music"></i>
+                                <div class="overlay">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            `;
                 }
 
                 // Установка источника аудио
@@ -1743,12 +2204,12 @@
                     const playlistCard = document.createElement('div');
                     playlistCard.className = 'playlist-item-card';
                     playlistCard.innerHTML = `
-                            <div class="cover">
-                                <img src="${playlist.cover}" alt="${playlist.name}">
-                            </div>
-                            <div class="name">${playlist.name}</div>
-                            <div class="count">${playlist.songs.length} треков</div>
-                        `;
+                                <div class="cover">
+                                    <img src="${playlist.cover}" alt="${playlist.name}">
+                                </div>
+                                <div class="name">${playlist.name}</div>
+                                <div class="count">${playlist.songs.length} треков</div>
+                            `;
 
                     playlistCard.addEventListener('click', () => {
                         loadPlaylist(playlist);
@@ -1757,6 +2218,67 @@
                     playlistsGrid.appendChild(playlistCard);
                 });
             }
+
+            // Генерация списка артистов
+            function generateArtistsList() {
+                artists.forEach(artist => {
+                    const artistCard = document.createElement('div');
+                    artistCard.className = 'artist-card';
+                    artistCard.innerHTML = `
+                            <div class="avatar">
+                                ${artist.avatar ?
+                            `<img src="${artist.avatar}" alt="${artist.name}">` :
+                            `<i class="fas fa-user"></i>`}
+                            </div>
+                            <div class="name">${artist.name}</div>
+                            <div class="genre">${artist.genre}</div>
+                            <div class="songs">${artist.songs.length} треков</div>
+                        `;
+
+                    // Добавляем обработчик клика на артиста
+                    artistCard.addEventListener('click', () => {
+                        addArtistSongsToPlaylist(artist);
+                    });
+
+                    artistsGrid.appendChild(artistCard);
+                });
+            }
+
+            // Функция добавления треков артиста в плейлист
+            function addArtistSongsToPlaylist(artist) {
+                // Очищаем текущий плейлист
+                playlist = [];
+
+                // Добавляем все треки артиста
+                artist.songs.forEach(song => {
+                    playlist.push(song);
+                });
+
+                // Обновляем отображение плейлиста
+                playlistEl.innerHTML = '';
+                generateUserPlaylist();
+
+                // Устанавливаем первую песню как текущую
+                currentSongIndex = 0;
+                loadSong(currentSongIndex);
+
+                // Переключаемся на вкладку "Ваша музыка"
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                document.querySelector('.tab[data-tab="user"]').classList.add('active');
+                document.getElementById('user-playlist').classList.add('active');
+
+                // Начинаем воспроизведение
+                if (!isPlaying) {
+                    togglePlay();
+                }
+
+                // Показываем уведомление
+                showNotification(`Добавлены треки артиста: ${artist.name}`);
+            }
+
+            
 
             // Загрузка плейлиста
             function loadPlaylist(playlistData) {
@@ -1790,51 +2312,33 @@
                 if (!isPlaying) {
                     togglePlay();
                 }
+
+                // Показываем уведомление
+                showNotification(`Загружен плейлист: ${playlistData.name}`);
             }
 
             // Генерация популярного плейлиста
             function generatePopularPlaylist() {
-                popularSongs.forEach((song, index) => {
-                    // Для списка в плейлисте
-                    const li = document.createElement('li');
-                    li.className = 'playlist-item';
-
-                    li.innerHTML = `
-                            <div class="play-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="song-details">
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                            </div>
-                            <div class="duration">${song.duration}</div>
-                        `;
-
-                    li.addEventListener('click', () => {
-                        addSongToPlaylist(song);
-                    });
-
-                    popularListEl.appendChild(li);
-
+                popularSongs.forEach((song) => {
                     // Для сетки популярной музыки
                     const songCard = document.createElement('div');
                     songCard.className = 'popular-song';
                     songCard.innerHTML = `
-                            <div class="cover">
-                                ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
+                                <div class="cover">
+                                    ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
+                                    <div class="overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="title">${song.title}</div>
-                            <div class="artist">${song.artist}</div>
-                            <div class="duration">${song.duration}</div>
-                            <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
-                                <div class="play-btn" data-id="${song.id}">
-                                    <i class="fas fa-play"></i>
+                                <div class="title">${song.title}</div>
+                                <div class="artist">${song.artist}</div>
+                                <div class="duration">${song.duration}</div>
+                                <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                                    <div class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
 
                     songCard.querySelector('.play-btn').addEventListener('click', function (e) {
                         e.stopPropagation();
@@ -1866,6 +2370,9 @@
                 if (!isPlaying) {
                     togglePlay();
                 }
+
+                // Показываем уведомление
+                showNotification(`Добавлен трек: ${song.title}`);
             }
 
             // Генерация пользовательского плейлиста
@@ -1878,15 +2385,15 @@
                     }
 
                     li.innerHTML = `
-                            <div class="play-icon">
-                                <i class="fas fa-music"></i>
-                            </div>
-                            <div class="song-details">
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                            </div>
-                            <div class="duration">${song.duration}</div>
-                        `;
+                                <div class="play-icon">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <div class="song-details">
+                                    <div class="title">${song.title}</div>
+                                    <div class="artist">${song.artist}</div>
+                                </div>
+                                <div class="duration">${song.duration}</div>
+                            `;
 
                     li.addEventListener('click', () => {
                         currentSongIndex = index;
@@ -1904,6 +2411,7 @@
             function init() {
                 initVisualizer();
                 generatePlaylists();
+                generateArtistsList();
                 generatePopularPlaylist();
                 generateUserPlaylist();
 
