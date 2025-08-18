@@ -1505,11 +1505,11 @@
 
                 // Добавляем все песни из выбранного плейлиста
                 playlistData.songs.forEach(song => {
-                    playlist.push({
-                        ...song,
-                        cover: playlistData.cover
-                    });
-                });
+    playlist.push({
+        ...song,
+        cover: song.cover || playlistData.cover 
+    });
+});
 
                 // Обновляем отображение плейлиста
                 playlistEl.innerHTML = '';
@@ -1653,6 +1653,7 @@
     </script>
 </body>
 </html>
+
 
 
 
