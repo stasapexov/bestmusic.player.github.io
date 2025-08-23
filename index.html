@@ -1913,10 +1913,167 @@
             }
 
             init();
+         // Создаем поле поиска
+        const searchContainer = document.createElement('div');
+        searchContainer.className = 'search-container';
+        searchContainer.innerHTML = `
+    <input type="text" id="search-input" placeholder="Поиск музыки...">
+    <button id="search-button"><i class="fas fa-search"></i></button>
+`;
+        document.querySelector('.playlist-section').insertBefore(searchContainer, document.querySelector('.tabs'));
+
+        // Функция для поиска музыки
+        function searchMusic(query) {
+            const results = [];
+            const lowerQuery = query.toLowerCase().trim();
+
+            if (!lowerQuery) return results;
+
+            // Поиск в популярных песнях
+            popularSongs.forEach(song => {
+                if (song.title.toLowerCase().includes(lowerQuery) ||
+                    song.artist.toLowerCase().includes(lowerQuery)) {
+                    results.push(song);
+                }
+            });
+
+            // Поиск в песнях артистов
+            artists.forEach(artist => {
+                artist.songs.forEach(song => {
+                    if (song.title.toLowerCase().includes(lowerQuery) ||
+                        song.artist.toLowerCase().includes(lowerQuery)) {
+                        results.push(song);
+                    }
+                });
+            });
+
+            // Поиск в плейлистах
+            playlists.forEach(playlist => {
+                playlist.songs.forEach(song => {
+                    if (song.title.toLowerCase().includes(lowerQuery) ||
+                        song.artist.toLowerCase().includes(lowerQuery)) {
+                        results.push(song);
+                    }
+                });
+            });
+
+            return results;
+        }
+
+        // Функция для отображения результатов поиска
+        function displaySearchResults(results) {
+            // Очищаем текущий плейлист
+            playlistEl.innerHTML = '';
+
+            if (results.length === 0) {
+                playlistEl.innerHTML = `
+            <li class="playlist-item">
+                <div class="play-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="song-details">
+                    <div class="title">Ничего не найдено</div>
+                    <div class="artist">Попробуйте другой запрос</div>
+                </div>
+                <div class="duration">0:00</div>
+            </li>
+        `;
+                return;
+            }
+
+            // Добавляем найденные треки
+            results.forEach((song, index) => {
+                const li = document.createElement('li');
+                li.className = 'playlist-item';
+                li.innerHTML = `
+            <div class="play-icon">
+                <i class="fas fa-music"></i>
+            </div>
+            <div class="song-details">
+                <div class="title">${song.title}</div>
+                <div class="artist">${song.artist}</div>
+            </div>
+            <div class="duration">${song.duration}</div>
+        `;
+
+                li.addEventListener('click', () => {
+                    // Обновляем текущий плейлист результатами поиска
+                    playlist = results;
+                    currentSongIndex = index;
+                    loadSong(currentSongIndex);
+                    if (!isPlaying) {
+                        togglePlay();
+                    }
+                });
+
+                playlistEl.appendChild(li);
+            });
+        }
+
+        // Обработчики событий для поиска
+        document.getElementById('search-button').addEventListener('click', function () {
+            const query = document.getElementById('search-input').value;
+            const results = searchMusic(query);
+            displaySearchResults(results);
         });
+
+        document.getElementById('search-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const query = this.value;
+                const results = searchMusic(query);
+                displaySearchResults(results);
+            }
+        });
+
+        // Стили для поиска
+        const style = document.createElement('style');
+        style.textContent = `
+    .search-container {
+        display: flex;
+        margin: 0 0 20px 0;
+        gap: 10px;
+    }
+    
+    #search-input {
+        flex: 1;
+        padding: 12px;
+        border: 2px solid #ccc;
+        border-radius: 25px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+    
+    #search-input:focus {
+        border-color: #007bff;
+    }
+    
+    #search-input::placeholder {
+        color: #aaa;
+    }
+    
+    #search-button {
+        padding: 12px 20px;
+        background: linear-gradient(45deg, #900000, #ff0000);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    
+    #search-button:hover {
+        transform: scale(1.05);
+    }
+`;
+        document.head.appendChild(style);
+    });
     </script>
 </body>
 </html>
+
 
 
 
