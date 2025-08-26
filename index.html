@@ -2175,21 +2175,22 @@
     }
 `;
         document.head.appendChild(style);
-    });
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('https://stasapexov.github.io/service-worker.js', { scope: '/' })
-                    .then(function(registration) {
-                        console.log('ServiceWorker успешно зарегистрирован с областью видимости: ', registration.scope);
-                    })
-                    .catch(function(error) {
-                        console.log('Ошибка регистрации ServiceWorker: ', error);
-                    });
-            });
-        }
+   if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('https://stasapexov.github.io/service-worker.js', { scope: '/' })
+                        .then(function(registration) {
+                            console.log('ServiceWorker успешно зарегистрирован с областью видимости: ', registration.scope);
+                        })
+                        .catch(function(error) {
+                            console.log('Ошибка регистрации ServiceWorker: ', error);
+                        });
+                });
+            }
+        });
     </script>
 </body>
 </html>
+
 
 
 
