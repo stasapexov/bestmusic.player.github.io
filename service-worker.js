@@ -1,99 +1,99 @@
 // service-worker.js
 
-// Версия кэша. Обновите её при изменении каких-либо ресурсов.
+// Г‚ГҐГ°Г±ГЁГї ГЄГЅГёГ . ГЋГЎГ­Г®ГўГЁГІГҐ ГҐВё ГЇГ°ГЁ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГЁ ГЄГ ГЄГЁГµ-Г«ГЁГЎГ® Г°ГҐГ±ГіГ°Г±Г®Гў.
 const CACHE_NAME = 'harmony-player-v1';
-// Статические ресурсы для кэширования
+// Г‘ГІГ ГІГЁГ·ГҐГ±ГЄГЁГҐ Г°ГҐГ±ГіГ°Г±Г» Г¤Г«Гї ГЄГЅГёГЁГ°Г®ГўГ Г­ГЁГї
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/style.css',
-    '/app.js', // Если ваш JS в отдельном файле
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
     '/icon-192x192.png',
     '/icon-512x512.png'
 ];
 
-// Установка Service Worker и кэширование статических ресурсов
+// Г“Г±ГІГ Г­Г®ГўГЄГ  Service Worker ГЁ ГЄГЅГёГЁГ°Г®ГўГ Г­ГЁГҐ Г±ГІГ ГІГЁГ·ГҐГ±ГЄГЁГµ Г°ГҐГ±ГіГ°Г±Г®Гў
 self.addEventListener('install', (event) => {
-    console.log('[Service Worker] Установка');
-    // Метод waitUntil гарантирует, что Service Worker не установится, пока не завершится кэширование
+    console.log('[Service Worker] Г“Г±ГІГ Г­Г®ГўГЄГ ');
+    // ГЊГҐГІГ®Г¤ waitUntil ГЈГ Г°Г Г­ГІГЁГ°ГіГҐГІ, Г·ГІГ® Service Worker Г­ГҐ ГіГ±ГІГ Г­Г®ГўГЁГІГ±Гї, ГЇГ®ГЄГ  Г­ГҐ Г§Г ГўГҐГ°ГёГЁГІГ±Гї ГЄГЅГёГЁГ°Г®ГўГ Г­ГЁГҐ
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('[Service Worker] Кэширование статических ресурсов');
+                console.log('[Service Worker] ГЉГЅГёГЁГ°Г®ГўГ Г­ГЁГҐ Г±ГІГ ГІГЁГ·ГҐГ±ГЄГЁГµ Г°ГҐГ±ГіГ°Г±Г®Гў');
                 return cache.addAll(STATIC_ASSETS);
             })
-            .then(() => self.skipWaiting()) // Принудительная активация нового SW
+            .then(() => self.skipWaiting()) // ГЏГ°ГЁГ­ГіГ¤ГЁГІГҐГ«ГјГ­Г Гї Г ГЄГІГЁГўГ Г¶ГЁГї Г­Г®ГўГ®ГЈГ® SW
     );
 });
 // service-worker.js
 
-// Активация Service Worker
+// ГЂГЄГІГЁГўГ Г¶ГЁГї Service Worker
 self.addEventListener('activate', (event) => {
-    console.log('[Service Worker] Активация');
+    console.log('[Service Worker] ГЂГЄГІГЁГўГ Г¶ГЁГї');
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cache) => {
                     if (cache !== CACHE_NAME) {
-                        console.log('[Service Worker] Удаление старого кэша:', cache);
+                        console.log('[Service Worker] Г“Г¤Г Г«ГҐГ­ГЁГҐ Г±ГІГ Г°Г®ГЈГ® ГЄГЅГёГ :', cache);
                         return caches.delete(cache);
                     }
                 })
             );
-        }).then(() => self.clients.claim()) // Принятие контроля над всеми открытыми вкладками
+        }).then(() => self.clients.claim()) // ГЏГ°ГЁГ­ГїГІГЁГҐ ГЄГ®Г­ГІГ°Г®Г«Гї Г­Г Г¤ ГўГ±ГҐГ¬ГЁ Г®ГІГЄГ°Г»ГІГ»Г¬ГЁ ГўГЄГ«Г Г¤ГЄГ Г¬ГЁ
     );
 });
 // service-worker.js
 
-// Обработка запросов на получение ресурсов
+// ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г§Г ГЇГ°Г®Г±Г®Гў Г­Г  ГЇГ®Г«ГіГ·ГҐГ­ГЁГҐ Г°ГҐГ±ГіГ°Г±Г®Гў
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
-    // Стратегия Cache First для музыкальных файлов
+    // Г‘ГІГ°Г ГІГҐГЈГЁГї Cache First Г¤Г«Гї Г¬ГіГ§Г»ГЄГ Г«ГјГ­Г»Гµ ГґГ Г©Г«Г®Гў
     if (url.pathname.startsWith('/music/')) {
         event.respondWith(
             caches.match(event.request)
                 .then((cachedResponse) => {
-                    // Если файл есть в кэше, вернуть его.
+                    // Г…Г±Г«ГЁ ГґГ Г©Г« ГҐГ±ГІГј Гў ГЄГЅГёГҐ, ГўГҐГ°Г­ГіГІГј ГҐГЈГ®.
                     if (cachedResponse) {
-                        console.log(`[Service Worker] Возврат из кэша: ${url.pathname}`);
+                        console.log(`[Service Worker] Г‚Г®Г§ГўГ°Г ГІ ГЁГ§ ГЄГЅГёГ : ${url.pathname}`);
                         return cachedResponse;
                     }
-                    // Если нет в кэше, сделать запрос к сети, закэшировать и вернуть ответ.
+                    // Г…Г±Г«ГЁ Г­ГҐГІ Гў ГЄГЅГёГҐ, Г±Г¤ГҐГ«Г ГІГј Г§Г ГЇГ°Г®Г± ГЄ Г±ГҐГІГЁ, Г§Г ГЄГЅГёГЁГ°Г®ГўГ ГІГј ГЁ ГўГҐГ°Г­ГіГІГј Г®ГІГўГҐГІ.
                     return fetch(event.request).then((networkResponse) => {
-                        // Клонируем ответ, потому что он может быть использован только один раз
+                        // ГЉГ«Г®Г­ГЁГ°ГіГҐГ¬ Г®ГІГўГҐГІ, ГЇГ®ГІГ®Г¬Гі Г·ГІГ® Г®Г­ Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ ГІГ®Г«ГјГЄГ® Г®Г¤ГЁГ­ Г°Г Г§
                         const responseToCache = networkResponse.clone();
                         caches.open(CACHE_NAME)
                             .then((cache) => {
-                                console.log(`[Service Worker] Кэширование музыки: ${url.pathname}`);
+                                console.log(`[Service Worker] ГЉГЅГёГЁГ°Г®ГўГ Г­ГЁГҐ Г¬ГіГ§Г»ГЄГЁ: ${url.pathname}`);
                                 cache.put(event.request, responseToCache);
                             });
                         return networkResponse;
                     });
                 })
                 .catch(() => {
-                    // Можно вернуть заглушку или Fallback-контент, если и сеть, и кэш не доступны
-                    // Например, вернуть placeholder для обложки трека
-                    return new Response('Оффлайн-режим: Музыка временно недоступна');
+                    // ГЊГ®Г¦Г­Г® ГўГҐГ°Г­ГіГІГј Г§Г ГЈГ«ГіГёГЄГі ГЁГ«ГЁ Fallback-ГЄГ®Г­ГІГҐГ­ГІ, ГҐГ±Г«ГЁ ГЁ Г±ГҐГІГј, ГЁ ГЄГЅГё Г­ГҐ Г¤Г®Г±ГІГіГЇГ­Г»
+                    // ГЌГ ГЇГ°ГЁГ¬ГҐГ°, ГўГҐГ°Г­ГіГІГј placeholder Г¤Г«Гї Г®ГЎГ«Г®Г¦ГЄГЁ ГІГ°ГҐГЄГ 
+                    return new Response('ГЋГґГґГ«Г Г©Г­-Г°ГҐГ¦ГЁГ¬: ГЊГіГ§Г»ГЄГ  ГўГ°ГҐГ¬ГҐГ­Г­Г® Г­ГҐГ¤Г®Г±ГІГіГЇГ­Г ');
                 })
         );
         return;
     }
 
-    // Для всех остальных запросов (статики) используем стратегию Stale-While-Revalidate
+    // Г„Г«Гї ГўГ±ГҐГµ Г®Г±ГІГ Г«ГјГ­Г»Гµ Г§Г ГЇГ°Г®Г±Г®Гў (Г±ГІГ ГІГЁГЄГЁ) ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГ¬ Г±ГІГ°Г ГІГҐГЈГЁГѕ Stale-While-Revalidate
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
             const fetchPromise = fetch(event.request).then((networkResponse) => {
-                // Клонируем ответ для кэширования
+                // ГЉГ«Г®Г­ГЁГ°ГіГҐГ¬ Г®ГІГўГҐГІ Г¤Г«Гї ГЄГЅГёГЁГ°Г®ГўГ Г­ГЁГї
                 const responseClone = networkResponse.clone();
                 caches.open(CACHE_NAME).then((cache) => {
                     cache.put(event.request, responseClone);
                 });
                 return networkResponse;
             });
-            // Вернуть кэшированный ответ немедленно, затем обновить кэш из сети
+            // Г‚ГҐГ°Г­ГіГІГј ГЄГЅГёГЁГ°Г®ГўГ Г­Г­Г»Г© Г®ГІГўГҐГІ Г­ГҐГ¬ГҐГ¤Г«ГҐГ­Г­Г®, Г§Г ГІГҐГ¬ Г®ГЎГ­Г®ГўГЁГІГј ГЄГЅГё ГЁГ§ Г±ГҐГІГЁ
             return cachedResponse || fetchPromise;
         })
     );
+
 });
