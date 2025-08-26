@@ -2187,9 +2187,21 @@
                 });
             }
         });
+        });
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // если index.html и service-worker.js лежат в одном каталоге (корень репозитория)
+      navigator.serviceWorker.register('./service-worker.js', { scope: './' })
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.error('SW registration failed:', err));
+    });
+  }
     </script>
 </body>
 </html>
+
 
 
 
