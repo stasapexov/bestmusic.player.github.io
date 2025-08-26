@@ -2175,32 +2175,21 @@
     }
 `;
         document.head.appendChild(style);
-   if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('service-worker.js', { scope: '/' })
-                        .then(function(registration) {
-                            console.log('ServiceWorker успешно зарегистрирован с областью видимости: ', registration.scope);
-                        })
-                        .catch(function(error) {
-                            console.log('Ошибка регистрации ServiceWorker: ', error);
-                        });
-                });
-            }
-        });
         });
     </script>
-    <script>
+<script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      // если index.html и service-worker.js лежат в одном каталоге (корень репозитория)
-      navigator.serviceWorker.register('./service-worker.js', { scope: './' })
+      // относительный путь от текущей страницы
+      navigator.serviceWorker.register('service-worker.js')
         .then(reg => console.log('SW registered:', reg.scope))
         .catch(err => console.error('SW registration failed:', err));
     });
   }
-    </script>
+</script>
 </body>
 </html>
+
 
 
 
