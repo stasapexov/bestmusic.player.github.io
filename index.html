@@ -2178,7 +2178,7 @@
     });
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' })
+                navigator.serviceWorker.register('https://stasapexov.github.io/service-worker.js', { scope: '/' })
                     .then(function(registration) {
                         console.log('ServiceWorker успешно зарегистрирован с областью видимости: ', registration.scope);
                     })
@@ -2190,6 +2190,7 @@
     </script>
 </body>
 </html>
+
 
 
 
