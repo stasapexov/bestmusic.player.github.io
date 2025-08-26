@@ -2176,9 +2176,21 @@
 `;
         document.head.appendChild(style);
     });
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' })
+                    .then(function(registration) {
+                        console.log('ServiceWorker успешно зарегистрирован с областью видимости: ', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Ошибка регистрации ServiceWorker: ', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
+
 
 
 
