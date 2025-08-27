@@ -132,7 +132,143 @@
     <audio id="audio-player"></audio>
 
     <script>
+        
         document.addEventListener('DOMContentLoaded', function () {
+            function updateOnlineStatus() {
+        const status = navigator.onLine ? 'online' : 'offline';
+        document.body.classList.toggle('offline', !navigator.onLine);
+        
+        if (!navigator.onLine) {
+            showNotification('Вы в оффлайн режиме. Доступна только загруженная музыка.');
+        }
+    }
+    
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+    
+    // Работа с Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.addEventListener('message', (event) => {
+            if (event.data.type === 'DOWNLOAD_PROGRESS') {
+                const { total, loaded } = event.data.progress;
+                const percent = Math.round((loaded / total) * 100);
+                
+                const statusEl = document.getElementById('download-status');
+                const progressEl = document.getElementById('download-progress');
+                const infoEl = document.getElementById('download-info');
+                
+                if (statusEl) {
+                    statusEl.style.display = 'block';
+                    progressEl.style.width = percent + '%';
+                    progressEl.textContent = percent + '%';
+                    infoEl.textContent = `Загружено ${loaded} из ${total} треков`;
+                    
+                    if (loaded === total) {
+                        setTimeout(() => {
+                            statusEl.style.display = 'none';
+                            showNotification('Вся музыка загружена! Теперь вы можете слушать оффлайн.');
+                        }, 1000);
+                    }
+                }
+            }
+            
+            if (event.data.type === 'SW_ACTIVATED') {
+                console.log('Service Worker активирован');
+                checkCacheStatus();
+            }
+        });
+        
+        // Кнопка загрузки всей музыки
+        const downloadBtn = document.getElementById('download-all-btn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', () => {
+                if (navigator.serviceWorker.controller) {
+                    navigator.serviceWorker.controller.postMessage({
+                        type: 'DOWNLOAD_ALL_MUSIC'
+                    });
+                    downloadBtn.disabled = true;
+                    downloadBtn.textContent = 'Загрузка...';
+                }
+            });
+        }
+    }
+    
+    // Проверка статуса кеша
+    async function checkCacheStatus() {
+        if (!navigator.serviceWorker.controller) return;
+        
+        const channel = new MessageChannel();
+        
+        channel.port1.onmessage = (event) => {
+            const status = event.data;
+            console.log(`Кешировано ${status.cachedTracks} из ${status.totalTracks} треков`);
+            
+            if (!status.isComplete) {
+                const statusEl = document.getElementById('download-status');
+                if (statusEl) {
+                    statusEl.style.display = 'block';
+                    document.getElementById('download-info').textContent = 
+                        `В кеше ${status.cachedTracks} из ${status.totalTracks} треков`;
+                }
+            }
+        };
+        
+        navigator.serviceWorker.controller.postMessage(
+            { type: 'GET_CACHE_STATUS' },
+            [channel.port2]
+        );
+    }
+    
+    // Уведомления
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+    
+    // Добавьте анимации
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        body.offline::before {
+            content: 'Оффлайн режим';
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #900000;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            z-index: 9999;
+            font-size: 12px;
+        }
+    `;
+    document.head.appendChild(style);
             // Массив популярных песен
             const popularSongs = [
                 {
@@ -2204,6 +2340,7 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
 
 
 
