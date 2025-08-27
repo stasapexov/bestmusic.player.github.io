@@ -2301,7 +2301,7 @@
             }, 3000);
         }
 
-        // Добавьте анимации
+        //  анимации
         const style = document.createElement('style');
         style.textContent = `
     @keyframes slideIn {
@@ -2312,23 +2312,24 @@
         from { transform: translateX(0); opacity: 1; }
         to { transform: translateX(100%); opacity: 0; }
     }
-    body.offline::before {
-        content: 'Оффлайн режим';
+    body.offline::after {
+        content: '⚠ Offline';
         position: fixed;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #900000;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(144, 0, 0, 0.8);
         color: white;
-        padding: 5px 15px;
-        border-radius: 20px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 11px;
         z-index: 9999;
-        font-size: 12px;
+        pointer-events: none;
     }
 `;
         document.head.appendChild(style);
     </script>
 </body>
 </html>
+
 
 
