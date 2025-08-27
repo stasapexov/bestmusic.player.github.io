@@ -6,31 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harmony Player - Плейлисты</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
     <style>
-       
     </style>
 </head>
 <body>
     <header>
         <h1><i class="fas fa-music"></i> Smoker Player</h1>
-       
+
     </header>
 
     <!-- загрузчик -->
-<div id="download-status" style="display: none; background: rgba(0,0,0,0.9); color: white; padding: 20px; margin: 20px; border-radius: 10px; text-align: center;">
-    <h3>Загрузка музыки для оффлайн режима</h3>
-    <div style="background: rgba(255,255,255,0.1); height: 30px; border-radius: 15px; margin: 15px 0; overflow: hidden;">
-        <div id="download-progress" style="background: linear-gradient(90deg, #900000, #ff0000); height: 100%; width: 0%; transition: width 0.3s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
-            0%
+    <div id="download-status" style="display: none; background: rgba(0,0,0,0.9); color: white; padding: 20px; margin: 20px; border-radius: 10px; text-align: center;">
+        <h3>Загрузка музыки для оффлайн режима</h3>
+        <div style="background: rgba(255,255,255,0.1); height: 30px; border-radius: 15px; margin: 15px 0; overflow: hidden;">
+            <div id="download-progress" style="background: linear-gradient(90deg, #900000, #ff0000); height: 100%; width: 0%; transition: width 0.3s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                0%
+            </div>
         </div>
+        <p id="download-info">Подготовка...</p>
+        <button id="download-all-btn" style="background: #900000; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+            Загрузить всю музыку
+        </button>
     </div>
-    <p id="download-info">Подготовка...</p>
-    <button id="download-all-btn" style="background: #900000; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-        Загрузить всю музыку
-    </button>
-</div>
-    
+
     <div class="container">
         <section class="player-section">
             <h2 class="section-title"><i class="fas fa-play-circle"></i> Сейчас играет</h2>
@@ -125,150 +124,14 @@
     </section>
 
     <footer>
-        
     </footer>
 
     <!-- Аудио элемент для воспроизведения -->
     <audio id="audio-player"></audio>
 
     <script>
-        
+
         document.addEventListener('DOMContentLoaded', function () {
-            function updateOnlineStatus() {
-        const status = navigator.onLine ? 'online' : 'offline';
-        document.body.classList.toggle('offline', !navigator.onLine);
-        
-        if (!navigator.onLine) {
-            showNotification('Вы в оффлайн режиме. Доступна только загруженная музыка.');
-        }
-    }
-    
-    window.addEventListener('online', updateOnlineStatus);
-    window.addEventListener('offline', updateOnlineStatus);
-    updateOnlineStatus();
-    
-    // Работа с Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.addEventListener('message', (event) => {
-            if (event.data.type === 'DOWNLOAD_PROGRESS') {
-                const { total, loaded } = event.data.progress;
-                const percent = Math.round((loaded / total) * 100);
-                
-                const statusEl = document.getElementById('download-status');
-                const progressEl = document.getElementById('download-progress');
-                const infoEl = document.getElementById('download-info');
-                
-                if (statusEl) {
-                    statusEl.style.display = 'block';
-                    progressEl.style.width = percent + '%';
-                    progressEl.textContent = percent + '%';
-                    infoEl.textContent = `Загружено ${loaded} из ${total} треков`;
-                    
-                    if (loaded === total) {
-                        setTimeout(() => {
-                            statusEl.style.display = 'none';
-                            showNotification('Вся музыка загружена! Теперь вы можете слушать оффлайн.');
-                        }, 1000);
-                    }
-                }
-            }
-            
-            if (event.data.type === 'SW_ACTIVATED') {
-                console.log('Service Worker активирован');
-                checkCacheStatus();
-            }
-        });
-        
-        // Кнопка загрузки всей музыки
-        const downloadBtn = document.getElementById('download-all-btn');
-        if (downloadBtn) {
-            downloadBtn.addEventListener('click', () => {
-                if (navigator.serviceWorker.controller) {
-                    navigator.serviceWorker.controller.postMessage({
-                        type: 'DOWNLOAD_ALL_MUSIC'
-                    });
-                    downloadBtn.disabled = true;
-                    downloadBtn.textContent = 'Загрузка...';
-                }
-            });
-        }
-    }
-    
-    // Проверка статуса кеша
-    async function checkCacheStatus() {
-        if (!navigator.serviceWorker.controller) return;
-        
-        const channel = new MessageChannel();
-        
-        channel.port1.onmessage = (event) => {
-            const status = event.data;
-            console.log(`Кешировано ${status.cachedTracks} из ${status.totalTracks} треков`);
-            
-            if (!status.isComplete) {
-                const statusEl = document.getElementById('download-status');
-                if (statusEl) {
-                    statusEl.style.display = 'block';
-                    document.getElementById('download-info').textContent = 
-                        `В кеше ${status.cachedTracks} из ${status.totalTracks} треков`;
-                }
-            }
-        };
-        
-        navigator.serviceWorker.controller.postMessage(
-            { type: 'GET_CACHE_STATUS' },
-            [channel.port2]
-        );
-    }
-    
-    // Уведомления
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            z-index: 10000;
-            animation: slideIn 0.3s ease;
-        `;
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-    
-    // Добавьте анимации
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        body.offline::before {
-            content: 'Оффлайн режим';
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #900000;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            z-index: 9999;
-            font-size: 12px;
-        }
-    `;
-    document.head.appendChild(style);
             // Массив популярных песен
             const popularSongs = [
                 {
@@ -701,8 +564,8 @@
                             duration: "2:57",
                             url: "music/Cadillac.mp3"
                         },
-                        
-                        
+
+
                         {
                             id: 206,
                             title: "Dinero",
@@ -724,7 +587,7 @@
                             duration: "2:05",
                             url: "music/ice.mp3"
                         },
-                        
+
                         {
                             id: 207,
                             title: "SHOW",
@@ -741,197 +604,197 @@
                             url: "music/ARISTOCRAT.mp3"
                         },
                         {
-    id: 209,
-    title: "ПОСОСИ",
-    artist: "Morgenshtern",
-    duration: "2:15",
-    cover: "https://i.pinimg.com/736x/7a/1e/4f/7a1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c.jpg",
-    url: "music/pososi.mp3"
-},
-{
-    id: 210,
-    title: "El Problema",
-    artist: "Morgenshtern, Тимати",
-    duration: "2:45",
-    cover: "https://i.pinimg.com/736x/1e/4f/5d/1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a.jpg",
-    url: "music/el problema.mp3"
-},
-{
-    id: 211,
-    title: "Новый Мерен",
-    artist: "Morgenshtern",
-    duration: "2:20",
-    cover: "https://i.pinimg.com/736x/4f/5d/9a/4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e.jpg",
-    url: "music/novyy meren.mp3"
-},
-{
-    id: 212,
-    title: "ДУЛО",
-    artist: "Morgenshtern",
-    duration: "2:10",
-    cover: "https://i.pinimg.com/736x/5d/9a/7a/5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f.jpg",
-    url: "music/dulo.mp3"
-},
-{
-    id: 213,
-    title: "PABLO",
-    artist: "Morgenshtern",
-    duration: "2:25",
-    cover: "https://i.pinimg.com/736x/9a/7a/3d/9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d.jpg",
-    url: "music/pablo.mp3"
-},
-{
-    id: 214,
-    title: "Новая волна",
-    artist: "Morgenshtern",
-    duration: "2:50",
-    cover: "https://i.pinimg.com/736x/7a/3d/4a/7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a.jpg",
-    url: "music/novaya volna.mp3"
-},
-{
-    id: 215,
-    title: "NOMINALO",
-    artist: "Morgenshtern",
-    duration: "2:18",
-    cover: "https://i.pinimg.com/736x/3d/4a/8c/3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a.jpg",
-    url: "music/nominalo.mp3"
-},
-{
-    id: 216,
-    title: "ДОМ (Лондон, Прага, Ницца)",
-    artist: "Morgenshtern",
-    duration: "3:05",
-    cover: "https://i.pinimg.com/736x/4a/8c/8b/4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a3d.jpg",
-    url: "music/dom.mp3"
-},
-{
-    id: 217,
-    title: "РАТАТАТАТА",
-    artist: "Витя АК, Morgenshtern",
-    duration: "2:40",
-    cover: "https://i.pinimg.com/736x/8c/8b/3c/8c8b3c6e9f5d2b8c7a1e4f5d9a7a3d4a.jpg",
-    url: "music/ratatatata.mp3"
-},
-{
-    id: 218,
-    title: "ПОЙДЕТ",
-    artist: "Morgenshtern",
-    duration: "2:22",
-    cover: "https://i.pinimg.com/736x/8b/3c/6e/8b3c6e9f5d2b8c7a1e4f5d9a7a3d4a8c.jpg",
-    url: "music/poydet.mp3"
-},
-{
-    id: 219,
-    title: "ПОЧЕМУ?",
-    artist: "Morgenshtern",
-    duration: "2:35",
-    cover: "https://i.pinimg.com/736x/3c/6e/9f/3c6e9f5d2b8c7a1e4f5d9a7a3d4a8c8b.jpg",
-    url: "music/pochemu.mp3"
-},
-{
-    id: 220,
-    title: "ЧЕТЫРЕ УКРАИНКИ",
-    artist: "Morgenshtern",
-    duration: "2:28",
-    cover: "https://i.pinimg.com/736x/6e/9f/5d/6e9f5d2b8c7a1e4f5d9a7a3d4a8c8b3c.jpg",
-    url: "music/chetyre ukrainki.mp3"
-},
-{
-    id: 221,
-    title: "БЕБЕБЕ",
-    artist: "Morgenshtern",
-    duration: "2:12",
-    cover: "https://i.pinimg.com/736x/9f/5d/2b/9f5d2b8c7a1e4f5d9a7a3d4a8c8b3c6e.jpg",
-    url: "music/bebebe.mp3"
-},
-{
-    id: 222,
-    title: "GTA",
-    artist: "Morgenshtern",
-    duration: "2:33",
-    cover: "https://i.pinimg.com/736x/5d/2b/8c/5d2b8c7a1e4f5d9a7a3d4a8c8b3c6e9f.jpg",
-    url: "music/gta.mp3"
-},
-{
-    id: 223,
-    title: "РЕТРО РЕЙВ",
-    artist: "Morgenshtern",
-    duration: "2:45",
-    cover: "https://i.pinimg.com/736x/2b/8c/7a/2b8c7a1e4f5d9a7a3d4a8c8b3c6e9f5d.jpg",
-    url: "music/retro rev.mp3"
-},
-{
-    id: 224,
-    title: "DALEKO",
-    artist: "Morgenshtern, Aarne",
-    duration: "2:50",
-    cover: "https://i.pinimg.com/736x/8c/7a/1e/8c7a1e4f5d9a7a3d4a8c8b3c6e9f5d2b.jpg",
-    url: "music/daleko.mp3"
-},
-{
-    id: 225,
-    title: "ОНА-ОНО",
-    artist: "Morgenshtern",
-    duration: "2:15",
-    cover: "https://i.pinimg.com/736x/7a/1e/4f/7a1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c.jpg",
-    url: "music/ona-ono.mp3"
-},
-{
-    id: 226,
-    title: "Lollipop",
-    artist: "Элджей, Morgenshtern",
-    duration: "2:55",
-    cover: "https://i.pinimg.com/736x/1e/4f/5d/1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a.jpg",
-    url: "music/lollipop.mp3"
-},
-{
-    id: 227,
-    title: "НАВАЛЬНЫЙ ЛЁХА",
-    artist: "Morgenshtern",
-    duration: "2:20",
-    cover: "https://i.pinimg.com/736x/4f/5d/9a/4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e.jpg",
-    url: "music/navalnyy lyokha.mp3"
-},
-{
-    id: 228,
-    title: "Я КОГДА-НИБУДЬ УЙДУ",
-    artist: "Morgenshtern",
-    duration: "3:10",
-    cover: "https://i.pinimg.com/736x/5d/9a/7a/5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f.jpg",
-    url: "music/ya kogda-nibud uydu.mp3"
-},
-{
-    id: 229,
-    title: "ПАПИН ТАНК",
-    artist: "Morgenshtern",
-    duration: "2:25",
-    cover: "https://i.pinimg.com/736x/9a/7a/3d/9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d.jpg",
-    url: "music/papin tank.mp3"
-},
-{
-    id: 230,
-    title: "ЧЁРНЫЙ БУМЕР",
-    artist: "Morgenshtern",
-    duration: "2:40",
-    cover: "https://i.pinimg.com/736x/7a/3d/4a/7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a.jpg",
-    url: "music/chernyy bumer.mp3"
-},
-{
-    id: 231,
-    title: "Веселая песня",
-    artist: "Егор Крид, Morgenshtern",
-    duration: "3:05",
-    cover: "https://i.pinimg.com/736x/3d/4a/8c/3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a.jpg",
-    url: "music/veselaya pesnya.mp3"
-},
-{
-    id: 232,
-    title: "Быстро",
-    artist: "Morgenshtern, SLAVA MARLOW",
-    duration: "2:50",
-    cover: "https://i.pinimg.com/736x/4a/8c/8b/4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a3d.jpg",
-    url: "music/bystro.mp3"
-},
+                            id: 209,
+                            title: "ПОСОСИ",
+                            artist: "Morgenshtern",
+                            duration: "2:15",
+                            cover: "https://i.pinimg.com/736x/7a/1e/4f/7a1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c.jpg",
+                            url: "music/pososi.mp3"
+                        },
+                        {
+                            id: 210,
+                            title: "El Problema",
+                            artist: "Morgenshtern, Тимати",
+                            duration: "2:45",
+                            cover: "https://i.pinimg.com/736x/1e/4f/5d/1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a.jpg",
+                            url: "music/el problema.mp3"
+                        },
+                        {
+                            id: 211,
+                            title: "Новый Мерен",
+                            artist: "Morgenshtern",
+                            duration: "2:20",
+                            cover: "https://i.pinimg.com/736x/4f/5d/9a/4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e.jpg",
+                            url: "music/novyy meren.mp3"
+                        },
+                        {
+                            id: 212,
+                            title: "ДУЛО",
+                            artist: "Morgenshtern",
+                            duration: "2:10",
+                            cover: "https://i.pinimg.com/736x/5d/9a/7a/5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f.jpg",
+                            url: "music/dulo.mp3"
+                        },
+                        {
+                            id: 213,
+                            title: "PABLO",
+                            artist: "Morgenshtern",
+                            duration: "2:25",
+                            cover: "https://i.pinimg.com/736x/9a/7a/3d/9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d.jpg",
+                            url: "music/pablo.mp3"
+                        },
+                        {
+                            id: 214,
+                            title: "Новая волна",
+                            artist: "Morgenshtern",
+                            duration: "2:50",
+                            cover: "https://i.pinimg.com/736x/7a/3d/4a/7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a.jpg",
+                            url: "music/novaya volna.mp3"
+                        },
+                        {
+                            id: 215,
+                            title: "NOMINALO",
+                            artist: "Morgenshtern",
+                            duration: "2:18",
+                            cover: "https://i.pinimg.com/736x/3d/4a/8c/3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a.jpg",
+                            url: "music/nominalo.mp3"
+                        },
+                        {
+                            id: 216,
+                            title: "ДОМ (Лондон, Прага, Ницца)",
+                            artist: "Morgenshtern",
+                            duration: "3:05",
+                            cover: "https://i.pinimg.com/736x/4a/8c/8b/4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a3d.jpg",
+                            url: "music/dom.mp3"
+                        },
+                        {
+                            id: 217,
+                            title: "РАТАТАТАТА",
+                            artist: "Витя АК, Morgenshtern",
+                            duration: "2:40",
+                            cover: "https://i.pinimg.com/736x/8c/8b/3c/8c8b3c6e9f5d2b8c7a1e4f5d9a7a3d4a.jpg",
+                            url: "music/ratatatata.mp3"
+                        },
+                        {
+                            id: 218,
+                            title: "ПОЙДЕТ",
+                            artist: "Morgenshtern",
+                            duration: "2:22",
+                            cover: "https://i.pinimg.com/736x/8b/3c/6e/8b3c6e9f5d2b8c7a1e4f5d9a7a3d4a8c.jpg",
+                            url: "music/poydet.mp3"
+                        },
+                        {
+                            id: 219,
+                            title: "ПОЧЕМУ?",
+                            artist: "Morgenshtern",
+                            duration: "2:35",
+                            cover: "https://i.pinimg.com/736x/3c/6e/9f/3c6e9f5d2b8c7a1e4f5d9a7a3d4a8c8b.jpg",
+                            url: "music/pochemu.mp3"
+                        },
+                        {
+                            id: 220,
+                            title: "ЧЕТЫРЕ УКРАИНКИ",
+                            artist: "Morgenshtern",
+                            duration: "2:28",
+                            cover: "https://i.pinimg.com/736x/6e/9f/5d/6e9f5d2b8c7a1e4f5d9a7a3d4a8c8b3c.jpg",
+                            url: "music/chetyre ukrainki.mp3"
+                        },
+                        {
+                            id: 221,
+                            title: "БЕБЕБЕ",
+                            artist: "Morgenshtern",
+                            duration: "2:12",
+                            cover: "https://i.pinimg.com/736x/9f/5d/2b/9f5d2b8c7a1e4f5d9a7a3d4a8c8b3c6e.jpg",
+                            url: "music/bebebe.mp3"
+                        },
+                        {
+                            id: 222,
+                            title: "GTA",
+                            artist: "Morgenshtern",
+                            duration: "2:33",
+                            cover: "https://i.pinimg.com/736x/5d/2b/8c/5d2b8c7a1e4f5d9a7a3d4a8c8b3c6e9f.jpg",
+                            url: "music/gta.mp3"
+                        },
+                        {
+                            id: 223,
+                            title: "РЕТРО РЕЙВ",
+                            artist: "Morgenshtern",
+                            duration: "2:45",
+                            cover: "https://i.pinimg.com/736x/2b/8c/7a/2b8c7a1e4f5d9a7a3d4a8c8b3c6e9f5d.jpg",
+                            url: "music/retro rev.mp3"
+                        },
+                        {
+                            id: 224,
+                            title: "DALEKO",
+                            artist: "Morgenshtern, Aarne",
+                            duration: "2:50",
+                            cover: "https://i.pinimg.com/736x/8c/7a/1e/8c7a1e4f5d9a7a3d4a8c8b3c6e9f5d2b.jpg",
+                            url: "music/daleko.mp3"
+                        },
+                        {
+                            id: 225,
+                            title: "ОНА-ОНО",
+                            artist: "Morgenshtern",
+                            duration: "2:15",
+                            cover: "https://i.pinimg.com/736x/7a/1e/4f/7a1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c.jpg",
+                            url: "music/ona-ono.mp3"
+                        },
+                        {
+                            id: 226,
+                            title: "Lollipop",
+                            artist: "Элджей, Morgenshtern",
+                            duration: "2:55",
+                            cover: "https://i.pinimg.com/736x/1e/4f/5d/1e4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a.jpg",
+                            url: "music/lollipop.mp3"
+                        },
+                        {
+                            id: 227,
+                            title: "НАВАЛЬНЫЙ ЛЁХА",
+                            artist: "Morgenshtern",
+                            duration: "2:20",
+                            cover: "https://i.pinimg.com/736x/4f/5d/9a/4f5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e.jpg",
+                            url: "music/navalnyy lyokha.mp3"
+                        },
+                        {
+                            id: 228,
+                            title: "Я КОГДА-НИБУДЬ УЙДУ",
+                            artist: "Morgenshtern",
+                            duration: "3:10",
+                            cover: "https://i.pinimg.com/736x/5d/9a/7a/5d9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f.jpg",
+                            url: "music/ya kogda-nibud uydu.mp3"
+                        },
+                        {
+                            id: 229,
+                            title: "ПАПИН ТАНК",
+                            artist: "Morgenshtern",
+                            duration: "2:25",
+                            cover: "https://i.pinimg.com/736x/9a/7a/3d/9a7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d.jpg",
+                            url: "music/papin tank.mp3"
+                        },
+                        {
+                            id: 230,
+                            title: "ЧЁРНЫЙ БУМЕР",
+                            artist: "Morgenshtern",
+                            duration: "2:40",
+                            cover: "https://i.pinimg.com/736x/7a/3d/4a/7a3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a.jpg",
+                            url: "music/chernyy bumer.mp3"
+                        },
+                        {
+                            id: 231,
+                            title: "Веселая песня",
+                            artist: "Егор Крид, Morgenshtern",
+                            duration: "3:05",
+                            cover: "https://i.pinimg.com/736x/3d/4a/8c/3d4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a.jpg",
+                            url: "music/veselaya pesnya.mp3"
+                        },
+                        {
+                            id: 232,
+                            title: "Быстро",
+                            artist: "Morgenshtern, SLAVA MARLOW",
+                            duration: "2:50",
+                            cover: "https://i.pinimg.com/736x/4a/8c/8b/4a8c8b3c6e9f5d2b8c7a1e4f5d9a7a3d.jpg",
+                            url: "music/bystro.mp3"
+                        },
                     ]
                 },
                 {
@@ -1068,112 +931,112 @@
                         },
                     ]
                 },
-    {
-        "id": 7,
-        "name": "Платина",
-        "avatar": "https://bilook.ru/storage/images/16250626790.jpg",
-        "genre": "Russian Rap",
-        "songs": [
-            {
-                "id": 700,
-                "title": "Бассок",
-                "artist": "Платина feat. Voskresenskii",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Басок.mp3"
-            },
-            {
-                "id": 701,
-                "title": "Сан Ларан",
-                "artist": "Платина, Дора",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/san laran.mp3"
-            },
-            {
-                "id": 708,
-                "title": "Веном",
-                "artist": "Платина feat. Big Baby Tape",
-                "duration": "3:00",
-                "cover": "https://images.genius.com/cf522d0466a006ab4d633f6179e8d8f2.1000x1000x1.jpg",
-                "url": "music/Веном.mp3"
-            },
-            {
-                "id": 709,
-                "title": "Abu Dhabi Вабу",
-                "artist": "Платина feat. OG Buda, MAYOT",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/abu_dhabi_vabu.mp3"
-            },
-            {
-                "id": 710,
-                "title": "Виновата сама",
-                "artist": "Платина",
-                "duration": "3:00",
-                "cover": "https://images.genius.com/cf522d0466a006ab4d633f6179e8d8f2.1000x1000x1.jpg",
-                "url": "music/Виновата сама.mp3"
-            },
-            {
-                "id": 711,
-                "title": "На грязном (Диана)",
-                "artist": "Платина",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/На грязном.mp3"
-            },
-            {
-                "id": 712,
-                "title": "Бандана",
-                "artist": "Платина",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Бандана.mp3"
-            },
-            {
-                "id": 713,
-                "title": "Валентина",
-                "artist": "Платина",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Валентина.mp3"
-            },
-            {
-                "id": 714,
-                "title": "Сердце для шалав",
-                "artist": "Платина feat. FEDUK",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Сердце для шалав.mp3"
-            },
-            {
-                "id": 715,
-                "title": "Ligala sosa",
-                "artist": "Платина",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Ligala sosa.mp3"
-            },
-            {
-                "id": 718,
-                "title": "Случайна",
-                "artist": "White Punk feat. Платина",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Случайна.mp3"
-            },
-            {
-                "id": 720,
-                "title": "Гоблин",
-                "artist": "Платина",
-                "duration": "3:00",
-                "cover": "cover.jpg",
-                "url": "music/Гоблин.mp3"
-            },
-        ]
-    },
+                {
+                    "id": 7,
+                    "name": "Платина",
+                    "avatar": "https://bilook.ru/storage/images/16250626790.jpg",
+                    "genre": "Russian Rap",
+                    "songs": [
+                        {
+                            "id": 700,
+                            "title": "Бассок",
+                            "artist": "Платина feat. Voskresenskii",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Басок.mp3"
+                        },
+                        {
+                            "id": 701,
+                            "title": "Сан Ларан",
+                            "artist": "Платина, Дора",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/san laran.mp3"
+                        },
+                        {
+                            "id": 708,
+                            "title": "Веном",
+                            "artist": "Платина feat. Big Baby Tape",
+                            "duration": "3:00",
+                            "cover": "https://images.genius.com/cf522d0466a006ab4d633f6179e8d8f2.1000x1000x1.jpg",
+                            "url": "music/Веном.mp3"
+                        },
+                        {
+                            "id": 709,
+                            "title": "Abu Dhabi Вабу",
+                            "artist": "Платина feat. OG Buda, MAYOT",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/abu_dhabi_vabu.mp3"
+                        },
+                        {
+                            "id": 710,
+                            "title": "Виновата сама",
+                            "artist": "Платина",
+                            "duration": "3:00",
+                            "cover": "https://images.genius.com/cf522d0466a006ab4d633f6179e8d8f2.1000x1000x1.jpg",
+                            "url": "music/Виновата сама.mp3"
+                        },
+                        {
+                            "id": 711,
+                            "title": "На грязном (Диана)",
+                            "artist": "Платина",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/На грязном.mp3"
+                        },
+                        {
+                            "id": 712,
+                            "title": "Бандана",
+                            "artist": "Платина",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Бандана.mp3"
+                        },
+                        {
+                            "id": 713,
+                            "title": "Валентина",
+                            "artist": "Платина",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Валентина.mp3"
+                        },
+                        {
+                            "id": 714,
+                            "title": "Сердце для шалав",
+                            "artist": "Платина feat. FEDUK",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Сердце для шалав.mp3"
+                        },
+                        {
+                            "id": 715,
+                            "title": "Ligala sosa",
+                            "artist": "Платина",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Ligala sosa.mp3"
+                        },
+                        {
+                            "id": 718,
+                            "title": "Случайна",
+                            "artist": "White Punk feat. Платина",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Случайна.mp3"
+                        },
+                        {
+                            "id": 720,
+                            "title": "Гоблин",
+                            "artist": "Платина",
+                            "duration": "3:00",
+                            "cover": "cover.jpg",
+                            "url": "music/Гоблин.mp3"
+                        },
+                    ]
+                },
 
-];
+            ];
 
 
             // Массив плейлистов
@@ -1415,7 +1278,7 @@
                             cover: "https://images.genius.com/4cbfac58d00c39acac57c2465fd5b594.640x640x1.jpg",
                             url: "music/what u need.mp3"
                         },
-                       {
+                        {
                             id: 132,
                             title: "Shyne",
                             artist: "Travis scott",
@@ -1439,7 +1302,7 @@
                             cover: "picture/homecoming.png",
                             url: "music/homecoming.mp3"
                         },
-                        
+
                     ]
                 },
                 {
@@ -1725,15 +1588,15 @@
                             url: "music/до сих пор.mp3"
                         },
                         {
-                           id: 416,
-                           title: "друг(ой)",
-                           artist: "Mayot",
-                           duration: "2:16",
-                           url: "music/drugoy.mp3"
-            },
-        ]
-    }
-];
+                            id: 416,
+                            title: "друг(ой)",
+                            artist: "Mayot",
+                            duration: "2:16",
+                            url: "music/drugoy.mp3"
+                        },
+                    ]
+                }
+            ];
 
             // Элементы DOM
             const playPauseBtn = document.getElementById('play-pause');
@@ -1830,18 +1693,18 @@
                 // Обновление обложки
                 if (song.cover) {
                     albumArt.innerHTML = `
-                                <img src="${song.cover}" alt="${song.title}">
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            `;
+                                    <img src="${song.cover}" alt="${song.title}">
+                                    <div class="overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                `;
                 } else {
                     albumArt.innerHTML = `
-                                <i class="fas fa-music"></i>
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            `;
+                                    <i class="fas fa-music"></i>
+                                    <div class="overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                `;
                 }
 
                 // Установка источника аудио
@@ -1945,12 +1808,12 @@
                     const playlistCard = document.createElement('div');
                     playlistCard.className = 'playlist-item-card';
                     playlistCard.innerHTML = `
-                                <div class="cover">
-                                    <img src="${playlist.cover}" alt="${playlist.name}">
-                                </div>
-                                <div class="name">${playlist.name}</div>
-                                <div class="count">${playlist.songs.length} треков</div>
-                            `;
+                                    <div class="cover">
+                                        <img src="${playlist.cover}" alt="${playlist.name}">
+                                    </div>
+                                    <div class="name">${playlist.name}</div>
+                                    <div class="count">${playlist.songs.length} треков</div>
+                                `;
 
                     playlistCard.addEventListener('click', () => {
                         loadPlaylist(playlist);
@@ -1966,15 +1829,15 @@
                     const artistCard = document.createElement('div');
                     artistCard.className = 'artist-card';
                     artistCard.innerHTML = `
-                            <div class="avatar">
-                                ${artist.avatar ?
+                                <div class="avatar">
+                                    ${artist.avatar ?
                             `<img src="${artist.avatar}" alt="${artist.name}">` :
                             `<i class="fas fa-user"></i>`}
-                            </div>
-                            <div class="name">${artist.name}</div>
-                            <div class="genre">${artist.genre}</div>
-                            <div class="songs">${artist.songs.length} треков</div>
-                        `;
+                                </div>
+                                <div class="name">${artist.name}</div>
+                                <div class="genre">${artist.genre}</div>
+                                <div class="songs">${artist.songs.length} треков</div>
+                            `;
 
                     // Добавляем обработчик клика на артиста
                     artistCard.addEventListener('click', () => {
@@ -2011,13 +1874,13 @@
                 document.getElementById('user-playlist').classList.add('active');
 
                 // Начинаем воспроизведение
-                
+
 
                 // Показываем уведомление
                 showNotification(`Добавлены треки артиста: ${artist.name}`);
             }
 
-            
+
 
             // Загрузка плейлиста
             function loadPlaylist(playlistData) {
@@ -2026,11 +1889,11 @@
 
                 // Добавляем все песни из выбранного плейлиста
                 playlistData.songs.forEach(song => {
-    playlist.push({
-        ...song,
-        cover: song.cover || playlistData.cover 
-    });
-});
+                    playlist.push({
+                        ...song,
+                        cover: song.cover || playlistData.cover
+                    });
+                });
 
                 // Обновляем отображение плейлиста
                 playlistEl.innerHTML = '';
@@ -2048,7 +1911,7 @@
                 document.getElementById('user-playlist').classList.add('active');
 
                 // Начинаем воспроизведение
-                
+
 
                 // Показываем уведомление
                 showNotification(`Загружен плейлист: ${playlistData.name}`);
@@ -2061,21 +1924,21 @@
                     const songCard = document.createElement('div');
                     songCard.className = 'popular-song';
                     songCard.innerHTML = `
-                                <div class="cover">
-                                    ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
-                                    <div class="overlay">
-                                        <i class="fas fa-play"></i>
+                                    <div class="cover">
+                                        ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
+                                        <div class="overlay">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                                <div class="duration">${song.duration}</div>
-                                <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
-                                    <div class="play-btn">
-                                        <i class="fas fa-play"></i>
+                                    <div class="title">${song.title}</div>
+                                    <div class="artist">${song.artist}</div>
+                                    <div class="duration">${song.duration}</div>
+                                    <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                                        <div class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                            `;
+                                `;
 
                     songCard.querySelector('.play-btn').addEventListener('click', function (e) {
                         e.stopPropagation();
@@ -2122,15 +1985,15 @@
                     }
 
                     li.innerHTML = `
-                                <div class="play-icon">
-                                    <i class="fas fa-music"></i>
-                                </div>
-                                <div class="song-details">
-                                    <div class="title">${song.title}</div>
-                                    <div class="artist">${song.artist}</div>
-                                </div>
-                                <div class="duration">${song.duration}</div>
-                            `;
+                                    <div class="play-icon">
+                                        <i class="fas fa-music"></i>
+                                    </div>
+                                    <div class="song-details">
+                                        <div class="title">${song.title}</div>
+                                        <div class="artist">${song.artist}</div>
+                                    </div>
+                                    <div class="duration">${song.duration}</div>
+                                `;
 
                     li.addEventListener('click', () => {
                         currentSongIndex = index;
@@ -2170,198 +2033,302 @@
             }
 
             init();
-         // Создаем поле поиска
-        const searchContainer = document.createElement('div');
-        searchContainer.className = 'search-container';
-        searchContainer.innerHTML = `
-    <input type="text" id="search-input" placeholder="Поиск музыки...">
-    <button id="search-button"><i class="fas fa-search"></i></button>
+            // Создаем поле поиска
+            const searchContainer = document.createElement('div');
+            searchContainer.className = 'search-container';
+            searchContainer.innerHTML = `
+        <input type="text" id="search-input" placeholder="Поиск музыки...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
 `;
-        document.querySelector('.playlist-section').insertBefore(searchContainer, document.querySelector('.tabs'));
+            document.querySelector('.playlist-section').insertBefore(searchContainer, document.querySelector('.tabs'));
 
-        // Функция для поиска музыки
-        function searchMusic(query) {
-            const results = [];
-            const lowerQuery = query.toLowerCase().trim();
+            // Функция для поиска музыки
+            function searchMusic(query) {
+                const results = [];
+                const lowerQuery = query.toLowerCase().trim();
 
-            if (!lowerQuery) return results;
+                if (!lowerQuery) return results;
 
-            // Поиск в популярных песнях
-            popularSongs.forEach(song => {
-                if (song.title.toLowerCase().includes(lowerQuery) ||
-                    song.artist.toLowerCase().includes(lowerQuery)) {
-                    results.push(song);
+                // Поиск в популярных песнях
+                popularSongs.forEach(song => {
+                    if (song.title.toLowerCase().includes(lowerQuery) ||
+                        song.artist.toLowerCase().includes(lowerQuery)) {
+                        results.push(song);
+                    }
+                });
+
+                // Поиск в песнях артистов
+                artists.forEach(artist => {
+                    artist.songs.forEach(song => {
+                        if (song.title.toLowerCase().includes(lowerQuery) ||
+                            song.artist.toLowerCase().includes(lowerQuery)) {
+                            results.push(song);
+                        }
+                    });
+                });
+
+                // Поиск в плейлистах
+                playlists.forEach(playlist => {
+                    playlist.songs.forEach(song => {
+                        if (song.title.toLowerCase().includes(lowerQuery) ||
+                            song.artist.toLowerCase().includes(lowerQuery)) {
+                            results.push(song);
+                        }
+                    });
+                });
+
+                return results;
+            }
+
+            // Функция для отображения результатов поиска
+            function displaySearchResults(results) {
+                // Очищаем текущий плейлист
+                playlistEl.innerHTML = '';
+
+                if (results.length === 0) {
+                    playlistEl.innerHTML = `
+                <li class="playlist-item">
+                    <div class="play-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="song-details">
+                        <div class="title">Ничего не найдено</div>
+                        <div class="artist">Попробуйте другой запрос</div>
+                    </div>
+                    <div class="duration">0:00</div>
+                </li>
+            `;
+                    return;
                 }
-            });
 
-            // Поиск в песнях артистов
-            artists.forEach(artist => {
-                artist.songs.forEach(song => {
-                    if (song.title.toLowerCase().includes(lowerQuery) ||
-                        song.artist.toLowerCase().includes(lowerQuery)) {
-                        results.push(song);
-                    }
-                });
-            });
-
-            // Поиск в плейлистах
-            playlists.forEach(playlist => {
-                playlist.songs.forEach(song => {
-                    if (song.title.toLowerCase().includes(lowerQuery) ||
-                        song.artist.toLowerCase().includes(lowerQuery)) {
-                        results.push(song);
-                    }
-                });
-            });
-
-            return results;
-        }
-
-        // Функция для отображения результатов поиска
-        function displaySearchResults(results) {
-            // Очищаем текущий плейлист
-            playlistEl.innerHTML = '';
-
-            if (results.length === 0) {
-                playlistEl.innerHTML = `
-            <li class="playlist-item">
+                // Добавляем найденные треки
+                results.forEach((song, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'playlist-item';
+                    li.innerHTML = `
                 <div class="play-icon">
                     <i class="fas fa-music"></i>
                 </div>
                 <div class="song-details">
-                    <div class="title">Ничего не найдено</div>
-                    <div class="artist">Попробуйте другой запрос</div>
+                    <div class="title">${song.title}</div>
+                    <div class="artist">${song.artist}</div>
                 </div>
-                <div class="duration">0:00</div>
-            </li>
-        `;
-                return;
+                <div class="duration">${song.duration}</div>
+            `;
+
+                    li.addEventListener('click', () => {
+                        // Обновляем текущий плейлист результатами поиска
+                        playlist = results;
+                        currentSongIndex = index;
+                        loadSong(currentSongIndex);
+                        if (!isPlaying) {
+                            togglePlay();
+                        }
+                    });
+
+                    playlistEl.appendChild(li);
+                });
             }
 
-            // Добавляем найденные треки
-            results.forEach((song, index) => {
-                const li = document.createElement('li');
-                li.className = 'playlist-item';
-                li.innerHTML = `
-            <div class="play-icon">
-                <i class="fas fa-music"></i>
-            </div>
-            <div class="song-details">
-                <div class="title">${song.title}</div>
-                <div class="artist">${song.artist}</div>
-            </div>
-            <div class="duration">${song.duration}</div>
-        `;
-
-                li.addEventListener('click', () => {
-                    // Обновляем текущий плейлист результатами поиска
-                    playlist = results;
-                    currentSongIndex = index;
-                    loadSong(currentSongIndex);
-                    if (!isPlaying) {
-                        togglePlay();
-                    }
-                });
-
-                playlistEl.appendChild(li);
-            });
-        }
-
-        // Обработчики событий для поиска
-        document.getElementById('search-button').addEventListener('click', function () {
-            const query = document.getElementById('search-input').value;
-            const results = searchMusic(query);
-            displaySearchResults(results);
-        });
-
-        document.getElementById('search-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const query = this.value;
+            // Обработчики событий для поиска
+            document.getElementById('search-button').addEventListener('click', function () {
+                const query = document.getElementById('search-input').value;
                 const results = searchMusic(query);
                 displaySearchResults(results);
-            }
-        });
+            });
 
-        // Стили для поиска
+            document.getElementById('search-input').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const query = this.value;
+                    const results = searchMusic(query);
+                    displaySearchResults(results);
+                }
+            });
+
+            // Стили для поиска
+            const style = document.createElement('style');
+            style.textContent = `
+        .search-container {
+            display: flex;
+            margin: 0 0 20px 0;
+            gap: 10px;
+        }
+
+        #search-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        #search-input:focus {
+            border-color: #007bff;
+        }
+
+        #search-input::placeholder {
+            color: #aaa;
+        }
+
+        #search-button {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #900000, #ff0000);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        #search-button:hover {
+            transform: scale(1.05);
+        }
+`;
+            document.head.appendChild(style);
+        });
+    </script>
+    <script>
+        function updateOnlineStatus() {
+            const status = navigator.onLine ? 'online' : 'offline';
+            document.body.classList.toggle('offline', !navigator.onLine);
+
+            if (!navigator.onLine) {
+                showNotification('Вы в оффлайн режиме. Доступна только загруженная музыка.');
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        // Работа с Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.addEventListener('message', (event) => {
+                if (event.data.type === 'DOWNLOAD_PROGRESS') {
+                    const { total, loaded } = event.data.progress;
+                    const percent = Math.round((loaded / total) * 100);
+
+                    const statusEl = document.getElementById('download-status');
+                    const progressEl = document.getElementById('download-progress');
+                    const infoEl = document.getElementById('download-info');
+
+                    if (statusEl) {
+                        statusEl.style.display = 'block';
+                        progressEl.style.width = percent + '%';
+                        progressEl.textContent = percent + '%';
+                        infoEl.textContent = `Загружено ${loaded} из ${total} треков`;
+
+                        if (loaded === total) {
+                            setTimeout(() => {
+                                statusEl.style.display = 'none';
+                                showNotification('Вся музыка загружена! Теперь вы можете слушать оффлайн.');
+                            }, 1000);
+                        }
+                    }
+                }
+
+                if (event.data.type === 'SW_ACTIVATED') {
+                    console.log('Service Worker активирован');
+                    checkCacheStatus();
+                }
+            });
+
+            // Кнопка загрузки всей музыки
+            const downloadBtn = document.getElementById('download-all-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    if (navigator.serviceWorker.controller) {
+                        navigator.serviceWorker.controller.postMessage({
+                            type: 'DOWNLOAD_ALL_MUSIC'
+                        });
+                        downloadBtn.disabled = true;
+                        downloadBtn.textContent = 'Загрузка...';
+                    }
+                });
+            }
+        }
+
+        // Проверка статуса кеша
+        async function checkCacheStatus() {
+            if (!navigator.serviceWorker.controller) return;
+
+            const channel = new MessageChannel();
+
+            channel.port1.onmessage = (event) => {
+                const status = event.data;
+                console.log(`Кешировано ${status.cachedTracks} из ${status.totalTracks} треков`);
+
+                if (!status.isComplete) {
+                    const statusEl = document.getElementById('download-status');
+                    if (statusEl) {
+                        statusEl.style.display = 'block';
+                        document.getElementById('download-info').textContent =
+                            `В кеше ${status.cachedTracks} из ${status.totalTracks} треков`;
+                    }
+                }
+            };
+
+            navigator.serviceWorker.controller.postMessage(
+                { type: 'GET_CACHE_STATUS' },
+                [channel.port2]
+            );
+        }
+
+        // Уведомления
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Добавьте анимации
         const style = document.createElement('style');
         style.textContent = `
-    .search-container {
-        display: flex;
-        margin: 0 0 20px 0;
-        gap: 10px;
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
-    
-    #search-input {
-        flex: 1;
-        padding: 12px;
-        border: 2px solid #ccc;
-        border-radius: 25px;
-        font-size: 16px;
-        outline: none;
-        transition: border-color 0.3s ease;
-        background: rgba(255, 255, 255, 0.1);
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+    body.offline::before {
+        content: 'Оффлайн режим';
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #900000;
         color: white;
-    }
-    
-    #search-input:focus {
-        border-color: #007bff;
-    }
-    
-    #search-input::placeholder {
-        color: #aaa;
-    }
-    
-    #search-button {
-        padding: 12px 20px;
-        background: linear-gradient(45deg, #900000, #ff0000);
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-    }
-    
-    #search-button:hover {
-        transform: scale(1.05);
+        padding: 5px 15px;
+        border-radius: 20px;
+        z-index: 9999;
+        font-size: 12px;
     }
 `;
         document.head.appendChild(style);
-        });
     </script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('service-worker.js?v=test1') // <- версионирование для обновления
-      .then(reg => console.log('[PAGE] SW registered:', reg.scope))
-      .catch(err => console.error('[PAGE] SW reg failed:', err));
-  });
-}
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
