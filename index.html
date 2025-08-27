@@ -17,6 +17,20 @@
        
     </header>
 
+    <!-- загрузчик -->
+<div id="download-status" style="display: none; background: rgba(0,0,0,0.9); color: white; padding: 20px; margin: 20px; border-radius: 10px; text-align: center;">
+    <h3>Загрузка музыки для оффлайн режима</h3>
+    <div style="background: rgba(255,255,255,0.1); height: 30px; border-radius: 15px; margin: 15px 0; overflow: hidden;">
+        <div id="download-progress" style="background: linear-gradient(90deg, #900000, #ff0000); height: 100%; width: 0%; transition: width 0.3s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+            0%
+        </div>
+    </div>
+    <p id="download-info">Подготовка...</p>
+    <button id="download-all-btn" style="background: #900000; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+        Загрузить всю музыку
+    </button>
+</div>
+    
     <div class="container">
         <section class="player-section">
             <h2 class="section-title"><i class="fas fa-play-circle"></i> Сейчас играет</h2>
@@ -2190,6 +2204,7 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
 
 
 
