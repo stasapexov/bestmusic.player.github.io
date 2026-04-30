@@ -807,4 +807,80 @@
                     width: 55px;
                     height: 55px;
                 }
-        
+        }
+
+@media (max-width: 768px) {
+    body {
+        padding: 14px;
+    }
+
+    header {
+        padding: 10px 0 4px;
+        margin-bottom: 12px;
+    }
+
+    .player-section,
+    .playlist-section,
+    .popular-section {
+        min-width: 0;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .tab-content {
+        height: min(52vh, 460px);
+        padding-right: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .song-title,
+    .song-artist,
+    .playlist-item .song-details .title,
+    .playlist-item .song-details .artist,
+    .popular-song .title,
+    .popular-song .artist,
+    .artist-card .name {
+        overflow-wrap: anywhere;
+        white-space: normal;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    .control-btn,
+    .control-btn.play-pause {
+        touch-action: manipulation;
+    }
+
+    .playlist-item {
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .playlist-item .duration {
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    .search-container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+    }
+
+    #search-input,
+    #search-button,
+    .tab,
+    .control-btn,
+    .play-btn {
+        min-height: 44px;
+    }
+
+    .popular-song {
+        padding: 14px;
+    }
+}
