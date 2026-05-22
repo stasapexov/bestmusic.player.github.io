@@ -1785,6 +1785,150 @@
                 }, 3000);
             }
 
+
+            // Голосовое управление
+            function normalizeVoiceText(text) {
+                return text
+                    .toLowerCase()
+                    .replace(/["«»“”„]/g, '')
+                    .replace(/[.,!?;:]/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+
+            function ensurePlaylistFromLibrary() {
+                if (playlist.length > 0) return;
+                playlist = [...musicData.songs];
+                playlistEl.innerHTML = '';
+                currentSongIndex = 0;
+                generateUserPlaylist();
+                loadSong(currentSongIndex);
+            }
+
+            function playSongByVoice(trackName) {
+                const normalizedQuery = normalizeVoiceText(trackName);
+                if (!normalizedQuery) {
+                    showNotification('Не расслышал название трека.');
+                    return;
+                }
+
+                const foundSong = musicData.songs.find(song =>
+                    normalizeVoiceText(song.title).includes(normalizedQuery)
+                );
+
+                if (!foundSong) {
+                    showNotification(`Трек "${trackName}" не найден.`);
+                    return;
+                }
+
+                ensurePlaylistFromLibrary();
+                const playlistSongIndex = playlist.findIndex(song => song.id === foundSong.id);
+
+                if (playlistSongIndex === -1) {
+                    playlist.push(foundSong);
+                    currentSongIndex = playlist.length - 1;
+                    playlistEl.innerHTML = '';
+                    generateUserPlaylist();
+                } else {
+                    currentSongIndex = playlistSongIndex;
+                }
+
+                loadSong(currentSongIndex);
+                if (!isPlaying) {
+                    togglePlay();
+                } else {
+                    audioPlayer.play().catch(e => console.error('Ошибка воспроизведения:', e));
+                }
+
+                showNotification(`Включаю: ${foundSong.title}`);
+            }
+
+            function handleVoiceCommand(commandText) {
+                const command = normalizeVoiceText(commandText);
+
+                const playMatch = command.match(/(?:включи|воспроизведи)\s+(?:трек\s+)?(.+)/);
+                if (playMatch && playMatch[1]) {
+                    playSongByVoice(playMatch[1]);
+                    return;
+                }
+
+                if (command.includes('поставь на паузу') || command === 'пауза') {
+                    if (isPlaying) {
+                        togglePlay();
+                    }
+                    showNotification('Пауза.');
+                    return;
+                }
+
+                if (command.includes('поставь следующий трек') || command.includes('следующий трек')) {
+                    ensurePlaylistFromLibrary();
+                    if (!isPlaying) {
+                        isPlaying = true;
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    }
+                    nextSong();
+                    showNotification('Следующий трек.');
+                }
+            }
+
+            function initVoiceControl() {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (!SpeechRecognition) {
+                    showNotification('Голосовое управление недоступно в этом браузере.');
+                    return;
+                }
+
+                const ASSISTANT_NAME = 'минетчик';
+                let isAssistantAwake = false;
+
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'ru-RU';
+                recognition.continuous = true;
+                recognition.interimResults = false;
+
+                recognition.onresult = (event) => {
+                    const transcript = event.results[event.results.length - 1][0].transcript;
+                    const normalized = normalizeVoiceText(transcript);
+
+                    if (!isAssistantAwake && normalized.includes(ASSISTANT_NAME)) {
+                        isAssistantAwake = true;
+                        const commandAfterWake = normalized.split(ASSISTANT_NAME).slice(1).join(' ').trim();
+
+                        if (commandAfterWake) {
+                            handleVoiceCommand(commandAfterWake);
+                            isAssistantAwake = false;
+                        } else {
+                            showNotification('Слушаю команду...');
+                        }
+                        return;
+                    }
+
+                    if (isAssistantAwake) {
+                        handleVoiceCommand(normalized);
+                        isAssistantAwake = false;
+                    }
+                };
+
+                recognition.onerror = () => {
+                    isAssistantAwake = false;
+                };
+
+                recognition.onend = () => {
+                    try {
+                        recognition.start();
+                    } catch (error) {
+                        setTimeout(() => recognition.start(), 1000);
+                    }
+                };
+
+                try {
+                    recognition.start();
+                    showNotification('Голосовое управление включено.');
+                } catch (error) {
+                    console.error('Не удалось запустить голосовое управление:', error);
+                }
+            }
+
             // Инициализация
             function init() {
                 initVisualizer();
@@ -1823,6 +1967,8 @@
                 if (playlist.length > 0) {
                     loadSong(currentSongIndex);
                 }
+
+                initVoiceControl();
             }
 
             // Функции для работы с оффлайн режимом
