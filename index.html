@@ -1788,12 +1788,46 @@
 
             // Голосовое управление
             function normalizeVoiceText(text) {
-                return text
+                return (text || '')
                     .toLowerCase()
-                    .replace(/["«»“”„]/g, '')
-                    .replace(/[.,!?;:]/g, ' ')
+                    .replace(/["«»“”„']/g, '')
+                    .replace(/[.,!?;:()[\]{}]/g, ' ')
                     .replace(/\s+/g, ' ')
                     .trim();
+            }
+
+            function getSongVoiceVariants(song) {
+                const variants = new Set();
+                const title = normalizeVoiceText(song.title || '');
+                const artist = normalizeVoiceText(song.artist || '');
+                const fileName = normalizeVoiceText(
+                    decodeURIComponent((song.url || '').split('/').pop() || '').replace(/\.(mp3|wav|ogg|m4a|mov)$/i, '')
+                );
+
+                if (title) variants.add(title);
+                if (artist && title) variants.add(`${artist} ${title}`);
+                if (fileName) variants.add(fileName);
+
+                const voiceAliases = {
+                    'franchise': ['франчайз'],
+                    'sicko mode': ['сико мод'],
+                    'fein': ['фейн'],
+                    'hyaena': ['гиена'],
+                    'sky': ['скай'],
+                    'location': ['локейшн', 'локация'],
+                    'goosebumps': ['гусбампс', 'мурашки'],
+                    'type shit': ['тайп щит'],
+                    'nightcrawler': ['найткроулер'],
+                    'stargazing': ['старгейзинг'],
+                    'watch this': ['вотч зис'],
+                    'toosie slide': ['тузи слайд']
+                };
+
+                if (voiceAliases[title]) {
+                    voiceAliases[title].forEach(alias => variants.add(alias));
+                }
+
+                return [...variants];
             }
 
             function ensurePlaylistFromLibrary() {
@@ -1812,20 +1846,42 @@
                     return;
                 }
 
-                const foundSong = musicData.songs.find(song =>
-                    normalizeVoiceText(song.title).includes(normalizedQuery)
-                );
+                let bestSong = null;
+                let bestScore = 0;
 
-                if (!foundSong) {
+                musicData.songs.forEach(song => {
+                    const variants = getSongVoiceVariants(song);
+                    variants.forEach(variant => {
+                        let score = 0;
+                        if (variant === normalizedQuery) score = 100;
+                        else if (variant.includes(normalizedQuery)) score = 70;
+                        else if (normalizedQuery.includes(variant)) score = 60;
+                        else {
+                            const queryWords = normalizedQuery.split(' ').filter(Boolean);
+                            const variantWords = variant.split(' ').filter(Boolean);
+                            const matchedWords = queryWords.filter(word => variantWords.includes(word)).length;
+                            if (matchedWords > 0) {
+                                score = Math.round((matchedWords / queryWords.length) * 50);
+                            }
+                        }
+
+                        if (score > bestScore) {
+                            bestScore = score;
+                            bestSong = song;
+                        }
+                    });
+                });
+
+                if (!bestSong || bestScore < 40) {
                     showNotification(`Трек "${trackName}" не найден.`);
                     return;
                 }
 
                 ensurePlaylistFromLibrary();
-                const playlistSongIndex = playlist.findIndex(song => song.id === foundSong.id);
+                const playlistSongIndex = playlist.findIndex(song => song.id === bestSong.id);
 
                 if (playlistSongIndex === -1) {
-                    playlist.push(foundSong);
+                    playlist.push(bestSong);
                     currentSongIndex = playlist.length - 1;
                     playlistEl.innerHTML = '';
                     generateUserPlaylist();
@@ -1840,7 +1896,7 @@
                     audioPlayer.play().catch(e => console.error('Ошибка воспроизведения:', e));
                 }
 
-                showNotification(`Включаю: ${foundSong.title}`);
+                showNotification(`Включаю: ${bestSong.title}`);
             }
 
             function handleVoiceCommand(commandText) {
@@ -1880,6 +1936,7 @@
 
                 const ASSISTANT_NAME = 'минетчик';
                 let isAssistantAwake = false;
+                let shouldKeepListening = true;
 
                 const recognition = new SpeechRecognition();
                 recognition.lang = 'ru-RU';
@@ -1909,11 +1966,16 @@
                     }
                 };
 
-                recognition.onerror = () => {
+                recognition.onerror = (event) => {
                     isAssistantAwake = false;
+                    if (event && (event.error === 'not-allowed' || event.error === 'service-not-allowed')) {
+                        shouldKeepListening = false;
+                        showNotification('Нет доступа к микрофону. Разрешите микрофон в браузере.');
+                    }
                 };
 
                 recognition.onend = () => {
+                    if (!shouldKeepListening) return;
                     try {
                         recognition.start();
                     } catch (error) {
@@ -1921,12 +1983,25 @@
                     }
                 };
 
-                try {
-                    recognition.start();
-                    showNotification('Голосовое управление включено.');
-                } catch (error) {
-                    console.error('Не удалось запустить голосовое управление:', error);
-                }
+                const startRecognition = async () => {
+                    try {
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        stream.getTracks().forEach(track => track.stop());
+                    } catch (error) {
+                        shouldKeepListening = false;
+                        showNotification('Микрофон не разрешен. Голосовое управление отключено.');
+                        return;
+                    }
+
+                    try {
+                        recognition.start();
+                        showNotification('Голосовое управление включено.');
+                    } catch (error) {
+                        console.error('Не удалось запустить голосовое управление:', error);
+                    }
+                };
+
+                startRecognition();
             }
 
             // Инициализация
@@ -2066,8 +2141,6 @@
 </body>
 
 </html>
-
-
 
 
 
