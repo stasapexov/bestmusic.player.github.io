@@ -1901,13 +1901,14 @@
 
             function handleVoiceCommand(commandText) {
                 const command = normalizeVoiceText(commandText);
-                const playMatch = command.match(/(?:включи|воспроизведи|запусти)\s*(?:трек)?\s+(.+)/);
+                const fixedCommand = fixCommandTypos(command);
+                const playMatch = fixedCommand.match(/(?:включи|воспроизведи|запусти)\s*(?:трек)?\s+(.+)/);
                 if (playMatch && playMatch[1]) {
                     playSongByVoice(playMatch[1].trim());
                     return;
                 }
 
-                if (command.includes('поставь на паузу') || command === 'пауза') {
+                if (fixedCommand.includes('поставь на паузу') || fixedCommand === 'пауза') {
                     if (isPlaying) {
                         togglePlay();
                     }
@@ -1915,7 +1916,7 @@
                     return;
                 }
 
-                if (command.includes('поставь следующий трек') || command.includes('следующий трек')) {
+                if (fixedCommand.includes('поставь следующий трек') || fixedCommand.includes('следующий трек')) {
                     ensurePlaylistFromLibrary();
                     if (!isPlaying) {
                         isPlaying = true;
@@ -1927,12 +1928,47 @@
             }
 
             function isLikelyVoiceCommand(text) {
-                const command = normalizeVoiceText(text);
+                const command = fixCommandTypos(normalizeVoiceText(text));
                 return /(?:включи|воспроизведи|запусти)\s*(?:трек)?\s+/.test(command) ||
                     command.includes('поставь на паузу') ||
                     command === 'пауза' ||
                     command.includes('поставь следующий трек') ||
                     command.includes('следующий трек');
+            }
+
+            function fixCommandTypos(command) {
+                let fixed = command;
+                const typoMap = {
+                    'вклчи': 'включи',
+                    'вкючи': 'включи',
+                    'включ': 'включи',
+                    'пауз': 'пауза',
+                    'следуший': 'следующий',
+                    'следущий': 'следующий',
+                    'трк': 'трек'
+                };
+
+                Object.entries(typoMap).forEach(([wrong, correct]) => {
+                    fixed = fixed.replace(new RegExp(`\\b${wrong}\\b`, 'g'), correct);
+                });
+
+                return fixed;
+            }
+
+            function extractWakeCommand(text, wakeNames) {
+                for (const name of wakeNames) {
+                    if (text === name) {
+                        return { wakeOnly: true, command: '' };
+                    }
+                    if (text.startsWith(name + ' ')) {
+                        return { wakeOnly: false, command: text.slice(name.length).trim() };
+                    }
+                    if (text.includes(' ' + name + ' ')) {
+                        const parts = text.split(name);
+                        return { wakeOnly: false, command: parts.slice(1).join(name).trim() };
+                    }
+                }
+                return null;
             }
 
             function initVoiceControl() {
@@ -1942,7 +1978,14 @@
                     return;
                 }
 
-                const ASSISTANT_NAME = 'минетчик';
+                const ASSISTANT_NAMES = [
+                    'минетчик',
+                    'кавунчик',
+                    'кавун',
+                    'кирилл батыров',
+                    'кирил батыров',
+                    'батрик'
+                ];
                 let isAssistantAwake = false;
                 let shouldKeepListening = true;
 
@@ -1955,29 +1998,29 @@
                     const transcript = event.results[event.results.length - 1][0].transcript;
                     const normalized = normalizeVoiceText(transcript);
 
-                    // Разрешаем работать и без wake-word, если сразу сказана команда
-                    if (isLikelyVoiceCommand(normalized)) {
-                        handleVoiceCommand(normalized);
-                        isAssistantAwake = false;
-                        return;
-                    }
-
-                    if (!isAssistantAwake && normalized.includes(ASSISTANT_NAME)) {
+                    const wakeData = extractWakeCommand(normalized, ASSISTANT_NAMES);
+                    if (wakeData) {
                         isAssistantAwake = true;
-                        const commandAfterWake = normalized.split(ASSISTANT_NAME).slice(1).join(' ').trim();
-
-                        if (commandAfterWake) {
-                            handleVoiceCommand(commandAfterWake);
-                            isAssistantAwake = false;
-                        } else {
+                        if (wakeData.wakeOnly) {
                             showNotification('Слушаю команду...');
+                            return;
                         }
-                        return;
+                        if (wakeData.command) {
+                            handleVoiceCommand(wakeData.command);
+                            isAssistantAwake = false;
+                            return;
+                        }
                     }
 
                     if (isAssistantAwake) {
                         handleVoiceCommand(normalized);
                         isAssistantAwake = false;
+                        return;
+                    }
+
+                    // Фолбэк: если wake-word не распознался, но команда явно есть — исполняем
+                    if (isLikelyVoiceCommand(normalized)) {
+                        handleVoiceCommand(normalized);
                     }
                 };
 
@@ -2156,7 +2199,6 @@
 </body>
 
 </html>
-
 
 
 
