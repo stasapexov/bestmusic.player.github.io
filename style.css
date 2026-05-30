@@ -353,6 +353,47 @@
             outline: none;
         }
 
+        .voice-control-btn {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+
+            .voice-control-btn:hover:not(:disabled) {
+                background: rgba(255, 255, 255, 0.14);
+                transform: translateY(-1px);
+            }
+
+            .voice-control-btn.active {
+                border-color: rgba(255, 255, 255, 0.45);
+                background: linear-gradient(135deg, #202020, #4a4a4a);
+                box-shadow: 0 4px 14px rgba(255, 255, 255, 0.18);
+            }
+
+            .voice-control-btn:disabled {
+                cursor: not-allowed;
+                opacity: 0.55;
+            }
+
+            .voice-control-btn i {
+                font-size: 1.05rem;
+            }
+
+            .voice-control-btn.active i {
+                color: #7dff9b;
+            }
+
             .volume-slider::-webkit-slider-thumb {
                 -webkit-appearance: none;
                 width: 16px;
