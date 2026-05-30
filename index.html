@@ -1790,10 +1790,93 @@
             function normalizeVoiceText(text) {
                 return (text || '')
                     .toLowerCase()
+                    .replace(/ё/g, 'е')
                     .replace(/["«»“”„']/g, '')
-                    .replace(/[.,!?;:()[\]{}]/g, ' ')
+                    .replace(/[.,!?;:()[\]{}\/\\_+*=|~`<>-]/g, ' ')
+                    .replace(/&/g, ' and ')
                     .replace(/\s+/g, ' ')
                     .trim();
+            }
+
+            function getVoiceTokens(text) {
+                return normalizeVoiceText(text)
+                    .split(' ')
+                    .filter(word => word.length > 1);
+            }
+
+            function getVoiceEditDistance(firstText, secondText) {
+                const first = normalizeVoiceText(firstText);
+                const second = normalizeVoiceText(secondText);
+                if (!first) return second.length;
+                if (!second) return first.length;
+
+                const distances = Array.from({ length: first.length + 1 }, () => []);
+                for (let i = 0; i <= first.length; i++) distances[i][0] = i;
+                for (let j = 0; j <= second.length; j++) distances[0][j] = j;
+
+                for (let i = 1; i <= first.length; i++) {
+                    for (let j = 1; j <= second.length; j++) {
+                        const cost = first[i - 1] === second[j - 1] ? 0 : 1;
+                        distances[i][j] = Math.min(
+                            distances[i - 1][j] + 1,
+                            distances[i][j - 1] + 1,
+                            distances[i - 1][j - 1] + cost
+                        );
+                    }
+                }
+
+                return distances[first.length][second.length];
+            }
+
+            function getVoiceSimilarity(firstText, secondText) {
+                const first = normalizeVoiceText(firstText);
+                const second = normalizeVoiceText(secondText);
+                const maxLength = Math.max(first.length, second.length);
+                if (maxLength === 0) return 1;
+                return 1 - (getVoiceEditDistance(first, second) / maxLength);
+            }
+
+            function cleanVoiceTrackQuery(trackName) {
+                return normalizeVoiceText(trackName)
+                    .replace(/^(?:мне|пожалуйста)\s+/g, '')
+                    .replace(/^(?:трек|треков|песню|композицию|музыку|track|song)\s+/g, '')
+                    .replace(/\s+(?:пожалуйста|сейчас|давай)$/g, '')
+                    .trim();
+            }
+
+            function scoreVoiceVariant(variant, query) {
+                const normalizedVariant = normalizeVoiceText(variant);
+                const normalizedQuery = cleanVoiceTrackQuery(query);
+                if (!normalizedVariant || !normalizedQuery) return 0;
+
+                if (normalizedVariant === normalizedQuery) return 100;
+                if (normalizedVariant.startsWith(normalizedQuery)) return 88;
+                if (normalizedQuery.startsWith(normalizedVariant)) return 82;
+                if (normalizedVariant.includes(normalizedQuery)) return 78;
+                if (normalizedQuery.includes(normalizedVariant)) return 72;
+
+                const queryWords = getVoiceTokens(normalizedQuery);
+                const variantWords = getVoiceTokens(normalizedVariant);
+                if (queryWords.length === 0 || variantWords.length === 0) return 0;
+
+                let tokenScore = 0;
+                queryWords.forEach(queryWord => {
+                    let bestWordScore = 0;
+                    variantWords.forEach(variantWord => {
+                        if (variantWord === queryWord) {
+                            bestWordScore = Math.max(bestWordScore, 1);
+                        } else if (variantWord.startsWith(queryWord) || queryWord.startsWith(variantWord)) {
+                            bestWordScore = Math.max(bestWordScore, 0.86);
+                        } else {
+                            bestWordScore = Math.max(bestWordScore, getVoiceSimilarity(variantWord, queryWord));
+                        }
+                    });
+                    tokenScore += bestWordScore;
+                });
+
+                const averageTokenScore = tokenScore / queryWords.length;
+                const phraseSimilarity = getVoiceSimilarity(normalizedVariant, normalizedQuery);
+                return Math.round(Math.max(averageTokenScore * 74, phraseSimilarity * 68));
             }
 
             function getSongVoiceVariants(song) {
@@ -1805,29 +1888,58 @@
                 );
 
                 if (title) variants.add(title);
+                if (artist) variants.add(artist);
                 if (artist && title) variants.add(`${artist} ${title}`);
+                if (title && artist) variants.add(`${title} ${artist}`);
                 if (fileName) variants.add(fileName);
+
+                [title, fileName].forEach(value => {
+                    if (!value) return;
+                    value.split(/\s+(?:feat|ft|featuring|and|x)\s+/).forEach(part => {
+                        const normalizedPart = normalizeVoiceText(part);
+                        if (normalizedPart) variants.add(normalizedPart);
+                    });
+                });
 
                 const voiceAliases = {
                     'franchise': ['франчайз'],
-                    'sicko mode': ['сико мод'],
-                    'fein': ['фейн'],
-                    'hyaena': ['гиена'],
+                    'sicko mode': ['сико мод', 'сика мод', 'сико моуд'],
+                    'fein': ['фейн', 'файн'],
+                    'hyaena': ['гиена', 'хаена'],
                     'sky': ['скай'],
-                    'location': ['локейшн', 'локация'],
+                    'location': ['локейшн', 'локация', 'локэйшн'],
                     'goosebumps': ['гусбампс', 'мурашки'],
-                    'type shit': ['тайп щит'],
-                    'nightcrawler': ['найткроулер'],
-                    'stargazing': ['старгейзинг'],
-                    'watch this': ['вотч зис'],
-                    'toosie slide': ['тузи слайд']
+                    'type shit': ['тайп щит', 'тайп шит'],
+                    'nightcrawler': ['найткроулер', 'найт кроулер'],
+                    'stargazing': ['старгейзинг', 'стар гэйзинг'],
+                    'watch this': ['вотч зис', 'воч зис', 'watch this'],
+                    'toosie slide': ['тузи слайд'],
+                    'butterfly effect': ['баттерфляй эффект', 'бабочка эффект'],
+                    'highest in the room': ['хайест ин зе рум', 'самый высокий в комнате'],
+                    'evil jordan': ['ивл джордан', 'злой джордан'],
+                    'over': ['овер'],
+                    'long time': ['лонг тайм'],
+                    'carnival': ['карнивал', 'карнавал'],
+                    'magnolia': ['магнолия'],
+                    'mognolia': ['магнолия'],
+                    'no face': ['ноу фейс'],
+                    'rather lie': ['разер лай'],
+                    'ratherlife': ['разер лайф'],
+                    'fuk sumn': ['фак сам', 'фак самн'],
+                    'escape plan': ['эскейп план'],
+                    'on my own': ['он май оун'],
+                    'one call': ['уан колл'],
+                    'paranoid': ['параноид'],
+                    'illuminati': ['иллюминати']
                 };
 
-                if (voiceAliases[title]) {
-                    voiceAliases[title].forEach(alias => variants.add(alias));
-                }
+                [title, fileName].forEach(value => {
+                    if (voiceAliases[value]) {
+                        voiceAliases[value].forEach(alias => variants.add(alias));
+                    }
+                });
 
-                return [...variants];
+                return [...variants].filter(Boolean);
             }
 
             function ensurePlaylistFromLibrary() {
@@ -1840,9 +1952,9 @@
             }
 
             function playSongByVoice(trackName) {
-                const normalizedQuery = normalizeVoiceText(trackName);
+                const normalizedQuery = cleanVoiceTrackQuery(trackName);
                 if (!normalizedQuery) {
-                    showNotification('Не расслышал название трека.');
+                    showNotification('Не расслышал название трека. Скажите, например: «включи трек Location».');
                     return;
                 }
 
@@ -1850,21 +1962,8 @@
                 let bestScore = 0;
 
                 musicData.songs.forEach(song => {
-                    const variants = getSongVoiceVariants(song);
-                    variants.forEach(variant => {
-                        let score = 0;
-                        if (variant === normalizedQuery) score = 100;
-                        else if (variant.includes(normalizedQuery)) score = 70;
-                        else if (normalizedQuery.includes(variant)) score = 60;
-                        else {
-                            const queryWords = normalizedQuery.split(' ').filter(Boolean);
-                            const variantWords = variant.split(' ').filter(Boolean);
-                            const matchedWords = queryWords.filter(word => variantWords.includes(word)).length;
-                            if (matchedWords > 0) {
-                                score = Math.round((matchedWords / queryWords.length) * 50);
-                            }
-                        }
-
+                    getSongVoiceVariants(song).forEach(variant => {
+                        const score = scoreVoiceVariant(variant, normalizedQuery);
                         if (score > bestScore) {
                             bestScore = score;
                             bestSong = song;
@@ -1872,13 +1971,16 @@
                     });
                 });
 
-                if (!bestSong || bestScore < 40) {
-                    showNotification(`Трек "${trackName}" не найден.`);
+                if (!bestSong || bestScore < 52) {
+                    showNotification(`Трек «${trackName}» не найден. Попробуйте назвать исполнителя или полное название.`);
                     return;
                 }
 
                 ensurePlaylistFromLibrary();
-                const playlistSongIndex = playlist.findIndex(song => song.id === bestSong.id);
+                const playlistSongIndex = playlist.findIndex(song => song === bestSong || (
+                    normalizeVoiceText(song.url || '') === normalizeVoiceText(bestSong.url || '') &&
+                    normalizeVoiceText(song.title || '') === normalizeVoiceText(bestSong.title || '')
+                ));
 
                 if (playlistSongIndex === -1) {
                     playlist.push(bestSong);
@@ -1890,21 +1992,35 @@
                 }
 
                 loadSong(currentSongIndex);
-                if (!isPlaying) {
-                    togglePlay();
-                } else {
-                    audioPlayer.play().catch(e => console.error('Ошибка воспроизведения:', e));
-                }
+                isPlaying = true;
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                audioPlayer.play().catch(e => console.error('Ошибка воспроизведения:', e));
+                updateVisualizer();
 
                 showNotification(`Включаю: ${bestSong.title}`);
+            }
+
+            function extractTrackNameFromPlayCommand(commandText) {
+                const command = fixCommandTypos(normalizeVoiceText(commandText));
+                const playVerbs = '(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй|найди и включи)';
+                const politeWords = '(?:(?:мне|пожалуйста|сейчас|давай)\\s+)*';
+                const objectWords = '(?:(?:трек|песню|композицию|музыку|track|song)\\s+)?';
+                const playMatch = command.match(new RegExp(`^${politeWords}${playVerbs}\\s+${politeWords}${objectWords}(.+)$`));
+
+                if (playMatch && playMatch[1]) {
+                    return cleanVoiceTrackQuery(playMatch[1]);
+                }
+
+                const fallbackMatch = command.match(/(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй)\s+(.+)/);
+                return fallbackMatch && fallbackMatch[1] ? cleanVoiceTrackQuery(fallbackMatch[1]) : '';
             }
 
             function handleVoiceCommand(commandText) {
                 const command = normalizeVoiceText(commandText);
                 const fixedCommand = fixCommandTypos(command);
-                const playMatch = fixedCommand.match(/(?:включи|воспроизведи|запусти)\s*(?:трек)?\s+(.+)/);
-                if (playMatch && playMatch[1]) {
-                    playSongByVoice(playMatch[1].trim());
+                const trackName = extractTrackNameFromPlayCommand(fixedCommand);
+                if (trackName) {
+                    playSongByVoice(trackName);
                     return;
                 }
 
@@ -1929,7 +2045,7 @@
 
             function isLikelyVoiceCommand(text) {
                 const command = fixCommandTypos(normalizeVoiceText(text));
-                return /(?:включи|воспроизведи|запусти)\s*(?:трек)?\s+/.test(command) ||
+                return Boolean(extractTrackNameFromPlayCommand(command)) ||
                     command.includes('поставь на паузу') ||
                     command === 'пауза' ||
                     command.includes('поставь следующий трек') ||
@@ -1942,6 +2058,11 @@
                     'вклчи': 'включи',
                     'вкючи': 'включи',
                     'включ': 'включи',
+                    'включай': 'включи',
+                    'включите': 'включи',
+                    'включить': 'включи',
+                    'песни': 'песню',
+                    'песня': 'песню',
                     'пауз': 'пауза',
                     'следуший': 'следующий',
                     'следущий': 'следующий',
