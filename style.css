@@ -394,35 +394,6 @@
                 color: #7dff9b;
             }
 
-        .voice-helper-card {
-            margin-top: 12px;
-            padding: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.86);
-            font-size: 0.88rem;
-            line-height: 1.45;
-        }
-
-        .voice-helper-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .voice-helper-card ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-
-        .voice-helper-card li + li {
-            margin-top: 6px;
-        }
-
             .volume-slider::-webkit-slider-thumb {
                 -webkit-appearance: none;
                 width: 16px;
