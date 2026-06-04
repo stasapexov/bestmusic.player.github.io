@@ -2362,29 +2362,10 @@
                     safeStartRecognition(true);
                 });
 
-                if (navigator.permissions && navigator.permissions.query) {
-                    navigator.permissions.query({ name: 'microphone' })
-                        .then(permissionStatus => {
-                            if (permissionStatus.state === 'granted') {
-                                idleVoiceButtonText = 'Включить помощника';
-                                shouldKeepListening = true;
-                                safeStartRecognition(false);
-                            }
-
-                            permissionStatus.onchange = () => {
-                                if (permissionStatus.state === 'denied') {
-                                    idleVoiceButtonText = 'Разрешите микрофон';
-                                    stopListening(false);
-                                    updateVoiceButton(false, idleVoiceButtonText);
-                                }
-                            };
-                        })
-                        .catch(() => {
-                            updateVoiceButton(false, idleVoiceButtonText);
-                        });
-                } else {
-                    updateVoiceButton(false, idleVoiceButtonText);
-                }
+                // Не запускаем распознавание автоматически: иначе браузер может снова и снова
+                // показывать запрос микрофона при открытии страницы. Помощник просит доступ
+                // только после явного нажатия на кнопку.
+                updateVoiceButton(false, idleVoiceButtonText);
             }
 
             // Инициализация
