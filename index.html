@@ -1849,6 +1849,7 @@
                     .replace(/^(?:мне|пожалуйста)\s+/g, '')
                     .replace(/^(?:трек|треков|песню|композицию|музыку|track|song)(?:\s+|$)/g, '')
                     .replace(/\s+(?:пожалуйста|сейчас|давай)$/g, '')
+                    .replace(/^(?:мне|пожалуйста|сейчас|давай)$/g, '')
                     .trim();
             }
 
@@ -2071,7 +2072,15 @@
 
             function isGenericPlayCommand(commandText) {
                 const command = fixCommandTypos(normalizeVoiceText(commandText));
-                return /^(?:мне\s+|пожалуйста\s+|сейчас\s+|давай\s+)*(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй)(?:\s+(?:мне\s+|пожалуйста\s+|сейчас\s+|давай\s+)*(?:трек|песню|композицию|музыку|track|song))?$/.test(command);
+                const genericCommand = command
+                    .replace(/^(?:мне\s+|пожалуйста\s+|сейчас\s+|давай\s+)*/g, '')
+                    .replace(/^(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй)(?=\s|$)/g, '')
+                    .replace(/^(?:\s*(?:мне|пожалуйста|сейчас|давай))*\s*/g, '')
+                    .replace(/^(?:трек|песню|песня|композицию|музыку|track|song)(?=\s|$)/g, '')
+                    .replace(/^(?:\s*(?:мне|пожалуйста|сейчас|давай))*\s*/g, '')
+                    .trim();
+
+                return command !== genericCommand && genericCommand === '';
             }
 
             function handleVoiceCommand(commandText) {
@@ -2223,6 +2232,7 @@
                 let isAssistantAwake = false;
                 let shouldKeepListening = false;
                 let isRecognitionRunning = false;
+                let restartTimer = null;
                 let idleVoiceButtonText = 'Включить помощника';
 
                 const recognition = new SpeechRecognition();
@@ -2255,6 +2265,7 @@
                 function stopListening(showStoppedNotification = true) {
                     shouldKeepListening = false;
                     isAssistantAwake = false;
+                    clearTimeout(restartTimer);
                     updateVoiceButton(false, idleVoiceButtonText);
 
                     if (isRecognitionRunning) {
@@ -2329,9 +2340,16 @@
 
                 recognition.onend = () => {
                     isRecognitionRunning = false;
-                    shouldKeepListening = false;
-                    isAssistantAwake = false;
-                    updateVoiceButton(false, idleVoiceButtonText);
+
+                    if (!shouldKeepListening) {
+                        isAssistantAwake = false;
+                        updateVoiceButton(false, idleVoiceButtonText);
+                        return;
+                    }
+
+                    updateVoiceButton(true, 'Помощник слушает');
+                    clearTimeout(restartTimer);
+                    restartTimer = setTimeout(() => safeStartRecognition(), 500);
                 };
 
                 voiceControlBtn.addEventListener('click', () => {
