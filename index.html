@@ -2011,6 +2011,22 @@
                 showNotification(`Громкость: ${Math.round(nextVolume * 100)}%.`);
             }
 
+            function seekByVoice(deltaSeconds) {
+                if (!audioPlayer.src) {
+                    showNotification('Сначала включите трек.');
+                    return;
+                }
+
+                const duration = Number.isFinite(audioPlayer.duration) ? audioPlayer.duration : 0;
+                const maxTime = duration > 0 ? duration : Number.MAX_SAFE_INTEGER;
+                const nextTime = Math.min(maxTime, Math.max(0, audioPlayer.currentTime + deltaSeconds));
+                audioPlayer.currentTime = nextTime;
+                updateTime();
+
+                const direction = deltaSeconds >= 0 ? 'вперед' : 'назад';
+                showNotification(`Перемотал ${direction} на ${Math.abs(deltaSeconds)} сек.`);
+            }
+
             function playSongByVoice(trackName) {
                 const normalizedQuery = cleanVoiceTrackQuery(trackName);
                 if (!normalizedQuery) {
@@ -2137,17 +2153,27 @@
                     return;
                 }
 
-                if (fixedCommand.includes('громче') || fixedCommand.includes('прибавь громкость')) {
+                if (fixedCommand.includes('перемотай назад') || fixedCommand.includes('отмотай назад')) {
+                    seekByVoice(-10);
+                    return;
+                }
+
+                if (fixedCommand.includes('перемотай') || fixedCommand.includes('перемотай вперед') || fixedCommand.includes('отмотай вперед')) {
+                    seekByVoice(10);
+                    return;
+                }
+
+                if (fixedCommand.includes('громче') || fixedCommand.includes('прибавь громкость') || fixedCommand.includes('прибавь')) {
                     changeVolumeByVoice(0.1);
                     return;
                 }
 
-                if (fixedCommand.includes('тише') || fixedCommand.includes('убавь громкость')) {
+                if (fixedCommand.includes('тише') || fixedCommand.includes('убавь громкость') || fixedCommand.includes('убавь')) {
                     changeVolumeByVoice(-0.1);
                     return;
                 }
 
-                showNotification('Не понял команду. Попробуйте: «включи трек», «следующий трек» или «громче».');
+                showNotification('Не понял команду. Попробуйте: «включи трек», «перемотай» или «прибавь».');
             }
 
             function isLikelyVoiceCommand(text) {
@@ -2164,8 +2190,12 @@
                     command.includes('прошлый трек') ||
                     command.includes('перемешай') ||
                     command.includes('случайный трек') ||
+                    command.includes('перемотай') ||
+                    command.includes('отмотай') ||
                     command.includes('громче') ||
-                    command.includes('тише');
+                    command.includes('тише') ||
+                    command.includes('прибавь') ||
+                    command.includes('убавь');
             }
 
             function fixCommandTypos(command) {
