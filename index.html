@@ -2223,9 +2223,6 @@
                 let isAssistantAwake = false;
                 let shouldKeepListening = false;
                 let isRecognitionRunning = false;
-                let isRequestingMicrophone = false;
-                let hasMicrophonePermission = false;
-                let restartTimer = null;
                 let idleVoiceButtonText = 'Включить помощника';
 
                 const recognition = new SpeechRecognition();
@@ -2239,39 +2236,8 @@
                     voiceControlText.textContent = text;
                 }
 
-                async function requestMicrophoneOnce() {
-                    if (hasMicrophonePermission) return true;
-
-                    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                        hasMicrophonePermission = true;
-                        return true;
-                    }
-
-                    try {
-                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                        stream.getTracks().forEach(track => track.stop());
-                        hasMicrophonePermission = true;
-                        return true;
-                    } catch (error) {
-                        shouldKeepListening = false;
-                        idleVoiceButtonText = 'Разрешите микрофон';
-                        updateVoiceButton(false, idleVoiceButtonText);
-                        showNotification('Доступ к микрофону не выдан. Помощник включится только после разрешения.');
-                        return false;
-                    }
-                }
-
-                async function safeStartRecognition(showReadyNotification = false, requestMicrophone = false) {
-                    if (!shouldKeepListening || isRecognitionRunning || isRequestingMicrophone) return;
-
-                    if (!hasMicrophonePermission) {
-                        if (!requestMicrophone) return;
-
-                        isRequestingMicrophone = true;
-                        const allowed = await requestMicrophoneOnce();
-                        isRequestingMicrophone = false;
-                        if (!allowed || !shouldKeepListening) return;
-                    }
+                function safeStartRecognition(showReadyNotification = false) {
+                    if (!shouldKeepListening || isRecognitionRunning) return;
 
                     try {
                         recognition.start();
@@ -2280,6 +2246,8 @@
                         }
                     } catch (error) {
                         if (error && error.name === 'InvalidStateError') return;
+                        shouldKeepListening = false;
+                        updateVoiceButton(false, idleVoiceButtonText);
                         console.error('Не удалось запустить голосовое управление:', error);
                     }
                 }
@@ -2287,7 +2255,6 @@
                 function stopListening(showStoppedNotification = true) {
                     shouldKeepListening = false;
                     isAssistantAwake = false;
-                    clearTimeout(restartTimer);
                     updateVoiceButton(false, idleVoiceButtonText);
 
                     if (isRecognitionRunning) {
@@ -2362,15 +2329,9 @@
 
                 recognition.onend = () => {
                     isRecognitionRunning = false;
-
-                    if (!shouldKeepListening || !hasMicrophonePermission) {
-                        updateVoiceButton(false, idleVoiceButtonText);
-                        return;
-                    }
-
-                    updateVoiceButton(true, 'Перезапуск помощника...');
-                    clearTimeout(restartTimer);
-                    restartTimer = setTimeout(() => safeStartRecognition(), 700);
+                    shouldKeepListening = false;
+                    isAssistantAwake = false;
+                    updateVoiceButton(false, idleVoiceButtonText);
                 };
 
                 voiceControlBtn.addEventListener('click', () => {
@@ -2382,12 +2343,11 @@
                     idleVoiceButtonText = 'Включить помощника';
                     shouldKeepListening = true;
                     updateVoiceButton(true, 'Запуск помощника...');
-                    safeStartRecognition(true, true);
+                    safeStartRecognition(true);
                 });
 
-                // Не запускаем распознавание автоматически: иначе браузер может снова и снова
-                // показывать запрос микрофона при открытии страницы. Помощник просит доступ
-                // только после явного нажатия на кнопку.
+                // Не запускаем распознавание и не запрашиваем микрофон при загрузке страницы.
+                // Браузер покажет запрос доступа только после нажатия на кнопку помощника.
                 updateVoiceButton(false, idleVoiceButtonText);
             }
 
