@@ -1847,8 +1847,9 @@
             function cleanVoiceTrackQuery(trackName) {
                 return normalizeVoiceText(trackName)
                     .replace(/^(?:мне|пожалуйста)\s+/g, '')
-                    .replace(/^(?:трек|треков|песню|композицию|музыку|track|song)\s+/g, '')
+                    .replace(/^(?:трек|треков|песню|композицию|музыку|track|song)(?:\s+|$)/g, '')
                     .replace(/\s+(?:пожалуйста|сейчас|давай)$/g, '')
+                    .replace(/^(?:мне|пожалуйста|сейчас|давай)$/g, '')
                     .trim();
             }
 
@@ -1959,6 +1960,73 @@
                 loadSong(currentSongIndex);
             }
 
+            function startVoicePlayback(notificationMessage) {
+                isPlaying = true;
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                audioPlayer.play().catch(error => {
+                    console.error('Ошибка воспроизведения:', error);
+                    showNotification('Браузер заблокировал автозапуск. Нажмите Play и повторите команду.');
+                });
+                updateVisualizer();
+
+                if (notificationMessage) {
+                    showNotification(notificationMessage);
+                }
+            }
+
+            function playCurrentTrackByVoice() {
+                ensurePlaylistFromLibrary();
+                if (!playlist[currentSongIndex]) {
+                    showNotification('В плейлисте пока нет треков.');
+                    return;
+                }
+
+                loadSong(currentSongIndex);
+                startVoicePlayback(`Включаю трек: ${playlist[currentSongIndex].title}`);
+            }
+
+            function shufflePlaylistByVoice() {
+                ensurePlaylistFromLibrary();
+                if (playlist.length < 2) {
+                    playCurrentTrackByVoice();
+                    return;
+                }
+
+                for (let i = playlist.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [playlist[i], playlist[j]] = [playlist[j], playlist[i]];
+                }
+
+                currentSongIndex = 0;
+                playlistEl.innerHTML = '';
+                generateUserPlaylist();
+                loadSong(currentSongIndex);
+                startVoicePlayback(`Перемешал музыку. Включаю: ${playlist[currentSongIndex].title}`);
+            }
+
+            function changeVolumeByVoice(delta) {
+                const nextVolume = Math.min(1, Math.max(0, audioPlayer.volume + delta));
+                audioPlayer.volume = nextVolume;
+                volumeSlider.value = nextVolume;
+                showNotification(`Громкость: ${Math.round(nextVolume * 100)}%.`);
+            }
+
+            function seekByVoice(deltaSeconds) {
+                if (!audioPlayer.src) {
+                    showNotification('Сначала включите трек.');
+                    return;
+                }
+
+                const duration = Number.isFinite(audioPlayer.duration) ? audioPlayer.duration : 0;
+                const maxTime = duration > 0 ? duration : Number.MAX_SAFE_INTEGER;
+                const nextTime = Math.min(maxTime, Math.max(0, audioPlayer.currentTime + deltaSeconds));
+                audioPlayer.currentTime = nextTime;
+                updateTime();
+
+                const direction = deltaSeconds >= 0 ? 'вперед' : 'назад';
+                showNotification(`Перемотал ${direction} на ${Math.abs(deltaSeconds)} сек.`);
+            }
+
             function playSongByVoice(trackName) {
                 const normalizedQuery = cleanVoiceTrackQuery(trackName);
                 if (!normalizedQuery) {
@@ -2000,27 +2068,35 @@
                 }
 
                 loadSong(currentSongIndex);
-                isPlaying = true;
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                audioPlayer.play().catch(e => console.error('Ошибка воспроизведения:', e));
-                updateVisualizer();
-
-                showNotification(`Включаю: ${bestSong.title}`);
+                startVoicePlayback(`Включаю: ${bestSong.title}`);
             }
 
             function extractTrackNameFromPlayCommand(commandText) {
                 const command = fixCommandTypos(normalizeVoiceText(commandText));
                 const playVerbs = '(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй|найди и включи)';
                 const politeWords = '(?:(?:мне|пожалуйста|сейчас|давай)\\s+)*';
-                const objectWords = '(?:(?:трек|песню|композицию|музыку|track|song)\\s+)?';
-                const playMatch = command.match(new RegExp(`^${politeWords}${playVerbs}\\s+${politeWords}${objectWords}(.+)$`));
+                const objectWords = '(?:(?:трек|песню|композицию|музыку|track|song)(?:\\s+|$))?';
+                const playMatch = command.match(new RegExp(`^${politeWords}${playVerbs}(?:\\s+${politeWords}${objectWords}(.*))?$`));
 
-                if (playMatch && playMatch[1]) {
-                    return cleanVoiceTrackQuery(playMatch[1]);
+                if (playMatch) {
+                    return cleanVoiceTrackQuery(playMatch[1] || '');
                 }
 
-                const fallbackMatch = command.match(/(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй)\s+(.+)/);
-                return fallbackMatch && fallbackMatch[1] ? cleanVoiceTrackQuery(fallbackMatch[1]) : '';
+                const fallbackMatch = command.match(/(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй)(?:\s+(.+))?/);
+                return fallbackMatch ? cleanVoiceTrackQuery(fallbackMatch[1] || '') : '';
+            }
+
+            function isGenericPlayCommand(commandText) {
+                const command = fixCommandTypos(normalizeVoiceText(commandText));
+                const genericCommand = command
+                    .replace(/^(?:мне\s+|пожалуйста\s+|сейчас\s+|давай\s+)*/g, '')
+                    .replace(/^(?:включи|включить|вруби|поставь|воспроизведи|запусти|сыграй|проиграй)(?=\s|$)/g, '')
+                    .replace(/^(?:\s*(?:мне|пожалуйста|сейчас|давай))*\s*/g, '')
+                    .replace(/^(?:трек|песню|песня|композицию|музыку|track|song)(?=\s|$)/g, '')
+                    .replace(/^(?:\s*(?:мне|пожалуйста|сейчас|давай))*\s*/g, '')
+                    .trim();
+
+                return command !== genericCommand && genericCommand === '';
             }
 
             function handleVoiceCommand(commandText) {
@@ -2032,11 +2108,21 @@
                     return;
                 }
 
-                if (fixedCommand.includes('поставь на паузу') || fixedCommand === 'пауза') {
+                if (isGenericPlayCommand(fixedCommand)) {
+                    playCurrentTrackByVoice();
+                    return;
+                }
+
+                if (fixedCommand.includes('поставь на паузу') || fixedCommand === 'пауза' || fixedCommand === 'стоп') {
                     if (isPlaying) {
                         togglePlay();
                     }
                     showNotification('Пауза.');
+                    return;
+                }
+
+                if (fixedCommand.includes('продолжи') || fixedCommand.includes('продолжай')) {
+                    playCurrentTrackByVoice();
                     return;
                 }
 
@@ -2048,16 +2134,68 @@
                     }
                     nextSong();
                     showNotification('Следующий трек.');
+                    return;
                 }
+
+                if (fixedCommand.includes('предыдущий трек') || fixedCommand.includes('прошлый трек')) {
+                    ensurePlaylistFromLibrary();
+                    if (!isPlaying) {
+                        isPlaying = true;
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    }
+                    prevSong();
+                    showNotification('Предыдущий трек.');
+                    return;
+                }
+
+                if (fixedCommand.includes('перемешай') || fixedCommand.includes('случайный трек')) {
+                    shufflePlaylistByVoice();
+                    return;
+                }
+
+                if (fixedCommand.includes('перемотай назад') || fixedCommand.includes('отмотай назад')) {
+                    seekByVoice(-10);
+                    return;
+                }
+
+                if (fixedCommand.includes('перемотай') || fixedCommand.includes('перемотай вперед') || fixedCommand.includes('отмотай вперед')) {
+                    seekByVoice(10);
+                    return;
+                }
+
+                if (fixedCommand.includes('громче') || fixedCommand.includes('прибавь громкость') || fixedCommand.includes('прибавь')) {
+                    changeVolumeByVoice(0.1);
+                    return;
+                }
+
+                if (fixedCommand.includes('тише') || fixedCommand.includes('убавь громкость') || fixedCommand.includes('убавь')) {
+                    changeVolumeByVoice(-0.1);
+                    return;
+                }
+
+                showNotification('Не понял команду. Попробуйте: «включи трек», «перемотай» или «прибавь».');
             }
 
             function isLikelyVoiceCommand(text) {
                 const command = fixCommandTypos(normalizeVoiceText(text));
-                return Boolean(extractTrackNameFromPlayCommand(command)) ||
+                return isGenericPlayCommand(command) ||
+                    Boolean(extractTrackNameFromPlayCommand(command)) ||
                     command.includes('поставь на паузу') ||
                     command === 'пауза' ||
+                    command === 'стоп' ||
+                    command.includes('продолжи') ||
                     command.includes('поставь следующий трек') ||
-                    command.includes('следующий трек');
+                    command.includes('следующий трек') ||
+                    command.includes('предыдущий трек') ||
+                    command.includes('прошлый трек') ||
+                    command.includes('перемешай') ||
+                    command.includes('случайный трек') ||
+                    command.includes('перемотай') ||
+                    command.includes('отмотай') ||
+                    command.includes('громче') ||
+                    command.includes('тише') ||
+                    command.includes('прибавь') ||
+                    command.includes('убавь');
             }
 
             function fixCommandTypos(command) {
@@ -2125,6 +2263,7 @@
                 let shouldKeepListening = false;
                 let isRecognitionRunning = false;
                 let restartTimer = null;
+                let lastErrorStopsListening = false;
                 let idleVoiceButtonText = 'Включить помощника';
 
                 const recognition = new SpeechRecognition();
@@ -2138,16 +2277,32 @@
                     voiceControlText.textContent = text;
                 }
 
+                async function getMicrophonePermissionState() {
+                    if (!navigator.permissions || !navigator.permissions.query) {
+                        return 'unknown';
+                    }
+
+                    try {
+                        const permissionStatus = await navigator.permissions.query({ name: 'microphone' });
+                        return permissionStatus.state;
+                    } catch (error) {
+                        return 'unknown';
+                    }
+                }
+
                 function safeStartRecognition(showReadyNotification = false) {
                     if (!shouldKeepListening || isRecognitionRunning) return;
 
                     try {
+                        lastErrorStopsListening = false;
                         recognition.start();
                         if (showReadyNotification) {
                             showNotification('Голосовое управление включено. Скажите имя помощника или команду.');
                         }
                     } catch (error) {
                         if (error && error.name === 'InvalidStateError') return;
+                        shouldKeepListening = false;
+                        updateVoiceButton(false, idleVoiceButtonText);
                         console.error('Не удалось запустить голосовое управление:', error);
                     }
                 }
@@ -2209,6 +2364,7 @@
 
                     if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
                         shouldKeepListening = false;
+                        lastErrorStopsListening = true;
                         idleVoiceButtonText = 'Разрешите микрофон';
                         updateVoiceButton(false, idleVoiceButtonText);
                         showNotification('Нет доступа к микрофону. Нажмите кнопку помощника и разрешите микрофон в браузере.');
@@ -2217,6 +2373,7 @@
 
                     if (event.error === 'audio-capture') {
                         shouldKeepListening = false;
+                        lastErrorStopsListening = true;
                         idleVoiceButtonText = 'Микрофон не найден';
                         updateVoiceButton(false, idleVoiceButtonText);
                         showNotification('Микрофон не найден или занят другим приложением.');
@@ -2228,17 +2385,29 @@
                     }
                 };
 
-                recognition.onend = () => {
+                recognition.onend = async () => {
                     isRecognitionRunning = false;
 
-                    if (!shouldKeepListening) {
+                    if (!shouldKeepListening || lastErrorStopsListening) {
+                        isAssistantAwake = false;
                         updateVoiceButton(false, idleVoiceButtonText);
                         return;
                     }
 
-                    updateVoiceButton(true, 'Перезапуск помощника...');
+                    const permissionState = await getMicrophonePermissionState();
+                    if (permissionState !== 'granted') {
+                        shouldKeepListening = false;
+                        isAssistantAwake = false;
+                        updateVoiceButton(false, idleVoiceButtonText);
+                        if (permissionState === 'prompt') {
+                            showNotification('Помощник остановлен, чтобы не запрашивать микрофон повторно. Нажмите кнопку для нового запуска.');
+                        }
+                        return;
+                    }
+
+                    updateVoiceButton(true, 'Помощник слушает');
                     clearTimeout(restartTimer);
-                    restartTimer = setTimeout(() => safeStartRecognition(), 700);
+                    restartTimer = setTimeout(() => safeStartRecognition(), 500);
                 };
 
                 voiceControlBtn.addEventListener('click', () => {
@@ -2253,29 +2422,9 @@
                     safeStartRecognition(true);
                 });
 
-                if (navigator.permissions && navigator.permissions.query) {
-                    navigator.permissions.query({ name: 'microphone' })
-                        .then(permissionStatus => {
-                            if (permissionStatus.state === 'granted') {
-                                idleVoiceButtonText = 'Включить помощника';
-                                shouldKeepListening = true;
-                                safeStartRecognition(false);
-                            }
-
-                            permissionStatus.onchange = () => {
-                                if (permissionStatus.state === 'denied') {
-                                    idleVoiceButtonText = 'Разрешите микрофон';
-                                    stopListening(false);
-                                    updateVoiceButton(false, idleVoiceButtonText);
-                                }
-                            };
-                        })
-                        .catch(() => {
-                            updateVoiceButton(false, idleVoiceButtonText);
-                        });
-                } else {
-                    updateVoiceButton(false, idleVoiceButtonText);
-                }
+                // Не запускаем распознавание и не запрашиваем микрофон при загрузке страницы.
+                // Браузер покажет запрос доступа только после нажатия на кнопку помощника.
+                updateVoiceButton(false, idleVoiceButtonText);
             }
 
             // Инициализация
