@@ -1,5 +1,5 @@
 // service-worker.js
-const VERSION = 'v7';
+const VERSION = 'v8';
 const SHELL_CACHE = `shell-${VERSION}`;
 const MUSIC_CACHE = `music-${VERSION}`;
 const COVERS_CACHE = `covers-${VERSION}`;

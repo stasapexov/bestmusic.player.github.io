@@ -2263,6 +2263,7 @@
                 let shouldKeepListening = false;
                 let isRecognitionRunning = false;
                 let restartTimer = null;
+                let lastErrorStopsListening = false;
                 let idleVoiceButtonText = 'Включить помощника';
 
                 const recognition = new SpeechRecognition();
@@ -2276,10 +2277,24 @@
                     voiceControlText.textContent = text;
                 }
 
+                async function getMicrophonePermissionState() {
+                    if (!navigator.permissions || !navigator.permissions.query) {
+                        return 'unknown';
+                    }
+
+                    try {
+                        const permissionStatus = await navigator.permissions.query({ name: 'microphone' });
+                        return permissionStatus.state;
+                    } catch (error) {
+                        return 'unknown';
+                    }
+                }
+
                 function safeStartRecognition(showReadyNotification = false) {
                     if (!shouldKeepListening || isRecognitionRunning) return;
 
                     try {
+                        lastErrorStopsListening = false;
                         recognition.start();
                         if (showReadyNotification) {
                             showNotification('Голосовое управление включено. Скажите имя помощника или команду.');
@@ -2349,6 +2364,7 @@
 
                     if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
                         shouldKeepListening = false;
+                        lastErrorStopsListening = true;
                         idleVoiceButtonText = 'Разрешите микрофон';
                         updateVoiceButton(false, idleVoiceButtonText);
                         showNotification('Нет доступа к микрофону. Нажмите кнопку помощника и разрешите микрофон в браузере.');
@@ -2357,6 +2373,7 @@
 
                     if (event.error === 'audio-capture') {
                         shouldKeepListening = false;
+                        lastErrorStopsListening = true;
                         idleVoiceButtonText = 'Микрофон не найден';
                         updateVoiceButton(false, idleVoiceButtonText);
                         showNotification('Микрофон не найден или занят другим приложением.');
@@ -2368,12 +2385,23 @@
                     }
                 };
 
-                recognition.onend = () => {
+                recognition.onend = async () => {
                     isRecognitionRunning = false;
 
-                    if (!shouldKeepListening) {
+                    if (!shouldKeepListening || lastErrorStopsListening) {
                         isAssistantAwake = false;
                         updateVoiceButton(false, idleVoiceButtonText);
+                        return;
+                    }
+
+                    const permissionState = await getMicrophonePermissionState();
+                    if (permissionState !== 'granted') {
+                        shouldKeepListening = false;
+                        isAssistantAwake = false;
+                        updateVoiceButton(false, idleVoiceButtonText);
+                        if (permissionState === 'prompt') {
+                            showNotification('Помощник остановлен, чтобы не запрашивать микрофон повторно. Нажмите кнопку для нового запуска.');
+                        }
                         return;
                     }
 
