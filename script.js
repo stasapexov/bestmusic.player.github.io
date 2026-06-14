@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 1,
                                 "title": "2000",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/2000.mp3",
                                 "language": "en"
                 },
                 {
                                 "id": 2,
-                                "title": "24song",
-                                "artist": "Разные английские исполнители",
+                                "title": "24 Songs",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/24song.mp3",
                                 "language": "en"
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 4,
                                 "title": "4 Raws",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/4 Raws.mp3",
                                 "language": "ru"
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 6,
                                 "title": "5% TNT",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Ken Carson",
                                 "duration": "--:--",
                                 "url": "music/5% TNT.mp3",
                                 "language": "en"
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 8,
                                 "title": "abu_dhabi_vabu",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Ямаш",
                                 "duration": "--:--",
                                 "url": "music/abu_dhabi_vabu.mp3",
                                 "language": "ru"
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 12,
                                 "title": "bebebe",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/bebebe.mp3",
                                 "language": "ru"
@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 15,
-                                "title": "butterfly effect",
-                                "artist": "Разные английские исполнители",
+                                "title": "BUTTERFLY EFFECT",
+                                "artist": "Travis Scott",
                                 "duration": "--:--",
                                 "url": "music/butterfly effect.mp3",
                                 "language": "en"
@@ -147,16 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 19,
-                                "title": "champain",
-                                "artist": "Разные английские исполнители",
+                                "title": "CHAMPAIN",
+                                "artist": "Travis Scott",
                                 "duration": "--:--",
                                 "url": "music/champain.mp3",
                                 "language": "en"
                 },
                 {
                                 "id": 20,
-                                "title": "chernyy bumer",
-                                "artist": "Разные русские исполнители",
+                                "title": "Чёрный бумер",
+                                "artist": "Серёга",
                                 "duration": "--:--",
                                 "url": "music/chernyy bumer.mp3",
                                 "language": "ru"
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 21,
                                 "title": "chetyre ukrainki",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/chetyre ukrainki.mp3",
                                 "language": "ru"
@@ -195,16 +195,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 25,
-                                "title": "crank master",
-                                "artist": "Разные английские исполнители",
+                                "title": "Crank Master",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/crank master.mp3",
                                 "language": "en"
                 },
                 {
                                 "id": 26,
-                                "title": "crash",
-                                "artist": "Разные английские исполнители",
+                                "title": "CRASH",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/crash.mp3",
                                 "language": "en"
@@ -235,8 +235,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 30,
-                                "title": "dark thought",
-                                "artist": "Разные английские исполнители",
+                                "title": "Dark Thoughts",
+                                "artist": "Lil Tecca",
                                 "duration": "--:--",
                                 "url": "music/dark thought.mp3",
                                 "language": "en"
@@ -259,8 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 33,
-                                "title": "do it all",
-                                "artist": "Разные английские исполнители",
+                                "title": "DO IT ALL",
+                                "artist": "Iann Dior",
                                 "duration": "--:--",
                                 "url": "music/do it all.mp3",
                                 "language": "en"
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 34,
                                 "title": "dom",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/dom.mp3",
                                 "language": "ru"
@@ -307,11 +307,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 39,
-                                "title": "el problema",
-                                "artist": "Разные английские исполнители",
+                                "title": "El Problema",
+                                "artist": "Morgenshtern, Тимати",
                                 "duration": "--:--",
                                 "url": "music/el problema.mp3",
-                                "language": "en"
+                                "language": "ru"
                 },
                 {
                                 "id": 40,
@@ -355,8 +355,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 45,
-                                "title": "fomdj",
-                                "artist": "Разные английские исполнители",
+                                "title": "FOMDJ",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/fomdj.mp3",
                                 "language": "en"
@@ -403,8 +403,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 51,
-                                "title": "go crazy",
-                                "artist": "Разные английские исполнители",
+                                "title": "GO CR4ZY",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/go crazy.mp3",
                                 "language": "en"
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 52,
                                 "title": "Go Off",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Lil Uzi Vert, Quavo, Travis Scott",
                                 "duration": "--:--",
                                 "url": "music/Go Off.mp3",
                                 "language": "en"
@@ -427,16 +427,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 54,
-                                "title": "gta",
-                                "artist": "Разные английские исполнители",
+                                "title": "GTA",
+                                "artist": "Future",
                                 "duration": "--:--",
                                 "url": "music/gta.mp3",
                                 "language": "en"
                 },
                 {
                                 "id": 55,
-                                "title": "Head Shot ",
-                                "artist": "Разные русские исполнители",
+                                "title": "Head Shot",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/Head Shot .mp3",
                                 "language": "ru"
@@ -467,8 +467,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 59,
-                                "title": "hyaena",
-                                "artist": "Разные английские исполнители",
+                                "title": "HYAENA",
+                                "artist": "Travis Scott",
                                 "duration": "--:--",
                                 "url": "music/hyaena.mp3",
                                 "language": "en"
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 69,
                                 "title": "JACKBOYS",
-                                "artist": "Разные английские исполнители",
+                                "artist": "JACKBOYS",
                                 "duration": "--:--",
                                 "url": "music/JACKBOYS.mp3",
                                 "language": "en"
@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 71,
                                 "title": "KICKED OUT",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/KICKED OUT.mp3",
                                 "language": "en"
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 73,
                                 "title": "Ligala sosa",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Ямаш",
                                 "duration": "--:--",
                                 "url": "music/Ligala sosa.mp3",
                                 "language": "ru"
@@ -619,8 +619,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 78,
-                                "title": "lollipop",
-                                "artist": "Разные английские исполнители",
+                                "title": "Lollipop",
+                                "artist": "Lil Wayne",
                                 "duration": "--:--",
                                 "url": "music/lollipop.mp3",
                                 "language": "en"
@@ -636,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 80,
                                 "title": "LV Sandals",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Lil Uzi Vert",
                                 "duration": "--:--",
                                 "url": "music/LV Sandals.mp3",
                                 "language": "en"
@@ -660,7 +660,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 83,
                                 "title": "navalnyy lyokha",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Ямаш",
                                 "duration": "--:--",
                                 "url": "music/navalnyy lyokha.mp3",
                                 "language": "ru"
@@ -675,8 +675,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 85,
-                                "title": "no face",
-                                "artist": "Разные английские исполнители",
+                                "title": "NO FACE",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/no face.mp3",
                                 "language": "en"
@@ -692,7 +692,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 87,
                                 "title": "novaya volna",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/novaya volna.mp3",
                                 "language": "ru"
@@ -700,7 +700,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 88,
                                 "title": "novyy meren",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Morgenshtern",
                                 "duration": "--:--",
                                 "url": "music/novyy meren.mp3",
                                 "language": "ru"
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 89,
                                 "title": "ona-ono",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/ona-ono.mp3",
                                 "language": "ru"
@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 92,
                                 "title": "pablo",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Morgenshtern",
                                 "duration": "--:--",
                                 "url": "music/pablo.mp3",
                                 "language": "ru"
@@ -748,7 +748,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 94,
                                 "title": "Phantom",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/Phantom.mp3",
                                 "language": "en"
@@ -756,15 +756,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 95,
                                 "title": "PHILLY",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/PHILLY.mp3",
                                 "language": "en"
                 },
                 {
                                 "id": 96,
-                                "title": "photo",
-                                "artist": "Разные английские исполнители",
+                                "title": "Photo",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/photo.mp3",
                                 "language": "en"
@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 101,
                                 "title": "pososi",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Платина",
                                 "duration": "--:--",
                                 "url": "music/pososi.mp3",
                                 "language": "ru"
@@ -820,7 +820,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 103,
                                 "title": "PROBLEM CHILD",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Playboi Carti",
                                 "duration": "--:--",
                                 "url": "music/PROBLEM CHILD.mp3",
                                 "language": "en"
@@ -828,7 +828,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 104,
                                 "title": "Rampage Song",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Ken Carson",
                                 "duration": "--:--",
                                 "url": "music/Rampage Song.mp3",
                                 "language": "en"
@@ -836,15 +836,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 105,
                                 "title": "ratatatata",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Ямаш",
                                 "duration": "--:--",
                                 "url": "music/ratatatata.mp3",
                                 "language": "ru"
                 },
                 {
                                 "id": 106,
-                                "title": "ratherlife",
-                                "artist": "Разные английские исполнители",
+                                "title": "Rather Lie",
+                                "artist": "Playboi Carti, The Weeknd",
                                 "duration": "--:--",
                                 "url": "music/ratherlife.mp3",
                                 "language": "en"
@@ -852,7 +852,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 107,
                                 "title": "retro rev",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/retro rev.mp3",
                                 "language": "ru"
@@ -956,7 +956,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 120,
                                 "title": "Riley",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Iann Dior",
                                 "duration": "--:--",
                                 "url": "music/Riley.mp3",
                                 "language": "en"
@@ -964,7 +964,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 121,
                                 "title": "san laran",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/san laran.mp3",
                                 "language": "ru"
@@ -996,7 +996,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 125,
                                 "title": "shyne",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Destroy Lonely",
                                 "duration": "--:--",
                                 "url": "music/shyne.mp3",
                                 "language": "en"
@@ -1020,7 +1020,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 128,
                                 "title": "SOME MORE",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Ken Carson",
                                 "duration": "--:--",
                                 "url": "music/SOME MORE.mp3",
                                 "language": "en"
@@ -1187,8 +1187,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 149,
-                                "title": "what u need",
-                                "artist": "Разные английские исполнители",
+                                "title": "WHAT U NEED",
+                                "artist": "Don Toliver",
                                 "duration": "--:--",
                                 "url": "music/what u need.mp3",
                                 "language": "en"
@@ -1196,10 +1196,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 150,
                                 "title": "ya kogda-nibud uydu",
-                                "artist": "Разные английские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/ya kogda-nibud uydu.mp3",
-                                "language": "en"
+                                "language": "ru"
                 },
                 {
                                 "id": 151,
@@ -1292,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 162,
                                 "title": "Your Turn",
-                                "artist": "Разные английские исполнители",
+                                "artist": "Lil Uzi Vert",
                                 "duration": "--:--",
                                 "url": "music/Your Turn.mp3",
                                 "language": "en"
@@ -1315,8 +1315,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 165,
-                                "title": "ауф",
-                                "artist": "Разные русские исполнители",
+                                "title": "Ауф",
+                                "artist": "Нурминский",
                                 "duration": "--:--",
                                 "url": "music/ауф.mp3",
                                 "language": "ru"
@@ -1324,7 +1324,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 166,
                                 "title": "Бандана",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Kizaru, Big Baby Tape",
                                 "duration": "--:--",
                                 "url": "music/Бандана.mp3",
                                 "language": "ru"
@@ -1332,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 167,
                                 "title": "Бассок",
-                                "artist": "Разные русские исполнители",
+                                "artist": "GONE.Fludd",
                                 "duration": "--:--",
                                 "url": "music/Бассок.mp3",
                                 "language": "ru"
@@ -1340,7 +1340,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 168,
                                 "title": "блядская натура",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Натура",
                                 "duration": "--:--",
                                 "url": "music/блядская натура.mp3",
                                 "language": "ru"
@@ -1348,15 +1348,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 169,
                                 "title": "Валентина",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/Валентина.mp3",
                                 "language": "ru"
                 },
                 {
                                 "id": 170,
-                                "title": "валим",
-                                "artist": "Разные русские исполнители",
+                                "title": "Валим",
+                                "artist": "Нурминский",
                                 "duration": "--:--",
                                 "url": "music/валим.mp3",
                                 "language": "ru"
@@ -1364,7 +1364,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 171,
                                 "title": "Веном",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Morgenshtern",
                                 "duration": "--:--",
                                 "url": "music/Веном.mp3",
                                 "language": "ru"
@@ -1372,7 +1372,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 172,
                                 "title": "Виновата сама",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/Виновата сама.mp3",
                                 "language": "ru"
@@ -1388,7 +1388,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 174,
                                 "title": "Гоблин",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Morgenshtern",
                                 "duration": "--:--",
                                 "url": "music/Гоблин.mp3",
                                 "language": "ru"
@@ -1411,8 +1411,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 177,
-                                "title": "мент",
-                                "artist": "Разные русские исполнители",
+                                "title": "Мент",
+                                "artist": "Нурминский",
                                 "duration": "--:--",
                                 "url": "music/мент.mp3",
                                 "language": "ru"
@@ -1435,8 +1435,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                                 "id": 180,
-                                "title": "мы пидоры",
-                                "artist": "Разные русские исполнители",
+                                "title": "Мы пидоры",
+                                "artist": "Еврогей",
                                 "duration": "--:--",
                                 "url": "music/мы пидоры.mp3",
                                 "language": "ru"
@@ -1484,7 +1484,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 186,
                                 "title": "Сердце для шалав",
-                                "artist": "Разные русские исполнители",
+                                "artist": "MAYOT",
                                 "duration": "--:--",
                                 "url": "music/Сердце для шалав.mp3",
                                 "language": "ru"
@@ -1492,7 +1492,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 187,
                                 "title": "Случайна",
-                                "artist": "Разные русские исполнители",
+                                "artist": "Morgenshtern",
                                 "duration": "--:--",
                                 "url": "music/Случайна.mp3",
                                 "language": "ru"
@@ -1518,10 +1518,42 @@ document.addEventListener('DOMContentLoaded', function () {
             // Массив популярных песен
             const popularSongs = allSongs.slice(0, 40);
 
-            // Массив артистов с их треками
+            // Массив артистов с их треками. Совместные треки добавляются в карточку каждого участника.
             const artists = [
                 {
                                 "id": 1,
+                                "name": "Quavo",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 160,
+                                                                "title": "5BRAZY",
+                                                                "artist": "Yeat feat. Quavo",
+                                                                "duration": "--:--",
+                                                                "url": "music/Yeat feat. Quavo - 5BRAZY.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 2,
+                                "name": "2 Chainz",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/2_Chainz_2017.jpg/640px-2_Chainz_2017.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 3,
+                                                                "title": "3500",
+                                                                "artist": "Travis Scott, Future, 2 Chainz",
+                                                                "duration": "--:--",
+                                                                "url": "music/3500.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 3,
                                 "name": "A$AP Rocky",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/ASAP_Rocky_-_Openair_Frauenfeld_2019_08.jpg/640px-ASAP_Rocky_-_Openair_Frauenfeld_2019_08.jpg",
                                 "genre": "",
@@ -1537,8 +1569,24 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 2,
-                                "name": "BNYX®, Yeat, Superheaven",
+                                "id": 4,
+                                "name": "BABY BOI",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 142,
+                                                                "title": "ON MY OWN",
+                                                                "artist": "void, BABY BOI",
+                                                                "duration": "--:--",
+                                                                "url": "music/void, BABY BOI - ON MY OWN.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 5,
+                                "name": "BNYX®",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5eb37ac8de0bdfd8d5730874523",
                                 "genre": "",
                                 "songs": [
@@ -1553,8 +1601,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 3,
-                                "name": "BUCKSHOT, fakemink",
+                                "id": 6,
+                                "name": "BUCKSHOT",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5ebc0084c5ea70c68ff42b73266",
                                 "genre": "",
                                 "songs": [
@@ -1569,7 +1617,39 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 4,
+                                "id": 7,
+                                "name": "Big Baby Tape",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb6a862c3c0061f402e3b34642",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 166,
+                                                                "title": "Бандана",
+                                                                "artist": "Kizaru, Big Baby Tape",
+                                                                "duration": "--:--",
+                                                                "url": "music/Бандана.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 8,
+                                "name": "Chris Martin",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Chris_Martin_2017_in_Hamburg.jpg/640px-Chris_Martin_2017_in_Hamburg.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 57,
+                                                                "title": "Homecoming",
+                                                                "artist": "Kanye West, Chris Martin",
+                                                                "duration": "--:--",
+                                                                "url": "music/homecoming.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 9,
                                 "name": "Destroy Lonely",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5eb9a3d4a707af9237b33d33e3b",
                                 "genre": "",
@@ -1581,11 +1661,19 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Destroy Lonely - SYRUP SIPPIN'.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 125,
+                                                                "title": "shyne",
+                                                                "artist": "Destroy Lonely",
+                                                                "duration": "--:--",
+                                                                "url": "music/shyne.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 5,
+                                "id": 10,
                                 "name": "Don Toliver",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Don_Toliver_2021.png/640px-Don_Toliver_2021.png",
                                 "genre": "",
@@ -1597,11 +1685,27 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Don Toliver - KRYPTONITE.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 136,
+                                                                "title": "CHAMPAIN & VACAY",
+                                                                "artist": "Travis Scott & Don Toliver",
+                                                                "duration": "--:--",
+                                                                "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 149,
+                                                                "title": "WHAT U NEED",
+                                                                "artist": "Don Toliver",
+                                                                "duration": "--:--",
+                                                                "url": "music/what u need.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 6,
+                                "id": 11,
                                 "name": "Drake",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Drake_at_The_Carter_Effect_2017_%28cropped%29.jpg/640px-Drake_at_The_Carter_Effect_2017_%28cropped%29.jpg",
                                 "genre": "",
@@ -1617,7 +1721,39 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 7,
+                                "id": 12,
+                                "name": "Druskhi",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 143,
+                                                                "title": "FOR RICHIE",
+                                                                "artist": "void, Druskhi",
+                                                                "duration": "--:--",
+                                                                "url": "music/void, Druskhi - FOR RICHIE.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 13,
+                                "name": "Dwele",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dwele_2012.jpg/640px-Dwele_2012.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 44,
+                                                                "title": "Flashing Lights",
+                                                                "artist": "Kanye West, Dwele",
+                                                                "duration": "--:--",
+                                                                "url": "music/Flashing Lights.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 14,
                                 "name": "EsDeeKid",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5ebdf6f9f1b521c3f57fd336122",
                                 "genre": "",
@@ -1629,15 +1765,31 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/EsDeeKid - Century.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 161,
+                                                                "title": "Made It On Our Own",
+                                                                "artist": "Yeat, EsDeeKid",
+                                                                "duration": "--:--",
+                                                                "url": "music/Yeat, EsDeeKid - Made It On Our Own.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 8,
+                                "id": 15,
                                 "name": "Future",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Future_-_Openair_Frauenfeld_2019_02.jpg/640px-Future_-_Openair_Frauenfeld_2019_02.jpg",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 3,
+                                                                "title": "3500",
+                                                                "artist": "Travis Scott, Future, 2 Chainz",
+                                                                "duration": "--:--",
+                                                                "url": "music/3500.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 50,
                                                                 "title": "LIL DEMON",
@@ -1645,15 +1797,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Future - LIL DEMON.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 9,
-                                "name": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
+                                                },
+                                                {
+                                                                "id": 54,
+                                                                "title": "GTA",
+                                                                "artist": "Future",
+                                                                "duration": "--:--",
+                                                                "url": "music/gta.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 139,
                                                                 "title": "Type Shit",
@@ -1661,11 +1813,19 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Type Shit.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 146,
+                                                                "title": "Wassup",
+                                                                "artist": "Lil Uzi Vert, Future",
+                                                                "duration": "--:--",
+                                                                "url": "music/Wassup.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 10,
+                                "id": 16,
                                 "name": "GONE.Fludd",
                                 "avatar": "https://showbi.ru/upload/2020/11/18/20201118170848-51d9621b.jpg",
                                 "genre": "",
@@ -1719,6 +1879,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 167,
+                                                                "title": "Бассок",
+                                                                "artist": "GONE.Fludd",
+                                                                "duration": "--:--",
+                                                                "url": "music/Бассок.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 185,
                                                                 "title": "Плохая Сука",
                                                                 "artist": "GONE.Fludd",
@@ -1729,7 +1897,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 11,
+                                "id": 17,
                                 "name": "Homixide Gang",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5eb2e59dedcd40b7d57bf3249b5",
                                 "genre": "",
@@ -1745,7 +1913,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 12,
+                                "id": 18,
                                 "name": "I am music",
                                 "avatar": "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
                                 "genre": "",
@@ -1761,7 +1929,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 13,
+                                "id": 19,
                                 "name": "IMG",
                                 "avatar": "https://i.scdn.co/image/ab67616d00001e02dfd6bfe770e5c34a636b2a72",
                                 "genre": "",
@@ -1825,11 +1993,43 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 14,
-                                "name": "JACKBOYS, Travis Scott, Young Thug",
-                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
+                                "id": 20,
+                                "name": "Iann Dior",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebd69181c8b122d2125f1f0cf8",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 33,
+                                                                "title": "DO IT ALL",
+                                                                "artist": "Iann Dior",
+                                                                "duration": "--:--",
+                                                                "url": "music/do it all.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 120,
+                                                                "title": "Riley",
+                                                                "artist": "Iann Dior",
+                                                                "duration": "--:--",
+                                                                "url": "music/Riley.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 21,
+                                "name": "JACKBOYS",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/en/4/46/JackBoys_-_JackBoys.png",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 69,
+                                                                "title": "JACKBOYS",
+                                                                "artist": "JACKBOYS",
+                                                                "duration": "--:--",
+                                                                "url": "music/JACKBOYS.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 90,
                                                                 "title": "OUT WEST",
@@ -1841,11 +2041,35 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 15,
-                                "name": "Kanye West, Chris Martin",
+                                "id": 22,
+                                "name": "Kanye West",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/640px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 18,
+                                                                "title": "CARNIVAL",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/carnival.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 44,
+                                                                "title": "Flashing Lights",
+                                                                "artist": "Kanye West, Dwele",
+                                                                "duration": "--:--",
+                                                                "url": "music/Flashing Lights.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 49,
+                                                                "title": "Fuk Sumn",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/fuk sumn.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 57,
                                                                 "title": "Homecoming",
@@ -1857,65 +2081,41 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 16,
-                                "name": "Kanye West, Dwele",
-                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/640px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 44,
-                                                                "title": "Flashing Lights",
-                                                                "artist": "Kanye West, Dwele",
-                                                                "duration": "--:--",
-                                                                "url": "music/Flashing Lights.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 17,
-                                "name": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 49,
-                                                                "title": "Fuk Sumn",
-                                                                "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                                                                "duration": "--:--",
-                                                                "url": "music/fuk sumn.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 18,
-                                "name": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 18,
-                                                                "title": "CARNIVAL",
-                                                                "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                                                                "duration": "--:--",
-                                                                "url": "music/carnival.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 19,
+                                "id": 23,
                                 "name": "Ken Carson",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5eb3e089e47bdf860199a4b3b42",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 6,
+                                                                "title": "5% TNT",
+                                                                "artist": "Ken Carson",
+                                                                "duration": "--:--",
+                                                                "url": "music/5% TNT.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 70,
                                                                 "title": "Fighting My Demons",
                                                                 "artist": "Ken Carson",
                                                                 "duration": "--:--",
                                                                 "url": "music/Ken Carson - Fighting My Demons.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 104,
+                                                                "title": "Rampage Song",
+                                                                "artist": "Ken Carson",
+                                                                "duration": "--:--",
+                                                                "url": "music/Rampage Song.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 128,
+                                                                "title": "SOME MORE",
+                                                                "artist": "Ken Carson",
+                                                                "duration": "--:--",
+                                                                "url": "music/SOME MORE.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -1929,9 +2129,41 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 20,
-                                "name": "Kodak Black, Travis Scott, Offset",
-                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
+                                "id": 24,
+                                "name": "Kid Cudi",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Kid_Cudi_2010.jpg/640px-Kid_Cudi_2010.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 133,
+                                                                "title": "THE SCOTTS",
+                                                                "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
+                                                                "duration": "--:--",
+                                                                "url": "music/The Scotts.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 25,
+                                "name": "Kizaru",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebc6b0f4b6035b35920edfece0",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 166,
+                                                                "title": "Бандана",
+                                                                "artist": "Kizaru, Big Baby Tape",
+                                                                "duration": "--:--",
+                                                                "url": "music/Бандана.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 26,
+                                "name": "Kodak Black",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Kodak_Black_2018.png/640px-Kodak_Black_2018.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1945,7 +2177,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 21,
+                                "id": 27,
                                 "name": "Lil Baby",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lil_Baby_in_2020.png/640px-Lil_Baby_in_2020.png",
                                 "genre": "",
@@ -1961,11 +2193,19 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 22,
+                                "id": 28,
                                 "name": "Lil Tecca",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lil_Tecca_2019.png/640px-Lil_Tecca_2019.png",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 30,
+                                                                "title": "Dark Thoughts",
+                                                                "artist": "Lil Tecca",
+                                                                "duration": "--:--",
+                                                                "url": "music/dark thought.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 75,
                                                                 "title": "Boys Don’t Cry",
@@ -1977,27 +2217,19 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 23,
+                                "id": 29,
                                 "name": "Lil Uzi Vert",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lil_Uzi_Vert_%282018%29.png/640px-Lil_Uzi_Vert_%282018%29.png",
                                 "genre": "",
                                 "songs": [
                                                 {
-                                                                "id": 148,
-                                                                "title": "Watch This",
-                                                                "artist": "Lil Uzi Vert",
+                                                                "id": 52,
+                                                                "title": "Go Off",
+                                                                "artist": "Lil Uzi Vert, Quavo, Travis Scott",
                                                                 "duration": "--:--",
-                                                                "url": "music/watch this.mp3",
+                                                                "url": "music/Go Off.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 24,
-                                "name": "Lil Uzi Vert & Playboi Carti",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
+                                                },
                                                 {
                                                                 "id": 76,
                                                                 "title": "Break The Bank",
@@ -2005,15 +2237,23 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Lil Uzi Vert & Playboi Carti - Break The Bank.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 25,
-                                "name": "Lil Uzi Vert, Future",
-                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lil_Uzi_Vert_%282018%29.png/640px-Lil_Uzi_Vert_%282018%29.png",
-                                "genre": "",
-                                "songs": [
+                                                },
+                                                {
+                                                                "id": 80,
+                                                                "title": "LV Sandals",
+                                                                "artist": "Lil Uzi Vert",
+                                                                "duration": "--:--",
+                                                                "url": "music/LV Sandals.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 98,
+                                                                "title": "Manage",
+                                                                "artist": "Playboi Carti, Lil Uzi Vert",
+                                                                "duration": "--:--",
+                                                                "url": "music/Playboi Carti, Lil Uzi Vert - Manage.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 146,
                                                                 "title": "Wassup",
@@ -2021,15 +2261,95 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Wassup.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 148,
+                                                                "title": "Watch This",
+                                                                "artist": "Lil Uzi Vert",
+                                                                "duration": "--:--",
+                                                                "url": "music/watch this.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 162,
+                                                                "title": "Your Turn",
+                                                                "artist": "Lil Uzi Vert",
+                                                                "duration": "--:--",
+                                                                "url": "music/Your Turn.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 26,
+                                "id": 30,
+                                "name": "Lil Wayne",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Lil_Wayne_%2823523750613%29.jpg/640px-Lil_Wayne_%2823523750613%29.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 78,
+                                                                "title": "Lollipop",
+                                                                "artist": "Lil Wayne",
+                                                                "duration": "--:--",
+                                                                "url": "music/lollipop.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 31,
+                                "name": "M.I.A.",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/MIA_Press_2022_%28cropped%29.jpg/640px-MIA_Press_2022_%28cropped%29.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 46,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/FRANCHISE.mov",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 47,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/franchise.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 48,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/franchise2.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 32,
                                 "name": "MAYOT",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5ebedc356acc39dfc52fd4f06c1",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 4,
+                                                                "title": "4 Raws",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/4 Raws.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 12,
+                                                                "title": "bebebe",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/bebebe.mp3",
+                                                                "language": "ru"
+                                                },
                                                 {
                                                                 "id": 16,
                                                                 "title": "Bystro",
@@ -2039,11 +2359,27 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 21,
+                                                                "title": "chetyre ukrainki",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/chetyre ukrainki.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 29,
                                                                 "title": "Cristal",
                                                                 "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/cristal_mayot.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 34,
+                                                                "title": "dom",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/dom.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
@@ -2063,11 +2399,35 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 55,
+                                                                "title": "Head Shot",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/Head Shot .mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 86,
                                                                 "title": "Nominalo",
                                                                 "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/nominalo.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 87,
+                                                                "title": "novaya volna",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/novaya volna.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 89,
+                                                                "title": "ona-ono",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/ona-ono.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
@@ -2095,6 +2455,22 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 107,
+                                                                "title": "retro rev",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/retro rev.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 121,
+                                                                "title": "san laran",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/san laran.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 141,
                                                                 "title": "Veselaya Pesnya",
                                                                 "artist": "MAYOT",
@@ -2103,11 +2479,35 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 150,
+                                                                "title": "ya kogda-nibud uydu",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/ya kogda-nibud uydu.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 164,
                                                                 "title": "ауди",
                                                                 "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/ауди.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 169,
+                                                                "title": "Валентина",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/Валентина.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 172,
+                                                                "title": "Виновата сама",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/Виновата сама.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
@@ -2183,6 +2583,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 186,
+                                                                "title": "Сердце для шалав",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/Сердце для шалав.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 188,
                                                                 "title": "снег",
                                                                 "artist": "MAYOT",
@@ -2201,8 +2609,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 27,
-                                "name": "Metro Boomin, Travis Scott & Young Thug",
+                                "id": 33,
+                                "name": "Metro Boomin",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Metro_Boomin_2019.png/640px-Metro_Boomin_2019.png",
                                 "genre": "",
                                 "songs": [
@@ -2213,11 +2621,19 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 139,
+                                                                "title": "Type Shit",
+                                                                "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/Type Shit.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 28,
+                                "id": 34,
                                 "name": "Morgenshtern",
                                 "avatar": "https://ss.sport-express.ru/userfiles/materials/177/1774394/volga.jpg",
                                 "genre": "",
@@ -2239,6 +2655,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 17,
+                                                                "title": "Cadillac",
+                                                                "artist": "Morgenshtern, Элджей",
+                                                                "duration": "--:--",
+                                                                "url": "music/Cadillac.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 27,
                                                                 "title": "Cristal",
                                                                 "artist": "Morgenshtern",
@@ -2247,11 +2671,27 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 28,
+                                                                "title": "Cristal & МОЁТ",
+                                                                "artist": "Morgenshtern, Элджей",
+                                                                "duration": "--:--",
+                                                                "url": "music/cristal_.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 32,
                                                                 "title": "DINERO",
                                                                 "artist": "Morgenshtern",
                                                                 "duration": "--:--",
                                                                 "url": "music/DINERO.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 39,
+                                                                "title": "El Problema",
+                                                                "artist": "Morgenshtern, Тимати",
+                                                                "duration": "--:--",
+                                                                "url": "music/el problema.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
@@ -2271,6 +2711,22 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 88,
+                                                                "title": "novyy meren",
+                                                                "artist": "Morgenshtern",
+                                                                "duration": "--:--",
+                                                                "url": "music/novyy meren.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 92,
+                                                                "title": "pablo",
+                                                                "artist": "Morgenshtern",
+                                                                "duration": "--:--",
+                                                                "url": "music/pablo.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 124,
                                                                 "title": "SHOW",
                                                                 "artist": "Morgenshtern",
@@ -2285,45 +2741,117 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/WATAFUK.mp3",
                                                                 "language": "ru"
-                                                }
-                                ]
-                },
-                {
-                                "id": 29,
-                                "name": "Morgenshtern, Элджей",
-                                "avatar": "https://ss.sport-express.ru/userfiles/materials/177/1774394/volga.jpg",
-                                "genre": "",
-                                "songs": [
+                                                },
                                                 {
-                                                                "id": 17,
-                                                                "title": "Cadillac",
-                                                                "artist": "Morgenshtern, Элджей",
+                                                                "id": 171,
+                                                                "title": "Веном",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
-                                                                "url": "music/Cadillac.mp3",
+                                                                "url": "music/Веном.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
-                                                                "id": 28,
-                                                                "title": "Cristal & МОЁТ",
-                                                                "artist": "Morgenshtern, Элджей",
+                                                                "id": 174,
+                                                                "title": "Гоблин",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
-                                                                "url": "music/cristal_.mp3",
+                                                                "url": "music/Гоблин.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 187,
+                                                                "title": "Случайна",
+                                                                "artist": "Morgenshtern",
+                                                                "duration": "--:--",
+                                                                "url": "music/Случайна.mp3",
                                                                 "language": "ru"
                                                 }
                                 ]
                 },
                 {
-                                "id": 30,
+                                "id": 35,
+                                "name": "Nicki Minaj",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nicki_Minaj_Vogue_2023.jpg/640px-Nicki_Minaj_Vogue_2023.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 100,
+                                                                "title": "Poke It Out",
+                                                                "artist": "Playboi Carti, Nicki Minaj",
+                                                                "duration": "--:--",
+                                                                "url": "music/Poke it out.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 36,
+                                "name": "Offset",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 163,
+                                                                "title": "ZEZE",
+                                                                "artist": "Kodak Black, Travis Scott, Offset",
+                                                                "duration": "--:--",
+                                                                "url": "music/ZEZE.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 37,
                                 "name": "Playboi Carti",
                                 "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 1,
+                                                                "title": "2000",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/2000.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 2,
+                                                                "title": "24 Songs",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/24song.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 18,
+                                                                "title": "CARNIVAL",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/carnival.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 23,
                                                                 "title": "COCAINE NOSE (Extended Intro)",
                                                                 "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/COCAINE NOSE (Extended Intro).mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 25,
+                                                                "title": "Crank Master",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/crank master.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 26,
+                                                                "title": "CRASH",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/crash.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -2335,11 +2863,59 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "en"
                                                 },
                                                 {
+                                                                "id": 42,
+                                                                "title": "FE!N",
+                                                                "artist": "Travis Scott, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/fein.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
                                                                 "id": 43,
                                                                 "title": "Fell In Luv",
                                                                 "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/fell in love.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 45,
+                                                                "title": "FOMDJ",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/fomdj.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 49,
+                                                                "title": "Fuk Sumn",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/fuk sumn.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 51,
+                                                                "title": "GO CR4ZY",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/go crazy.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 71,
+                                                                "title": "KICKED OUT",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/KICKED OUT.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 76,
+                                                                "title": "Break The Bank",
+                                                                "artist": "Lil Uzi Vert & Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/Lil Uzi Vert & Playboi Carti - Break The Bank.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -2367,11 +2943,43 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "en"
                                                 },
                                                 {
+                                                                "id": 85,
+                                                                "title": "NO FACE",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/no face.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
                                                                 "id": 91,
                                                                 "title": "Over",
                                                                 "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/over.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 94,
+                                                                "title": "Phantom",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/Phantom.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 95,
+                                                                "title": "PHILLY",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/PHILLY.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 96,
+                                                                "title": "Photo",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/photo.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -2383,37 +2991,13 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "en"
                                                 },
                                                 {
-                                                                "id": 127,
-                                                                "title": "Sky",
-                                                                "artist": "Playboi Carti",
-                                                                "duration": "--:--",
-                                                                "url": "music/sky.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 31,
-                                "name": "Playboi Carti, Lil Uzi Vert",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
-                                                {
                                                                 "id": 98,
                                                                 "title": "Manage",
                                                                 "artist": "Playboi Carti, Lil Uzi Vert",
                                                                 "duration": "--:--",
                                                                 "url": "music/Playboi Carti, Lil Uzi Vert - Manage.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 32,
-                                "name": "Playboi Carti, Nicki Minaj",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
+                                                },
                                                 {
                                                                 "id": 100,
                                                                 "title": "Poke It Out",
@@ -2421,11 +3005,75 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Poke it out.mp3",
                                                                 "language": "en"
+                                                },
+                                                {
+                                                                "id": 103,
+                                                                "title": "PROBLEM CHILD",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/PROBLEM CHILD.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 106,
+                                                                "title": "Rather Lie",
+                                                                "artist": "Playboi Carti, The Weeknd",
+                                                                "duration": "--:--",
+                                                                "url": "music/ratherlife.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 127,
+                                                                "title": "Sky",
+                                                                "artist": "Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/sky.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 139,
+                                                                "title": "Type Shit",
+                                                                "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/Type Shit.mp3",
+                                                                "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 33,
+                                "id": 38,
+                                "name": "Quavo",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Quavo_Veld_festival_2017.jpg/640px-Quavo_Veld_festival_2017.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 52,
+                                                                "title": "Go Off",
+                                                                "artist": "Lil Uzi Vert, Quavo, Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/Go Off.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 39,
+                                "name": "Repair Lonely",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 145,
+                                                                "title": "Blast Off",
+                                                                "artist": "Void, Repair Lonely",
+                                                                "duration": "--:--",
+                                                                "url": "music/Void, Repair Lonely - Blast Off.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 40,
                                 "name": "Rich Amiri",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5ebe7fd740a4a1b14f2f6f56a10",
                                 "genre": "",
@@ -2529,9 +3177,41 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 34,
-                                "name": "THE SCOTTS, Travis Scott, Kid Cudi",
-                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
+                                "id": 41,
+                                "name": "Rich The Kid",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Rich_the_Kid_2018.png/640px-Rich_the_Kid_2018.png",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 18,
+                                                                "title": "CARNIVAL",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/carnival.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 42,
+                                "name": "Superheaven",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb37ac8de0bdfd8d5730874523",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 13,
+                                                                "title": "GO AGAIN (feat. Superheaven)",
+                                                                "artist": "BNYX®, Yeat, Superheaven",
+                                                                "duration": "--:--",
+                                                                "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 43,
+                                "name": "THE SCOTTS",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/en/0/07/The_Scotts_-_The_Scotts.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2545,7 +3225,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 35,
+                                "id": 44,
                                 "name": "TWXN",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5ebf915acb1ea01b164ee30975d",
                                 "genre": "",
@@ -2561,17 +3241,105 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 36,
+                                "id": 45,
+                                "name": "The Weeknd",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/The_Weeknd_Cannes_2023.png/640px-The_Weeknd_Cannes_2023.png",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 106,
+                                                                "title": "Rather Lie",
+                                                                "artist": "Playboi Carti, The Weeknd",
+                                                                "duration": "--:--",
+                                                                "url": "music/ratherlife.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 46,
                                 "name": "Travis Scott",
                                 "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 3,
+                                                                "title": "3500",
+                                                                "artist": "Travis Scott, Future, 2 Chainz",
+                                                                "duration": "--:--",
+                                                                "url": "music/3500.mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 5,
                                                                 "title": "4X4",
                                                                 "artist": "Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/4X4.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 15,
+                                                                "title": "BUTTERFLY EFFECT",
+                                                                "artist": "Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/butterfly effect.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 19,
+                                                                "title": "CHAMPAIN",
+                                                                "artist": "Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/champain.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 42,
+                                                                "title": "FE!N",
+                                                                "artist": "Travis Scott, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/fein.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 46,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/FRANCHISE.mov",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 47,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/franchise.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 48,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/franchise2.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 49,
+                                                                "title": "Fuk Sumn",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/fuk sumn.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 52,
+                                                                "title": "Go Off",
+                                                                "artist": "Lil Uzi Vert, Quavo, Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/Go Off.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -2591,11 +3359,35 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "en"
                                                 },
                                                 {
+                                                                "id": 59,
+                                                                "title": "HYAENA",
+                                                                "artist": "Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/hyaena.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 81,
+                                                                "title": "Trance",
+                                                                "artist": "Metro Boomin, Travis Scott & Young Thug",
+                                                                "duration": "--:--",
+                                                                "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
                                                                 "id": 84,
                                                                 "title": "Nightcrawler",
                                                                 "artist": "Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/Nightcrawler.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 90,
+                                                                "title": "OUT WEST",
+                                                                "artist": "JACKBOYS, Travis Scott, Young Thug",
+                                                                "duration": "--:--",
+                                                                "url": "music/out west.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -2623,11 +3415,27 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "en"
                                                 },
                                                 {
+                                                                "id": 133,
+                                                                "title": "THE SCOTTS",
+                                                                "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
+                                                                "duration": "--:--",
+                                                                "url": "music/The Scotts.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
                                                                 "id": 135,
                                                                 "title": "ESCAPE PLAN",
                                                                 "artist": "Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/Travi$ Scott - ESCAPE PLAN.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 136,
+                                                                "title": "CHAMPAIN & VACAY",
+                                                                "artist": "Travis Scott & Don Toliver",
+                                                                "duration": "--:--",
+                                                                "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -2645,92 +3453,52 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Travis Scott - THANK GOD.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 37,
-                                "name": "Travis Scott & Don Toliver",
-                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
-                                "genre": "",
-                                "songs": [
+                                                },
                                                 {
-                                                                "id": 136,
-                                                                "title": "CHAMPAIN & VACAY",
-                                                                "artist": "Travis Scott & Don Toliver",
+                                                                "id": 139,
+                                                                "title": "Type Shit",
+                                                                "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
                                                                 "duration": "--:--",
-                                                                "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 38,
-                                "name": "Travis Scott, Future, 2 Chainz",
-                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 3,
-                                                                "title": "3500",
-                                                                "artist": "Travis Scott, Future, 2 Chainz",
-                                                                "duration": "--:--",
-                                                                "url": "music/3500.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 39,
-                                "name": "Travis Scott, Playboi Carti",
-                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 42,
-                                                                "title": "FE!N",
-                                                                "artist": "Travis Scott, Playboi Carti",
-                                                                "duration": "--:--",
-                                                                "url": "music/fein.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 40,
-                                "name": "Travis Scott, Young Thug, M.I.A.",
-                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 46,
-                                                                "title": "FRANCHISE",
-                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
-                                                                "duration": "--:--",
-                                                                "url": "music/FRANCHISE.mov",
+                                                                "url": "music/Type Shit.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
-                                                                "id": 47,
-                                                                "title": "FRANCHISE",
-                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "id": 163,
+                                                                "title": "ZEZE",
+                                                                "artist": "Kodak Black, Travis Scott, Offset",
                                                                 "duration": "--:--",
-                                                                "url": "music/franchise.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 48,
-                                                                "title": "FRANCHISE",
-                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
-                                                                "duration": "--:--",
-                                                                "url": "music/franchise2.mp3",
+                                                                "url": "music/ZEZE.mp3",
                                                                 "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 41,
-                                "name": "Void, Repair Lonely",
+                                "id": 47,
+                                "name": "Ty Dolla $ign",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Ty_Dolla_Sign_2018.png/640px-Ty_Dolla_Sign_2018.png",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 18,
+                                                                "title": "CARNIVAL",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
+                                                                "duration": "--:--",
+                                                                "url": "music/carnival.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 49,
+                                                                "title": "Fuk Sumn",
+                                                                "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
+                                                                "duration": "--:--",
+                                                                "url": "music/fuk sumn.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 48,
+                                "name": "Void",
                                 "avatar": "https://i.scdn.co/image/ab6761610000e5eb8d61a005421acb06b875da19",
                                 "genre": "",
                                 "songs": [
@@ -2745,7 +3513,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 42,
+                                "id": 49,
                                 "name": "XXXTENTACION",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Xxxtentacion_%28cropped%29.jpg/640px-Xxxtentacion_%28cropped%29.jpg",
                                 "genre": "",
@@ -2761,11 +3529,19 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 43,
+                                "id": 50,
                                 "name": "Yeat",
                                 "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg/640px-Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg",
                                 "genre": "",
                                 "songs": [
+                                                {
+                                                                "id": 13,
+                                                                "title": "GO AGAIN (feat. Superheaven)",
+                                                                "artist": "BNYX®, Yeat, Superheaven",
+                                                                "duration": "--:--",
+                                                                "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
+                                                                "language": "en"
+                                                },
                                                 {
                                                                 "id": 151,
                                                                 "title": "BË QUIET (Feat. Kodak Black)",
@@ -2837,15 +3613,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Yeat - U Should Know.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 44,
-                                "name": "Yeat feat. Quavo",
-                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg/640px-Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg",
-                                "genre": "",
-                                "songs": [
+                                                },
                                                 {
                                                                 "id": 160,
                                                                 "title": "5BRAZY",
@@ -2853,15 +3621,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "duration": "--:--",
                                                                 "url": "music/Yeat feat. Quavo - 5BRAZY.mp3",
                                                                 "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 45,
-                                "name": "Yeat, EsDeeKid",
-                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebdf6f9f1b521c3f57fd336122",
-                                "genre": "",
-                                "songs": [
+                                                },
                                                 {
                                                                 "id": 161,
                                                                 "title": "Made It On Our Own",
@@ -2873,40 +3633,56 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 46,
-                                "name": "void, BABY BOI",
-                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "id": 51,
+                                "name": "Young Thug",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Young_Thug_-_Openair_Frauenfeld_2019_20.jpg/640px-Young_Thug_-_Openair_Frauenfeld_2019_20.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
-                                                                "id": 142,
-                                                                "title": "ON MY OWN",
-                                                                "artist": "void, BABY BOI",
+                                                                "id": 46,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
                                                                 "duration": "--:--",
-                                                                "url": "music/void, BABY BOI - ON MY OWN.mp3",
+                                                                "url": "music/FRANCHISE.mov",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 47,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/franchise.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 48,
+                                                                "title": "FRANCHISE",
+                                                                "artist": "Travis Scott, Young Thug, M.I.A.",
+                                                                "duration": "--:--",
+                                                                "url": "music/franchise2.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 81,
+                                                                "title": "Trance",
+                                                                "artist": "Metro Boomin, Travis Scott & Young Thug",
+                                                                "duration": "--:--",
+                                                                "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 90,
+                                                                "title": "OUT WEST",
+                                                                "artist": "JACKBOYS, Travis Scott, Young Thug",
+                                                                "duration": "--:--",
+                                                                "url": "music/out west.mp3",
                                                                 "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 47,
-                                "name": "void, Druskhi",
-                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-                                "genre": "",
-                                "songs": [
-                                                {
-                                                                "id": 143,
-                                                                "title": "FOR RICHIE",
-                                                                "artist": "void, Druskhi",
-                                                                "duration": "--:--",
-                                                                "url": "music/void, Druskhi - FOR RICHIE.mp3",
-                                                                "language": "en"
-                                                }
-                                ]
-                },
-                {
-                                "id": 48,
-                                "name": "void, ech0",
+                                "id": 52,
+                                "name": "ech0",
                                 "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
@@ -2921,335 +3697,207 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ]
                 },
                 {
-                                "id": 49,
-                                "name": "Разные английские исполнители",
+                                "id": 53,
+                                "name": "fakemink",
                                 "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
-                                                                "id": 1,
-                                                                "title": "2000",
-                                                                "artist": "Разные английские исполнители",
+                                                                "id": 14,
+                                                                "title": "FEVER",
+                                                                "artist": "BUCKSHOT, fakemink",
                                                                 "duration": "--:--",
-                                                                "url": "music/2000.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 2,
-                                                                "title": "24song",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/24song.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 6,
-                                                                "title": "5% TNT",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/5% TNT.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 15,
-                                                                "title": "butterfly effect",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/butterfly effect.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 19,
-                                                                "title": "champain",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/champain.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 25,
-                                                                "title": "crank master",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/crank master.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 26,
-                                                                "title": "crash",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/crash.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 30,
-                                                                "title": "dark thought",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/dark thought.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 33,
-                                                                "title": "do it all",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/do it all.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 39,
-                                                                "title": "el problema",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/el problema.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 45,
-                                                                "title": "fomdj",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/fomdj.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 51,
-                                                                "title": "go crazy",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/go crazy.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 52,
-                                                                "title": "Go Off",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Go Off.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 54,
-                                                                "title": "gta",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/gta.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 59,
-                                                                "title": "hyaena",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/hyaena.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 69,
-                                                                "title": "JACKBOYS",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/JACKBOYS.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 71,
-                                                                "title": "KICKED OUT",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/KICKED OUT.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 78,
-                                                                "title": "lollipop",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/lollipop.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 80,
-                                                                "title": "LV Sandals",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/LV Sandals.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 85,
-                                                                "title": "no face",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/no face.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 94,
-                                                                "title": "Phantom",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Phantom.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 95,
-                                                                "title": "PHILLY",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/PHILLY.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 96,
-                                                                "title": "photo",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/photo.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 103,
-                                                                "title": "PROBLEM CHILD",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/PROBLEM CHILD.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 104,
-                                                                "title": "Rampage Song",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Rampage Song.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 106,
-                                                                "title": "ratherlife",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/ratherlife.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 120,
-                                                                "title": "Riley",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Riley.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 125,
-                                                                "title": "shyne",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/shyne.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 128,
-                                                                "title": "SOME MORE",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/SOME MORE.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 149,
-                                                                "title": "what u need",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/what u need.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 150,
-                                                                "title": "ya kogda-nibud uydu",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/ya kogda-nibud uydu.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 162,
-                                                                "title": "Your Turn",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Your Turn.mp3",
+                                                                "url": "music/BUCKSHOT feat. fakemink - FEVER.mp3",
                                                                 "language": "en"
                                                 }
                                 ]
                 },
                 {
-                                "id": 50,
-                                "name": "Разные русские исполнители",
+                                "id": 54,
+                                "name": "void",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 142,
+                                                                "title": "ON MY OWN",
+                                                                "artist": "void, BABY BOI",
+                                                                "duration": "--:--",
+                                                                "url": "music/void, BABY BOI - ON MY OWN.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 143,
+                                                                "title": "FOR RICHIE",
+                                                                "artist": "void, Druskhi",
+                                                                "duration": "--:--",
+                                                                "url": "music/void, Druskhi - FOR RICHIE.mp3",
+                                                                "language": "en"
+                                                },
+                                                {
+                                                                "id": 144,
+                                                                "title": "OBSESSED",
+                                                                "artist": "void, ech0",
+                                                                "duration": "--:--",
+                                                                "url": "music/void, ech0 - OBSESSED.mp3",
+                                                                "language": "en"
+                                                }
+                                ]
+                },
+                {
+                                "id": 55,
+                                "name": "Еврогей",
                                 "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
-                                                                "id": 4,
-                                                                "title": "4 Raws",
-                                                                "artist": "Разные русские исполнители",
+                                                                "id": 180,
+                                                                "title": "Мы пидоры",
+                                                                "artist": "Еврогей",
                                                                 "duration": "--:--",
-                                                                "url": "music/4 Raws.mp3",
+                                                                "url": "music/мы пидоры.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 56,
+                                "name": "Натура",
+                                "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 168,
+                                                                "title": "блядская натура",
+                                                                "artist": "Натура",
+                                                                "duration": "--:--",
+                                                                "url": "music/блядская натура.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 57,
+                                "name": "Нурминский",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb0e0a679f1437508b2cb76c9d",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 165,
+                                                                "title": "Ауф",
+                                                                "artist": "Нурминский",
+                                                                "duration": "--:--",
+                                                                "url": "music/ауф.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 170,
+                                                                "title": "Валим",
+                                                                "artist": "Нурминский",
+                                                                "duration": "--:--",
+                                                                "url": "music/валим.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 177,
+                                                                "title": "Мент",
+                                                                "artist": "Нурминский",
+                                                                "duration": "--:--",
+                                                                "url": "music/мент.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 58,
+                                "name": "Платина",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebf16b8ce97a77910d08d3fa40",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 101,
+                                                                "title": "pososi",
+                                                                "artist": "Платина",
+                                                                "duration": "--:--",
+                                                                "url": "music/pososi.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 59,
+                                "name": "Серёга",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Seryoga_KingRing.jpg/640px-Seryoga_KingRing.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 20,
+                                                                "title": "Чёрный бумер",
+                                                                "artist": "Серёга",
+                                                                "duration": "--:--",
+                                                                "url": "music/chernyy bumer.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 60,
+                                "name": "Тимати",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Timati%2C_2017.jpg/640px-Timati%2C_2017.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 39,
+                                                                "title": "El Problema",
+                                                                "artist": "Morgenshtern, Тимати",
+                                                                "duration": "--:--",
+                                                                "url": "music/el problema.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 61,
+                                "name": "Элджей",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Allj2018.jpg/640px-Allj2018.jpg",
+                                "genre": "",
+                                "songs": [
+                                                {
+                                                                "id": 17,
+                                                                "title": "Cadillac",
+                                                                "artist": "Morgenshtern, Элджей",
+                                                                "duration": "--:--",
+                                                                "url": "music/Cadillac.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
+                                                                "id": 28,
+                                                                "title": "Cristal & МОЁТ",
+                                                                "artist": "Morgenshtern, Элджей",
+                                                                "duration": "--:--",
+                                                                "url": "music/cristal_.mp3",
+                                                                "language": "ru"
+                                                }
+                                ]
+                },
+                {
+                                "id": 62,
+                                "name": "Ямаш",
+                                "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
+                                "genre": "",
+                                "songs": [
+                                                {
                                                                 "id": 8,
                                                                 "title": "abu_dhabi_vabu",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/abu_dhabi_vabu.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
-                                                                "id": 12,
-                                                                "title": "bebebe",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/bebebe.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 20,
-                                                                "title": "chernyy bumer",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/chernyy bumer.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 21,
-                                                                "title": "chetyre ukrainki",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/chetyre ukrainki.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 34,
-                                                                "title": "dom",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/dom.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 55,
-                                                                "title": "Head Shot ",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Head Shot .mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
                                                                 "id": 73,
                                                                 "title": "Ligala sosa",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/Ligala sosa.mp3",
                                                                 "language": "ru"
@@ -3257,177 +3905,17 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 83,
                                                                 "title": "navalnyy lyokha",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/navalnyy lyokha.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
-                                                                "id": 87,
-                                                                "title": "novaya volna",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/novaya volna.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 88,
-                                                                "title": "novyy meren",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/novyy meren.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 89,
-                                                                "title": "ona-ono",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/ona-ono.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 92,
-                                                                "title": "pablo",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/pablo.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 101,
-                                                                "title": "pososi",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/pososi.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
                                                                 "id": 105,
                                                                 "title": "ratatatata",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/ratatatata.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 107,
-                                                                "title": "retro rev",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/retro rev.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 121,
-                                                                "title": "san laran",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/san laran.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 165,
-                                                                "title": "ауф",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/ауф.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 166,
-                                                                "title": "Бандана",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Бандана.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 167,
-                                                                "title": "Бассок",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Бассок.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 168,
-                                                                "title": "блядская натура",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/блядская натура.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 169,
-                                                                "title": "Валентина",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Валентина.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 170,
-                                                                "title": "валим",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/валим.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 171,
-                                                                "title": "Веном",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Веном.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 172,
-                                                                "title": "Виновата сама",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Виновата сама.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 174,
-                                                                "title": "Гоблин",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Гоблин.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 177,
-                                                                "title": "мент",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/мент.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 180,
-                                                                "title": "мы пидоры",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/мы пидоры.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 186,
-                                                                "title": "Сердце для шалав",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Сердце для шалав.mp3",
-                                                                "language": "ru"
-                                                },
-                                                {
-                                                                "id": 187,
-                                                                "title": "Случайна",
-                                                                "artist": "Разные русские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/Случайна.mp3",
                                                                 "language": "ru"
                                                 }
                                 ]
@@ -3443,15 +3931,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 1,
                                                                 "title": "2000",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/2000.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
                                                                 "id": 2,
-                                                                "title": "24song",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "24 Songs",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/24song.mp3",
                                                                 "language": "en"
@@ -3475,7 +3963,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 6,
                                                                 "title": "5% TNT",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Ken Carson",
                                                                 "duration": "--:--",
                                                                 "url": "music/5% TNT.mp3",
                                                                 "language": "en"
@@ -3506,8 +3994,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 15,
-                                                                "title": "butterfly effect",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "BUTTERFLY EFFECT",
+                                                                "artist": "Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/butterfly effect.mp3",
                                                                 "language": "en"
@@ -3522,8 +4010,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 19,
-                                                                "title": "champain",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "CHAMPAIN",
+                                                                "artist": "Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/champain.mp3",
                                                                 "language": "en"
@@ -3538,24 +4026,24 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 25,
-                                                                "title": "crank master",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "Crank Master",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/crank master.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
                                                                 "id": 26,
-                                                                "title": "crash",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "CRASH",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/crash.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
                                                                 "id": 30,
-                                                                "title": "dark thought",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "Dark Thoughts",
+                                                                "artist": "Lil Tecca",
                                                                 "duration": "--:--",
                                                                 "url": "music/dark thought.mp3",
                                                                 "language": "en"
@@ -3570,8 +4058,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 33,
-                                                                "title": "do it all",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "DO IT ALL",
+                                                                "artist": "Iann Dior",
                                                                 "duration": "--:--",
                                                                 "url": "music/do it all.mp3",
                                                                 "language": "en"
@@ -3582,14 +4070,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "artist": "Don Toliver",
                                                                 "duration": "--:--",
                                                                 "url": "music/Don Toliver - KRYPTONITE.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 39,
-                                                                "title": "el problema",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/el problema.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -3634,8 +4114,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 45,
-                                                                "title": "fomdj",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "FOMDJ",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/fomdj.mp3",
                                                                 "language": "en"
@@ -3682,8 +4162,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 51,
-                                                                "title": "go crazy",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "GO CR4ZY",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/go crazy.mp3",
                                                                 "language": "en"
@@ -3691,7 +4171,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 52,
                                                                 "title": "Go Off",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Lil Uzi Vert, Quavo, Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/Go Off.mp3",
                                                                 "language": "en"
@@ -3706,8 +4186,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 54,
-                                                                "title": "gta",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "GTA",
+                                                                "artist": "Future",
                                                                 "duration": "--:--",
                                                                 "url": "music/gta.mp3",
                                                                 "language": "en"
@@ -3738,8 +4218,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 59,
-                                                                "title": "hyaena",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "HYAENA",
+                                                                "artist": "Travis Scott",
                                                                 "duration": "--:--",
                                                                 "url": "music/hyaena.mp3",
                                                                 "language": "en"
@@ -3811,7 +4291,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 69,
                                                                 "title": "JACKBOYS",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "JACKBOYS",
                                                                 "duration": "--:--",
                                                                 "url": "music/JACKBOYS.mp3",
                                                                 "language": "en"
@@ -3827,7 +4307,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 71,
                                                                 "title": "KICKED OUT",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/KICKED OUT.mp3",
                                                                 "language": "en"
@@ -3866,8 +4346,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 78,
-                                                                "title": "lollipop",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "Lollipop",
+                                                                "artist": "Lil Wayne",
                                                                 "duration": "--:--",
                                                                 "url": "music/lollipop.mp3",
                                                                 "language": "en"
@@ -3883,7 +4363,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 80,
                                                                 "title": "LV Sandals",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Lil Uzi Vert",
                                                                 "duration": "--:--",
                                                                 "url": "music/LV Sandals.mp3",
                                                                 "language": "en"
@@ -3914,8 +4394,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 85,
-                                                                "title": "no face",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "NO FACE",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/no face.mp3",
                                                                 "language": "en"
@@ -3939,7 +4419,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 94,
                                                                 "title": "Phantom",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/Phantom.mp3",
                                                                 "language": "en"
@@ -3947,15 +4427,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 95,
                                                                 "title": "PHILLY",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/PHILLY.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
                                                                 "id": 96,
-                                                                "title": "photo",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "Photo",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/photo.mp3",
                                                                 "language": "en"
@@ -3987,7 +4467,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 103,
                                                                 "title": "PROBLEM CHILD",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Playboi Carti",
                                                                 "duration": "--:--",
                                                                 "url": "music/PROBLEM CHILD.mp3",
                                                                 "language": "en"
@@ -3995,15 +4475,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 104,
                                                                 "title": "Rampage Song",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Ken Carson",
                                                                 "duration": "--:--",
                                                                 "url": "music/Rampage Song.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
                                                                 "id": 106,
-                                                                "title": "ratherlife",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "Rather Lie",
+                                                                "artist": "Playboi Carti, The Weeknd",
                                                                 "duration": "--:--",
                                                                 "url": "music/ratherlife.mp3",
                                                                 "language": "en"
@@ -4107,7 +4587,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 120,
                                                                 "title": "Riley",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Iann Dior",
                                                                 "duration": "--:--",
                                                                 "url": "music/Riley.mp3",
                                                                 "language": "en"
@@ -4131,7 +4611,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 125,
                                                                 "title": "shyne",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Destroy Lonely",
                                                                 "duration": "--:--",
                                                                 "url": "music/shyne.mp3",
                                                                 "language": "en"
@@ -4155,7 +4635,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 128,
                                                                 "title": "SOME MORE",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Ken Carson",
                                                                 "duration": "--:--",
                                                                 "url": "music/SOME MORE.mp3",
                                                                 "language": "en"
@@ -4290,18 +4770,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 149,
-                                                                "title": "what u need",
-                                                                "artist": "Разные английские исполнители",
+                                                                "title": "WHAT U NEED",
+                                                                "artist": "Don Toliver",
                                                                 "duration": "--:--",
                                                                 "url": "music/what u need.mp3",
-                                                                "language": "en"
-                                                },
-                                                {
-                                                                "id": 150,
-                                                                "title": "ya kogda-nibud uydu",
-                                                                "artist": "Разные английские исполнители",
-                                                                "duration": "--:--",
-                                                                "url": "music/ya kogda-nibud uydu.mp3",
                                                                 "language": "en"
                                                 },
                                                 {
@@ -4395,7 +4867,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 162,
                                                                 "title": "Your Turn",
-                                                                "artist": "Разные английские исполнители",
+                                                                "artist": "Lil Uzi Vert",
                                                                 "duration": "--:--",
                                                                 "url": "music/Your Turn.mp3",
                                                                 "language": "en"
@@ -4418,7 +4890,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 4,
                                                                 "title": "4 Raws",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/4 Raws.mp3",
                                                                 "language": "ru"
@@ -4426,7 +4898,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 8,
                                                                 "title": "abu_dhabi_vabu",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/abu_dhabi_vabu.mp3",
                                                                 "language": "ru"
@@ -4458,7 +4930,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 12,
                                                                 "title": "bebebe",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/bebebe.mp3",
                                                                 "language": "ru"
@@ -4481,8 +4953,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 20,
-                                                                "title": "chernyy bumer",
-                                                                "artist": "Разные русские исполнители",
+                                                                "title": "Чёрный бумер",
+                                                                "artist": "Серёга",
                                                                 "duration": "--:--",
                                                                 "url": "music/chernyy bumer.mp3",
                                                                 "language": "ru"
@@ -4490,7 +4962,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 21,
                                                                 "title": "chetyre ukrainki",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/chetyre ukrainki.mp3",
                                                                 "language": "ru"
@@ -4546,7 +5018,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 34,
                                                                 "title": "dom",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/dom.mp3",
                                                                 "language": "ru"
@@ -4576,9 +5048,17 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 39,
+                                                                "title": "El Problema",
+                                                                "artist": "Morgenshtern, Тимати",
+                                                                "duration": "--:--",
+                                                                "url": "music/el problema.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 55,
-                                                                "title": "Head Shot ",
-                                                                "artist": "Разные русские исполнители",
+                                                                "title": "Head Shot",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/Head Shot .mp3",
                                                                 "language": "ru"
@@ -4602,7 +5082,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 73,
                                                                 "title": "Ligala sosa",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/Ligala sosa.mp3",
                                                                 "language": "ru"
@@ -4610,7 +5090,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 83,
                                                                 "title": "navalnyy lyokha",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/navalnyy lyokha.mp3",
                                                                 "language": "ru"
@@ -4626,7 +5106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 87,
                                                                 "title": "novaya volna",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/novaya volna.mp3",
                                                                 "language": "ru"
@@ -4634,7 +5114,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 88,
                                                                 "title": "novyy meren",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
                                                                 "url": "music/novyy meren.mp3",
                                                                 "language": "ru"
@@ -4642,7 +5122,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 89,
                                                                 "title": "ona-ono",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/ona-ono.mp3",
                                                                 "language": "ru"
@@ -4650,7 +5130,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 92,
                                                                 "title": "pablo",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
                                                                 "url": "music/pablo.mp3",
                                                                 "language": "ru"
@@ -4674,7 +5154,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 101,
                                                                 "title": "pososi",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Платина",
                                                                 "duration": "--:--",
                                                                 "url": "music/pososi.mp3",
                                                                 "language": "ru"
@@ -4690,7 +5170,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 105,
                                                                 "title": "ratatatata",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Ямаш",
                                                                 "duration": "--:--",
                                                                 "url": "music/ratatatata.mp3",
                                                                 "language": "ru"
@@ -4698,7 +5178,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 107,
                                                                 "title": "retro rev",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/retro rev.mp3",
                                                                 "language": "ru"
@@ -4706,7 +5186,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 121,
                                                                 "title": "san laran",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/san laran.mp3",
                                                                 "language": "ru"
@@ -4752,6 +5232,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                                                 "language": "ru"
                                                 },
                                                 {
+                                                                "id": 150,
+                                                                "title": "ya kogda-nibud uydu",
+                                                                "artist": "MAYOT",
+                                                                "duration": "--:--",
+                                                                "url": "music/ya kogda-nibud uydu.mp3",
+                                                                "language": "ru"
+                                                },
+                                                {
                                                                 "id": 164,
                                                                 "title": "ауди",
                                                                 "artist": "MAYOT",
@@ -4761,8 +5249,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 165,
-                                                                "title": "ауф",
-                                                                "artist": "Разные русские исполнители",
+                                                                "title": "Ауф",
+                                                                "artist": "Нурминский",
                                                                 "duration": "--:--",
                                                                 "url": "music/ауф.mp3",
                                                                 "language": "ru"
@@ -4770,7 +5258,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 166,
                                                                 "title": "Бандана",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Kizaru, Big Baby Tape",
                                                                 "duration": "--:--",
                                                                 "url": "music/Бандана.mp3",
                                                                 "language": "ru"
@@ -4778,7 +5266,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 167,
                                                                 "title": "Бассок",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "GONE.Fludd",
                                                                 "duration": "--:--",
                                                                 "url": "music/Бассок.mp3",
                                                                 "language": "ru"
@@ -4786,7 +5274,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 168,
                                                                 "title": "блядская натура",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Натура",
                                                                 "duration": "--:--",
                                                                 "url": "music/блядская натура.mp3",
                                                                 "language": "ru"
@@ -4794,15 +5282,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 169,
                                                                 "title": "Валентина",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/Валентина.mp3",
                                                                 "language": "ru"
                                                 },
                                                 {
                                                                 "id": 170,
-                                                                "title": "валим",
-                                                                "artist": "Разные русские исполнители",
+                                                                "title": "Валим",
+                                                                "artist": "Нурминский",
                                                                 "duration": "--:--",
                                                                 "url": "music/валим.mp3",
                                                                 "language": "ru"
@@ -4810,7 +5298,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 171,
                                                                 "title": "Веном",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
                                                                 "url": "music/Веном.mp3",
                                                                 "language": "ru"
@@ -4818,7 +5306,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 172,
                                                                 "title": "Виновата сама",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/Виновата сама.mp3",
                                                                 "language": "ru"
@@ -4834,7 +5322,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 174,
                                                                 "title": "Гоблин",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
                                                                 "url": "music/Гоблин.mp3",
                                                                 "language": "ru"
@@ -4857,8 +5345,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 177,
-                                                                "title": "мент",
-                                                                "artist": "Разные русские исполнители",
+                                                                "title": "Мент",
+                                                                "artist": "Нурминский",
                                                                 "duration": "--:--",
                                                                 "url": "music/мент.mp3",
                                                                 "language": "ru"
@@ -4881,8 +5369,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 },
                                                 {
                                                                 "id": 180,
-                                                                "title": "мы пидоры",
-                                                                "artist": "Разные русские исполнители",
+                                                                "title": "Мы пидоры",
+                                                                "artist": "Еврогей",
                                                                 "duration": "--:--",
                                                                 "url": "music/мы пидоры.mp3",
                                                                 "language": "ru"
@@ -4930,7 +5418,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 186,
                                                                 "title": "Сердце для шалав",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "MAYOT",
                                                                 "duration": "--:--",
                                                                 "url": "music/Сердце для шалав.mp3",
                                                                 "language": "ru"
@@ -4938,7 +5426,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 {
                                                                 "id": 187,
                                                                 "title": "Случайна",
-                                                                "artist": "Разные русские исполнители",
+                                                                "artist": "Morgenshtern",
                                                                 "duration": "--:--",
                                                                 "url": "music/Случайна.mp3",
                                                                 "language": "ru"
@@ -4983,6 +5471,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
             const audioPlayer = document.getElementById('audio-player');
+            const voiceControlBtn = document.getElementById('voice-control');
+            const voiceControlText = document.getElementById('voice-control-text');
 
             // Текущее состояние
             let isPlaying = false;
@@ -5372,6 +5862,184 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
 
+            function showNotification(message) {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                requestAnimationFrame(() => notification.classList.add('show'));
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 2500);
+            }
+
+            function normalizeVoiceText(text) {
+                return String(text || '')
+                    .toLowerCase()
+                    .replace(/ё/g, 'е')
+                    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+
+            function findSongByVoiceQuery(query) {
+                const normalizedQuery = normalizeVoiceText(query);
+                if (!normalizedQuery) return null;
+
+                return allSongs.find(song => {
+                    const title = normalizeVoiceText(song.title);
+                    const artist = normalizeVoiceText(song.artist);
+                    const fileName = normalizeVoiceText(
+                        decodeURIComponent((song.url || '').split('/').pop() || '').replace(/\.(mp3|wav|ogg|m4a|mov)$/i, '')
+                    );
+
+                    return title.includes(normalizedQuery) ||
+                        normalizedQuery.includes(title) ||
+                        artist.includes(normalizedQuery) ||
+                        fileName.includes(normalizedQuery);
+                });
+            }
+
+            function playSongFromLibrary(song) {
+                if (!song) return;
+
+                playlist = [...allSongs];
+                playlistEl.innerHTML = '';
+                currentSongIndex = playlist.findIndex(item => item.url === song.url);
+                if (currentSongIndex < 0) currentSongIndex = 0;
+
+                generateUserPlaylist();
+                loadSong(currentSongIndex);
+
+                if (!isPlaying) {
+                    isPlaying = true;
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+
+                audioPlayer.play().catch(error => {
+                    console.error('Ошибка воспроизведения:', error);
+                    showNotification('Браузер заблокировал автозапуск. Нажмите Play и повторите команду.');
+                });
+            }
+
+            function handleVoiceCommand(commandText) {
+                const command = normalizeVoiceText(commandText);
+                if (!command) return;
+
+                if (command.includes('след') || command.includes('next')) {
+                    nextSong();
+                    showNotification('Следующий трек');
+                    return;
+                }
+
+                if (command.includes('пред') || command.includes('назад') || command.includes('previous')) {
+                    prevSong();
+                    showNotification('Предыдущий трек');
+                    return;
+                }
+
+                if (command.includes('пауза') || command.includes('pause') || command.includes('стоп')) {
+                    if (isPlaying) togglePlay();
+                    showNotification('Пауза');
+                    return;
+                }
+
+                if (command.includes('включ') || command.includes('play') || command.includes('играй')) {
+                    const query = command
+                        .replace(/^(включи|включить|поставь|поставить|сыграй|играй|play)\s+/i, '')
+                        .replace(/\b(трек|песню|музыку)\b/gi, '')
+                        .trim();
+                    const song = findSongByVoiceQuery(query);
+
+                    if (song) {
+                        playSongFromLibrary(song);
+                        showNotification(`Включаю: ${song.title}`);
+                    } else if (playlist.length > 0) {
+                        if (!isPlaying) togglePlay();
+                        showNotification('Воспроизведение');
+                    } else {
+                        showNotification('Не нашёл трек. Попробуйте назвать его точнее.');
+                    }
+                    return;
+                }
+
+                const song = findSongByVoiceQuery(command);
+                if (song) {
+                    playSongFromLibrary(song);
+                    showNotification(`Включаю: ${song.title}`);
+                    return;
+                }
+
+                showNotification('Не понял команду. Попробуйте: «включи Sky», «следующий» или «пауза».');
+            }
+
+            function initVoiceControl() {
+                if (!voiceControlBtn || !voiceControlText) return;
+
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (!SpeechRecognition) {
+                    voiceControlBtn.disabled = true;
+                    voiceControlText.textContent = 'Помощник недоступен';
+                    return;
+                }
+
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'ru-RU';
+                recognition.continuous = true;
+                recognition.interimResults = false;
+
+                let isListening = false;
+
+                function updateVoiceButton(active, text) {
+                    voiceControlBtn.classList.toggle('active', active);
+                    voiceControlBtn.setAttribute('aria-pressed', String(active));
+                    voiceControlText.textContent = text;
+                }
+
+                voiceControlBtn.addEventListener('click', () => {
+                    if (isListening) {
+                        recognition.stop();
+                        isListening = false;
+                        updateVoiceButton(false, 'Включить помощника');
+                        showNotification('Голосовое управление выключено.');
+                        return;
+                    }
+
+                    try {
+                        recognition.start();
+                    } catch (error) {
+                        console.error('Не удалось запустить голосовое управление:', error);
+                    }
+                });
+
+                recognition.onstart = () => {
+                    isListening = true;
+                    updateVoiceButton(true, 'Помощник слушает');
+                    showNotification('Голосовое управление включено.');
+                };
+
+                recognition.onresult = event => {
+                    const transcript = event.results[event.results.length - 1][0].transcript;
+                    handleVoiceCommand(transcript);
+                };
+
+                recognition.onerror = event => {
+                    if (event.error === 'not-allowed') {
+                        showNotification('Разрешите доступ к микрофону в браузере.');
+                    } else if (event.error !== 'no-speech') {
+                        console.warn('Ошибка голосового управления:', event.error);
+                    }
+                };
+
+                recognition.onend = () => {
+                    isListening = false;
+                    updateVoiceButton(false, 'Включить помощника');
+                };
+            }
+
             // Инициализация
             function init() {
                 initVisualizer();
@@ -5379,6 +6047,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 generateArtistsList();
                 generatePopularPlaylist();
                 generateUserPlaylist();
+                initVoiceControl();
 
                 // Добавляем обработчик для кнопки play/pause
                 playPauseBtn.addEventListener('click', togglePlay);
