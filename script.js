@@ -5999,9 +5999,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 const recognition = new SpeechRecognition();
                 recognition.lang = 'ru-RU';
                 recognition.continuous = true;
-                recognition.interimResults = false;
+                recognition.interimResults = true;
 
-                let isListening = false;
+                let shouldKeepListening = false;
+                let isRecognitionRunning = false;
+                let restartTimer = null;
 
                 function updateVoiceButton(active, text) {
                     voiceControlBtn.classList.toggle('active', active);
@@ -6009,44 +6011,105 @@ document.addEventListener('DOMContentLoaded', function () {
                     voiceControlText.textContent = text;
                 }
 
-                voiceControlBtn.addEventListener('click', () => {
-                    if (isListening) {
+                function stopListening(showMessage = true) {
+                    shouldKeepListening = false;
+                    clearTimeout(restartTimer);
+                    updateVoiceButton(false, 'Включить помощника');
+
+                    if (isRecognitionRunning) {
                         recognition.stop();
-                        isListening = false;
-                        updateVoiceButton(false, 'Включить помощника');
+                    }
+
+                    if (showMessage) {
                         showNotification('Голосовое управление выключено.');
+                    }
+                }
+
+                function startListening(showMessage = false) {
+                    if (!shouldKeepListening || isRecognitionRunning) {
                         return;
                     }
 
                     try {
                         recognition.start();
+                        updateVoiceButton(true, 'Запуск помощника...');
+
+                        if (showMessage) {
+                            showNotification('Разрешите микрофон, если браузер спросит. Помощник запускается...');
+                        }
                     } catch (error) {
+                        if (error && error.name === 'InvalidStateError') {
+                            return;
+                        }
+
                         console.error('Не удалось запустить голосовое управление:', error);
+                        stopListening(false);
+                        showNotification('Не удалось запустить помощника. Попробуйте нажать кнопку ещё раз.');
                     }
+                }
+
+                voiceControlBtn.addEventListener('click', () => {
+                    if (shouldKeepListening || isRecognitionRunning) {
+                        stopListening();
+                        return;
+                    }
+
+                    shouldKeepListening = true;
+                    startListening(true);
                 });
 
                 recognition.onstart = () => {
-                    isListening = true;
+                    isRecognitionRunning = true;
                     updateVoiceButton(true, 'Помощник слушает');
-                    showNotification('Голосовое управление включено.');
+                    showNotification('Голосовое управление включено. Говорите команду.');
                 };
 
                 recognition.onresult = event => {
-                    const transcript = event.results[event.results.length - 1][0].transcript;
+                    const result = event.results[event.results.length - 1];
+                    const transcript = result[0].transcript;
+
+                    if (!result.isFinal) {
+                        updateVoiceButton(true, `Слышу: ${transcript}`);
+                        return;
+                    }
+
+                    updateVoiceButton(true, 'Помощник слушает');
                     handleVoiceCommand(transcript);
                 };
 
                 recognition.onerror = event => {
                     if (event.error === 'not-allowed') {
+                        shouldKeepListening = false;
+                        updateVoiceButton(false, 'Разрешите микрофон');
                         showNotification('Разрешите доступ к микрофону в браузере.');
+                        return;
+                    }
+
+                    if (event.error === 'audio-capture') {
+                        shouldKeepListening = false;
+                        updateVoiceButton(false, 'Микрофон не найден');
+                        showNotification('Микрофон не найден или занят другим приложением.');
+                        return;
+                    }
+
+                    if (event.error === 'no-speech') {
+                        updateVoiceButton(true, 'Помощник слушает');
                     } else if (event.error !== 'no-speech') {
                         console.warn('Ошибка голосового управления:', event.error);
                     }
                 };
 
                 recognition.onend = () => {
-                    isListening = false;
-                    updateVoiceButton(false, 'Включить помощника');
+                    isRecognitionRunning = false;
+
+                    if (!shouldKeepListening) {
+                        updateVoiceButton(false, 'Включить помощника');
+                        return;
+                    }
+
+                    updateVoiceButton(true, 'Помощник слушает');
+                    clearTimeout(restartTimer);
+                    restartTimer = setTimeout(() => startListening(false), 400);
                 };
             }
 
