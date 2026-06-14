@@ -1523,7 +1523,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 1,
                                 "name": "A$AP Rocky",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/ASAP_Rocky_-_Openair_Frauenfeld_2019_08.jpg/640px-ASAP_Rocky_-_Openair_Frauenfeld_2019_08.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1539,7 +1539,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 2,
                                 "name": "BNYX®, Yeat, Superheaven",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb37ac8de0bdfd8d5730874523",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1555,7 +1555,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 3,
                                 "name": "BUCKSHOT, fakemink",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebc0084c5ea70c68ff42b73266",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1571,7 +1571,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 4,
                                 "name": "Destroy Lonely",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb9a3d4a707af9237b33d33e3b",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1587,7 +1587,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 5,
                                 "name": "Don Toliver",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Don_Toliver_2021.png/640px-Don_Toliver_2021.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1603,7 +1603,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 6,
                                 "name": "Drake",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Drake_at_The_Carter_Effect_2017_%28cropped%29.jpg/640px-Drake_at_The_Carter_Effect_2017_%28cropped%29.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1619,7 +1619,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 7,
                                 "name": "EsDeeKid",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebdf6f9f1b521c3f57fd336122",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1635,7 +1635,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 8,
                                 "name": "Future",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Future_-_Openair_Frauenfeld_2019_02.jpg/640px-Future_-_Openair_Frauenfeld_2019_02.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1651,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 9,
                                 "name": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1667,7 +1667,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 10,
                                 "name": "GONE.Fludd",
-                                "avatar": "",
+                                "avatar": "https://showbi.ru/upload/2020/11/18/20201118170848-51d9621b.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1731,7 +1731,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 11,
                                 "name": "Homixide Gang",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb2e59dedcd40b7d57bf3249b5",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1747,7 +1747,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 12,
                                 "name": "I am music",
-                                "avatar": "",
+                                "avatar": "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1763,7 +1763,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 13,
                                 "name": "IMG",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab67616d00001e02dfd6bfe770e5c34a636b2a72",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1827,7 +1827,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 14,
                                 "name": "JACKBOYS, Travis Scott, Young Thug",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1843,7 +1843,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 15,
                                 "name": "Kanye West, Chris Martin",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/640px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1859,7 +1859,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 16,
                                 "name": "Kanye West, Dwele",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/640px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1875,7 +1875,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 17,
                                 "name": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1891,7 +1891,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 18,
                                 "name": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1907,7 +1907,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 19,
                                 "name": "Ken Carson",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb3e089e47bdf860199a4b3b42",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1931,7 +1931,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 20,
                                 "name": "Kodak Black, Travis Scott, Offset",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1947,7 +1947,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 21,
                                 "name": "Lil Baby",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lil_Baby_in_2020.png/640px-Lil_Baby_in_2020.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1963,7 +1963,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 22,
                                 "name": "Lil Tecca",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lil_Tecca_2019.png/640px-Lil_Tecca_2019.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1979,7 +1979,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 23,
                                 "name": "Lil Uzi Vert",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lil_Uzi_Vert_%282018%29.png/640px-Lil_Uzi_Vert_%282018%29.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -1995,7 +1995,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 24,
                                 "name": "Lil Uzi Vert & Playboi Carti",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2011,7 +2011,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 25,
                                 "name": "Lil Uzi Vert, Future",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lil_Uzi_Vert_%282018%29.png/640px-Lil_Uzi_Vert_%282018%29.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2027,7 +2027,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 26,
                                 "name": "MAYOT",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebedc356acc39dfc52fd4f06c1",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2203,7 +2203,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 27,
                                 "name": "Metro Boomin, Travis Scott & Young Thug",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Metro_Boomin_2019.png/640px-Metro_Boomin_2019.png",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2219,7 +2219,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 28,
                                 "name": "Morgenshtern",
-                                "avatar": "",
+                                "avatar": "https://ss.sport-express.ru/userfiles/materials/177/1774394/volga.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2291,7 +2291,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 29,
                                 "name": "Morgenshtern, Элджей",
-                                "avatar": "",
+                                "avatar": "https://ss.sport-express.ru/userfiles/materials/177/1774394/volga.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2315,7 +2315,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 30,
                                 "name": "Playboi Carti",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2395,7 +2395,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 31,
                                 "name": "Playboi Carti, Lil Uzi Vert",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2411,7 +2411,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 32,
                                 "name": "Playboi Carti, Nicki Minaj",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2427,7 +2427,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 33,
                                 "name": "Rich Amiri",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebe7fd740a4a1b14f2f6f56a10",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2531,7 +2531,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 34,
                                 "name": "THE SCOTTS, Travis Scott, Kid Cudi",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2547,7 +2547,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 35,
                                 "name": "TWXN",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebf915acb1ea01b164ee30975d",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2563,7 +2563,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 36,
                                 "name": "Travis Scott",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2651,7 +2651,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 37,
                                 "name": "Travis Scott & Don Toliver",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2667,7 +2667,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 38,
                                 "name": "Travis Scott, Future, 2 Chainz",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2683,7 +2683,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 39,
                                 "name": "Travis Scott, Playboi Carti",
-                                "avatar": "",
+                                "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2699,7 +2699,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 40,
                                 "name": "Travis Scott, Young Thug, M.I.A.",
-                                "avatar": "",
+                                "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2731,7 +2731,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 41,
                                 "name": "Void, Repair Lonely",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5eb8d61a005421acb06b875da19",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2747,7 +2747,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 42,
                                 "name": "XXXTENTACION",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Xxxtentacion_%28cropped%29.jpg/640px-Xxxtentacion_%28cropped%29.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2763,7 +2763,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 43,
                                 "name": "Yeat",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg/640px-Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2843,7 +2843,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 44,
                                 "name": "Yeat feat. Quavo",
-                                "avatar": "",
+                                "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg/640px-Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2859,7 +2859,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 45,
                                 "name": "Yeat, EsDeeKid",
-                                "avatar": "",
+                                "avatar": "https://i.scdn.co/image/ab6761610000e5ebdf6f9f1b521c3f57fd336122",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2875,7 +2875,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 46,
                                 "name": "void, BABY BOI",
-                                "avatar": "",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2891,7 +2891,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 47,
                                 "name": "void, Druskhi",
-                                "avatar": "",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2907,7 +2907,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 48,
                                 "name": "void, ech0",
-                                "avatar": "",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -2923,7 +2923,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 49,
                                 "name": "Разные английские исполнители",
-                                "avatar": "",
+                                "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
@@ -3187,7 +3187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                                 "id": 50,
                                 "name": "Разные русские исполнители",
-                                "avatar": "",
+                                "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
                                 "genre": "",
                                 "songs": [
                                                 {
