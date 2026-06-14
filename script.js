@@ -5680,7 +5680,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Генерация списка артистов
             function generateArtistsList() {
-                artists.forEach(artist => {
+                const artistsBySongCount = [...artists].sort((firstArtist, secondArtist) => {
+                    const songCountDifference = secondArtist.songs.length - firstArtist.songs.length;
+
+                    if (songCountDifference !== 0) {
+                        return songCountDifference;
+                    }
+
+                    return firstArtist.name.localeCompare(secondArtist.name, 'ru');
+                });
+
+                artistsBySongCount.forEach(artist => {
                     const artistCard = document.createElement('div');
                     artistCard.className = 'artist-card';
                     artistCard.innerHTML = `
