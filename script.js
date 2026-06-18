@@ -5828,24 +5828,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Обновление прогресс-бара
     function shufflePlaylist() {
+        const hadPlaylist = playlist.length > 0;
+
         if (playlist.length === 0) {
             playlist = [...allSongs];
         }
 
         const currentSong = playlist[currentSongIndex];
+        const hasCurrentSong = hadPlaylist && Boolean(currentSong);
+        const currentSongKey = currentSong ? getSongKey(currentSong) : null;
+        const songsToShuffle = currentSong
+            ? playlist.filter(song => getSongKey(song) !== currentSongKey)
+            : [...playlist];
 
-        for (let i = playlist.length - 1; i > 0; i--) {
+        for (let i = songsToShuffle.length - 1; i > 0; i--) {
             const randomIndex = Math.floor(Math.random() * (i + 1));
-            [playlist[i], playlist[randomIndex]] = [playlist[randomIndex], playlist[i]];
+            [songsToShuffle[i], songsToShuffle[randomIndex]] = [songsToShuffle[randomIndex], songsToShuffle[i]];
         }
 
-        currentSongIndex = currentSong
-            ? Math.max(0, playlist.findIndex(song => getSongKey(song) === getSongKey(currentSong)))
-            : 0;
+        playlist = currentSong ? [currentSong, ...songsToShuffle] : songsToShuffle;
+        currentSongIndex = 0;
 
         playlistEl.innerHTML = '';
         generateUserPlaylist();
-        loadSong(currentSongIndex);
+
+        if (!hasCurrentSong) {
+            loadSong(currentSongIndex);
+        }
+
         showNotification('Треки перемешаны');
     }
 
@@ -6774,7 +6784,6 @@ document.addEventListener('DOMContentLoaded', function () {
         recognition.onstart = () => {
             isRecognitionRunning = true;
             updateVoiceButton(true, 'Помощник слушает');
-            showNotification('Голосовое управление включено. Говорите команду.');
         };
 
         recognition.onresult = event => {
