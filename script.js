@@ -5883,6 +5883,14 @@ document.addEventListener('DOMContentLoaded', function () {
         audioPlayer.volume = volumeSlider.value;
     }
 
+    function changeVolumeByVoice(delta) {
+        const currentVolume = Number(audioPlayer.volume || volumeSlider.value || 0);
+        const nextVolume = Math.min(1, Math.max(0, currentVolume + delta));
+        audioPlayer.volume = nextVolume;
+        volumeSlider.value = String(nextVolume);
+        showNotification(`Громкость: ${Math.round(nextVolume * 100)}%`);
+    }
+
     // Генерация плейлистов
     function getSearchableSongText(song) {
         const fileName = safeDecodeURIComponent((song.url || '').split('/').pop() || '')
@@ -6525,7 +6533,9 @@ document.addEventListener('DOMContentLoaded', function () {
         prev: ['предыдущий трек', 'предыдущий', 'предыдущая', 'назад', 'прошлый', 'прошлая', 'previous', 'prev'],
         pause: ['пауза', 'поставь паузу', 'стоп', 'останови', 'хватит', 'замолчи', 'заткнись', 'закрой рот', 'завали ебало', 'pause', 'stop'],
         play: ['включи', 'включить', 'включи трек', 'включить трек', 'вруби', 'врубай', 'поставь', 'поставить', 'поставь трек', 'поставить трек', 'поставь песню', 'поставить песню', 'запусти', 'запустить', 'запусти трек', 'запустить трек', 'сыграй', 'играй', 'продолжи', 'play'],
-        shuffle: ['перемешай', 'перемешай треки', 'перемешать', 'шафл', 'shuffle']
+        shuffle: ['перемешай', 'перемешай треки', 'перемешать', 'шафл', 'shuffle'],
+        volumeUp: ['прибавь', 'прибавь громкость', 'сделай громче', 'громче', 'увеличь громкость', 'громкость выше', 'volume up', 'louder'],
+        volumeDown: ['убавь', 'убавь громкость', 'сделай тише', 'тише', 'уменьши громкость', 'громкость ниже', 'volume down', 'quieter']
     };
 
     const VOICE_FILLER_WORDS = [
@@ -6604,6 +6614,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const command = normalizeVoiceText(commandText);
         if (!command) return;
 
+        const isVolumeUpCommand = ['прибавь', 'громче', 'увеличь', 'volume up', 'louder', 'громкость выше']
+            .some(phrase => command.includes(phrase));
+        const isVolumeDownCommand = ['убавь', 'тише', 'уменьши', 'volume down', 'quieter', 'громкость ниже']
+            .some(phrase => command.includes(phrase));
+
+        if (isVolumeUpCommand) {
+            changeVolumeByVoice(0.1);
+            return;
+        }
+
+        if (isVolumeDownCommand) {
+            changeVolumeByVoice(-0.1);
+            return;
+        }
+
         if (hasVoicePhrase(command, VOICE_COMMANDS.shuffle)) {
             shufflePlaylist();
             return;
@@ -6618,6 +6643,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (hasVoicePhrase(command, VOICE_COMMANDS.prev)) {
             prevSong();
             showNotification('Предыдущий трек');
+            return;
+        }
+
+        if (hasVoicePhrase(command, VOICE_COMMANDS.volumeUp)) {
+            changeVolumeByVoice(0.1);
+            return;
+        }
+
+        if (hasVoicePhrase(command, VOICE_COMMANDS.volumeDown)) {
+            changeVolumeByVoice(-0.1);
             return;
         }
 
