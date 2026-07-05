@@ -5663,6 +5663,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const audioPlayer = document.getElementById('audio-player');
     const voiceControlBtn = document.getElementById('voice-control');
     const voiceControlText = document.getElementById('voice-control-text');
+    const voiceRoutingNote = document.getElementById('voice-routing-note');
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     const searchStatus = document.getElementById('search-status');
@@ -6709,6 +6710,48 @@ document.addEventListener('DOMContentLoaded', function () {
         showNotification('Не понял команду. Попробуй: "включи Sky", "следующий" или "пауза".');
     }
 
+    function updateVoiceRoutingNote(message, isWarning = false) {
+        if (!voiceRoutingNote) return;
+
+        voiceRoutingNote.textContent = message;
+        voiceRoutingNote.classList.toggle('warning', isWarning);
+    }
+
+    function isBluetoothOutputDevice(device) {
+        return device.kind === 'audiooutput' && /bluetooth|bt|headset|науш|колонк|гарнитур/i.test(device.label || '');
+    }
+
+    async function initBluetoothAudioOutput() {
+        const defaultMessage = 'Bluetooth используется только для вывода музыки. Команды говорите в микрофон телефона.';
+        updateVoiceRoutingNote(defaultMessage);
+
+        if (!audioPlayer || typeof audioPlayer.setSinkId !== 'function') {
+            updateVoiceRoutingNote(`${defaultMessage} Если звук пошел не в Bluetooth, выберите Bluetooth как устройство вывода в настройках телефона.`, true);
+            return;
+        }
+
+        if (!navigator.mediaDevices || typeof navigator.mediaDevices.enumerateDevices !== 'function') {
+            updateVoiceRoutingNote(`${defaultMessage} Браузер не дал список аудиоустройств.`, true);
+            return;
+        }
+
+        try {
+            let devices = await navigator.mediaDevices.enumerateDevices();
+            let bluetoothOutput = devices.find(isBluetoothOutputDevice);
+
+            if (!bluetoothOutput) {
+                updateVoiceRoutingNote('Bluetooth-выход не найден. Подключите Bluetooth и выберите его для звука; команды говорите в микрофон телефона.', true);
+                return;
+            }
+
+            await audioPlayer.setSinkId(bluetoothOutput.deviceId);
+            updateVoiceRoutingNote(`Музыка выводится через Bluetooth: ${bluetoothOutput.label}. Команды слушает микрофон телефона.`);
+        } catch (error) {
+            console.warn('Не удалось настроить Bluetooth-вывод:', error);
+            updateVoiceRoutingNote('Не удалось автоматически выбрать Bluetooth-вывод. Выберите Bluetooth в настройках телефона, команды говорите в микрофон телефона.', true);
+        }
+    }
+
     function initVoiceControl() {
         if (!voiceControlBtn || !voiceControlText) return;
 
@@ -6852,6 +6895,7 @@ document.addEventListener('DOMContentLoaded', function () {
         generateArtistsList();
         generatePopularPlaylist();
         generateUserPlaylist();
+        initBluetoothAudioOutput();
         initVoiceControl();
         initSearch();
         updateDownloadButtons();

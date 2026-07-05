@@ -394,6 +394,18 @@ header p {
     color: #7dff9b;
 }
 
+.voice-routing-note {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.voice-routing-note.warning {
+    color: #ffd27d;
+}
+
 .notification {
     position: fixed;
     right: 20px;
