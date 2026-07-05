@@ -6548,6 +6548,18 @@ document.addEventListener('DOMContentLoaded', function () {
         volumeDown: ['убавь', 'убавь громкость', 'сделай тише', 'тише', 'уменьши громкость', 'громкость ниже', 'volume down', 'quieter']
     };
 
+    const VOICE_WAKE_PHRASES = [
+        'помощник',
+        'ассистент',
+        'голосовой помощник',
+        'слушай',
+        'эй помощник',
+        'окей помощник',
+        'привет помощник'
+    ];
+    const VOICE_ASSISTANT_COMMAND_WINDOW = 12000;
+    let voiceAssistantReadyUntil = 0;
+
     const VOICE_FILLER_WORDS = [
         'трек',
         'песню',
@@ -6581,6 +6593,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         return query.replace(/\s+/g, ' ').trim();
+    }
+
+    function extractWakeCommand(command) {
+        const matchedWakePhrase = VOICE_WAKE_PHRASES
+            .map(normalizeVoiceText)
+            .sort((first, second) => second.length - first.length)
+            .find(phrase => command === phrase || command.includes(phrase));
+
+        if (!matchedWakePhrase) {
+            return null;
+        }
+
+        return command
+            .replace(matchedWakePhrase, ' ')
+            .replace(/^(скажи|пожалуйста|давай|ну)\s+/i, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function isVoiceAssistantAwake() {
+        return Date.now() < voiceAssistantReadyUntil;
+    }
+
+    function wakeVoiceAssistant() {
+        voiceAssistantReadyUntil = Date.now() + VOICE_ASSISTANT_COMMAND_WINDOW;
+        showNotification('Помощник слушает. Скажи команду в микрофон телефона.');
     }
 
     function findSongByVoiceQuery(query) {
@@ -6624,10 +6662,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const command = normalizeVoiceText(commandText);
         if (!command) return;
 
+        const commandAfterWakePhrase = extractWakeCommand(command);
+        const hasWakePhrase = commandAfterWakePhrase !== null;
+
+        if (!hasWakePhrase && !isVoiceAssistantAwake()) {
+            return;
+        }
+
+        if (hasWakePhrase) {
+            wakeVoiceAssistant();
+
+            if (!commandAfterWakePhrase) {
+                return;
+            }
+        }
+
+        const activeCommand = hasWakePhrase ? commandAfterWakePhrase : command;
+        voiceAssistantReadyUntil = Date.now() + VOICE_ASSISTANT_COMMAND_WINDOW;
+
         const isVolumeUpCommand = ['прибавь', 'громче', 'увеличь', 'volume up', 'louder', 'громкость выше']
-            .some(phrase => command.includes(phrase));
+            .some(phrase => activeCommand.includes(phrase));
         const isVolumeDownCommand = ['убавь', 'тише', 'уменьши', 'volume down', 'quieter', 'громкость ниже']
-            .some(phrase => command.includes(phrase));
+            .some(phrase => activeCommand.includes(phrase));
 
         if (isVolumeUpCommand) {
             changeVolumeByVoice(0.1);
@@ -6639,35 +6695,35 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.shuffle)) {
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.shuffle)) {
             shufflePlaylist();
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.next)) {
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.next)) {
             nextSong();
             showNotification('Следующий трек');
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.prev)) {
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.prev)) {
             prevSong();
             showNotification('Предыдущий трек');
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.volumeUp)) {
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.volumeUp)) {
             changeVolumeByVoice(0.1);
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.volumeDown)) {
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.volumeDown)) {
             changeVolumeByVoice(-0.1);
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.play)) {
-            const query = stripVoiceCommand(command, VOICE_COMMANDS.play);
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.play)) {
+            const query = stripVoiceCommand(activeCommand, VOICE_COMMANDS.play);
             const artistMatch = query ? findBestArtistMatch(query) : null;
             const song = query ? findSongByVoiceQuery(query) : null;
 
@@ -6686,20 +6742,20 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        if (hasVoicePhrase(command, VOICE_COMMANDS.pause)) {
+        if (hasVoicePhrase(activeCommand, VOICE_COMMANDS.pause)) {
             if (isPlaying) togglePlay();
             showNotification('Пауза');
             return;
         }
 
-        const artistMatch = findBestArtistMatch(command);
+        const artistMatch = findBestArtistMatch(activeCommand);
         if (artistMatch && artistMatch.score >= 650) {
             playArtistFromLibrary(artistMatch.artist);
             showNotification(`Включаю артиста: ${artistMatch.artist.name}`);
             return;
         }
 
-        const song = findSongByVoiceQuery(command);
+        const song = findSongByVoiceQuery(activeCommand);
         if (song) {
             playSongFromLibrary(song);
             showNotification(`Включаю: ${song.title}`);
@@ -6736,6 +6792,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function stopListening(showMessage = true) {
             shouldKeepListening = false;
+            voiceAssistantReadyUntil = 0;
             clearTimeout(restartTimer);
             updateVoiceButton(false, 'Включить помощника');
 
@@ -6758,7 +6815,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateVoiceButton(true, 'Запуск помощника...');
 
                 if (showMessage) {
-                    showNotification('Разрешите микрофон, если браузер спросит. Помощник запускается...');
+                    showNotification('Разрешите микрофон, если браузер спросит. В машине говори в микрофон телефона и сначала скажи: «Помощник».');
                 }
             } catch (error) {
                 if (error && error.name === 'InvalidStateError') {
@@ -6819,7 +6876,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (event.error === 'audio-capture') {
                 shouldKeepListening = false;
                 updateVoiceButton(false, 'Микрофон не найден');
-                showNotification('Микрофон не найден или занят другим приложением.');
+                showNotification('Микрофон не найден или занят. Если телефон подключен к машине, говори в микрофон телефона или отключи Bluetooth-микрофон.');
                 return;
             }
 
