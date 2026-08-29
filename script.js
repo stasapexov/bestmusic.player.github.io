@@ -2,6 +2,46 @@ document.addEventListener('DOMContentLoaded', function () {
     // Массив всех треков; каждый трек распределён по языку и исполнителю.
     const allSongs = [
         {
+            "id": 05,
+            "title": "lil uzi vert - паллаич",
+            "artist": "lil uzi vert",
+            "duration": "24.02.2022",
+            "url": "music/lil uzi vert - паллаич(тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 04,
+            "title": "kanye west - Чёрный Брат",
+            "artist": "kanye west",
+            "duration": "24.02.2022",
+            "url": "music/kanye west - Чёрный Брат (тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 03,
+            "title": "yeat - rich паллаич",
+            "artist": "yeat",
+            "duration": "24.02.2022",
+            "url": "music/yeat - rich паллаич (тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 02,
+            "title": "chief keef - деп паллаича",
+            "artist": "chief kee",
+            "duration": "24.02.2022",
+            "url": "music/chief keef - деп паллаича (тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 01,
+            "title": "sory about it - движуха",
+            "artist": "Lil uzi vert",
+            "duration": "24.02.2022",
+            "url": "music/yeat - sory about it движуха.mp3",
+            "language": "ru"
+        },
+        {
             "id": 1,
             "title": "2000",
             "artist": "Playboi Carti",
@@ -1520,6 +1560,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Массив артистов с их треками. Совместные треки добавляются в карточку каждого участника.
     const artists = [
+        {
+            "id": 0,
+            "name": "Паллаич",
+            "avatar": "https://images.genius.com/1dcdd72cc44f7130f1e0552b950145e4.1000x1000x1.png",
+            "genre": "",
+            "songs": [
+                {
+            "id": 05,
+            "title": "lil uzi vert - паллаич",
+            "artist": "lil uzi vert",
+            "duration": "24.02.2022",
+            "url": "music/lil uzi vert - паллаич(тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 04,
+            "title": "kanye west - Чёрный Брат",
+            "artist": "kanye west",
+            "duration": "24.02.2022",
+            "url": "music/kanye west - Чёрный Брат (тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 03,
+            "title": "yeat - rich паллаич",
+            "artist": "yeat",
+            "duration": "24.02.2022",
+            "url": "music/yeat - rich паллаич (тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 02,
+            "title": "chief keef - деп паллаича",
+            "artist": "chief kee",
+            "duration": "24.02.2022",
+            "url": "music/chief keef - деп паллаича (тгк wwwakup).mp3",
+            "language": "ru"
+        },
+        {
+            "id": 01,
+            "title": "sory about it - движуха",
+            "artist": "Lil uzi vert",
+            "duration": "24.02.2022",
+            "url": "music/yeat - sory about it движуха.mp3",
+            "language": "ru"
+        }
+            ]
+        },
         {
             "id": 1,
             "name": "Quavo",
