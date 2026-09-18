@@ -2,6 +2,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Массив всех треков; каждый трек распределён по языку и исполнителю.
     const allSongs = [
         {
+            "id": 06,
+            "title": "playboi carti - gta 6 ft паллаич",
+            "artist": "паллаич",
+            "duration": "24.02.2022",
+            "url": "music/playboi carti - gta 6 ft паллаич (тгк wwwakup) (1).mp3",
+            "language": "ru"
+        },
+        {
             "id": 05,
             "title": "lil uzi vert - паллаич",
             "artist": "lil uzi vert",
