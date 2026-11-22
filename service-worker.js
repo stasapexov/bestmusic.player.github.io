@@ -1,188 +1,120 @@
-const VERSION = 'v3';
-const SHELL_CACHE = `shell-${VERSION}`;
-const MUSIC_CACHE = `music-${VERSION}`;
-const COVERS_CACHE = `covers-${VERSION}`;
+const SHELL_CACHE = 'smoker-shell-v7';
+const COVER_CACHE = 'covers-v3';
+const MUSIC_CACHES = ['music-v3', 'music-v2'];
+const scope = new URL(self.registration.scope);
+const asset = path => new URL(path, scope).href;
+const musicPath = new URL('music/', scope).pathname;
+const shell = [
+    './', 'index.html', 'index2.html', 'style.css', 'theme.js', 'catalog.js', 'script.js', 'video.js',
+    'legacy.html', 'legacy-clips.html', 'legacy.css', 'legacy.js',
+    'manifest.json', 'icon-192x192.png', 'icon-512x512.png', 'picture/cover-night.webp'
+];
 
-const toURL = (url) => new URL(url, self.registration.scope).toString();
-
-const ASSETS = [
-    './',
-    'index.html',
-    'style.css',
-    'script.js',
-    'manifest.json'
-].map(toURL);
-
-async function cacheShell() {
-    const cache = await caches.open(SHELL_CACHE);
-    await Promise.allSettled(
-        ASSETS.map(async (url) => {
-            const response = await fetch(url, { cache: 'reload' });
-            if (response.ok) {
-                await cache.put(url, response.clone());
-            }
-        })
-    );
-}
-
-async function downloadTrack(url) {
-    const absoluteUrl = toURL(url);
-    const cache = await caches.open(MUSIC_CACHE);
-    const response = await fetch(absoluteUrl, { cache: 'reload' });
-
-    if (!response.ok) {
-        throw new Error(`Track download failed: ${response.status}`);
-    }
-
-    await cache.put(absoluteUrl, response.clone());
-    return absoluteUrl;
-}
-
-self.addEventListener('install', (event) => {
-    self.skipWaiting();
-    event.waitUntil(cacheShell());
+self.addEventListener('install', event => {
+    event.waitUntil((async () => {
+        const cache = await caches.open(SHELL_CACHE);
+        await cache.addAll(shell.map(path => new Request(asset(path), { cache: 'reload' })));
+        await self.skipWaiting();
+    })());
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
     event.waitUntil((async () => {
-        const cacheNames = await caches.keys();
-        await Promise.all(
-            cacheNames
-                .filter(name => ![SHELL_CACHE, MUSIC_CACHE, COVERS_CACHE].includes(name))
-                .map(name => caches.delete(name))
-        );
-
+        const names = await caches.keys();
+        await Promise.all(names.filter(name => name !== SHELL_CACHE && /^(?:smoker-)?shell-v\d+$/.test(name))
+            .map(name => caches.delete(name)));
         await self.clients.claim();
     })());
 });
 
-self.addEventListener('fetch', (event) => {
-    const request = event.request;
-    const url = new URL(request.url);
+function offline(message = 'Offline') {
+    return new Response(message, { status: 503 });
+}
 
-    if (request.headers.has('range')) {
-        event.respondWith(handleRangeRequest(request));
-        return;
+async function serveShell(request) {
+    const cache = await caches.open(SHELL_CACHE);
+    try {
+        const response = await fetch(request);
+        if (response.ok) await cache.put(request, response.clone()).catch(() => {});
+        return response;
+    } catch {
+        return await cache.match(request, { ignoreSearch: true }) || offline();
     }
+}
 
-    if (request.mode === 'navigate') {
-        event.respondWith((async () => {
-            try {
-                return await fetch(request);
-            } catch {
-                return await caches.match(toURL('index.html')) || new Response('Offline', { status: 503 });
-            }
-        })());
-        return;
+async function serveExternalAsset(request) {
+    const cache = await caches.open(COVER_CACHE);
+    const saved = await cache.match(request);
+    if (saved) return saved;
+    try {
+        const response = await fetch(request);
+        if (response.ok || response.type === 'opaque') await cache.put(request, response.clone()).catch(() => {});
+        return response;
+    } catch {
+        return offline();
     }
+}
 
-    if (url.pathname.includes('/music/')) {
-        event.respondWith((async () => {
-            const cached = await caches.match(request);
-            if (cached) return cached;
-
-            try {
-                return await fetch(request);
-            } catch {
-                return new Response('Audio file not available offline', { status: 503 });
-            }
-        })());
-        return;
+async function findCachedAudio(url) {
+    const filename = decodeURIComponent(new URL(url).pathname.slice(musicPath.length));
+    const aliases = new Set([url]);
+    for (const name of [filename, filename.normalize('NFC'), filename.normalize('NFD')]) {
+        aliases.add(asset('music/' + encodeURIComponent(name)));
+        aliases.add(asset('music/' + name.replace(/[%?#]/g, encodeURIComponent)));
     }
-
-    const isExternalImage = request.destination === 'image' && url.origin !== self.location.origin;
-    if (isExternalImage) {
-        event.respondWith((async () => {
-            const cache = await caches.open(COVERS_CACHE);
-            const cached = await cache.match(request);
-            if (cached) return cached;
-
-            try {
-                const response = await fetch(request);
-                if (response.ok) {
-                    cache.put(request, response.clone());
-                }
-                return response;
-            } catch {
-                return new Response('', { status: 404 });
-            }
-        })());
-        return;
-    }
-
-    event.respondWith((async () => {
-        try {
-            const response = await fetch(request);
-
-            if (response.ok && url.origin === self.location.origin && request.method === 'GET') {
-                const cache = await caches.open(SHELL_CACHE);
-                cache.put(request, response.clone());
-            }
-
-            return response;
-        } catch {
-            const cached = await caches.match(request);
-            return cached || new Response('Offline', { status: 503 });
+    for (const name of MUSIC_CACHES) {
+        for (const alias of aliases) {
+            const saved = await caches.match(alias, { cacheName: name });
+            if (saved) return saved;
         }
-    })());
-});
+    }
+    return null;
+}
 
-async function handleRangeRequest(request) {
-    const cached = await caches.match(request.url);
-    if (!cached) {
-        return fetch(request);
+async function serveAudio(request) {
+    const saved = await findCachedAudio(request.url).catch(() => null);
+    if (!saved) {
+        try {
+            return await fetch(request);
+        } catch {
+            return offline('Audio file not available offline');
+        }
     }
 
-    const rangeHeader = request.headers.get('range');
-    const match = /bytes=(\d+)-(\d+)?/.exec(rangeHeader);
+    const header = request.headers.get('range');
+    if (!header) return saved;
+    const range = /^bytes=(\d*)-(\d*)$/i.exec(header);
+    if (!range || (!range[1] && !range[2])) return saved;
 
-    if (!match) {
-        return cached;
+    const file = await saved.blob();
+    const size = file.size;
+    const start = range[1] ? Number(range[1]) : Math.max(0, size - Number(range[2]));
+    const end = range[1] && range[2] ? Math.min(Number(range[2]), size - 1) : size - 1;
+    if (start > end) {
+        return new Response(null, { status: 416, headers: { 'Content-Range': 'bytes */' + size } });
     }
 
-    const start = Number(match[1]);
-    const end = match[2] ? Number(match[2]) : null;
-    const arrayBuffer = await cached.arrayBuffer();
-    const bytes = end !== null ? arrayBuffer.slice(start, end + 1) : arrayBuffer.slice(start);
-
-    return new Response(bytes, {
+    const type = saved.headers.get('Content-Type') || 'audio/mpeg';
+    return new Response(file.slice(start, end + 1, type), {
         status: 206,
-        statusText: 'Partial Content',
         headers: {
-            'Content-Type': cached.headers.get('Content-Type') || 'audio/mpeg',
-            'Content-Range': `bytes ${start}-${end !== null ? end : arrayBuffer.byteLength - 1}/${arrayBuffer.byteLength}`,
-            'Content-Length': bytes.byteLength
+            'Content-Type': type,
+            'Accept-Ranges': 'bytes',
+            'Content-Range': 'bytes ' + start + '-' + end + '/' + size,
+            'Content-Length': String(end + 1 - start)
         }
     });
 }
 
-self.addEventListener('message', (event) => {
-    const data = event.data || {};
-
-    if (data.type === 'SKIP_WAITING') {
-        self.skipWaiting();
-        return;
-    }
-
-    if (data.type === 'DOWNLOAD_TRACK' && data.url) {
-        event.waitUntil((async () => {
-            try {
-                const url = await downloadTrack(data.url);
-                event.source?.postMessage({ type: 'TRACK_DOWNLOADED', url });
-            } catch (error) {
-                event.source?.postMessage({ type: 'TRACK_DOWNLOAD_FAILED', url: data.url, message: error.message });
-            }
-        })());
-        return;
-    }
-
-    if (data.type === 'GET_CACHE_STATUS' && event.ports[0]) {
-        event.waitUntil((async () => {
-            const musicCache = await caches.open(MUSIC_CACHE);
-            const cachedMusic = await musicCache.keys();
-            event.ports[0].postMessage({
-                cachedTracks: cachedMusic.length
-            });
-        })());
+self.addEventListener('fetch', event => {
+    const request = event.request;
+    if (request.method !== 'GET') return;
+    const url = new URL(request.url);
+    if (url.origin === scope.origin) {
+        if (url.pathname.startsWith(musicPath)) event.respondWith(serveAudio(request));
+        else if (url.pathname.startsWith(scope.pathname)) event.respondWith(serveShell(request));
+    } else if (request.destination === 'image' ||
+        (url.hostname === 'cdnjs.cloudflare.com' && url.pathname.startsWith('/ajax/libs/font-awesome/'))) {
+        event.respondWith(serveExternalAsset(request));
     }
 });

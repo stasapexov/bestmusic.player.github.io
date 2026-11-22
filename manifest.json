@@ -1,11 +1,11 @@
 {
-  "name": "Best Music Player",
-  "short_name": "Music Player",
+  "name": "Smoker Player",
+  "short_name": "Smoker",
   "description": "Оффлайн музыкальный плеер",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#900000",
+  "background_color": "#151619",
+  "theme_color": "#1a1b1f",
   "orientation": "portrait",
   "icons": [
     {

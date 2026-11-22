@@ -1,136 +1,197 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <link rel="manifest" href="manifest.json">
     <meta charset="utf-8">
-    <meta name="theme-color" content="#900000">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harmony Player - Плейлисты</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f5f5f7">
+    <title>Smoker Player</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="catalog.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
-
 <body>
-    <header>
-        <h1><i class="fas fa-music"></i> Smoker Player</h1>
-    </header>
+    <svg class="icon-library" width="0" height="0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="icon-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 9l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/></symbol>
+        <symbol id="icon-list-ul" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></symbol>
+        <symbol id="icon-sparkles" viewBox="0 0 24 24"><path d="m10 3 1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3Zm8 11 1.05 2.95L22 18l-2.95 1.05L18 22l-1.05-2.95L14 18l2.95-1.05L18 14Z"/></symbol>
+        <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="icon-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/></symbol>
+        <symbol id="icon-legacy" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 2.6 6.4M3 6v6h6m3-5v5l3 2"/></symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></symbol>
+        <symbol id="icon-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11v1a6.5 6.5 0 0 0 13 0v-1M12 18.5v3m-3 0h6"/></symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.8A8.7 8.7 0 0 1 9.2 3.5 8.8 8.8 0 1 0 20.5 14.8Z"/></symbol>
+        <symbol id="icon-shuffle" viewBox="0 0 24 24"><path d="M3 6h3c5 0 7 12 12 12h3m-4-4 4 4-4 4M3 18h3c5 0 7-12 12-12h3m-4-4 4 4-4 4"/></symbol>
+        <symbol id="icon-prev" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M5 4a1.2 1.2 0 0 1 1.2 1.2v13.6a1.2 1.2 0 1 1-2.4 0V5.2A1.2 1.2 0 0 1 5 4Zm13.1 1.2a1 1 0 0 1 1.5.86v11.88a1 1 0 0 1-1.5.86L8 12.86a1 1 0 0 1 0-1.72Z"/></symbol>
+        <symbol id="icon-next" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M19 4a1.2 1.2 0 0 1 1.2 1.2v13.6a1.2 1.2 0 1 1-2.4 0V5.2A1.2 1.2 0 0 1 19 4ZM5.9 5.2a1 1 0 0 0-1.5.86v11.88a1 1 0 0 0 1.5.86L16 12.86a1 1 0 0 0 0-1.72Z"/></symbol>
+        <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M7.5 4.8a1 1 0 0 1 1.5-.86l12 7.2a1 1 0 0 1 0 1.72l-12 7.2a1 1 0 0 1-1.5-.86Z"/></symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24"><path stroke-width="4" d="M8 5v14m8-14v14"/></symbol>
+        <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM15.3 9a4 4 0 0 1 0 6m2.9-9a8 8 0 0 1 0 12"/></symbol>
+        <symbol id="icon-volume-low" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 5.9a5.1 5.1 0 0 0-7.3 0L12 7.4l-1.5-1.5a5.1 5.1 0 0 0-7.3 7.2L12 22l8.8-8.9a5.1 5.1 0 0 0 0-7.2Z"/></symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v3h16v-3"/></symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+        <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    </svg>
 
-    <div class="container">
-        <section class="player-section">
-            <h2 class="section-title"><i class="fas fa-play-circle"></i> Сейчас играет</h2>
-            <div class="now-playing">
-                <div class="album-art" id="album-art">
-                    <i class="fas fa-music"></i>
-                    <div class="overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand" aria-label="Smoker Player">Smoker</div>
+            <nav class="tabs" aria-label="Медиатека">
+                <button type="button" class="tab active" data-tab="user" aria-controls="user-playlist" aria-pressed="true">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-music"></use></svg><span>Треки</span>
+                </button>
+                <button type="button" class="tab" data-tab="playlists" aria-controls="playlists-tab" aria-pressed="false">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-list-ul"></use></svg><span>Плейлисты</span>
+                </button>
+                <button type="button" class="tab" data-tab="artists" aria-controls="artists-tab" aria-pressed="false">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg><span>Артисты</span>
+                </button>
+                <button type="button" class="tab" data-tab="new" aria-controls="new-tracks-tab" aria-pressed="false">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Новые треки</span>
+                </button>
+            </nav>
+            <div class="sidebar-actions">
+                <button type="button" class="sidebar-link" data-create-playlist>
+                    <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg><span>Новый плейлист</span>
+                </button>
+            </div>
+            <a class="sidebar-link clips-link" href="index2.html">
+                <svg class="icon" aria-hidden="true"><use href="#icon-video"></use></svg><span>Тест клипов</span>
+            </a>
+            <a class="sidebar-link legacy-link" href="legacy.html">
+                <svg class="icon" aria-hidden="true"><use href="#icon-legacy"></use></svg><span>Legacy</span>
+            </a>
+        </aside>
+
+        <main class="library-panel">
+            <div class="library-toolbar">
+                <div class="search-row">
+                    <form class="search-container" id="track-search" role="search">
+                        <button id="search-button" type="submit" aria-label="Найти трек">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+                        </button>
+                        <input type="search" id="search-input" placeholder="Поиск" aria-label="Поиск музыки">
+                    </form>
+                    <button class="voice-control-btn" id="voice-control" type="button" aria-label="Голосовой помощник" aria-pressed="false" title="Голосовой помощник выключен">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-mic"></use></svg>
+                    </button>
                 </div>
+                <p class="search-status" id="search-status" aria-live="polite"></p>
+            </div>
+
+            <div class="library-content" id="library-content" data-tab="user">
+                <h1 class="page-title" id="library-title">Треки</h1>
+                <div class="tab-content active" id="user-playlist">
+                    <section id="liked-section" aria-labelledby="liked-heading" hidden>
+                        <h2 id="liked-heading" class="list-heading">Понравившиеся</h2>
+                        <ul class="playlist" id="liked-tracks" aria-labelledby="liked-heading"></ul>
+                    </section>
+                    <div class="collection-heading" id="collection-heading">
+                        <h2 class="list-heading" id="collection-name"></h2>
+                        <button type="button" class="playlist-button" id="edit-playlist" hidden>Редактировать</button>
+                    </div>
+                    <p class="empty-message" id="queue-empty" hidden></p>
+                    <ul class="playlist" id="playlist" aria-labelledby="collection-name"></ul>
+                    <details class="popular-section" id="popular-section">
+                        <summary>Популярная музыка <svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></summary>
+                        <div class="popular-grid" id="popular-grid"></div>
+                    </details>
+                </div>
+
+                <div class="tab-content" id="playlists-tab">
+                    <button type="button" class="playlist-button primary" id="create-playlist" data-create-playlist>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
+                        Создать плейлист
+                    </button>
+                    <div class="playlist-grid" id="playlists-grid"></div>
+                    <a class="sidebar-link mobile-clips" href="index2.html">Тест клипов</a>
+                </div>
+
+                <div class="tab-content" id="artists-tab">
+                    <div class="artists-grid" id="artists-grid"></div>
+                </div>
+
+                <div class="tab-content" id="new-tracks-tab">
+                    <ul class="playlist" id="new-tracks" aria-labelledby="library-title"></ul>
+                </div>
+            </div>
+        </main>
+
+        <div class="theme-picker" role="group" aria-label="Тема оформления">
+            <button class="theme-option" type="button" data-theme-value="light" aria-label="Светлая тема" title="Светлая тема" aria-pressed="false">
+                <svg class="icon" aria-hidden="true"><use href="#icon-sun"></use></svg>
+            </button>
+            <button class="theme-option" type="button" data-theme-value="dark" aria-label="Тёмная тема" title="Тёмная тема" aria-pressed="false">
+                <svg class="icon" aria-hidden="true"><use href="#icon-moon"></use></svg>
+            </button>
+        </div>
+
+        <section class="player-section" aria-labelledby="player-heading">
+            <h2 class="player-heading" id="player-heading">Сейчас играет</h2>
+            <div class="now-playing">
+                <div class="album-art" id="album-art"></div>
                 <div class="song-info">
                     <div class="song-title" id="song-title">Выберите трек</div>
-                    <div class="song-artist" id="song-artist">Из вашего плейлиста</div>
+                    <div class="song-artist" id="song-artist"></div>
                 </div>
+                <button type="button" class="control-btn volume-toggle" id="volume-toggle" aria-expanded="false" aria-controls="volume-controls" aria-label="Громкость">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-volume"></use></svg>
+                </button>
             </div>
 
             <div class="progress-container">
-                <div class="progress-bar" id="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div class="time-info">
-                    <span class="current-time" id="current-time">0:00</span>
-                    <span class="duration" id="duration">0:00</span>
+                <input type="range" class="range seek" id="seek" min="0" max="1" step="0.1" value="0" aria-label="Позиция воспроизведения" disabled>
+                <div class="time-info" aria-hidden="true">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
                 </div>
             </div>
 
             <div class="controls">
-                <button class="control-btn" id="shuffle" title="Перемешать треки" aria-label="Перемешать треки">
-                    <i class="fas fa-random"></i>
+                <button class="control-btn" id="shuffle" type="button" title="Перемешать треки" aria-label="Перемешать треки">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-shuffle"></use></svg>
                 </button>
-                <button class="control-btn" id="prev">
-                    <i class="fas fa-step-backward"></i>
+                <button class="control-btn" id="prev" type="button" title="Предыдущий трек" aria-label="Предыдущий трек">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-prev"></use></svg>
                 </button>
-                <button class="control-btn play-pause" id="play-pause">
-                    <i class="fas fa-play"></i>
+                <button class="control-btn play-pause" id="play-pause" type="button" title="Воспроизвести" aria-label="Воспроизвести">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-play"></use></svg>
                 </button>
-                <button class="control-btn" id="next">
-                    <i class="fas fa-step-forward"></i>
+                <button class="control-btn" id="next" type="button" title="Следующий трек" aria-label="Следующий трек">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-next"></use></svg>
                 </button>
             </div>
 
-            <div class="volume-container">
-                <i class="fas fa-volume-up"></i>
-                <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.01" value="0.1">
-            </div>
-
-            <button class="voice-control-btn" id="voice-control" type="button" aria-pressed="false">
-                <i class="fas fa-microphone"></i>
-                <span id="voice-control-text">Включить помощника</span>
-            </button>
-            <div class="visualizer" id="visualizer">
-                <!-- Bars will be generated by JavaScript -->
-            </div>
-        </section>
-
-        <section class="playlist-section">
-            <h2 class="section-title"><i class="fas fa-list"></i> Ваш плейлист</h2>
-
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Поиск музыки...">
-                <button id="search-button"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="search-status" id="search-status" aria-live="polite"></div>
-
-            <div class="tabs">
-                <div class="tab active" data-tab="user">Ваша музыка</div>
-                <div class="tab" data-tab="playlists">Плейлисты</div>
-                <div class="tab" data-tab="artists">Артисты</div>
-            </div>
-
-            <div class="tab-content active" id="user-playlist">
-                <ul class="playlist" id="playlist">
-                    <li class="playlist-item">
-                        <div class="play-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <div class="song-details">
-                            <div class="title">Выберите трек из плейлистов</div>
-                            <div class="artist">Или добавьте свои</div>
-                        </div>
-                        <div class="duration">0:00</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="tab-content" id="playlists-tab">
-                <div class="playlist-grid" id="playlists-grid">
-                    <!-- Playlists will be added here -->
-                </div>
-            </div>
-
-            <div class="tab-content" id="artists-tab">
-                <div class="artists-grid" id="artists-grid">
-                    <!-- Artists will be added here -->
-                </div>
+            <div class="volume-container" id="volume-controls">
+                <svg class="icon" aria-hidden="true"><use href="#icon-volume-low"></use></svg>
+                <input type="range" class="range volume-slider" id="volume" min="0" max="1" step="0.01" value="0.1" aria-label="Громкость">
+                <svg class="icon" aria-hidden="true"><use href="#icon-volume"></use></svg>
             </div>
         </section>
     </div>
 
-    <section class="popular-section">
-        <h2 class="section-title"><i class="fas fa-fire"></i> Популярная музыка</h2>
-        <p>Наслаждайтесь лучшими треками</p>
-        <div class="popular-grid" id="popular-grid">
-            <!-- Popular songs will be added here -->
-        </div>
-    </section>
-
-    <footer>
-        <p>Smoker Player &copy; 2026</p>
-        <a href="index2.html">Tccc</a>
-    </footer>
-    <!-- Аудио элемент для воспроизведения -->
-    <audio id="audio-player"></audio>
-    <script src="script.js"></script>
-
+    <audio id="audio-player" preload="none"></audio>
+    <div class="notification" id="notification" role="status"></div>
+    <dialog class="playlist-editor" id="playlist-editor" aria-labelledby="editor-title">
+        <form id="playlist-form">
+            <h2 id="editor-title">Новый плейлист</h2>
+            <label for="playlist-name">Название</label>
+            <input id="playlist-name" name="name" required maxlength="70" autofocus>
+            <label for="playlist-filter">Треки</label>
+            <input id="playlist-filter" type="search" placeholder="По названию или артисту">
+            <p id="selected-count"></p>
+            <div id="track-picker" class="track-picker"></div>
+            <p id="picker-empty" class="empty-message" hidden>Треки не найдены.</p>
+            <p id="editor-status" role="status" hidden></p>
+            <div class="editor-actions">
+                <button type="button" class="playlist-button" id="cancel-playlist">Отмена</button>
+                <button type="submit" class="playlist-button primary">Сохранить</button>
+            </div>
+        </form>
+    </dialog>
 </body>
-
 </html>

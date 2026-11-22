@@ -1,7018 +1,1009 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Массив всех треков; каждый трек распределён по языку и исполнителю.
-    const allSongs = [
-        {
-            "id": 06,
-            "title": "playboi carti - gta 6 ft паллаич",
-            "artist": "паллаич",
-            "duration": "24.02.2022",
-            "url": "music/playboi carti - gta 6 ft паллаич (тгк wwwakup) (1).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 05,
-            "title": "lil uzi vert - паллаич",
-            "artist": "lil uzi vert",
-            "duration": "24.02.2022",
-            "url": "music/lil uzi vert - паллаич(тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 04,
-            "title": "kanye west - Чёрный Брат",
-            "artist": "kanye west",
-            "duration": "24.02.2022",
-            "url": "music/kanye west - Чёрный Брат (тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 03,
-            "title": "yeat - rich паллаич",
-            "artist": "yeat",
-            "duration": "24.02.2022",
-            "url": "music/yeat - rich паллаич (тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 02,
-            "title": "chief keef - деп паллаича",
-            "artist": "chief kee",
-            "duration": "24.02.2022",
-            "url": "music/chief keef - деп паллаича (тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 01,
-            "title": "sory about it - движуха",
-            "artist": "Lil uzi vert",
-            "duration": "24.02.2022",
-            "url": "music/yeat - sory about it движуха.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 1,
-            "title": "2000",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/2000.mp3",
-            "language": "en"
-        },
-        {
-            "id": 2,
-            "title": "24 Songs",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/24song.mp3",
-            "language": "en"
-        },
-        {
-            "id": 3,
-            "title": "3500",
-            "artist": "Travis Scott, Future, 2 Chainz",
-            "duration": "--:--",
-            "url": "music/3500.mp3",
-            "language": "en"
-        },
-        {
-            "id": 4,
-            "title": "4 Raws",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/4 Raws.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 5,
-            "title": "4X4",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/4X4.mp3",
-            "language": "en"
-        },
-        {
-            "id": 6,
-            "title": "5% TNT",
-            "artist": "Ken Carson",
-            "duration": "--:--",
-            "url": "music/5% TNT.mp3",
-            "language": "en"
-        },
-        {
-            "id": 7,
-            "title": "Trunks",
-            "artist": "A$AP Rocky",
-            "duration": "--:--",
-            "url": "music/A$AP Rocky - Trunks.mp3",
-            "language": "en"
-        },
-        {
-            "id": 8,
-            "title": "abu_dhabi_vabu",
-            "artist": "Ямаш",
-            "duration": "--:--",
-            "url": "music/abu_dhabi_vabu.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 9,
-            "title": "Инопланетянин",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/alien.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 10,
-            "title": "Ameli",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/ameli.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 11,
-            "title": "ARISTOCRAT",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/ARISTOCRAT.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 12,
-            "title": "bebebe",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/bebebe.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 13,
-            "title": "GO AGAIN (feat. Superheaven)",
-            "artist": "BNYX®, Yeat, Superheaven",
-            "duration": "--:--",
-            "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
-            "language": "en"
-        },
-        {
-            "id": 14,
-            "title": "FEVER",
-            "artist": "BUCKSHOT, fakemink",
-            "duration": "--:--",
-            "url": "music/BUCKSHOT feat. fakemink - FEVER.mp3",
-            "language": "en"
-        },
-        {
-            "id": 15,
-            "title": "BUTTERFLY EFFECT",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/butterfly effect.mp3",
-            "language": "en"
-        },
-        {
-            "id": 16,
-            "title": "Bystro",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/bystro.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 17,
-            "title": "Cadillac",
-            "artist": "Morgenshtern, Элджей",
-            "duration": "--:--",
-            "url": "music/Cadillac.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 18,
-            "title": "CARNIVAL",
-            "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-            "duration": "--:--",
-            "url": "music/carnival.mp3",
-            "language": "en"
-        },
-        {
-            "id": 19,
-            "title": "CHAMPAIN",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/champain.mp3",
-            "language": "en"
-        },
-        {
-            "id": 20,
-            "title": "Чёрный бумер",
-            "artist": "Серёга",
-            "duration": "--:--",
-            "url": "music/chernyy bumer.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 21,
-            "title": "chetyre ukrainki",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/chetyre ukrainki.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 22,
-            "title": "CHILL",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/CHILL.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 23,
-            "title": "COCAINE NOSE (Extended Intro)",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/COCAINE NOSE (Extended Intro).mp3",
-            "language": "en"
-        },
-        {
-            "id": 24,
-            "title": "СОК",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/COK.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 25,
-            "title": "Crank Master",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/crank master.mp3",
-            "language": "en"
-        },
-        {
-            "id": 26,
-            "title": "CRASH",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/crash.mp3",
-            "language": "en"
-        },
-        {
-            "id": 27,
-            "title": "Cristal",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/cristal.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 28,
-            "title": "Cristal & МОЁТ",
-            "artist": "Morgenshtern, Элджей",
-            "duration": "--:--",
-            "url": "music/cristal_.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 29,
-            "title": "Cristal",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/cristal_mayot.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 30,
-            "title": "Dark Thoughts",
-            "artist": "Lil Tecca",
-            "duration": "--:--",
-            "url": "music/dark thought.mp3",
-            "language": "en"
-        },
-        {
-            "id": 31,
-            "title": "SYRUP SIPPIN'",
-            "artist": "Destroy Lonely",
-            "duration": "--:--",
-            "url": "music/Destroy Lonely - SYRUP SIPPIN'.mp3",
-            "language": "en"
-        },
-        {
-            "id": 32,
-            "title": "DINERO",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/DINERO.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 33,
-            "title": "DO IT ALL",
-            "artist": "Iann Dior",
-            "duration": "--:--",
-            "url": "music/do it all.mp3",
-            "language": "en"
-        },
-        {
-            "id": 34,
-            "title": "dom",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/dom.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 35,
-            "title": "KRYPTONITE",
-            "artist": "Don Toliver",
-            "duration": "--:--",
-            "url": "music/Don Toliver - KRYPTONITE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 36,
-            "title": "DREAM GARDEN",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/DREAM GARDEN.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 37,
-            "title": "Drugoy",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/drugoy.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 38,
-            "title": "Dulo",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/dulo.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 39,
-            "title": "El Problema",
-            "artist": "Morgenshtern, Тимати",
-            "duration": "--:--",
-            "url": "music/el problema.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 40,
-            "title": "Century",
-            "artist": "EsDeeKid",
-            "duration": "--:--",
-            "url": "music/EsDeeKid - Century.mp3",
-            "language": "en"
-        },
-        {
-            "id": 41,
-            "title": "EVIL JORDAN",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/evil jordan.mp3",
-            "language": "en"
-        },
-        {
-            "id": 42,
-            "title": "FE!N",
-            "artist": "Travis Scott, Playboi Carti",
-            "duration": "--:--",
-            "url": "music/fein.mp3",
-            "language": "en"
-        },
-        {
-            "id": 43,
-            "title": "Fell In Luv",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/fell in love.mp3",
-            "language": "en"
-        },
-        {
-            "id": 44,
-            "title": "Flashing Lights",
-            "artist": "Kanye West, Dwele",
-            "duration": "--:--",
-            "url": "music/Flashing Lights.mp3",
-            "language": "en"
-        },
-        {
-            "id": 45,
-            "title": "FOMDJ",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/fomdj.mp3",
-            "language": "en"
-        },
-        {
-            "id": 46,
-            "title": "FRANCHISE",
-            "artist": "Travis Scott, Young Thug, M.I.A.",
-            "duration": "--:--",
-            "url": "music/FRANCHISE.mov",
-            "language": "en"
-        },
-        {
-            "id": 47,
-            "title": "FRANCHISE",
-            "artist": "Travis Scott, Young Thug, M.I.A.",
-            "duration": "--:--",
-            "url": "music/franchise.mp3",
-            "language": "en"
-        },
-        {
-            "id": 48,
-            "title": "FRANCHISE",
-            "artist": "Travis Scott, Young Thug, M.I.A.",
-            "duration": "--:--",
-            "url": "music/franchise2.mp3",
-            "language": "en"
-        },
-        {
-            "id": 49,
-            "title": "Fuk Sumn",
-            "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-            "duration": "--:--",
-            "url": "music/fuk sumn.mp3",
-            "language": "en"
-        },
-        {
-            "id": 50,
-            "title": "LIL DEMON",
-            "artist": "Future",
-            "duration": "--:--",
-            "url": "music/Future - LIL DEMON.mp3",
-            "language": "en"
-        },
-        {
-            "id": 51,
-            "title": "GO CR4ZY",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/go crazy.mp3",
-            "language": "en"
-        },
-        {
-            "id": 52,
-            "title": "Go Off",
-            "artist": "Lil Uzi Vert, Quavo, Travis Scott",
-            "duration": "--:--",
-            "url": "music/Go Off.mp3",
-            "language": "en"
-        },
-        {
-            "id": 53,
-            "title": "goosebumps",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/Goosebumps.mp3",
-            "language": "en"
-        },
-        {
-            "id": 54,
-            "title": "GTA",
-            "artist": "Future",
-            "duration": "--:--",
-            "url": "music/gta.mp3",
-            "language": "en"
-        },
-        {
-            "id": 55,
-            "title": "Head Shot",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/Head Shot .mp3",
-            "language": "ru"
-        },
-        {
-            "id": 56,
-            "title": "HIGHEST IN THE ROOM",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/HIGHEST IN THE ROOM.mp3",
-            "language": "en"
-        },
-        {
-            "id": 57,
-            "title": "Homecoming",
-            "artist": "Kanye West, Chris Martin",
-            "duration": "--:--",
-            "url": "music/homecoming.mp3",
-            "language": "en"
-        },
-        {
-            "id": 58,
-            "title": "AddXcts (1)",
-            "artist": "Homixide Gang",
-            "duration": "--:--",
-            "url": "music/Homixide Gang - AddXcts (1).mp3",
-            "language": "en"
-        },
-        {
-            "id": 59,
-            "title": "HYAENA",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/hyaena.mp3",
-            "language": "en"
-        },
-        {
-            "id": 60,
-            "title": "Travis Scott - No Sleep Ft. Playboi Carti",
-            "artist": "I am music",
-            "duration": "--:--",
-            "url": "music/I am music - Travis Scott - No Sleep Ft. Playboi Carti.mp3",
-            "language": "en"
-        },
-        {
-            "id": 61,
-            "title": "ICE",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/ice.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 62,
-            "title": "4TH DIMENSION",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - 4TH DIMENSION.mp3",
-            "language": "en"
-        },
-        {
-            "id": 63,
-            "title": "DON'T KNOW!",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - DON'T KNOW!.mp3",
-            "language": "en"
-        },
-        {
-            "id": 64,
-            "title": "HOMICIDE",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - HOMICIDE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 65,
-            "title": "HOW YOU FEEL_",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - HOW YOU FEEL_.mp3",
-            "language": "en"
-        },
-        {
-            "id": 66,
-            "title": "POWER",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - POWER.mp3",
-            "language": "en"
-        },
-        {
-            "id": 67,
-            "title": "PURPOSE",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - PURPOSE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 68,
-            "title": "THE KARDASHIANS",
-            "artist": "IMG",
-            "duration": "--:--",
-            "url": "music/IMG - THE KARDASHIANS.mp3",
-            "language": "en"
-        },
-        {
-            "id": 69,
-            "title": "JACKBOYS",
-            "artist": "JACKBOYS",
-            "duration": "--:--",
-            "url": "music/JACKBOYS.mp3",
-            "language": "en"
-        },
-        {
-            "id": 70,
-            "title": "Fighting My Demons",
-            "artist": "Ken Carson",
-            "duration": "--:--",
-            "url": "music/Ken Carson - Fighting My Demons.mp3",
-            "language": "en"
-        },
-        {
-            "id": 71,
-            "title": "KICKED OUT",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/KICKED OUT.mp3",
-            "language": "en"
-        },
-        {
-            "id": 72,
-            "title": "Leck",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/leck.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 73,
-            "title": "Ligala sosa",
-            "artist": "Ямаш",
-            "duration": "--:--",
-            "url": "music/Ligala sosa.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 74,
-            "title": "Stuff (featuring Travis Scott)",
-            "artist": "Lil Baby",
-            "duration": "--:--",
-            "url": "music/Lil Baby - Stuff (featuring Travis Scott).mp3",
-            "language": "en"
-        },
-        {
-            "id": 75,
-            "title": "Boys Don’t Cry",
-            "artist": "Lil Tecca",
-            "duration": "--:--",
-            "url": "music/Lil Tecca - Boys Don’t Cry.mp3",
-            "language": "en"
-        },
-        {
-            "id": 76,
-            "title": "Break The Bank",
-            "artist": "Lil Uzi Vert & Playboi Carti",
-            "duration": "--:--",
-            "url": "music/Lil Uzi Vert & Playboi Carti - Break The Bank.mp3",
-            "language": "en"
-        },
-        {
-            "id": 77,
-            "title": "Location",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/location.mp3",
-            "language": "en"
-        },
-        {
-            "id": 78,
-            "title": "Lollipop",
-            "artist": "Lil Wayne",
-            "duration": "--:--",
-            "url": "music/lollipop.mp3",
-            "language": "en"
-        },
-        {
-            "id": 79,
-            "title": "Long Time",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/long time.mp3",
-            "language": "en"
-        },
-        {
-            "id": 80,
-            "title": "LV Sandals",
-            "artist": "Lil Uzi Vert",
-            "duration": "--:--",
-            "url": "music/LV Sandals.mp3",
-            "language": "en"
-        },
-        {
-            "id": 81,
-            "title": "Trance",
-            "artist": "Metro Boomin, Travis Scott & Young Thug",
-            "duration": "--:--",
-            "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
-            "language": "en"
-        },
-        {
-            "id": 82,
-            "title": "Magnolia",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/mognolia.mp3",
-            "language": "en"
-        },
-        {
-            "id": 83,
-            "title": "navalnyy lyokha",
-            "artist": "Ямаш",
-            "duration": "--:--",
-            "url": "music/navalnyy lyokha.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 84,
-            "title": "Nightcrawler",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/Nightcrawler.mp3",
-            "language": "en"
-        },
-        {
-            "id": 85,
-            "title": "NO FACE",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/no face.mp3",
-            "language": "en"
-        },
-        {
-            "id": 86,
-            "title": "Nominalo",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/nominalo.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 87,
-            "title": "novaya volna",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/novaya volna.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 88,
-            "title": "novyy meren",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/novyy meren.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 89,
-            "title": "ona-ono",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/ona-ono.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 90,
-            "title": "OUT WEST",
-            "artist": "JACKBOYS, Travis Scott, Young Thug",
-            "duration": "--:--",
-            "url": "music/out west.mp3",
-            "language": "en"
-        },
-        {
-            "id": 91,
-            "title": "Over",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/over.mp3",
-            "language": "en"
-        },
-        {
-            "id": 92,
-            "title": "pablo",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/pablo.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 93,
-            "title": "Papin Tank",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/papin tank.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 94,
-            "title": "Phantom",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/Phantom.mp3",
-            "language": "en"
-        },
-        {
-            "id": 95,
-            "title": "PHILLY",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/PHILLY.mp3",
-            "language": "en"
-        },
-        {
-            "id": 96,
-            "title": "Photo",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/photo.mp3",
-            "language": "en"
-        },
-        {
-            "id": 97,
-            "title": "WASSUP_RATCHET ft. Lil Baby",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/Playboi Carti - WASSUP_RATCHET ft. Lil Baby.mp3",
-            "language": "en"
-        },
-        {
-            "id": 98,
-            "title": "Manage",
-            "artist": "Playboi Carti, Lil Uzi Vert",
-            "duration": "--:--",
-            "url": "music/Playboi Carti, Lil Uzi Vert - Manage.mp3",
-            "language": "en"
-        },
-        {
-            "id": 99,
-            "title": "Pochemu",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/pochemu.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 100,
-            "title": "Poke It Out",
-            "artist": "Playboi Carti, Nicki Minaj",
-            "duration": "--:--",
-            "url": "music/Poke it out.mp3",
-            "language": "en"
-        },
-        {
-            "id": 101,
-            "title": "pososi",
-            "artist": "Платина",
-            "duration": "--:--",
-            "url": "music/pososi.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 102,
-            "title": "Poydet",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/poydet.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 103,
-            "title": "PROBLEM CHILD",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/PROBLEM CHILD.mp3",
-            "language": "en"
-        },
-        {
-            "id": 104,
-            "title": "Rampage Song",
-            "artist": "Ken Carson",
-            "duration": "--:--",
-            "url": "music/Rampage Song.mp3",
-            "language": "en"
-        },
-        {
-            "id": 105,
-            "title": "ratatatata",
-            "artist": "Ямаш",
-            "duration": "--:--",
-            "url": "music/ratatatata.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 106,
-            "title": "Rather Lie",
-            "artist": "Playboi Carti, The Weeknd",
-            "duration": "--:--",
-            "url": "music/ratherlife.mp3",
-            "language": "en"
-        },
-        {
-            "id": 107,
-            "title": "retro rev",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/retro rev.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 108,
-            "title": "AINT NOTHING",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - AINT NOTHING.mp3",
-            "language": "en"
-        },
-        {
-            "id": 109,
-            "title": "Brick Brick",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - Brick Brick.mp3",
-            "language": "en"
-        },
-        {
-            "id": 110,
-            "title": "Dirty Money",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - Dirty Money.mp3",
-            "language": "en"
-        },
-        {
-            "id": 111,
-            "title": "Flex N Finesse",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - Flex N Finesse.mp3",
-            "language": "en"
-        },
-        {
-            "id": 112,
-            "title": "I WANT EVERYTHING",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - I WANT EVERYTHING.mp3",
-            "language": "en"
-        },
-        {
-            "id": 113,
-            "title": "ILLUMINATI",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - ILLUMINATI.mp3",
-            "language": "en"
-        },
-        {
-            "id": 114,
-            "title": "In & Out",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - In & Out.mp3",
-            "language": "en"
-        },
-        {
-            "id": 115,
-            "title": "ONE CALL",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - ONE CALL.mp3",
-            "language": "en"
-        },
-        {
-            "id": 116,
-            "title": "OUTTA THERE",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - OUTTA THERE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 117,
-            "title": "Paranoid",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - Paranoid.mp3",
-            "language": "en"
-        },
-        {
-            "id": 118,
-            "title": "SAME OLD ME",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - SAME OLD ME.mp3",
-            "language": "en"
-        },
-        {
-            "id": 119,
-            "title": "So Long",
-            "artist": "Rich Amiri",
-            "duration": "--:--",
-            "url": "music/Rich Amiri - So Long.mp3",
-            "language": "en"
-        },
-        {
-            "id": 120,
-            "title": "Riley",
-            "artist": "Iann Dior",
-            "duration": "--:--",
-            "url": "music/Riley.mp3",
-            "language": "en"
-        },
-        {
-            "id": 121,
-            "title": "san laran",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/san laran.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 122,
-            "title": "Sauce!",
-            "artist": "XXXTENTACION",
-            "duration": "--:--",
-            "url": "music/Sauce!.mp3",
-            "language": "en"
-        },
-        {
-            "id": 123,
-            "title": "sdp interlude (OG)",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/sdp interlude (OG).mp3",
-            "language": "en"
-        },
-        {
-            "id": 124,
-            "title": "SHOW",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/show.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 125,
-            "title": "shyne",
-            "artist": "Destroy Lonely",
-            "duration": "--:--",
-            "url": "music/shyne.mp3",
-            "language": "en"
-        },
-        {
-            "id": 126,
-            "title": "SICKO MODE",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/SICKO MODE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 127,
-            "title": "Sky",
-            "artist": "Playboi Carti",
-            "duration": "--:--",
-            "url": "music/sky.mp3",
-            "language": "en"
-        },
-        {
-            "id": 128,
-            "title": "SOME MORE",
-            "artist": "Ken Carson",
-            "duration": "--:--",
-            "url": "music/SOME MORE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 129,
-            "title": "SOULCALIBUR LUV",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/SOULCALIBUR LUV.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 130,
-            "title": "SS",
-            "artist": "Ken Carson",
-            "duration": "--:--",
-            "url": "music/ss.mp3",
-            "language": "en"
-        },
-        {
-            "id": 131,
-            "title": "STARGAZING",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/STARGAZING.mp3",
-            "language": "en"
-        },
-        {
-            "id": 132,
-            "title": "Telescope",
-            "artist": "TWXN",
-            "duration": "--:--",
-            "url": "music/telescope.mp3",
-            "language": "en"
-        },
-        {
-            "id": 133,
-            "title": "THE SCOTTS",
-            "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
-            "duration": "--:--",
-            "url": "music/The Scotts.mp3",
-            "language": "en"
-        },
-        {
-            "id": 134,
-            "title": "Toosie Slide",
-            "artist": "Drake",
-            "duration": "--:--",
-            "url": "music/Toosie slide.mp3",
-            "language": "en"
-        },
-        {
-            "id": 135,
-            "title": "ESCAPE PLAN",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/Travi$ Scott - ESCAPE PLAN.mp3",
-            "language": "en"
-        },
-        {
-            "id": 136,
-            "title": "CHAMPAIN & VACAY",
-            "artist": "Travis Scott & Don Toliver",
-            "duration": "--:--",
-            "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
-            "language": "en"
-        },
-        {
-            "id": 137,
-            "title": "OUTSIDE",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/Travis Scott - OUTSIDE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 138,
-            "title": "THANK GOD",
-            "artist": "Travis Scott",
-            "duration": "--:--",
-            "url": "music/Travis Scott - THANK GOD.mp3",
-            "language": "en"
-        },
-        {
-            "id": 139,
-            "title": "Type Shit",
-            "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-            "duration": "--:--",
-            "url": "music/Type Shit.mp3",
-            "language": "en"
-        },
-        {
-            "id": 140,
-            "title": "UFO LUV",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/UFO LUV.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 141,
-            "title": "Veselaya Pesnya",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/veselaya pesnya.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 142,
-            "title": "ON MY OWN",
-            "artist": "void, BABY BOI",
-            "duration": "--:--",
-            "url": "music/void, BABY BOI - ON MY OWN.mp3",
-            "language": "en"
-        },
-        {
-            "id": 143,
-            "title": "FOR RICHIE",
-            "artist": "void, Druskhi",
-            "duration": "--:--",
-            "url": "music/void, Druskhi - FOR RICHIE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 144,
-            "title": "OBSESSED",
-            "artist": "void, ech0",
-            "duration": "--:--",
-            "url": "music/void, ech0 - OBSESSED.mp3",
-            "language": "en"
-        },
-        {
-            "id": 145,
-            "title": "Blast Off",
-            "artist": "Void, Repair Lonely",
-            "duration": "--:--",
-            "url": "music/Void, Repair Lonely - Blast Off.mp3",
-            "language": "en"
-        },
-        {
-            "id": 146,
-            "title": "Wassup",
-            "artist": "Lil Uzi Vert, Future",
-            "duration": "--:--",
-            "url": "music/Wassup.mp3",
-            "language": "en"
-        },
-        {
-            "id": 147,
-            "title": "WATAFUK",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/WATAFUK.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 148,
-            "title": "Watch This",
-            "artist": "Lil Uzi Vert",
-            "duration": "--:--",
-            "url": "music/watch this.mp3",
-            "language": "en"
-        },
-        {
-            "id": 149,
-            "title": "WHAT U NEED",
-            "artist": "Don Toliver",
-            "duration": "--:--",
-            "url": "music/what u need.mp3",
-            "language": "en"
-        },
-        {
-            "id": 150,
-            "title": "ya kogda-nibud uydu",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/ya kogda-nibud uydu.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 151,
-            "title": "BË QUIET (Feat. Kodak Black)",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - BË QUIET (Feat. Kodak Black).mp3",
-            "language": "en"
-        },
-        {
-            "id": 152,
-            "title": "Flawlëss (Feat. Lil Uzi Vert)",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - Flawlëss (Feat. Lil Uzi Vert).mp3",
-            "language": "en"
-        },
-        {
-            "id": 153,
-            "title": "FLYTROOP",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - FLYTROOP.mp3",
-            "language": "en"
-        },
-        {
-            "id": 154,
-            "title": "GEEK TIMË",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - GEEK TIMË.mp3",
-            "language": "en"
-        },
-        {
-            "id": 155,
-            "title": "My wrist (feat. Young Thug)",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - My wrist (feat. Young Thug).mp3",
-            "language": "en"
-        },
-        {
-            "id": 156,
-            "title": "No morë talk",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - No morë talk.mp3",
-            "language": "en"
-        },
-        {
-            "id": 157,
-            "title": "ORCHESTRATË",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - ORCHESTRATË.mp3",
-            "language": "en"
-        },
-        {
-            "id": 158,
-            "title": "Tell Më",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - Tell Më.mp3",
-            "language": "en"
-        },
-        {
-            "id": 159,
-            "title": "U Should Know",
-            "artist": "Yeat",
-            "duration": "--:--",
-            "url": "music/Yeat - U Should Know.mp3",
-            "language": "en"
-        },
-        {
-            "id": 160,
-            "title": "5BRAZY",
-            "artist": "Yeat feat. Quavo",
-            "duration": "--:--",
-            "url": "music/Yeat feat. Quavo - 5BRAZY.mp3",
-            "language": "en"
-        },
-        {
-            "id": 161,
-            "title": "Made It On Our Own",
-            "artist": "Yeat, EsDeeKid",
-            "duration": "--:--",
-            "url": "music/Yeat, EsDeeKid - Made It On Our Own.mp3",
-            "language": "en"
-        },
-        {
-            "id": 162,
-            "title": "Your Turn",
-            "artist": "Lil Uzi Vert",
-            "duration": "--:--",
-            "url": "music/Your Turn.mp3",
-            "language": "en"
-        },
-        {
-            "id": 163,
-            "title": "ZEZE",
-            "artist": "Kodak Black, Travis Scott, Offset",
-            "duration": "--:--",
-            "url": "music/ZEZE.mp3",
-            "language": "en"
-        },
-        {
-            "id": 164,
-            "title": "ауди",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/ауди.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 165,
-            "title": "Ауф",
-            "artist": "Нурминский",
-            "duration": "--:--",
-            "url": "music/ауф.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 166,
-            "title": "Бандана",
-            "artist": "Kizaru, Big Baby Tape",
-            "duration": "--:--",
-            "url": "music/Бандана.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 167,
-            "title": "Бассок",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/Бассок.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 168,
-            "title": "блядская натура",
-            "artist": "Натура",
-            "duration": "--:--",
-            "url": "music/блядская натура.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 169,
-            "title": "Валентина",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/Валентина.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 170,
-            "title": "Валим",
-            "artist": "Нурминский",
-            "duration": "--:--",
-            "url": "music/валим.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 171,
-            "title": "Веном",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/Веном.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 172,
-            "title": "Виновата сама",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/Виновата сама.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 173,
-            "title": "Внутри",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/Внутри.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 174,
-            "title": "Гоблин",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/Гоблин.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 175,
-            "title": "до сих пор",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/до сих пор.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 176,
-            "title": "киллер",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/киллер.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 177,
-            "title": "Мент",
-            "artist": "Нурминский",
-            "duration": "--:--",
-            "url": "music/мент.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 178,
-            "title": "моих мыслях",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/моих мыслях.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 179,
-            "title": "мотылек",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/мотылек.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 180,
-            "title": "Мы пидоры",
-            "artist": "Еврогей",
-            "duration": "--:--",
-            "url": "music/мы пидоры.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 181,
-            "title": "На грязном",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/На грязном.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 182,
-            "title": "на память",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/на память.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 183,
-            "title": "не надо",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/не надо.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 184,
-            "title": "ночь",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/ночь.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 185,
-            "title": "Плохая Сука",
-            "artist": "GONE.Fludd",
-            "duration": "--:--",
-            "url": "music/Плохая Сука.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 186,
-            "title": "Сердце для шалав",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/Сердце для шалав.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 187,
-            "title": "Случайна",
-            "artist": "Morgenshtern",
-            "duration": "--:--",
-            "url": "music/Случайна.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 188,
-            "title": "снег",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/снег.mp3",
-            "language": "ru"
-        },
-        {
-            "id": 189,
-            "title": "ты",
-            "artist": "MAYOT",
-            "duration": "--:--",
-            "url": "music/ты.mp3",
-            "language": "ru"
-        }
-    ];
+(() => {
+    'use strict';
 
-    // Массив популярных песен
-    const popularSongs = allSongs.slice(0, 40);
+    const byId = id => document.getElementById(id);
+    const audio = byId('audio-player');
+    const seek = byId('seek');
+    const volume = byId('volume');
+    const playButton = byId('play-pause');
+    const libraryPanel = document.querySelector('.library-panel');
+    const queueList = byId('playlist');
+    const tabs = [...document.querySelectorAll('.tab')];
+    const notification = byId('notification');
 
-    // Массив артистов с их треками. Совместные треки добавляются в карточку каждого участника.
-    const artists = [
-        {
-            "id": 0,
-            "name": "Паллаич",
-            "avatar": "https://images.genius.com/1dcdd72cc44f7130f1e0552b950145e4.1000x1000x1.png",
-            "genre": "",
-            "songs": [
-                {
-            "id": 05,
-            "title": "lil uzi vert - паллаич",
-            "artist": "lil uzi vert",
-            "duration": "24.02.2022",
-            "url": "music/lil uzi vert - паллаич(тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 04,
-            "title": "kanye west - Чёрный Брат",
-            "artist": "kanye west",
-            "duration": "24.02.2022",
-            "url": "music/kanye west - Чёрный Брат (тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 03,
-            "title": "yeat - rich паллаич",
-            "artist": "yeat",
-            "duration": "24.02.2022",
-            "url": "music/yeat - rich паллаич (тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 02,
-            "title": "chief keef - деп паллаича",
-            "artist": "chief kee",
-            "duration": "24.02.2022",
-            "url": "music/chief keef - деп паллаича (тгк wwwakup).mp3",
-            "language": "ru"
-        },
-        {
-            "id": 01,
-            "title": "sory about it - движуха",
-            "artist": "Lil uzi vert",
-            "duration": "24.02.2022",
-            "url": "music/yeat - sory about it движуха.mp3",
-            "language": "ru"
-        }
-            ]
-        },
-        {
-            "id": 1,
-            "name": "Quavo",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 160,
-                    "title": "5BRAZY",
-                    "artist": "Yeat feat. Quavo",
-                    "duration": "--:--",
-                    "url": "music/Yeat feat. Quavo - 5BRAZY.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "name": "2 Chainz",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/2_Chainz_2017.jpg/640px-2_Chainz_2017.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 3,
-                    "title": "3500",
-                    "artist": "Travis Scott, Future, 2 Chainz",
-                    "duration": "--:--",
-                    "url": "music/3500.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "name": "A$AP Rocky",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/ASAP_Rocky_-_Openair_Frauenfeld_2019_08.jpg/640px-ASAP_Rocky_-_Openair_Frauenfeld_2019_08.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 7,
-                    "title": "Trunks",
-                    "artist": "A$AP Rocky",
-                    "duration": "--:--",
-                    "url": "music/A$AP Rocky - Trunks.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "name": "BABY BOI",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 142,
-                    "title": "ON MY OWN",
-                    "artist": "void, BABY BOI",
-                    "duration": "--:--",
-                    "url": "music/void, BABY BOI - ON MY OWN.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "name": "BNYX®",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb37ac8de0bdfd8d5730874523",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 13,
-                    "title": "GO AGAIN (feat. Superheaven)",
-                    "artist": "BNYX®, Yeat, Superheaven",
-                    "duration": "--:--",
-                    "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "name": "BUCKSHOT",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebc0084c5ea70c68ff42b73266",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 14,
-                    "title": "FEVER",
-                    "artist": "BUCKSHOT, fakemink",
-                    "duration": "--:--",
-                    "url": "music/BUCKSHOT feat. fakemink - FEVER.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "name": "Big Baby Tape",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb6a862c3c0061f402e3b34642",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 166,
-                    "title": "Бандана",
-                    "artist": "Kizaru, Big Baby Tape",
-                    "duration": "--:--",
-                    "url": "music/Бандана.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "name": "Chris Martin",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Chris_Martin_2017_in_Hamburg.jpg/640px-Chris_Martin_2017_in_Hamburg.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 57,
-                    "title": "Homecoming",
-                    "artist": "Kanye West, Chris Martin",
-                    "duration": "--:--",
-                    "url": "music/homecoming.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "name": "Destroy Lonely",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb9a3d4a707af9237b33d33e3b",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 31,
-                    "title": "SYRUP SIPPIN'",
-                    "artist": "Destroy Lonely",
-                    "duration": "--:--",
-                    "url": "music/Destroy Lonely - SYRUP SIPPIN'.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 125,
-                    "title": "shyne",
-                    "artist": "Destroy Lonely",
-                    "duration": "--:--",
-                    "url": "music/shyne.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "name": "Don Toliver",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Don_Toliver_2021.png/640px-Don_Toliver_2021.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 35,
-                    "title": "KRYPTONITE",
-                    "artist": "Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/Don Toliver - KRYPTONITE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 136,
-                    "title": "CHAMPAIN & VACAY",
-                    "artist": "Travis Scott & Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 149,
-                    "title": "WHAT U NEED",
-                    "artist": "Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/what u need.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "name": "Drake",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Drake_at_The_Carter_Effect_2017_%28cropped%29.jpg/640px-Drake_at_The_Carter_Effect_2017_%28cropped%29.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 134,
-                    "title": "Toosie Slide",
-                    "artist": "Drake",
-                    "duration": "--:--",
-                    "url": "music/Toosie slide.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "name": "Druskhi",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 143,
-                    "title": "FOR RICHIE",
-                    "artist": "void, Druskhi",
-                    "duration": "--:--",
-                    "url": "music/void, Druskhi - FOR RICHIE.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "name": "Dwele",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dwele_2012.jpg/640px-Dwele_2012.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 44,
-                    "title": "Flashing Lights",
-                    "artist": "Kanye West, Dwele",
-                    "duration": "--:--",
-                    "url": "music/Flashing Lights.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "name": "EsDeeKid",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebdf6f9f1b521c3f57fd336122",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 40,
-                    "title": "Century",
-                    "artist": "EsDeeKid",
-                    "duration": "--:--",
-                    "url": "music/EsDeeKid - Century.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 161,
-                    "title": "Made It On Our Own",
-                    "artist": "Yeat, EsDeeKid",
-                    "duration": "--:--",
-                    "url": "music/Yeat, EsDeeKid - Made It On Our Own.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "name": "Future",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Future_-_Openair_Frauenfeld_2019_02.jpg/640px-Future_-_Openair_Frauenfeld_2019_02.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 3,
-                    "title": "3500",
-                    "artist": "Travis Scott, Future, 2 Chainz",
-                    "duration": "--:--",
-                    "url": "music/3500.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 50,
-                    "title": "LIL DEMON",
-                    "artist": "Future",
-                    "duration": "--:--",
-                    "url": "music/Future - LIL DEMON.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 54,
-                    "title": "GTA",
-                    "artist": "Future",
-                    "duration": "--:--",
-                    "url": "music/gta.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 139,
-                    "title": "Type Shit",
-                    "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Type Shit.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 146,
-                    "title": "Wassup",
-                    "artist": "Lil Uzi Vert, Future",
-                    "duration": "--:--",
-                    "url": "music/Wassup.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "name": "GONE.Fludd",
-            "avatar": "https://showbi.ru/upload/2020/11/18/20201118170848-51d9621b.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 9,
-                    "title": "Инопланетянин",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/alien.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 22,
-                    "title": "CHILL",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/CHILL.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 24,
-                    "title": "СОК",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/COK.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 36,
-                    "title": "DREAM GARDEN",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/DREAM GARDEN.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 129,
-                    "title": "SOULCALIBUR LUV",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/SOULCALIBUR LUV.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 140,
-                    "title": "UFO LUV",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/UFO LUV.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 167,
-                    "title": "Бассок",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/Бассок.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 185,
-                    "title": "Плохая Сука",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/Плохая Сука.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "name": "Homixide Gang",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb2e59dedcd40b7d57bf3249b5",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 58,
-                    "title": "AddXcts (1)",
-                    "artist": "Homixide Gang",
-                    "duration": "--:--",
-                    "url": "music/Homixide Gang - AddXcts (1).mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "name": "I am music",
-            "avatar": "https://lastfm.freetls.fastly.net/i/u/770x0/a1ae3738d6b4c9ba090f2ae493c76c8d.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 60,
-                    "title": "Travis Scott - No Sleep Ft. Playboi Carti",
-                    "artist": "I am music",
-                    "duration": "--:--",
-                    "url": "music/I am music - Travis Scott - No Sleep Ft. Playboi Carti.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "name": "IMG",
-            "avatar": "https://i.scdn.co/image/ab67616d00001e02dfd6bfe770e5c34a636b2a72",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 62,
-                    "title": "4TH DIMENSION",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - 4TH DIMENSION.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 63,
-                    "title": "DON'T KNOW!",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - DON'T KNOW!.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 64,
-                    "title": "HOMICIDE",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - HOMICIDE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 65,
-                    "title": "HOW YOU FEEL_",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - HOW YOU FEEL_.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 66,
-                    "title": "POWER",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - POWER.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 67,
-                    "title": "PURPOSE",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - PURPOSE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 68,
-                    "title": "THE KARDASHIANS",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - THE KARDASHIANS.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 20,
-            "name": "Iann Dior",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebd69181c8b122d2125f1f0cf8",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 33,
-                    "title": "DO IT ALL",
-                    "artist": "Iann Dior",
-                    "duration": "--:--",
-                    "url": "music/do it all.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 120,
-                    "title": "Riley",
-                    "artist": "Iann Dior",
-                    "duration": "--:--",
-                    "url": "music/Riley.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 21,
-            "name": "JACKBOYS",
-            "avatar": "https://upload.wikimedia.org/wikipedia/en/4/46/JackBoys_-_JackBoys.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 69,
-                    "title": "JACKBOYS",
-                    "artist": "JACKBOYS",
-                    "duration": "--:--",
-                    "url": "music/JACKBOYS.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 90,
-                    "title": "OUT WEST",
-                    "artist": "JACKBOYS, Travis Scott, Young Thug",
-                    "duration": "--:--",
-                    "url": "music/out west.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 22,
-            "name": "Kanye West",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/640px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 18,
-                    "title": "CARNIVAL",
-                    "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/carnival.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 44,
-                    "title": "Flashing Lights",
-                    "artist": "Kanye West, Dwele",
-                    "duration": "--:--",
-                    "url": "music/Flashing Lights.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 49,
-                    "title": "Fuk Sumn",
-                    "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/fuk sumn.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 57,
-                    "title": "Homecoming",
-                    "artist": "Kanye West, Chris Martin",
-                    "duration": "--:--",
-                    "url": "music/homecoming.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 23,
-            "name": "Ken Carson",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb3e089e47bdf860199a4b3b42",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 6,
-                    "title": "5% TNT",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/5% TNT.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 70,
-                    "title": "Fighting My Demons",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/Ken Carson - Fighting My Demons.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 104,
-                    "title": "Rampage Song",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/Rampage Song.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 128,
-                    "title": "SOME MORE",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/SOME MORE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 130,
-                    "title": "SS",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/ss.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 24,
-            "name": "Kid Cudi",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Kid_Cudi_2010.jpg/640px-Kid_Cudi_2010.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 133,
-                    "title": "THE SCOTTS",
-                    "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
-                    "duration": "--:--",
-                    "url": "music/The Scotts.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 25,
-            "name": "Kizaru",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebc6b0f4b6035b35920edfece0",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 166,
-                    "title": "Бандана",
-                    "artist": "Kizaru, Big Baby Tape",
-                    "duration": "--:--",
-                    "url": "music/Бандана.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 26,
-            "name": "Kodak Black",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Kodak_Black_2018.png/640px-Kodak_Black_2018.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 163,
-                    "title": "ZEZE",
-                    "artist": "Kodak Black, Travis Scott, Offset",
-                    "duration": "--:--",
-                    "url": "music/ZEZE.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 27,
-            "name": "Lil Baby",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lil_Baby_in_2020.png/640px-Lil_Baby_in_2020.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 74,
-                    "title": "Stuff (featuring Travis Scott)",
-                    "artist": "Lil Baby",
-                    "duration": "--:--",
-                    "url": "music/Lil Baby - Stuff (featuring Travis Scott).mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 28,
-            "name": "Lil Tecca",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lil_Tecca_2019.png/640px-Lil_Tecca_2019.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 30,
-                    "title": "Dark Thoughts",
-                    "artist": "Lil Tecca",
-                    "duration": "--:--",
-                    "url": "music/dark thought.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 75,
-                    "title": "Boys Don’t Cry",
-                    "artist": "Lil Tecca",
-                    "duration": "--:--",
-                    "url": "music/Lil Tecca - Boys Don’t Cry.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 29,
-            "name": "Lil Uzi Vert",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lil_Uzi_Vert_%282018%29.png/640px-Lil_Uzi_Vert_%282018%29.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 52,
-                    "title": "Go Off",
-                    "artist": "Lil Uzi Vert, Quavo, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Go Off.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 76,
-                    "title": "Break The Bank",
-                    "artist": "Lil Uzi Vert & Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Lil Uzi Vert & Playboi Carti - Break The Bank.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 80,
-                    "title": "LV Sandals",
-                    "artist": "Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/LV Sandals.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 98,
-                    "title": "Manage",
-                    "artist": "Playboi Carti, Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/Playboi Carti, Lil Uzi Vert - Manage.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 146,
-                    "title": "Wassup",
-                    "artist": "Lil Uzi Vert, Future",
-                    "duration": "--:--",
-                    "url": "music/Wassup.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 148,
-                    "title": "Watch This",
-                    "artist": "Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/watch this.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 162,
-                    "title": "Your Turn",
-                    "artist": "Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/Your Turn.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 30,
-            "name": "Lil Wayne",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Lil_Wayne_%2823523750613%29.jpg/640px-Lil_Wayne_%2823523750613%29.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 78,
-                    "title": "Lollipop",
-                    "artist": "Lil Wayne",
-                    "duration": "--:--",
-                    "url": "music/lollipop.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 31,
-            "name": "M.I.A.",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/MIA_Press_2022_%28cropped%29.jpg/640px-MIA_Press_2022_%28cropped%29.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 46,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/FRANCHISE.mov",
-                    "language": "en"
-                },
-                {
-                    "id": 47,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 48,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise2.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 32,
-            "name": "MAYOT",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebedc356acc39dfc52fd4f06c1",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 4,
-                    "title": "4 Raws",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/4 Raws.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 12,
-                    "title": "bebebe",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/bebebe.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 16,
-                    "title": "Bystro",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/bystro.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 21,
-                    "title": "chetyre ukrainki",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/chetyre ukrainki.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 29,
-                    "title": "Cristal",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/cristal_mayot.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 34,
-                    "title": "dom",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/dom.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 37,
-                    "title": "Drugoy",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/drugoy.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 38,
-                    "title": "Dulo",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/dulo.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 55,
-                    "title": "Head Shot",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Head Shot .mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 86,
-                    "title": "Nominalo",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/nominalo.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 87,
-                    "title": "novaya volna",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/novaya volna.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 89,
-                    "title": "ona-ono",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ona-ono.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 93,
-                    "title": "Papin Tank",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/papin tank.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 99,
-                    "title": "Pochemu",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/pochemu.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 102,
-                    "title": "Poydet",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/poydet.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 107,
-                    "title": "retro rev",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/retro rev.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 121,
-                    "title": "san laran",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/san laran.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 141,
-                    "title": "Veselaya Pesnya",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/veselaya pesnya.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 150,
-                    "title": "ya kogda-nibud uydu",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ya kogda-nibud uydu.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 164,
-                    "title": "ауди",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ауди.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 169,
-                    "title": "Валентина",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Валентина.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 172,
-                    "title": "Виновата сама",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Виновата сама.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 173,
-                    "title": "Внутри",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Внутри.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 175,
-                    "title": "до сих пор",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/до сих пор.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 176,
-                    "title": "киллер",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/киллер.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 178,
-                    "title": "моих мыслях",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/моих мыслях.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 179,
-                    "title": "мотылек",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/мотылек.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 181,
-                    "title": "На грязном",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/На грязном.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 182,
-                    "title": "на память",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/на память.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 183,
-                    "title": "не надо",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/не надо.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 184,
-                    "title": "ночь",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ночь.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 186,
-                    "title": "Сердце для шалав",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Сердце для шалав.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 188,
-                    "title": "снег",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/снег.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 189,
-                    "title": "ты",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ты.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 33,
-            "name": "Metro Boomin",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Metro_Boomin_2019.png/640px-Metro_Boomin_2019.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 81,
-                    "title": "Trance",
-                    "artist": "Metro Boomin, Travis Scott & Young Thug",
-                    "duration": "--:--",
-                    "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 139,
-                    "title": "Type Shit",
-                    "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Type Shit.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 34,
-            "name": "Morgenshtern",
-            "avatar": "https://ss.sport-express.ru/userfiles/materials/177/1774394/volga.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 10,
-                    "title": "Ameli",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/ameli.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 11,
-                    "title": "ARISTOCRAT",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/ARISTOCRAT.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 17,
-                    "title": "Cadillac",
-                    "artist": "Morgenshtern, Элджей",
-                    "duration": "--:--",
-                    "url": "music/Cadillac.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 27,
-                    "title": "Cristal",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/cristal.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 28,
-                    "title": "Cristal & МОЁТ",
-                    "artist": "Morgenshtern, Элджей",
-                    "duration": "--:--",
-                    "url": "music/cristal_.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 32,
-                    "title": "DINERO",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/DINERO.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 39,
-                    "title": "El Problema",
-                    "artist": "Morgenshtern, Тимати",
-                    "duration": "--:--",
-                    "url": "music/el problema.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 61,
-                    "title": "ICE",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/ice.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 72,
-                    "title": "Leck",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/leck.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 88,
-                    "title": "novyy meren",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/novyy meren.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 92,
-                    "title": "pablo",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/pablo.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 124,
-                    "title": "SHOW",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/show.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 147,
-                    "title": "WATAFUK",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/WATAFUK.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 171,
-                    "title": "Веном",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/Веном.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 174,
-                    "title": "Гоблин",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/Гоблин.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 187,
-                    "title": "Случайна",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/Случайна.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 35,
-            "name": "Nicki Minaj",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nicki_Minaj_Vogue_2023.jpg/640px-Nicki_Minaj_Vogue_2023.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 100,
-                    "title": "Poke It Out",
-                    "artist": "Playboi Carti, Nicki Minaj",
-                    "duration": "--:--",
-                    "url": "music/Poke it out.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 36,
-            "name": "Offset",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 163,
-                    "title": "ZEZE",
-                    "artist": "Kodak Black, Travis Scott, Offset",
-                    "duration": "--:--",
-                    "url": "music/ZEZE.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 37,
-            "name": "Playboi Carti",
-            "avatar": "https://i.pinimg.com/736x/bd/d2/7f/bdd27fc47b0674f3b9db0cc158e55fdf.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 1,
-                    "title": "2000",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/2000.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 2,
-                    "title": "24 Songs",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/24song.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 18,
-                    "title": "CARNIVAL",
-                    "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/carnival.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 23,
-                    "title": "COCAINE NOSE (Extended Intro)",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/COCAINE NOSE (Extended Intro).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 25,
-                    "title": "Crank Master",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/crank master.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 26,
-                    "title": "CRASH",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/crash.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 41,
-                    "title": "EVIL JORDAN",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/evil jordan.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 42,
-                    "title": "FE!N",
-                    "artist": "Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fein.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 43,
-                    "title": "Fell In Luv",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fell in love.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 45,
-                    "title": "FOMDJ",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fomdj.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 49,
-                    "title": "Fuk Sumn",
-                    "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/fuk sumn.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 51,
-                    "title": "GO CR4ZY",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/go crazy.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 71,
-                    "title": "KICKED OUT",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/KICKED OUT.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 76,
-                    "title": "Break The Bank",
-                    "artist": "Lil Uzi Vert & Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Lil Uzi Vert & Playboi Carti - Break The Bank.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 77,
-                    "title": "Location",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/location.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 79,
-                    "title": "Long Time",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/long time.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 82,
-                    "title": "Magnolia",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/mognolia.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 85,
-                    "title": "NO FACE",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/no face.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 91,
-                    "title": "Over",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/over.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 94,
-                    "title": "Phantom",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Phantom.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 95,
-                    "title": "PHILLY",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/PHILLY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 96,
-                    "title": "Photo",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/photo.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 97,
-                    "title": "WASSUP_RATCHET ft. Lil Baby",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Playboi Carti - WASSUP_RATCHET ft. Lil Baby.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 98,
-                    "title": "Manage",
-                    "artist": "Playboi Carti, Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/Playboi Carti, Lil Uzi Vert - Manage.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 100,
-                    "title": "Poke It Out",
-                    "artist": "Playboi Carti, Nicki Minaj",
-                    "duration": "--:--",
-                    "url": "music/Poke it out.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 103,
-                    "title": "PROBLEM CHILD",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/PROBLEM CHILD.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 106,
-                    "title": "Rather Lie",
-                    "artist": "Playboi Carti, The Weeknd",
-                    "duration": "--:--",
-                    "url": "music/ratherlife.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 127,
-                    "title": "Sky",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/sky.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 139,
-                    "title": "Type Shit",
-                    "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Type Shit.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 38,
-            "name": "Quavo",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Quavo_Veld_festival_2017.jpg/640px-Quavo_Veld_festival_2017.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 52,
-                    "title": "Go Off",
-                    "artist": "Lil Uzi Vert, Quavo, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Go Off.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 39,
-            "name": "Repair Lonely",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 145,
-                    "title": "Blast Off",
-                    "artist": "Void, Repair Lonely",
-                    "duration": "--:--",
-                    "url": "music/Void, Repair Lonely - Blast Off.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 40,
-            "name": "Rich Amiri",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebe7fd740a4a1b14f2f6f56a10",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 108,
-                    "title": "AINT NOTHING",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - AINT NOTHING.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 109,
-                    "title": "Brick Brick",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Brick Brick.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 110,
-                    "title": "Dirty Money",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Dirty Money.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 111,
-                    "title": "Flex N Finesse",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Flex N Finesse.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 112,
-                    "title": "I WANT EVERYTHING",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - I WANT EVERYTHING.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 113,
-                    "title": "ILLUMINATI",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - ILLUMINATI.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 114,
-                    "title": "In & Out",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - In & Out.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 115,
-                    "title": "ONE CALL",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - ONE CALL.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 116,
-                    "title": "OUTTA THERE",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - OUTTA THERE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 117,
-                    "title": "Paranoid",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Paranoid.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 118,
-                    "title": "SAME OLD ME",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - SAME OLD ME.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 119,
-                    "title": "So Long",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - So Long.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 41,
-            "name": "Rich The Kid",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Rich_the_Kid_2018.png/640px-Rich_the_Kid_2018.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 18,
-                    "title": "CARNIVAL",
-                    "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/carnival.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 42,
-            "name": "Superheaven",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb37ac8de0bdfd8d5730874523",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 13,
-                    "title": "GO AGAIN (feat. Superheaven)",
-                    "artist": "BNYX®, Yeat, Superheaven",
-                    "duration": "--:--",
-                    "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 43,
-            "name": "THE SCOTTS",
-            "avatar": "https://upload.wikimedia.org/wikipedia/en/0/07/The_Scotts_-_The_Scotts.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 133,
-                    "title": "THE SCOTTS",
-                    "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
-                    "duration": "--:--",
-                    "url": "music/The Scotts.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 44,
-            "name": "TWXN",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebf915acb1ea01b164ee30975d",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 132,
-                    "title": "Telescope",
-                    "artist": "TWXN",
-                    "duration": "--:--",
-                    "url": "music/telescope.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 45,
-            "name": "The Weeknd",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/The_Weeknd_Cannes_2023.png/640px-The_Weeknd_Cannes_2023.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 106,
-                    "title": "Rather Lie",
-                    "artist": "Playboi Carti, The Weeknd",
-                    "duration": "--:--",
-                    "url": "music/ratherlife.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 46,
-            "name": "Travis Scott",
-            "avatar": "https://app.hiphopdx.com/wp-content/uploads/2024/09/travis-scott-sparks-new-album-excitement.jpg?w=1200",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 3,
-                    "title": "3500",
-                    "artist": "Travis Scott, Future, 2 Chainz",
-                    "duration": "--:--",
-                    "url": "music/3500.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 5,
-                    "title": "4X4",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/4X4.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 15,
-                    "title": "BUTTERFLY EFFECT",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/butterfly effect.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 19,
-                    "title": "CHAMPAIN",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/champain.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 42,
-                    "title": "FE!N",
-                    "artist": "Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fein.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 46,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/FRANCHISE.mov",
-                    "language": "en"
-                },
-                {
-                    "id": 47,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 48,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise2.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 49,
-                    "title": "Fuk Sumn",
-                    "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/fuk sumn.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 52,
-                    "title": "Go Off",
-                    "artist": "Lil Uzi Vert, Quavo, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Go Off.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 53,
-                    "title": "goosebumps",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Goosebumps.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 56,
-                    "title": "HIGHEST IN THE ROOM",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/HIGHEST IN THE ROOM.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 59,
-                    "title": "HYAENA",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/hyaena.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 81,
-                    "title": "Trance",
-                    "artist": "Metro Boomin, Travis Scott & Young Thug",
-                    "duration": "--:--",
-                    "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 84,
-                    "title": "Nightcrawler",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Nightcrawler.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 90,
-                    "title": "OUT WEST",
-                    "artist": "JACKBOYS, Travis Scott, Young Thug",
-                    "duration": "--:--",
-                    "url": "music/out west.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 123,
-                    "title": "sdp interlude (OG)",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/sdp interlude (OG).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 126,
-                    "title": "SICKO MODE",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/SICKO MODE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 131,
-                    "title": "STARGAZING",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/STARGAZING.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 133,
-                    "title": "THE SCOTTS",
-                    "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
-                    "duration": "--:--",
-                    "url": "music/The Scotts.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 135,
-                    "title": "ESCAPE PLAN",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Travi$ Scott - ESCAPE PLAN.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 136,
-                    "title": "CHAMPAIN & VACAY",
-                    "artist": "Travis Scott & Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 137,
-                    "title": "OUTSIDE",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott - OUTSIDE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 138,
-                    "title": "THANK GOD",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott - THANK GOD.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 139,
-                    "title": "Type Shit",
-                    "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Type Shit.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 163,
-                    "title": "ZEZE",
-                    "artist": "Kodak Black, Travis Scott, Offset",
-                    "duration": "--:--",
-                    "url": "music/ZEZE.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 47,
-            "name": "Ty Dolla $ign",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Ty_Dolla_Sign_2018.png/640px-Ty_Dolla_Sign_2018.png",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 18,
-                    "title": "CARNIVAL",
-                    "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/carnival.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 49,
-                    "title": "Fuk Sumn",
-                    "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/fuk sumn.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 48,
-            "name": "Void",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb8d61a005421acb06b875da19",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 145,
-                    "title": "Blast Off",
-                    "artist": "Void, Repair Lonely",
-                    "duration": "--:--",
-                    "url": "music/Void, Repair Lonely - Blast Off.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 49,
-            "name": "XXXTENTACION",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Xxxtentacion_%28cropped%29.jpg/640px-Xxxtentacion_%28cropped%29.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 122,
-                    "title": "Sauce!",
-                    "artist": "XXXTENTACION",
-                    "duration": "--:--",
-                    "url": "music/Sauce!.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 50,
-            "name": "Yeat",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg/640px-Yeat_-_The_Fonda_2023_%2853231064164%29_%28cropped%29.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 13,
-                    "title": "GO AGAIN (feat. Superheaven)",
-                    "artist": "BNYX®, Yeat, Superheaven",
-                    "duration": "--:--",
-                    "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 151,
-                    "title": "BË QUIET (Feat. Kodak Black)",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - BË QUIET (Feat. Kodak Black).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 152,
-                    "title": "Flawlëss (Feat. Lil Uzi Vert)",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - Flawlëss (Feat. Lil Uzi Vert).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 153,
-                    "title": "FLYTROOP",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - FLYTROOP.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 154,
-                    "title": "GEEK TIMË",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - GEEK TIMË.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 155,
-                    "title": "My wrist (feat. Young Thug)",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - My wrist (feat. Young Thug).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 156,
-                    "title": "No morë talk",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - No morë talk.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 157,
-                    "title": "ORCHESTRATË",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - ORCHESTRATË.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 158,
-                    "title": "Tell Më",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - Tell Më.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 159,
-                    "title": "U Should Know",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - U Should Know.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 160,
-                    "title": "5BRAZY",
-                    "artist": "Yeat feat. Quavo",
-                    "duration": "--:--",
-                    "url": "music/Yeat feat. Quavo - 5BRAZY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 161,
-                    "title": "Made It On Our Own",
-                    "artist": "Yeat, EsDeeKid",
-                    "duration": "--:--",
-                    "url": "music/Yeat, EsDeeKid - Made It On Our Own.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 51,
-            "name": "Young Thug",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Young_Thug_-_Openair_Frauenfeld_2019_20.jpg/640px-Young_Thug_-_Openair_Frauenfeld_2019_20.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 46,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/FRANCHISE.mov",
-                    "language": "en"
-                },
-                {
-                    "id": 47,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 48,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise2.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 81,
-                    "title": "Trance",
-                    "artist": "Metro Boomin, Travis Scott & Young Thug",
-                    "duration": "--:--",
-                    "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 90,
-                    "title": "OUT WEST",
-                    "artist": "JACKBOYS, Travis Scott, Young Thug",
-                    "duration": "--:--",
-                    "url": "music/out west.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 52,
-            "name": "ech0",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 144,
-                    "title": "OBSESSED",
-                    "artist": "void, ech0",
-                    "duration": "--:--",
-                    "url": "music/void, ech0 - OBSESSED.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 53,
-            "name": "fakemink",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 14,
-                    "title": "FEVER",
-                    "artist": "BUCKSHOT, fakemink",
-                    "duration": "--:--",
-                    "url": "music/BUCKSHOT feat. fakemink - FEVER.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 54,
-            "name": "void",
-            "avatar": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 142,
-                    "title": "ON MY OWN",
-                    "artist": "void, BABY BOI",
-                    "duration": "--:--",
-                    "url": "music/void, BABY BOI - ON MY OWN.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 143,
-                    "title": "FOR RICHIE",
-                    "artist": "void, Druskhi",
-                    "duration": "--:--",
-                    "url": "music/void, Druskhi - FOR RICHIE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 144,
-                    "title": "OBSESSED",
-                    "artist": "void, ech0",
-                    "duration": "--:--",
-                    "url": "music/void, ech0 - OBSESSED.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 55,
-            "name": "Еврогей",
-            "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 180,
-                    "title": "Мы пидоры",
-                    "artist": "Еврогей",
-                    "duration": "--:--",
-                    "url": "music/мы пидоры.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 56,
-            "name": "Натура",
-            "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 168,
-                    "title": "блядская натура",
-                    "artist": "Натура",
-                    "duration": "--:--",
-                    "url": "music/блядская натура.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 57,
-            "name": "Нурминский",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5eb0e0a679f1437508b2cb76c9d",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 165,
-                    "title": "Ауф",
-                    "artist": "Нурминский",
-                    "duration": "--:--",
-                    "url": "music/ауф.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 170,
-                    "title": "Валим",
-                    "artist": "Нурминский",
-                    "duration": "--:--",
-                    "url": "music/валим.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 177,
-                    "title": "Мент",
-                    "artist": "Нурминский",
-                    "duration": "--:--",
-                    "url": "music/мент.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 58,
-            "name": "Платина",
-            "avatar": "https://i.scdn.co/image/ab6761610000e5ebf16b8ce97a77910d08d3fa40",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 101,
-                    "title": "pososi",
-                    "artist": "Платина",
-                    "duration": "--:--",
-                    "url": "music/pososi.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 59,
-            "name": "Серёга",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Seryoga_KingRing.jpg/640px-Seryoga_KingRing.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 20,
-                    "title": "Чёрный бумер",
-                    "artist": "Серёга",
-                    "duration": "--:--",
-                    "url": "music/chernyy bumer.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 60,
-            "name": "Тимати",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Timati%2C_2017.jpg/640px-Timati%2C_2017.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 39,
-                    "title": "El Problema",
-                    "artist": "Morgenshtern, Тимати",
-                    "duration": "--:--",
-                    "url": "music/el problema.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 61,
-            "name": "Элджей",
-            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Allj2018.jpg/640px-Allj2018.jpg",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 17,
-                    "title": "Cadillac",
-                    "artist": "Morgenshtern, Элджей",
-                    "duration": "--:--",
-                    "url": "music/Cadillac.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 28,
-                    "title": "Cristal & МОЁТ",
-                    "artist": "Morgenshtern, Элджей",
-                    "duration": "--:--",
-                    "url": "music/cristal_.mp3",
-                    "language": "ru"
-                }
-            ]
-        },
-        {
-            "id": 62,
-            "name": "Ямаш",
-            "avatar": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80",
-            "genre": "",
-            "songs": [
-                {
-                    "id": 8,
-                    "title": "abu_dhabi_vabu",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/abu_dhabi_vabu.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 73,
-                    "title": "Ligala sosa",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/Ligala sosa.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 83,
-                    "title": "navalnyy lyokha",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/navalnyy lyokha.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 105,
-                    "title": "ratatatata",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/ratatatata.mp3",
-                    "language": "ru"
-                }
-            ]
-        }
-    ];
+    const HOME_ID = 'home';
+    const PLAYLISTS_KEY = 'smoker.playlists';
+    const HISTORY_KEY = 'smoker.listeningHistory';
+    const LIKES_KEY = 'smoker.likedTracks';
+    const RECOMMENDATION_COUNT = 24;
+    const MUSIC_CACHES = ['music-v3', 'music-v2'];
+    const LANGUAGE_LABELS = { en: 'английский', ru: 'русский', instrumental: 'инструментал' };
+    const preferredLanguages = new Set(['ru', 'en']);
+    const trackPlural = new Intl.PluralRules('ru');
+    const normalize = text => text.toLowerCase().replace(/ё/g, 'е').normalize('NFKD')
+        .replace(/\p{M}/gu, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+    const trackPath = track => 'music/' + encodeURIComponent(track.file);
+    const trackByFile = new Map(TRACKS.map(track => [track.file, track]));
+    const artistText = track => track.artists.join(', ') || 'Неизвестный артист';
+    const trackArt = track => track?.cover || ARTIST_AVATARS[track?.artists[0]];
+    const searchFields = new Map(TRACKS.map(track => [track.file, [
+        track.title, ...track.artists, track.artists.join(' '), track.file.replace(/\.[^.]+$/, '')
+    ].map(normalize)]));
 
-    const playlists = [
-        {
-            "id": 1,
-            "name": "English mix",
-            "cover": "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
-            "songs": [
-                {
-                    "id": 1,
-                    "title": "2000",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/2000.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 2,
-                    "title": "24 Songs",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/24song.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 3,
-                    "title": "3500",
-                    "artist": "Travis Scott, Future, 2 Chainz",
-                    "duration": "--:--",
-                    "url": "music/3500.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 5,
-                    "title": "4X4",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/4X4.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 6,
-                    "title": "5% TNT",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/5% TNT.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 7,
-                    "title": "Trunks",
-                    "artist": "A$AP Rocky",
-                    "duration": "--:--",
-                    "url": "music/A$AP Rocky - Trunks.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 13,
-                    "title": "GO AGAIN (feat. Superheaven)",
-                    "artist": "BNYX®, Yeat, Superheaven",
-                    "duration": "--:--",
-                    "url": "music/BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 14,
-                    "title": "FEVER",
-                    "artist": "BUCKSHOT, fakemink",
-                    "duration": "--:--",
-                    "url": "music/BUCKSHOT feat. fakemink - FEVER.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 15,
-                    "title": "BUTTERFLY EFFECT",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/butterfly effect.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 18,
-                    "title": "CARNIVAL",
-                    "artist": "Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/carnival.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 19,
-                    "title": "CHAMPAIN",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/champain.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 23,
-                    "title": "COCAINE NOSE (Extended Intro)",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/COCAINE NOSE (Extended Intro).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 25,
-                    "title": "Crank Master",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/crank master.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 26,
-                    "title": "CRASH",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/crash.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 30,
-                    "title": "Dark Thoughts",
-                    "artist": "Lil Tecca",
-                    "duration": "--:--",
-                    "url": "music/dark thought.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 31,
-                    "title": "SYRUP SIPPIN'",
-                    "artist": "Destroy Lonely",
-                    "duration": "--:--",
-                    "url": "music/Destroy Lonely - SYRUP SIPPIN'.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 33,
-                    "title": "DO IT ALL",
-                    "artist": "Iann Dior",
-                    "duration": "--:--",
-                    "url": "music/do it all.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 35,
-                    "title": "KRYPTONITE",
-                    "artist": "Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/Don Toliver - KRYPTONITE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 40,
-                    "title": "Century",
-                    "artist": "EsDeeKid",
-                    "duration": "--:--",
-                    "url": "music/EsDeeKid - Century.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 41,
-                    "title": "EVIL JORDAN",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/evil jordan.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 42,
-                    "title": "FE!N",
-                    "artist": "Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fein.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 43,
-                    "title": "Fell In Luv",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fell in love.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 44,
-                    "title": "Flashing Lights",
-                    "artist": "Kanye West, Dwele",
-                    "duration": "--:--",
-                    "url": "music/Flashing Lights.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 45,
-                    "title": "FOMDJ",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/fomdj.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 46,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/FRANCHISE.mov",
-                    "language": "en"
-                },
-                {
-                    "id": 47,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 48,
-                    "title": "FRANCHISE",
-                    "artist": "Travis Scott, Young Thug, M.I.A.",
-                    "duration": "--:--",
-                    "url": "music/franchise2.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 49,
-                    "title": "Fuk Sumn",
-                    "artist": "Kanye West, Ty Dolla $ign, Playboi Carti, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/fuk sumn.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 50,
-                    "title": "LIL DEMON",
-                    "artist": "Future",
-                    "duration": "--:--",
-                    "url": "music/Future - LIL DEMON.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 51,
-                    "title": "GO CR4ZY",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/go crazy.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 52,
-                    "title": "Go Off",
-                    "artist": "Lil Uzi Vert, Quavo, Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Go Off.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 53,
-                    "title": "goosebumps",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Goosebumps.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 54,
-                    "title": "GTA",
-                    "artist": "Future",
-                    "duration": "--:--",
-                    "url": "music/gta.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 56,
-                    "title": "HIGHEST IN THE ROOM",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/HIGHEST IN THE ROOM.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 57,
-                    "title": "Homecoming",
-                    "artist": "Kanye West, Chris Martin",
-                    "duration": "--:--",
-                    "url": "music/homecoming.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 58,
-                    "title": "AddXcts (1)",
-                    "artist": "Homixide Gang",
-                    "duration": "--:--",
-                    "url": "music/Homixide Gang - AddXcts (1).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 59,
-                    "title": "HYAENA",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/hyaena.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 60,
-                    "title": "Travis Scott - No Sleep Ft. Playboi Carti",
-                    "artist": "I am music",
-                    "duration": "--:--",
-                    "url": "music/I am music - Travis Scott - No Sleep Ft. Playboi Carti.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 62,
-                    "title": "4TH DIMENSION",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - 4TH DIMENSION.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 63,
-                    "title": "DON'T KNOW!",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - DON'T KNOW!.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 64,
-                    "title": "HOMICIDE",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - HOMICIDE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 65,
-                    "title": "HOW YOU FEEL_",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - HOW YOU FEEL_.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 66,
-                    "title": "POWER",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - POWER.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 67,
-                    "title": "PURPOSE",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - PURPOSE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 68,
-                    "title": "THE KARDASHIANS",
-                    "artist": "IMG",
-                    "duration": "--:--",
-                    "url": "music/IMG - THE KARDASHIANS.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 69,
-                    "title": "JACKBOYS",
-                    "artist": "JACKBOYS",
-                    "duration": "--:--",
-                    "url": "music/JACKBOYS.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 70,
-                    "title": "Fighting My Demons",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/Ken Carson - Fighting My Demons.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 71,
-                    "title": "KICKED OUT",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/KICKED OUT.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 74,
-                    "title": "Stuff (featuring Travis Scott)",
-                    "artist": "Lil Baby",
-                    "duration": "--:--",
-                    "url": "music/Lil Baby - Stuff (featuring Travis Scott).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 75,
-                    "title": "Boys Don’t Cry",
-                    "artist": "Lil Tecca",
-                    "duration": "--:--",
-                    "url": "music/Lil Tecca - Boys Don’t Cry.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 76,
-                    "title": "Break The Bank",
-                    "artist": "Lil Uzi Vert & Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Lil Uzi Vert & Playboi Carti - Break The Bank.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 77,
-                    "title": "Location",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/location.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 78,
-                    "title": "Lollipop",
-                    "artist": "Lil Wayne",
-                    "duration": "--:--",
-                    "url": "music/lollipop.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 79,
-                    "title": "Long Time",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/long time.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 80,
-                    "title": "LV Sandals",
-                    "artist": "Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/LV Sandals.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 81,
-                    "title": "Trance",
-                    "artist": "Metro Boomin, Travis Scott & Young Thug",
-                    "duration": "--:--",
-                    "url": "music/Metro Boomin, Travis Scott & Young Thug - Trance.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 82,
-                    "title": "Magnolia",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/mognolia.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 84,
-                    "title": "Nightcrawler",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Nightcrawler.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 85,
-                    "title": "NO FACE",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/no face.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 90,
-                    "title": "OUT WEST",
-                    "artist": "JACKBOYS, Travis Scott, Young Thug",
-                    "duration": "--:--",
-                    "url": "music/out west.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 91,
-                    "title": "Over",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/over.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 94,
-                    "title": "Phantom",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Phantom.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 95,
-                    "title": "PHILLY",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/PHILLY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 96,
-                    "title": "Photo",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/photo.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 97,
-                    "title": "WASSUP_RATCHET ft. Lil Baby",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Playboi Carti - WASSUP_RATCHET ft. Lil Baby.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 98,
-                    "title": "Manage",
-                    "artist": "Playboi Carti, Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/Playboi Carti, Lil Uzi Vert - Manage.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 100,
-                    "title": "Poke It Out",
-                    "artist": "Playboi Carti, Nicki Minaj",
-                    "duration": "--:--",
-                    "url": "music/Poke it out.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 103,
-                    "title": "PROBLEM CHILD",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/PROBLEM CHILD.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 104,
-                    "title": "Rampage Song",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/Rampage Song.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 106,
-                    "title": "Rather Lie",
-                    "artist": "Playboi Carti, The Weeknd",
-                    "duration": "--:--",
-                    "url": "music/ratherlife.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 108,
-                    "title": "AINT NOTHING",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - AINT NOTHING.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 109,
-                    "title": "Brick Brick",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Brick Brick.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 110,
-                    "title": "Dirty Money",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Dirty Money.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 111,
-                    "title": "Flex N Finesse",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Flex N Finesse.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 112,
-                    "title": "I WANT EVERYTHING",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - I WANT EVERYTHING.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 113,
-                    "title": "ILLUMINATI",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - ILLUMINATI.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 114,
-                    "title": "In & Out",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - In & Out.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 115,
-                    "title": "ONE CALL",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - ONE CALL.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 116,
-                    "title": "OUTTA THERE",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - OUTTA THERE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 117,
-                    "title": "Paranoid",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - Paranoid.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 118,
-                    "title": "SAME OLD ME",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - SAME OLD ME.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 119,
-                    "title": "So Long",
-                    "artist": "Rich Amiri",
-                    "duration": "--:--",
-                    "url": "music/Rich Amiri - So Long.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 120,
-                    "title": "Riley",
-                    "artist": "Iann Dior",
-                    "duration": "--:--",
-                    "url": "music/Riley.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 122,
-                    "title": "Sauce!",
-                    "artist": "XXXTENTACION",
-                    "duration": "--:--",
-                    "url": "music/Sauce!.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 123,
-                    "title": "sdp interlude (OG)",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/sdp interlude (OG).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 125,
-                    "title": "shyne",
-                    "artist": "Destroy Lonely",
-                    "duration": "--:--",
-                    "url": "music/shyne.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 126,
-                    "title": "SICKO MODE",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/SICKO MODE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 127,
-                    "title": "Sky",
-                    "artist": "Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/sky.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 128,
-                    "title": "SOME MORE",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/SOME MORE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 130,
-                    "title": "SS",
-                    "artist": "Ken Carson",
-                    "duration": "--:--",
-                    "url": "music/ss.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 131,
-                    "title": "STARGAZING",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/STARGAZING.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 132,
-                    "title": "Telescope",
-                    "artist": "TWXN",
-                    "duration": "--:--",
-                    "url": "music/telescope.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 133,
-                    "title": "THE SCOTTS",
-                    "artist": "THE SCOTTS, Travis Scott, Kid Cudi",
-                    "duration": "--:--",
-                    "url": "music/The Scotts.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 134,
-                    "title": "Toosie Slide",
-                    "artist": "Drake",
-                    "duration": "--:--",
-                    "url": "music/Toosie slide.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 135,
-                    "title": "ESCAPE PLAN",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Travi$ Scott - ESCAPE PLAN.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 136,
-                    "title": "CHAMPAIN & VACAY",
-                    "artist": "Travis Scott & Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott & Don Toliver - CHAMPAIN & VACAY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 137,
-                    "title": "OUTSIDE",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott - OUTSIDE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 138,
-                    "title": "THANK GOD",
-                    "artist": "Travis Scott",
-                    "duration": "--:--",
-                    "url": "music/Travis Scott - THANK GOD.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 139,
-                    "title": "Type Shit",
-                    "artist": "Future, Metro Boomin, Travis Scott, Playboi Carti",
-                    "duration": "--:--",
-                    "url": "music/Type Shit.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 142,
-                    "title": "ON MY OWN",
-                    "artist": "void, BABY BOI",
-                    "duration": "--:--",
-                    "url": "music/void, BABY BOI - ON MY OWN.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 143,
-                    "title": "FOR RICHIE",
-                    "artist": "void, Druskhi",
-                    "duration": "--:--",
-                    "url": "music/void, Druskhi - FOR RICHIE.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 144,
-                    "title": "OBSESSED",
-                    "artist": "void, ech0",
-                    "duration": "--:--",
-                    "url": "music/void, ech0 - OBSESSED.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 145,
-                    "title": "Blast Off",
-                    "artist": "Void, Repair Lonely",
-                    "duration": "--:--",
-                    "url": "music/Void, Repair Lonely - Blast Off.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 146,
-                    "title": "Wassup",
-                    "artist": "Lil Uzi Vert, Future",
-                    "duration": "--:--",
-                    "url": "music/Wassup.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 148,
-                    "title": "Watch This",
-                    "artist": "Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/watch this.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 149,
-                    "title": "WHAT U NEED",
-                    "artist": "Don Toliver",
-                    "duration": "--:--",
-                    "url": "music/what u need.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 151,
-                    "title": "BË QUIET (Feat. Kodak Black)",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - BË QUIET (Feat. Kodak Black).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 152,
-                    "title": "Flawlëss (Feat. Lil Uzi Vert)",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - Flawlëss (Feat. Lil Uzi Vert).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 153,
-                    "title": "FLYTROOP",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - FLYTROOP.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 154,
-                    "title": "GEEK TIMË",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - GEEK TIMË.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 155,
-                    "title": "My wrist (feat. Young Thug)",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - My wrist (feat. Young Thug).mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 156,
-                    "title": "No morë talk",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - No morë talk.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 157,
-                    "title": "ORCHESTRATË",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - ORCHESTRATË.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 158,
-                    "title": "Tell Më",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - Tell Më.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 159,
-                    "title": "U Should Know",
-                    "artist": "Yeat",
-                    "duration": "--:--",
-                    "url": "music/Yeat - U Should Know.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 160,
-                    "title": "5BRAZY",
-                    "artist": "Yeat feat. Quavo",
-                    "duration": "--:--",
-                    "url": "music/Yeat feat. Quavo - 5BRAZY.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 161,
-                    "title": "Made It On Our Own",
-                    "artist": "Yeat, EsDeeKid",
-                    "duration": "--:--",
-                    "url": "music/Yeat, EsDeeKid - Made It On Our Own.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 162,
-                    "title": "Your Turn",
-                    "artist": "Lil Uzi Vert",
-                    "duration": "--:--",
-                    "url": "music/Your Turn.mp3",
-                    "language": "en"
-                },
-                {
-                    "id": 163,
-                    "title": "ZEZE",
-                    "artist": "Kodak Black, Travis Scott, Offset",
-                    "duration": "--:--",
-                    "url": "music/ZEZE.mp3",
-                    "language": "en"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Ru микс",
-            "cover": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg",
-            "songs": [
-                {
-                    "id": 4,
-                    "title": "4 Raws",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/4 Raws.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 8,
-                    "title": "abu_dhabi_vabu",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/abu_dhabi_vabu.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 9,
-                    "title": "Инопланетянин",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/alien.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 10,
-                    "title": "Ameli",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/ameli.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 11,
-                    "title": "ARISTOCRAT",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/ARISTOCRAT.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 12,
-                    "title": "bebebe",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/bebebe.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 16,
-                    "title": "Bystro",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/bystro.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 17,
-                    "title": "Cadillac",
-                    "artist": "Morgenshtern, Элджей",
-                    "duration": "--:--",
-                    "url": "music/Cadillac.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 20,
-                    "title": "Чёрный бумер",
-                    "artist": "Серёга",
-                    "duration": "--:--",
-                    "url": "music/chernyy bumer.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 21,
-                    "title": "chetyre ukrainki",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/chetyre ukrainki.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 22,
-                    "title": "CHILL",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/CHILL.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 24,
-                    "title": "СОК",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/COK.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 27,
-                    "title": "Cristal",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/cristal.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 28,
-                    "title": "Cristal & МОЁТ",
-                    "artist": "Morgenshtern, Элджей",
-                    "duration": "--:--",
-                    "url": "music/cristal_.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 29,
-                    "title": "Cristal",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/cristal_mayot.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 32,
-                    "title": "DINERO",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/DINERO.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 34,
-                    "title": "dom",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/dom.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 36,
-                    "title": "DREAM GARDEN",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/DREAM GARDEN.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 37,
-                    "title": "Drugoy",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/drugoy.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 38,
-                    "title": "Dulo",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/dulo.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 39,
-                    "title": "El Problema",
-                    "artist": "Morgenshtern, Тимати",
-                    "duration": "--:--",
-                    "url": "music/el problema.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 55,
-                    "title": "Head Shot",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Head Shot .mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 61,
-                    "title": "ICE",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/ice.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 72,
-                    "title": "Leck",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/leck.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 73,
-                    "title": "Ligala sosa",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/Ligala sosa.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 83,
-                    "title": "navalnyy lyokha",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/navalnyy lyokha.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 86,
-                    "title": "Nominalo",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/nominalo.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 87,
-                    "title": "novaya volna",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/novaya volna.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 88,
-                    "title": "novyy meren",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/novyy meren.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 89,
-                    "title": "ona-ono",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ona-ono.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 92,
-                    "title": "pablo",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/pablo.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 93,
-                    "title": "Papin Tank",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/papin tank.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 99,
-                    "title": "Pochemu",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/pochemu.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 101,
-                    "title": "pososi",
-                    "artist": "Платина",
-                    "duration": "--:--",
-                    "url": "music/pososi.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 102,
-                    "title": "Poydet",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/poydet.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 105,
-                    "title": "ratatatata",
-                    "artist": "Ямаш",
-                    "duration": "--:--",
-                    "url": "music/ratatatata.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 107,
-                    "title": "retro rev",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/retro rev.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 121,
-                    "title": "san laran",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/san laran.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 124,
-                    "title": "SHOW",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/show.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 129,
-                    "title": "SOULCALIBUR LUV",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/SOULCALIBUR LUV.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 140,
-                    "title": "UFO LUV",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/UFO LUV.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 141,
-                    "title": "Veselaya Pesnya",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/veselaya pesnya.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 147,
-                    "title": "WATAFUK",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/WATAFUK.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 150,
-                    "title": "ya kogda-nibud uydu",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ya kogda-nibud uydu.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 164,
-                    "title": "ауди",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ауди.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 165,
-                    "title": "Ауф",
-                    "artist": "Нурминский",
-                    "duration": "--:--",
-                    "url": "music/ауф.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 166,
-                    "title": "Бандана",
-                    "artist": "Kizaru, Big Baby Tape",
-                    "duration": "--:--",
-                    "url": "music/Бандана.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 167,
-                    "title": "Бассок",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/Бассок.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 168,
-                    "title": "блядская натура",
-                    "artist": "Натура",
-                    "duration": "--:--",
-                    "url": "music/блядская натура.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 169,
-                    "title": "Валентина",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Валентина.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 170,
-                    "title": "Валим",
-                    "artist": "Нурминский",
-                    "duration": "--:--",
-                    "url": "music/валим.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 171,
-                    "title": "Веном",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/Веном.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 172,
-                    "title": "Виновата сама",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Виновата сама.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 173,
-                    "title": "Внутри",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Внутри.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 174,
-                    "title": "Гоблин",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/Гоблин.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 175,
-                    "title": "до сих пор",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/до сих пор.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 176,
-                    "title": "киллер",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/киллер.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 177,
-                    "title": "Мент",
-                    "artist": "Нурминский",
-                    "duration": "--:--",
-                    "url": "music/мент.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 178,
-                    "title": "моих мыслях",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/моих мыслях.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 179,
-                    "title": "мотылек",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/мотылек.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 180,
-                    "title": "Мы пидоры",
-                    "artist": "Еврогей",
-                    "duration": "--:--",
-                    "url": "music/мы пидоры.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 181,
-                    "title": "На грязном",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/На грязном.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 182,
-                    "title": "на память",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/на память.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 183,
-                    "title": "не надо",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/не надо.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 184,
-                    "title": "ночь",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ночь.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 185,
-                    "title": "Плохая Сука",
-                    "artist": "GONE.Fludd",
-                    "duration": "--:--",
-                    "url": "music/Плохая Сука.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 186,
-                    "title": "Сердце для шалав",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/Сердце для шалав.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 187,
-                    "title": "Случайна",
-                    "artist": "Morgenshtern",
-                    "duration": "--:--",
-                    "url": "music/Случайна.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 188,
-                    "title": "снег",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/снег.mp3",
-                    "language": "ru"
-                },
-                {
-                    "id": 189,
-                    "title": "ты",
-                    "artist": "MAYOT",
-                    "duration": "--:--",
-                    "url": "music/ты.mp3",
-                    "language": "ru"
-                }
-            ]
-        }
-    ];
-
-    // Элементы DOM
-    const LANGUAGE_LABELS = {
-        en: 'Английский',
-        ru: 'Русский',
-        mixed: 'Смешанный'
-    };
-    const DEFAULT_ARTIST_AVATAR = 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80';
-
-    function normalizeText(text) {
-        return String(text || '')
-            .toLowerCase()
-            .normalize('NFKD')
-            .replace(/ё/g, 'е')
-            .replace(/[^\p{L}\p{N}\s]/gu, ' ')
-            .replace(/\s+/g, ' ')
-            .trim();
-    }
-
-    function inferLanguage(song) {
-        const raw = `${song.title || ''} ${song.artist || ''} ${song.url || ''}`;
-        return /[а-яё]/i.test(raw) ? 'ru' : 'en';
-    }
-
-    function getSongKey(song) {
-        return song.id || song.url || `${song.title}-${song.artist}`;
-    }
-
-    function uniqueSongs(songs) {
-        const seen = new Set();
-
-        return songs.filter(song => {
-            const key = getSongKey(song);
-            if (seen.has(key)) return false;
-            seen.add(key);
-            return true;
-        });
-    }
-
-    function splitArtistNames(artistText) {
-        return String(artistText || 'Неизвестный артист')
-            .split(/\s*(?:,|&|\/|\+|\bfeat\.?\b|\bft\.?\b|\bfeaturing\b|\band\b|;)\s*/i)
-            .map(name => name.trim())
-            .filter(Boolean);
-    }
-
-    function normalizeSongLibrary() {
-        allSongs.forEach(song => {
-            song.language = song.language || inferLanguage(song);
-            song.performers = splitArtistNames(song.artist);
-        });
-    }
-
-    function buildGeneratedArtists() {
-        const metaByName = new Map();
-
-        artists.forEach(artist => {
-            metaByName.set(normalizeText(artist.name), artist);
-        });
-
-        const artistsByName = new Map();
-
-        allSongs.forEach(song => {
-            song.performers.forEach(name => {
-                const key = normalizeText(name);
-                const existingMeta = metaByName.get(key);
-
-                if (!artistsByName.has(key)) {
-                    artistsByName.set(key, {
-                        id: artistsByName.size + 1,
-                        name,
-                        avatar: existingMeta?.avatar || DEFAULT_ARTIST_AVATAR,
-                        genre: existingMeta?.genre || LANGUAGE_LABELS[song.language] || '',
-                        songs: []
-                    });
-                }
-
-                artistsByName.get(key).songs.push(song);
-            });
-        });
-
-        return [...artistsByName.values()]
-            .map(artist => ({
-                ...artist,
-                songs: uniqueSongs(artist.songs)
-            }))
-            .sort((firstArtist, secondArtist) => {
-                const songCountDifference = secondArtist.songs.length - firstArtist.songs.length;
-                return songCountDifference || firstArtist.name.localeCompare(secondArtist.name, 'ru');
-            });
-    }
-
-    function buildGeneratedPlaylists() {
-        const playlistsByLanguage = new Map();
-
-        allSongs.forEach(song => {
-            const language = song.language || inferLanguage(song);
-            if (!playlistsByLanguage.has(language)) {
-                playlistsByLanguage.set(language, []);
+    const artistsByName = new Map();
+    for (const track of TRACKS) {
+        for (const name of new Set(track.artists)) {
+            if (!artistsByName.has(name)) {
+                artistsByName.set(name, { name, avatar: ARTIST_AVATARS[name], tracks: [] });
             }
-            playlistsByLanguage.get(language).push(song);
-        });
+            artistsByName.get(name).tracks.push(track);
+        }
+    }
+    const artists = [...artistsByName.values()].sort((a, b) =>
+        b.tracks.length - a.tracks.length || a.name.localeCompare(b.name, 'ru')
+    );
+    const artistQueries = artists.map(artist => ({ value: artist, fields: [normalize(artist.name)] }));
 
-        const languagePlaylists = [...playlistsByLanguage.entries()].map(([language, songs], index) => ({
-            id: `language-${language}`,
-            name: `${LANGUAGE_LABELS[language] || language} треки`,
-            cover: index % 2 === 0
-                ? 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80'
-                : 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80',
-            songs: uniqueSongs(songs)
-        }));
+    const allTracks = { id: 'all-tracks', name: 'Все треки', tracks: TRACKS };
+    const newTracks = { id: 'new-tracks', name: 'Новые треки', tracks: TRACKS.filter(track => track.recent) };
+    const chillKeywords = ['chill', 'dream', 'garden', 'ночь', 'night', 'homecoming', 'long time', 'dark thought', 'ratherlife'];
+    const builtInPlaylists = [
+        allTracks,
+        { id: 'english', name: 'English mix', tracks: TRACKS.filter(track => track.language === 'en'),
+            cover: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg' },
+        { id: 'russian', name: 'Ru микс', tracks: TRACKS.filter(track => track.language === 'ru'),
+            cover: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg' },
+        { id: 'chill', name: 'Mix chill', tracks: TRACKS.filter(track =>
+            searchFields.get(track.file).some(field => chillKeywords.some(word => field.includes(word)))) },
+        { id: 'yamash', name: 'Ямаш хит', tracks: artistsByName.get('Ямаш')?.tracks || [], cover: ARTIST_AVATARS['Ямаш'] }
+    ];
+    const trackQueries = TRACKS.map(track => ({ value: track, fields: searchFields.get(track.file) }));
 
-        const artistPlaylists = artists.map(artist => ({
-            id: `artist-${normalizeText(artist.name)}`,
-            name: artist.name,
-            cover: artist.avatar || DEFAULT_ARTIST_AVATAR,
-            songs: uniqueSongs(artist.songs)
-        }));
+    let customPlaylists = readStorage(PLAYLISTS_KEY, []);
+    let listens = readStorage(HISTORY_KEY, {});
+    let likedFiles = new Set(readStorage(LIKES_KEY, []));
+    let home = homeCollection();
+    let collection = home;
+    let queue = home.tracks;
+    let showQueue = false;
+    let currentIndex = -1;
+    let counted = false;
+    let playRequest = 0;
+    let notificationTimer;
+    let selectedRows = [];
 
-        return [
-            {
-                id: 'all-tracks',
-                name: 'Все треки',
-                cover: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=600&q=80',
-                songs: uniqueSongs(allSongs)
-            },
-            ...languagePlaylists,
-            ...artistPlaylists
-        ];
+    function readStorage(key, fallback) {
+        try {
+            const value = JSON.parse(localStorage.getItem(key));
+            return value && typeof value === 'object' && Array.isArray(value) === Array.isArray(fallback)
+                ? value : fallback;
+        } catch {
+            return fallback;
+        }
     }
 
-    function mergePlaylists(generatedPlaylists, curatedPlaylists) {
-        const seen = new Set();
-
-        return [...generatedPlaylists, ...curatedPlaylists]
-            .map(playlistData => ({
-                ...playlistData,
-                songs: uniqueSongs(playlistData.songs || [])
-            }))
-            .filter(playlistData => {
-                const key = normalizeText(playlistData.name);
-                if (seen.has(key)) return false;
-                seen.add(key);
-                return playlistData.songs.length > 0;
-            });
+    function updateStorage(key, fallback, change) {
+        const save = () => {
+            const value = change(readStorage(key, fallback));
+            localStorage.setItem(key, JSON.stringify(value));
+            return value;
+        };
+        return navigator.locks && location.protocol !== 'file:'
+            ? navigator.locks.request(key, save) : Promise.resolve().then(save);
     }
 
-    function buildFixedPlaylists() {
-        const englishSongs = allSongs.filter(song => song.language === 'en');
-        const russianSongs = allSongs.filter(song => song.language === 'ru');
-        const chillSongs = allSongs.filter(song => {
-            const text = normalizeText(`${song.title} ${song.artist} ${song.url}`);
-            return ['chill', 'dream', 'garden', 'ночь', 'night', 'homecoming', 'long time', 'dark thoughts', 'ratherlife']
-                .some(keyword => text.includes(normalizeText(keyword)));
-        });
-        const yamashSongs = allSongs.filter(song =>
-            (song.performers || splitArtistNames(song.artist)).some(name => normalizeText(name) === normalizeText('Ямаш'))
-        );
+    function addWeight(counts, key, weight = 1) {
+        counts.set(key, (counts.get(key) || 0) + weight);
+    }
 
-        return [
-            {
-                id: 'eng',
-                name: 'English mix',
-                cover: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
-                songs: uniqueSongs(englishSongs)
-            },
-            {
-                id: 'ru',
-                name: 'Ru микс',
-                cover: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg',
-                songs: uniqueSongs(russianSongs)
-            },
-            {
-                id: 'mix-chill',
-                name: 'Mix chill',
-                cover: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80',
-                songs: uniqueSongs(chillSongs.length ? chillSongs : allSongs.slice(0, 25))
-            },
-            {
-                id: 'yamash-hit',
-                name: 'Ямаш хит',
-                cover: DEFAULT_ARTIST_AVATAR,
-                songs: uniqueSongs(yamashSongs)
+    function listenCount(track) {
+        const plays = Number(listens[track.file]);
+        return Number.isFinite(plays) && plays > 0 ? plays : 0;
+    }
+
+    function homeCollection() {
+        const liked = [...likedFiles].map(file => trackByFile.get(file)).filter(Boolean);
+        const moods = new Map();
+        const languages = new Map();
+        const performers = new Map();
+        let evidence = 0;
+        for (const track of TRACKS) {
+            const weight = Math.log2(1 + listenCount(track)) + (likedFiles.has(track.file) ? 3 : 0);
+            if (!weight) continue;
+            evidence += weight;
+            addWeight(moods, track.emotion, weight);
+            if (preferredLanguages.has(track.language)) addWeight(languages, track.language, weight);
+            for (const artist of track.artists) addWeight(performers, artist, weight / track.artists.length);
+        }
+
+        const affinity = (weights, key) => (weights.get(key) || 0) / Math.max(evidence, 1);
+        const candidates = TRACKS.filter(track => !likedFiles.has(track.file)).map(track => ({
+            track,
+            plays: listenCount(track),
+            affinity: 0.75 * affinity(moods, track.emotion) +
+                0.55 * affinity(languages, track.language) +
+                0.75 * Math.max(0, ...track.artists.map(artist => affinity(performers, artist)))
+        }));
+        const recommendations = [];
+        const usedMoods = new Map();
+        const usedLanguages = new Map();
+        const usedArtists = new Map();
+
+        // Reserve each fourth slot for discovery and penalize runs of similar tracks.
+        while (candidates.length && recommendations.length < RECOMMENDATION_COUNT) {
+            const recent = recommendations.slice(-2);
+            const discovery = recommendations.length % 4 === 3;
+            let best = 0;
+            let highest = -Infinity;
+            for (const [index, candidate] of candidates.entries()) {
+                const { track, plays, affinity: taste } = candidate;
+                const repeatsMood = recent.filter(item => item.emotion === track.emotion).length;
+                const repeatsLanguage = recent.filter(item => item.language === track.language).length;
+                const languageFrequency = usedLanguages.get(track.language) || 0;
+                const languagePenalty = preferredLanguages.has(track.language)
+                    ? 0.08 * languageFrequency : 0.65 + 0.18 * languageFrequency;
+                const artistFrequency = Math.max(0, ...track.artists.map(artist => usedArtists.get(artist) || 0));
+                const score = (discovery ? -0.8 : 1) * taste + 0.45 / (1 + plays) + (track.recent ? 0.08 : 0)
+                    - 0.09 * (usedMoods.get(track.emotion) || 0) - languagePenalty
+                    - 0.38 * artistFrequency - 0.5 * repeatsMood ** 2 - 0.45 * repeatsLanguage ** 2;
+                if (score > highest) {
+                    best = index;
+                    highest = score;
+                }
             }
-        ].filter(playlistData => playlistData.songs.length > 0);
+            const [{ track }] = candidates.splice(best, 1);
+            recommendations.push(track);
+            addWeight(usedMoods, track.emotion);
+            addWeight(usedLanguages, track.language);
+            for (const artist of track.artists) addWeight(usedArtists, artist);
+        }
+
+        return { id: HOME_ID, name: 'Рекомендации', liked, recommendations, tracks: [...liked, ...recommendations] };
     }
 
-    normalizeSongLibrary();
-    artists.splice(0, artists.length, ...buildGeneratedArtists());
-    playlists.splice(0, playlists.length, ...buildFixedPlaylists());
+    function refreshHome() {
+        home = homeCollection();
+        if (collection.id === HOME_ID && currentIndex < 0 && !showQueue) {
+            collection = home;
+            queue = home.tracks;
+        }
+        if (!showQueue) renderQueue();
+    }
 
-    const playPauseBtn = document.getElementById('play-pause');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const shuffleBtn = document.getElementById('shuffle');
-    const volumeSlider = document.getElementById('volume');
-    const progressBar = document.getElementById('progress');
-    const progressContainer = document.getElementById('progress-bar');
-    const currentTimeEl = document.getElementById('current-time');
-    const durationEl = document.getElementById('duration');
-    const songTitle = document.getElementById('song-title');
-    const songArtist = document.getElementById('song-artist');
-    const albumArt = document.getElementById('album-art');
-    const playlistEl = document.getElementById('playlist');
-    const artistsGrid = document.getElementById('artists-grid');
-    const popularGridEl = document.getElementById('popular-grid');
-    const playlistsGrid = document.getElementById('playlists-grid');
-    const visualizer = document.getElementById('visualizer');
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const audioPlayer = document.getElementById('audio-player');
-    const voiceControlBtn = document.getElementById('voice-control');
-    const voiceControlText = document.getElementById('voice-control-text');
-    const voiceRoutingNote = document.getElementById('voice-routing-note');
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-    const searchStatus = document.getElementById('search-status');
+    async function recordListen() {
+        const track = queue[currentIndex];
+        if (!track || counted || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
 
-    // Текущее состояние
-    let isPlaying = false;
-    let currentSongIndex = 0;
-    let visualizerBars = [];
-    let playlist = [];
-    const MUSIC_CACHE_NAME = 'music-v2';
-    const DOWNLOADED_TRACKS_KEY = 'downloadedTracks';
-    const downloadedTrackUrls = new Set(JSON.parse(localStorage.getItem(DOWNLOADED_TRACKS_KEY) || '[]'));
+        const threshold = Math.min(30, audio.duration / 2);
+        // Media playback ranges omit time skipped by seeking.
+        let listenedSeconds = 0;
+        const played = audio.played;
+        for (let i = 0; i < played.length; i++) listenedSeconds += played.end(i) - played.start(i);
+        if (listenedSeconds < threshold) return;
 
-    // Установка громкости по умолчанию 10%
-    volumeSlider.value = 0.1;
-    audioPlayer.volume = 0.1;
+        counted = true;
+        const increment = history => ({
+            ...history, [track.file]: (Number(history[track.file]) || 0) + 1
+        });
+        try {
+            listens = await updateStorage(HISTORY_KEY, listens, increment);
+        } catch {
+            listens = increment(listens);
+        }
+        refreshHome();
+    }
 
-    function getTabContentId(tabName) {
-        return tabName === 'user' ? 'user-playlist' : `${tabName}-tab`;
+    function element(tag, className, label) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (label != null) node.textContent = label;
+        return node;
+    }
+
+    function icon(name) {
+        const namespace = 'http://www.w3.org/2000/svg';
+        const node = document.createElementNS(namespace, 'svg');
+        node.setAttribute('class', 'icon');
+        node.setAttribute('aria-hidden', 'true');
+        const use = document.createElementNS(namespace, 'use');
+        use.setAttribute('href', '#icon-' + name);
+        node.append(use);
+        return node;
+    }
+
+    function artwork(container, url, fallback, lazy = true) {
+        container.replaceChildren(...(fallback ? [icon(fallback)] : []));
+        if (!url) return;
+        const image = element('img');
+        image.alt = '';
+        image.decoding = 'async';
+        if (url.endsWith('.svg')) image.classList.add('is-illustration');
+        if (lazy) image.loading = 'lazy';
+        image.addEventListener('error', () => image.remove(), { once: true });
+        container.append(image);
+        image.src = url;
+    }
+
+    function button(className, label, iconName) {
+        const node = element('button', className);
+        node.type = 'button';
+        if (label) {
+            node.title = label;
+            node.setAttribute('aria-label', label);
+        }
+        if (iconName) node.append(icon(iconName));
+        return node;
+    }
+
+    function notify(message) {
+        notification.textContent = message;
+        notification.classList.add('show');
+        clearTimeout(notificationTimer);
+        notificationTimer = setTimeout(() => notification.classList.remove('show'), 2600);
+    }
+
+    function trackCount(count) {
+        const ending = trackPlural.select(count);
+        return count + ' ' + ({ one: 'трек', few: 'трека', many: 'треков' }[ending] || 'трека');
+    }
+
+    function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return '0:00';
+        const whole = Math.floor(seconds);
+        return Math.floor(whole / 60) + ':' + String(whole % 60).padStart(2, '0');
     }
 
     function activateTab(tabName) {
-        const tab = document.querySelector(`.tab[data-tab="${tabName}"]`);
-        const content = document.getElementById(getTabContentId(tabName));
-
-        if (!tab || !content) return;
-
-        tabs.forEach(item => item.classList.remove('active'));
-        tabContents.forEach(item => item.classList.remove('active'));
-        tab.classList.add('active');
-        content.classList.add('active');
+        for (const tab of tabs) {
+            const active = tab.dataset.tab === tabName;
+            tab.classList.toggle('active', active);
+            tab.setAttribute('aria-pressed', String(active));
+            byId(tab.getAttribute('aria-controls')).classList.toggle('active', active);
+            if (active) byId('library-title').textContent = tab.textContent.trim();
+        }
+        byId('library-content').dataset.tab = tabName;
+        libraryPanel.scrollTop = 0;
+        if (tabName === 'playlists' && !byId('playlists-grid').childElementCount) renderPlaylists();
+        if (tabName === 'artists' && !byId('artists-grid').childElementCount) renderArtists();
+        if (tabName === 'new' && !byId('new-tracks').childElementCount) {
+            renderRows(byId('new-tracks'), newTracks.tracks, track => playFrom(newTracks, track));
+            markCurrentTrack();
+        }
     }
 
-    // Переключение вкладок
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => activateTab(tab.dataset.tab));
-    });
-
-    // Инициализация визуализатора
-    function initVisualizer() {
-        visualizer.innerHTML = '';
-        visualizerBars = [];
-
-        for (let i = 0; i < 40; i++) {
-            const bar = document.createElement('div');
-            bar.className = 'bar';
-            // Начальная высота с учетом плавности
-            bar.style.height = `${Math.random() * 80 + 20}px`;
-            bar.style.transition = `height ${UPDATE_INTERVAL / 1000}s ease-out, opacity ${UPDATE_INTERVAL / 1000}s ease-out`;
-            visualizer.appendChild(bar);
-            visualizerBars.push(bar);
-        }
-
-        // Сбрасываем время последнего обновления
-        lastUpdateTime = 0;
+    function customCollection(list) {
+        return {
+            id: list.id, name: list.name, custom: true,
+            tracks: list.files.map(file => trackByFile.get(file)).filter(Boolean)
+        };
     }
 
-    // Обновление визуализатора
-    let lastUpdateTime = 0;
-    const UPDATE_INTERVAL = 300; // Интервал в миллисекундах (реже = больше значение)
-
-    function updateVisualizer(timestamp) {
-        if (!isPlaying) return;
-
-        // Обновляем только если прошло достаточно времени
-        if (timestamp - lastUpdateTime > UPDATE_INTERVAL) {
-            lastUpdateTime = timestamp;
-
-            visualizerBars.forEach(bar => {
-                const newHeight = Math.random() * 80 + 20;
-                bar.style.height = `${newHeight}px`;
-                bar.style.opacity = 0.7 + Math.random() * 0.3;
-            });
-        }
-
-        requestAnimationFrame(updateVisualizer);
+    function renderPlaylists() {
+        const custom = customPlaylists.map(customCollection);
+        const cards = [...custom, ...builtInPlaylists].map(list => {
+            const card = button('playlist-item-card');
+            const cover = element('span', 'cover');
+            artwork(cover, list.cover, 'list-ul');
+            card.append(cover, element('span', 'name', list.name), element('span', 'count', trackCount(list.tracks.length)));
+            card.addEventListener('click', () => replaceQueue(list));
+            return card;
+        });
+        byId('playlists-grid').replaceChildren(...cards);
     }
 
-    // Загрузка песни
-    function loadSong(index) {
-        if (playlist.length === 0) return;
+    function renderArtists() {
+        byId('artists-grid').replaceChildren(...artists.map(artist => {
+            const card = button('artist-card');
+            const avatar = element('span', 'avatar');
+            artwork(avatar, artist.avatar, 'user');
+            if (!artist.avatar) avatar.textContent = artist.name.slice(0, 2).toUpperCase();
+            card.append(avatar, element('span', 'name', artist.name),
+                element('span', 'songs', trackCount(artist.tracks.length)));
+            card.addEventListener('click', () => replaceQueue({
+                id: 'artist:' + artist.name, name: artist.name, tracks: artist.tracks
+            }));
+            return card;
+        }));
+    }
 
-        const song = playlist[index];
-        songTitle.textContent = song.title || "Неизвестный трек";
-        songArtist.textContent = song.artist || "Неизвестный исполнитель";
+    function renderQueue() {
+        const liked = showQueue ? [] : home.liked;
+        const tracks = showQueue ? queue : home.recommendations;
+        const select = showQueue ? track => selectTrack(queue.indexOf(track), true) : track => playFrom(home, track);
+        byId('liked-section').hidden = !liked.length;
+        byId('collection-heading').hidden = !showQueue && !tracks.length;
+        byId('collection-name').textContent = showQueue ? collection.name : home.name;
+        byId('edit-playlist').hidden = !showQueue || !collection.custom;
+        byId('popular-section').hidden = showQueue;
+        const empty = byId('queue-empty');
+        empty.hidden = !showQueue || tracks.length > 0;
+        empty.textContent = 'В этом плейлисте пока нет треков.';
+        renderRows(byId('liked-tracks'), liked, select);
+        renderRows(queueList, tracks, select);
+        markCurrentTrack();
+    }
 
-        // Обновление обложки
-        if (song.cover) {
-            albumArt.innerHTML = `
-                                <img src="${song.cover}" alt="${song.title}">
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            `;
-        } else {
-            albumArt.innerHTML = `
-                                <i class="fas fa-music"></i>
-                                <div class="overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            `;
-        }
+    function renderRows(list, tracks, select) {
+        list.replaceChildren(...tracks.map(track => {
+            const row = element('li', 'playlist-item');
+            row.dataset.trackFile = track.file;
+            const play = button('track-select');
+            const cover = element('span', 'track-art');
+            cover.setAttribute('aria-hidden', 'true');
+            artwork(cover, trackArt(track), 'music');
+            const mark = element('span', 'track-indicator');
+            mark.append(icon('volume'));
+            cover.append(mark);
+            const details = element('span', 'song-details');
+            const subtitle = [artistText(track), LANGUAGE_LABELS[track.language]].filter(Boolean).join(' · ');
+            details.append(element('span', 'title', track.title), element('span', 'track-subtitle', subtitle));
+            play.append(cover, details, element('span', 'duration', formatTime(track.duration)));
+            play.addEventListener('click', () => select(track));
+            row.append(play, likeButton(track), downloadButton(track));
+            return row;
+        }));
+    }
 
-        // Установка источника аудио
-        audioPlayer.src = song.url;
-        audioPlayer.load();
+    function syncLikeButton(node) {
+        const pressed = likedFiles.has(node.dataset.likeFile);
+        node.setAttribute('aria-pressed', String(pressed));
+        node.title = pressed ? 'Убрать лайк' : 'Поставить лайк';
+        node.replaceChildren(icon('heart'));
+    }
 
-        // Обновление активного элемента плейлиста
-        document.querySelectorAll('.playlist-item').forEach((item, idx) => {
-            if (idx === index) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
+    function refreshLikes(files) {
+        likedFiles = new Set(files);
+        refreshHome();
+        document.querySelectorAll('[data-like-file]').forEach(syncLikeButton);
+    }
+
+    function likeButton(track) {
+        const node = button('track-like-btn', 'Нравится: ' + track.title);
+        node.dataset.likeFile = track.file;
+        syncLikeButton(node);
+        node.addEventListener('click', async () => {
+            const restoreFocus = document.activeElement === node;
+            const liked = !likedFiles.has(track.file);
+            const change = files => {
+                const other = files.filter(file => file !== track.file);
+                return liked ? [track.file, ...other] : other;
+            };
+            let files;
+            try {
+                files = await updateStorage(LIKES_KEY, [...likedFiles], change);
+            } catch {
+                files = change([...likedFiles]);
+            }
+            refreshLikes(files);
+            if (restoreFocus && !node.isConnected && document.activeElement === document.body) {
+                const selector = '[data-like-file="' + CSS.escape(track.file) + '"]';
+                (byId('user-playlist').querySelector(selector) || byId('search-input')).focus();
             }
         });
+        return node;
+    }
 
-        // Воспроизведение, если плеер был включен
-        if (isPlaying) {
-            audioPlayer.play().catch(e => console.error("Ошибка воспроизведения:", e));
+    function renderPopular() {
+        byId('popular-grid').replaceChildren(...TRACKS.filter(track => !track.recent).slice(0, 40).map(track => {
+            const card = element('article', 'popular-song');
+            const cover = element('div', 'cover');
+            artwork(cover, trackArt(track), 'music');
+            const details = element('div', 'track-meta');
+            details.append(element('span', null, LANGUAGE_LABELS[track.language] || ''),
+                element('span', null, formatTime(track.duration)));
+            const actions = element('div', 'track-actions');
+            const play = button('play-btn', 'Воспроизвести ' + track.title, 'play');
+            play.addEventListener('click', () => {
+                let index = queue.indexOf(track);
+                if (index < 0) {
+                    collection = { id: 'queue', name: 'Очередь' };
+                    queue = [...queue, track];
+                    index = queue.length - 1;
+                    renderQueue();
+                }
+                selectTrack(index, true);
+            });
+            actions.append(likeButton(track), downloadButton(track), play);
+            card.append(cover, element('div', 'title', track.title),
+                element('div', 'artist', artistText(track)), details, actions);
+            return card;
+        }));
+    }
+
+    function markCurrentTrack() {
+        for (const row of selectedRows) {
+            row.classList.remove('active');
+            row.firstElementChild.removeAttribute('aria-current');
+        }
+        const track = queue[currentIndex];
+        const selector = track && '[data-track-file="' + CSS.escape(track.file) + '"]';
+        selectedRows = selector ? [...document.querySelectorAll(selector)] : [];
+        for (const row of selectedRows) {
+            row.classList.add('active');
+            row.firstElementChild.setAttribute('aria-current', 'true');
         }
     }
 
-    // Воспроизведение/пауза
-    function togglePlay() {
-        if (playlist.length === 0) {
-            alert("Пожалуйста, выберите трек из плейлиста!");
+    function renderNowPlaying(track) {
+        byId('song-title').textContent = track?.title || 'Выберите трек';
+        byId('song-artist').textContent = track ? artistText(track) : '';
+        artwork(byId('album-art'), trackArt(track), null, false);
+    }
+
+    function useCollection(nextCollection) {
+        const previousTrack = queue[currentIndex];
+        collection = nextCollection;
+        queue = [...collection.tracks];
+        currentIndex = queue.indexOf(previousTrack);
+    }
+
+    function openQueue() {
+        showQueue = true;
+        activateTab('user');
+    }
+
+    function playFrom(nextCollection, track) {
+        const changed = collection !== nextCollection;
+        if (changed) useCollection(nextCollection);
+        selectTrack(queue.indexOf(track), true);
+        if (changed && showQueue) renderQueue();
+    }
+
+    function replaceQueue(nextCollection, switchTab = true) {
+        const wasPlaying = !audio.paused;
+        useCollection(nextCollection);
+        if (switchTab) openQueue();
+        if (!queue.length) {
+            ++playRequest;
+            audio.pause();
+            audio.removeAttribute('src');
+            audio.load();
+            renderNowPlaying();
+            updateProgress();
+        } else if (currentIndex < 0) {
+            selectTrack(0, wasPlaying);
+        } else {
+            renderNowPlaying(queue[currentIndex]);
+        }
+        renderQueue();
+    }
+
+    function selectTrack(index, autoplay = false, restart = false) {
+        const track = queue[index];
+        if (!track) return;
+        if (currentIndex !== index || restart || !audio.hasAttribute('src')) {
+            ++playRequest;
+            currentIndex = index;
+            counted = false;
+            audio.src = trackPath(track);
+            renderNowPlaying(track);
+            markCurrentTrack();
+            updateProgress();
+        }
+        if (autoplay) playAudio();
+    }
+
+    function playAudio() {
+        if (currentIndex < 0) {
+            if (queue.length) selectTrack(0, true);
+            else notify('Выберите плейлист с треками');
             return;
         }
-
-        isPlaying = !isPlaying;
-
-        if (isPlaying) {
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            audioPlayer.play().catch(e => console.error("Ошибка воспроизведения:", e));
-            updateVisualizer();
-        } else {
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            audioPlayer.pause();
-        }
-    }
-
-    // Предыдущая песня
-    function prevSong() {
-        if (playlist.length === 0) return;
-
-        currentSongIndex--;
-        if (currentSongIndex < 0) {
-            currentSongIndex = playlist.length - 1;
-        }
-        loadSong(currentSongIndex);
-    }
-
-    // Следующая песня
-    function nextSong() {
-        if (playlist.length === 0) return;
-
-        currentSongIndex++;
-        if (currentSongIndex > playlist.length - 1) {
-            currentSongIndex = 0;
-        }
-        loadSong(currentSongIndex);
-    }
-
-    // Обновление прогресс-бара
-    function shufflePlaylist() {
-        const hadPlaylist = playlist.length > 0;
-
-        if (playlist.length === 0) {
-            playlist = [...allSongs];
-        }
-
-        const currentSong = playlist[currentSongIndex];
-        const hasCurrentSong = hadPlaylist && Boolean(currentSong);
-        const currentSongKey = currentSong ? getSongKey(currentSong) : null;
-        const songsToShuffle = currentSong
-            ? playlist.filter(song => getSongKey(song) !== currentSongKey)
-            : [...playlist];
-
-        for (let i = songsToShuffle.length - 1; i > 0; i--) {
-            const randomIndex = Math.floor(Math.random() * (i + 1));
-            [songsToShuffle[i], songsToShuffle[randomIndex]] = [songsToShuffle[randomIndex], songsToShuffle[i]];
-        }
-
-        playlist = currentSong ? [currentSong, ...songsToShuffle] : songsToShuffle;
-        currentSongIndex = 0;
-
-        playlistEl.innerHTML = '';
-        generateUserPlaylist();
-
-        if (!hasCurrentSong) {
-            loadSong(currentSongIndex);
-        }
-
-        showNotification('Треки перемешаны');
-    }
-
-    function updateProgress(e) {
-        if (playlist.length === 0) return;
-
-        const width = this.clientWidth;
-        const clickX = e.offsetX;
-        const duration = audioPlayer.duration;
-
-        // Расчет нового времени
-        const newTime = (clickX / width) * duration;
-        audioPlayer.currentTime = newTime;
-    }
-
-    // Обновление времени
-    function updateTime() {
-        // Обновляем текущее время
-        const currentMinutes = Math.floor(audioPlayer.currentTime / 60);
-        const currentSeconds = Math.floor(audioPlayer.currentTime % 60);
-        currentTimeEl.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
-
-        // Обновляем длительность
-        const durationMinutes = Math.floor(audioPlayer.duration / 60);
-        const durationSeconds = Math.floor(audioPlayer.duration % 60);
-        durationEl.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
-
-        // Обновляем прогресс-бар
-        const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        progressBar.style.width = `${progressPercent}%`;
-    }
-
-    // Установка громкости
-    function setVolume() {
-        audioPlayer.volume = volumeSlider.value;
-    }
-
-    function changeVolumeByVoice(delta) {
-        const currentVolume = Number(audioPlayer.volume || volumeSlider.value || 0);
-        const nextVolume = Math.min(1, Math.max(0, currentVolume + delta));
-        audioPlayer.volume = nextVolume;
-        volumeSlider.value = String(nextVolume);
-        showNotification(`Громкость: ${Math.round(nextVolume * 100)}%`);
-    }
-
-    // Генерация плейлистов
-    function getSearchableSongText(song) {
-        const fileName = safeDecodeURIComponent((song.url || '').split('/').pop() || '')
-            .replace(/\.(mp3|wav|ogg|m4a|mov|mp4)$/i, '');
-
-        return [
-            song.title,
-            song.artist,
-            fileName,
-            ...(song.performers || [])
-        ].map(normalizeText).filter(Boolean);
-    }
-
-    function safeDecodeURIComponent(value) {
-        try {
-            return decodeURIComponent(value);
-        } catch {
-            return value;
-        }
-    }
-
-    function scoreSongMatch(song, query) {
-        const normalizedQuery = normalizeText(query);
-        if (!normalizedQuery) return 0;
-
-        const queryTokens = normalizedQuery.split(' ').filter(Boolean);
-        let bestScore = 0;
-
-        getSearchableSongText(song).forEach(field => {
-            if (field === normalizedQuery) bestScore = Math.max(bestScore, 1000);
-            if (field.startsWith(normalizedQuery)) bestScore = Math.max(bestScore, 850);
-            if (field.includes(normalizedQuery)) bestScore = Math.max(bestScore, 700);
-            if (normalizedQuery.includes(field) && field.length > 2) bestScore = Math.max(bestScore, 620);
-
-            const fieldTokens = field.split(' ');
-            const matchedTokens = queryTokens.filter(token =>
-                fieldTokens.some(fieldToken => fieldToken === token || fieldToken.startsWith(token) || fieldToken.includes(token))
-            ).length;
-
-            if (matchedTokens > 0) {
-                bestScore = Math.max(bestScore, 220 + matchedTokens * 120);
+        const request = ++playRequest;
+        audio.play().catch(error => {
+            if (request === playRequest && error.name !== 'AbortError' && !audio.error) {
+                notify('Не удалось начать воспроизведение');
             }
         });
-
-        return bestScore;
     }
 
-    function findBestSongMatch(query) {
-        return allSongs
-            .map(song => ({
-                song,
-                score: scoreSongMatch(song, query)
-            }))
-            .sort((first, second) => second.score - first.score)[0];
+    function moveTrack(offset, autoplay = !audio.paused) {
+        if (!queue.length) return;
+        const index = currentIndex < 0 ? (offset > 0 ? 0 : queue.length - 1)
+            : (currentIndex + offset + queue.length) % queue.length;
+        selectTrack(index, autoplay, true);
     }
 
-    function addSongToPlaylistStart(song, shouldPlay = false) {
-        if (!song) return false;
-
-        playlist = playlist.filter(item => getSongKey(item) !== getSongKey(song));
-        playlist.unshift(song);
-        currentSongIndex = 0;
-        playlistEl.innerHTML = '';
-        generateUserPlaylist();
-        loadSong(currentSongIndex);
-        activateTab('user');
-
-        if (shouldPlay && !isPlaying) {
-            togglePlay();
+    function shuffledTracks(tracks) {
+        const result = [...tracks];
+        for (let i = result.length - 1; i > 0; i--) {
+            const swap = Math.floor(Math.random() * (i + 1));
+            [result[i], result[swap]] = [result[swap], result[i]];
         }
-
-        return true;
-    }
-
-    function shuffledSongs(songs) {
-        const result = [...songs];
-
-        for (let index = result.length - 1; index > 0; index--) {
-            const randomIndex = Math.floor(Math.random() * (index + 1));
-            [result[index], result[randomIndex]] = [result[randomIndex], result[index]];
-        }
-
         return result;
     }
 
-    function scoreArtistMatch(artist, query) {
-        const normalizedQuery = normalizeText(query);
-        const normalizedName = normalizeText(artist?.name);
-
-        if (!normalizedQuery || !normalizedName) return 0;
-        if (normalizedName === normalizedQuery) return 1000;
-        if (normalizedName.startsWith(normalizedQuery)) return 850;
-        if (normalizedQuery.startsWith(normalizedName)) return 820;
-        if (normalizedName.includes(normalizedQuery)) return 700;
-        if (normalizedQuery.includes(normalizedName)) return 680;
-
-        const queryTokens = normalizedQuery.split(' ').filter(Boolean);
-        const nameTokens = normalizedName.split(' ').filter(Boolean);
-        const matchedTokens = queryTokens.filter(token =>
-            nameTokens.some(nameToken => nameToken === token || nameToken.startsWith(token) || token.startsWith(nameToken))
-        ).length;
-
-        return matchedTokens > 0 ? 240 + matchedTokens * 140 : 0;
+    function shuffleQueue() {
+        if (!queue.length) return;
+        const track = queue[currentIndex];
+        queue = track ? [track, ...shuffledTracks(queue.filter(item => item !== track))] : shuffledTracks(queue);
+        if (track) currentIndex = 0;
+        renderQueue();
+        notify('Треки перемешаны');
     }
 
-    function findBestArtistMatch(query) {
-        return artists
-            .map(artist => ({
-                artist,
-                score: scoreArtistMatch(artist, query)
-            }))
-            .sort((first, second) => second.score - first.score || second.artist.songs.length - first.artist.songs.length)[0];
+    function paintRange(range, fraction) {
+        const percent = 100 * Math.min(1, Math.max(0, fraction));
+        range.style.setProperty('--range-progress', percent + '%');
     }
 
-    function addArtistSongsToPlaylistStart(artist, shouldPlay = false) {
-        if (!artist?.songs?.length) return false;
+    function updateProgress() {
+        const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+        const time = audio.currentTime;
+        const current = formatTime(time);
+        const total = formatTime(duration || queue[currentIndex]?.duration);
+        byId('current-time').textContent = current;
+        byId('duration').textContent = total;
+        seek.disabled = duration <= 0;
+        seek.max = duration || 1;
+        seek.value = time;
+        seek.setAttribute('aria-valuetext', current + ' из ' + total);
+        paintRange(seek, duration > 0 ? time / duration : 0);
+    }
 
-        const artistSongs = shuffledSongs(uniqueSongs(artist.songs));
-        const artistSongKeys = new Set(artistSongs.map(getSongKey));
-        playlist = [
-            ...artistSongs,
-            ...playlist.filter(song => !artistSongKeys.has(getSongKey(song)))
-        ];
-        currentSongIndex = 0;
-        playlistEl.innerHTML = '';
-        generateUserPlaylist();
-        loadSong(currentSongIndex);
-        activateTab('user');
+    function syncVolume() {
+        volume.value = audio.volume;
+        paintRange(volume, audio.volume);
+    }
 
-        if (shouldPlay && !isPlaying) {
-            togglePlay();
+    function initVolumeControls() {
+        const toggle = byId('volume-toggle');
+        const controls = byId('volume-controls');
+        const player = toggle.closest('.player-section');
+        const isOpen = () => player.classList.contains('volume-open');
+        function setOpen(open) {
+            player.classList.toggle('volume-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
         }
-
-        return true;
-    }
-
-    function searchAndPromoteTrack(query, shouldPlay = false) {
-        const bestMatch = findBestSongMatch(query);
-
-        if (!bestMatch || bestMatch.score < 220) {
-            if (searchStatus) {
-                searchStatus.textContent = 'Трек не найден. Попробуй другое название.';
-            }
-            showNotification('Трек не найден');
-            return null;
-        }
-
-        addSongToPlaylistStart(bestMatch.song, shouldPlay);
-
-        if (searchStatus) {
-            searchStatus.textContent = `Лучшее совпадение: ${bestMatch.song.title} - ${bestMatch.song.artist}`;
-        }
-
-        showNotification(`Найден трек: ${bestMatch.song.title}`);
-        return bestMatch.song;
-    }
-
-    function isTrackDownloaded(song) {
-        return downloadedTrackUrls.has(song.url);
-    }
-
-    function saveDownloadedTracks() {
-        localStorage.setItem(DOWNLOADED_TRACKS_KEY, JSON.stringify([...downloadedTrackUrls]));
-    }
-
-    function updateDownloadButtons() {
-        document.querySelectorAll('[data-download-url]').forEach(button => {
-            const isDownloaded = downloadedTrackUrls.has(button.dataset.downloadUrl);
-            button.classList.toggle('downloaded', isDownloaded);
-            button.title = isDownloaded ? 'Трек загружен' : 'Загрузить трек';
-            button.setAttribute('aria-label', button.title);
-            button.innerHTML = isDownloaded ? '<i class="fas fa-check"></i>' : '<i class="fas fa-download"></i>';
+        toggle.addEventListener('click', () => {
+            const open = !isOpen();
+            setOpen(open);
+            if (open) volume.focus({ preventScroll: true });
         });
+        document.addEventListener('click', event => {
+            if (isOpen() && !controls.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
+        });
+        controls.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && isOpen()) {
+                setOpen(false);
+                toggle.focus();
+            }
+        });
+        volume.addEventListener('input', () => { audio.volume = Number(volume.value); });
+        audio.addEventListener('volumechange', syncVolume);
+        syncVolume();
     }
 
-    async function downloadTrack(song) {
-        if (!song?.url) return;
+    function updatePlayButton() {
+        const playing = !audio.paused && !audio.ended;
+        playButton.replaceChildren(icon(playing ? 'pause' : 'play'));
+        const label = playing ? 'Пауза' : 'Воспроизвести';
+        playButton.setAttribute('aria-label', label);
+        playButton.title = label;
+    }
 
-        if (!('caches' in window)) {
-            showNotification('Браузер не поддерживает локальное кеширование треков');
-            return;
-        }
-
-        try {
-            showNotification(`Загружаю: ${song.title}`);
-            const cache = await caches.open(MUSIC_CACHE_NAME);
-            const response = await fetch(song.url, { cache: 'reload' });
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
+    function bestMatch(entries, value, allowPartialWords = false) {
+        const query = normalize(value);
+        if (!query) return null;
+        const words = query.split(' ');
+        let best = null;
+        for (const entry of entries) {
+            for (const field of entry.fields) {
+                let score = 0;
+                if (query === field) score = 1000;
+                else if (field.startsWith(query)) score = 850;
+                else if (field.includes(query)) score = 700;
+                else if ((' ' + query + ' ').includes(' ' + field + ' ')) score = 650;
+                else if (allowPartialWords && words.every(word => field.includes(word))) score = 500;
+                if (score > (best?.score || 0)) best = { value: entry.value, score };
+                if (score === 1000) return best;
             }
-
-            await cache.put(song.url, response.clone());
-            downloadedTrackUrls.add(song.url);
-            saveDownloadedTracks();
-            updateDownloadButtons();
-            showNotification(`Трек загружен: ${song.title}`);
-        } catch (error) {
-            console.error('Не удалось загрузить трек:', error);
-            showNotification('Не удалось загрузить трек');
         }
+        return best;
+    }
+
+    function prioritizeTracks(tracks, order = queue) {
+        const previousTrack = queue[currentIndex];
+        const promoted = new Set(tracks);
+        queue = [...promoted, ...order.filter(track => !promoted.has(track))];
+        collection = { id: 'queue', name: 'Очередь' };
+        currentIndex = queue.indexOf(previousTrack);
+        openQueue();
+        renderQueue();
     }
 
     function initSearch() {
-        if (!searchInput || !searchButton) return;
-        let searchTimer = null;
-        let lastPromotedQuery = '';
-
-        const runSearch = () => {
-            const query = searchInput.value.trim();
-            if (!query) {
-                if (searchStatus) searchStatus.textContent = '';
-                return;
-            }
-
-            const song = searchAndPromoteTrack(query);
-            if (song) {
-                lastPromotedQuery = normalizeText(query);
-            }
-        };
-
-        searchButton.addEventListener('click', runSearch);
-        searchInput.addEventListener('keydown', event => {
-            if (event.key === 'Enter') {
-                runSearch();
-            }
-        });
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.trim();
-            const bestMatch = findBestSongMatch(query);
-            clearTimeout(searchTimer);
-
-            if (!query) {
-                if (searchStatus) searchStatus.textContent = '';
-                lastPromotedQuery = '';
-                return;
-            }
-
-            if (searchStatus) {
-                searchStatus.textContent = bestMatch && bestMatch.score >= 220
-                    ? `Нашел: ${bestMatch.song.title} - ${bestMatch.song.artist}`
-                    : 'Ищу совпадение...';
-            }
-
-            searchTimer = setTimeout(() => {
-                const normalizedQuery = normalizeText(searchInput.value);
-                if (normalizedQuery.length < 2 || normalizedQuery === lastPromotedQuery) return;
-
-                const song = searchAndPromoteTrack(searchInput.value);
-                if (song) {
-                    lastPromotedQuery = normalizedQuery;
-                }
-            }, 350);
-        });
-    }
-
-    function initServiceWorker() {
-        if (!('serviceWorker' in navigator)) return;
-
-        navigator.serviceWorker.register('service-worker.js')
-            .then(registration => {
-                registration.update().catch(() => {});
-
-                if (registration.waiting) {
-                    registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-                }
-
-                registration.addEventListener('updatefound', () => {
-                    const worker = registration.installing;
-                    if (!worker) return;
-
-                    worker.addEventListener('statechange', () => {
-                        if (worker.state === 'installed' && navigator.serviceWorker.controller) {
-                            worker.postMessage({ type: 'SKIP_WAITING' });
-                        }
-                    });
-                });
-            })
-            .catch(error => {
-                console.warn('Service worker не зарегистрирован:', error);
-            });
-    }
-
-    function generatePlaylists() {
-        playlists.forEach(playlist => {
-            const playlistCard = document.createElement('div');
-            playlistCard.className = 'playlist-item-card';
-            playlistCard.innerHTML = `
-                                <div class="cover">
-                                    <img src="${playlist.cover}" alt="${playlist.name}">
-                                </div>
-                                <div class="name">${playlist.name}</div>
-                                <div class="count">${playlist.songs.length} треков</div>
-                            `;
-
-            playlistCard.addEventListener('click', () => {
-                loadPlaylist(playlist);
-            });
-
-            playlistsGrid.appendChild(playlistCard);
-        });
-    }
-
-    // Генерация списка артистов
-    function generateArtistsList() {
-        const artistsBySongCount = [...artists].sort((firstArtist, secondArtist) => {
-            const songCountDifference = secondArtist.songs.length - firstArtist.songs.length;
-
-            if (songCountDifference !== 0) {
-                return songCountDifference;
-            }
-
-            return firstArtist.name.localeCompare(secondArtist.name, 'ru');
-        });
-
-        artistsBySongCount.forEach(artist => {
-            const artistCard = document.createElement('div');
-            artistCard.className = 'artist-card';
-            artistCard.innerHTML = `
-                            <div class="avatar">
-                                ${artist.avatar ?
-                    `<img src="${artist.avatar}" alt="${artist.name}">` :
-                    `<i class="fas fa-user"></i>`}
-                            </div>
-                            <div class="name">${artist.name}</div>
-                            <div class="genre">${artist.genre}</div>
-                            <div class="songs">${artist.songs.length} треков</div>
-                        `;
-
-            // Добавляем обработчик клика на артиста
-            artistCard.addEventListener('click', () => {
-                addArtistSongsToPlaylist(artist);
-            });
-
-            artistsGrid.appendChild(artistCard);
-        });
-    }
-
-    // Функция добавления треков артиста в плейлист
-    function addArtistSongsToPlaylist(artist) {
-        // Очищаем текущий плейлист
-        playlist = [];
-
-        // Добавляем все треки артиста
-        artist.songs.forEach(song => {
-            playlist.push(song);
-        });
-
-        // Обновляем отображение плейлиста
-        playlistEl.innerHTML = '';
-        generateUserPlaylist();
-
-        // Устанавливаем первую песню как текущую
-        currentSongIndex = 0;
-        loadSong(currentSongIndex);
-
-        // Переключаемся на вкладку "Ваша музыка"
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
-
-        document.querySelector('.tab[data-tab="user"]').classList.add('active');
-        document.getElementById('user-playlist').classList.add('active');
-
-        // Начинаем воспроизведение
-
-
-        // Показываем уведомление
-        showNotification(`Добавлены треки артиста: ${artist.name}`);
-    }
-
-
-
-    // Загрузка плейлиста
-    function loadPlaylist(playlistData) {
-        // Очищаем текущий плейлист
-        playlist = [];
-
-        // Добавляем все песни из выбранного плейлиста
-        playlistData.songs.forEach(song => {
-            playlist.push({
-                ...song,
-                cover: playlistData.cover
-            });
-        });
-
-        // Обновляем отображение плейлиста
-        playlistEl.innerHTML = '';
-        generateUserPlaylist();
-
-        // Устанавливаем первую песню как текущую
-        currentSongIndex = 0;
-        loadSong(currentSongIndex);
-
-        // Переключаемся на вкладку "Ваша музыка"
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
-
-        document.querySelector('.tab[data-tab="user"]').classList.add('active');
-        document.getElementById('user-playlist').classList.add('active');
-
-        // Начинаем воспроизведение
-
-
-        // Показываем уведомление
-        showNotification(`Загружен плейлист: ${playlistData.name}`);
-    }
-
-    // Генерация популярного плейлиста
-    function generatePopularPlaylist() {
-        popularSongs.forEach((song) => {
-            // Для сетки популярной музыки
-            const songCard = document.createElement('div');
-            songCard.className = 'popular-song';
-            songCard.innerHTML = `
-                                <div class="cover">
-                                    ${song.cover ? `<img src="${song.cover}" alt="${song.title}">` : '<i class="fas fa-music"></i>'}
-                                    <div class="overlay">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                                <div class="title">${song.title}</div>
-                                <div class="artist">${song.artist}</div>
-                                <div class="track-meta">
-                                    <span>${LANGUAGE_LABELS[song.language] || song.language || ''}</span>
-                                    <span>${song.duration}</span>
-                                </div>
-                                <div class="track-actions">
-                                    <button class="track-download-btn ${isTrackDownloaded(song) ? 'downloaded' : ''}" data-download-url="${song.url}" title="${isTrackDownloaded(song) ? 'Трек загружен' : 'Загрузить трек'}" aria-label="${isTrackDownloaded(song) ? 'Трек загружен' : 'Загрузить трек'}">
-                                        <i class="fas ${isTrackDownloaded(song) ? 'fa-check' : 'fa-download'}"></i>
-                                    </button>
-                                    <div class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            `;
-
-            songCard.querySelector('.track-download-btn').addEventListener('click', function (e) {
-                e.stopPropagation();
-                downloadTrack(song);
-            });
-
-            songCard.querySelector('.play-btn').addEventListener('click', function (e) {
-                e.stopPropagation();
-                addSongToPlaylist(song);
-            });
-
-            popularGridEl.appendChild(songCard);
-        });
-    }
-
-    // Добавление песни в плейлист
-    function addSongToPlaylist(song) {
-        // Проверяем, есть ли песня уже в плейлисте
-        const songExists = playlist.some(s => getSongKey(s) === getSongKey(song));
-
-        if (!songExists) {
-            playlist.push(song);
-
-            // Обновляем плейлист
-            playlistEl.innerHTML = '';
-            generateUserPlaylist();
-        }
-
-        // Устанавливаем текущую песню
-        currentSongIndex = playlist.findIndex(s => getSongKey(s) === getSongKey(song));
-        loadSong(currentSongIndex);
-
-        // Начинаем воспроизведение
-        if (!isPlaying) {
-            togglePlay();
-        }
-
-        // Показываем уведомление
-        showNotification(`Добавлен трек: ${song.title}`);
-    }
-
-    // Генерация пользовательского плейлиста
-    function generateUserPlaylist() {
-        playlist.forEach((song, index) => {
-            const li = document.createElement('li');
-            li.className = 'playlist-item';
-            if (index === currentSongIndex) {
-                li.classList.add('active');
-            }
-
-            li.innerHTML = `
-                                <div class="play-icon">
-                                    <i class="fas fa-music"></i>
-                                </div>
-                                <div class="song-details">
-                                    <div class="title">${song.title}</div>
-                                    <div class="artist">${song.artist}</div>
-                                </div>
-                                <div class="song-extra">
-                                    <span class="language">${LANGUAGE_LABELS[song.language] || song.language || ''}</span>
-                                    <span class="duration">${song.duration}</span>
-                                    <button class="track-download-btn ${isTrackDownloaded(song) ? 'downloaded' : ''}" data-download-url="${song.url}" title="${isTrackDownloaded(song) ? 'Трек загружен' : 'Загрузить трек'}" aria-label="${isTrackDownloaded(song) ? 'Трек загружен' : 'Загрузить трек'}">
-                                        <i class="fas ${isTrackDownloaded(song) ? 'fa-check' : 'fa-download'}"></i>
-                                    </button>
-                                </div>
-                            `;
-
-            li.querySelector('.track-download-btn').addEventListener('click', event => {
-                event.stopPropagation();
-                downloadTrack(song);
-            });
-
-            li.addEventListener('click', () => {
-                currentSongIndex = index;
-                loadSong(currentSongIndex);
-                if (!isPlaying) {
-                    togglePlay();
-                }
-            });
-
-            playlistEl.appendChild(li);
-        });
-    }
-
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        requestAnimationFrame(() => notification.classList.add('show'));
-
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        }, 2500);
-    }
-
-    function normalizeVoiceText(text) {
-        return String(text || '')
-            .toLowerCase()
-            .replace(/ё/g, 'е')
-            .replace(/[^\p{L}\p{N}\s]/gu, ' ')
-            .replace(/\s+/g, ' ')
-            .trim();
-    }
-
-    function findSongByVoiceQuery(query) {
-        const normalizedQuery = normalizeVoiceText(query);
-        if (!normalizedQuery) return null;
-
-        return allSongs.find(song => {
-            const title = normalizeVoiceText(song.title);
-            const artist = normalizeVoiceText(song.artist);
-            const fileName = normalizeVoiceText(
-                decodeURIComponent((song.url || '').split('/').pop() || '').replace(/\.(mp3|wav|ogg|m4a|mov)$/i, '')
-            );
-
-            return title.includes(normalizedQuery) ||
-                normalizedQuery.includes(title) ||
-                artist.includes(normalizedQuery) ||
-                fileName.includes(normalizedQuery);
-        });
-    }
-
-    function playSongFromLibrary(song) {
-        if (!song) return;
-
-        playlist = [...allSongs];
-        playlistEl.innerHTML = '';
-        currentSongIndex = playlist.findIndex(item => item.url === song.url);
-        if (currentSongIndex < 0) currentSongIndex = 0;
-
-        generateUserPlaylist();
-        loadSong(currentSongIndex);
-
-        if (!isPlaying) {
-            isPlaying = true;
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }
-
-        audioPlayer.play().catch(error => {
-            console.error('Ошибка воспроизведения:', error);
-            showNotification('Браузер заблокировал автозапуск. Нажмите Play и повторите команду.');
-        });
-    }
-
-    function handleVoiceCommand(commandText) {
-        const command = normalizeVoiceText(commandText);
-        if (!command) return;
-
-        if (command.includes('след') || command.includes('next')) {
-            nextSong();
-            showNotification('Следующий трек');
-            return;
-        }
-
-        if (command.includes('пред') || command.includes('назад') || command.includes('previous')) {
-            prevSong();
-            showNotification('Предыдущий трек');
-            return;
-        }
-
-        if (command.includes('пауза') || command.includes('pause') || command.includes('стоп')) {
-            if (isPlaying) togglePlay();
-            showNotification('Пауза');
-            return;
-        }
-
-        if (command.includes('включ') || command.includes('play') || command.includes('играй')) {
-            const query = command
-                .replace(/^(включи|включить|поставь|поставить|сыграй|играй|play)\s+/i, '')
-                .replace(/\b(трек|песню|музыку)\b/gi, '')
-                .trim();
-            const song = findSongByVoiceQuery(query);
-
-            if (song) {
-                playSongFromLibrary(song);
-                showNotification(`Включаю: ${song.title}`);
-            } else if (playlist.length > 0) {
-                if (!isPlaying) togglePlay();
-                showNotification('Воспроизведение');
+        const input = byId('search-input');
+        const status = byId('search-status');
+        let timer;
+        let preview;
+
+        function search(commit = false) {
+            const query = input.value.trim();
+            const match = bestMatch(trackQueries, query, true);
+            if (match) {
+                const track = match.value;
+                const current = queue[currentIndex];
+                // Replace a previous autocomplete result without adding it to the underlying queue.
+                const order = preview?.result === queue && (!current || preview.order.includes(current))
+                    ? preview.order : queue;
+                prioritizeTracks([track], order);
+                preview = commit ? null : { order, result: queue };
+                status.textContent = 'Найдено: ' + track.title + ' — ' + artistText(track);
             } else {
-                showNotification('Не нашёл трек. Попробуйте назвать его точнее.');
+                status.textContent = query ? 'Трек не найден' : '';
             }
-            return;
         }
 
-        const song = findSongByVoiceQuery(command);
-        if (song) {
-            playSongFromLibrary(song);
-            showNotification(`Включаю: ${song.title}`);
-            return;
-        }
-
-        showNotification('Не понял команду. Попробуйте: «включи Sky», «следующий» или «пауза».');
-    }
-
-    function normalizeVoiceText(text) {
-        return normalizeText(text);
-    }
-
-    const VOICE_COMMANDS = {
-        next: ['следующий трек', 'следующий', 'следующая', 'дальше', 'переключи', 'некст', 'некст трек', 'next', 'next track'],
-        prev: ['предыдущий трек', 'предыдущий', 'предыдущая', 'назад', 'прошлый', 'прошлая', 'previous', 'prev'],
-        pause: ['пауза', 'поставь паузу', 'стоп', 'останови', 'хватит', 'замолчи', 'заткнись', 'закрой рот', 'завали ебало', 'pause', 'stop'],
-        play: ['включи', 'включить', 'включи трек', 'включить трек', 'вруби', 'врубай', 'поставь', 'поставить', 'поставь трек', 'поставить трек', 'поставь песню', 'поставить песню', 'запусти', 'запустить', 'запусти трек', 'запустить трек', 'сыграй', 'играй', 'продолжи', 'play'],
-        shuffle: ['перемешай', 'перемешай треки', 'перемешать', 'шафл', 'shuffle'],
-        volumeUp: ['прибавь', 'прибавь громкость', 'сделай громче', 'громче', 'увеличь громкость', 'громкость выше', 'volume up', 'louder'],
-        volumeDown: ['убавь', 'убавь громкость', 'сделай тише', 'тише', 'уменьши громкость', 'громкость ниже', 'volume down', 'quieter']
-    };
-
-    const VOICE_FILLER_WORDS = [
-        'трек',
-        'песню',
-        'песня',
-        'музыку',
-        'музыка',
-        'композицию',
-        'пожалуйста',
-        'давай'
-    ];
-
-    function hasVoicePhrase(command, phrases) {
-        return phrases.some(phrase => {
-            const normalizedPhrase = normalizeVoiceText(phrase);
-            return command === normalizedPhrase || command.includes(normalizedPhrase);
+        byId('track-search').addEventListener('submit', event => {
+            event.preventDefault();
+            clearTimeout(timer);
+            search(true);
+        });
+        input.addEventListener('input', () => {
+            status.textContent = '';
+            clearTimeout(timer);
+            if (normalize(input.value).length >= 2) timer = setTimeout(search, 350);
         });
     }
 
-    function stripVoiceCommand(command, phrases) {
-        let query = ` ${command} `;
+    const downloadFiles = new Set();
+    const pendingDownloads = new Set();
 
-        phrases
-            .map(normalizeVoiceText)
-            .sort((first, second) => second.length - first.length)
-            .forEach(phrase => {
-                query = query.replace(` ${phrase} `, ' ');
-            });
-
-        VOICE_FILLER_WORDS.forEach(word => {
-            query = query.replace(new RegExp(`\\b${normalizeVoiceText(word)}\\b`, 'g'), ' ');
-        });
-
-        return query.replace(/\s+/g, ' ').trim();
+    function syncDownloadButton(node) {
+        const file = node.dataset.downloadFile;
+        const saved = downloadFiles.has(file);
+        const pending = pendingDownloads.has(file);
+        const text = saved ? 'Доступен офлайн' : pending ? 'Загрузка трека' : 'Загрузить для офлайна';
+        node.title = text;
+        node.setAttribute('aria-label', text);
+        node.disabled = saved || pending;
+        node.classList.toggle('downloaded', saved);
+        node.replaceChildren(icon(saved ? 'check' : 'download'));
     }
 
-    function findSongByVoiceQuery(query) {
-        const bestMatch = findBestSongMatch(query);
-        return bestMatch && bestMatch.score >= 220 ? bestMatch.song : null;
+    function refreshDownloadButtons() {
+        document.querySelectorAll('[data-download-file]').forEach(syncDownloadButton);
     }
 
-    function playSongFromLibrary(song) {
-        if (!song) return;
-
-        addSongToPlaylistStart(song);
-
-        if (!isPlaying) {
-            isPlaying = true;
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }
-
-        audioPlayer.play().catch(error => {
-            console.error('Ошибка воспроизведения:', error);
-            showNotification('Браузер заблокировал автозапуск. Нажми Play и повтори команду.');
-        });
+    function downloadButton(track) {
+        const node = button('track-download-btn');
+        node.dataset.downloadFile = track.file;
+        syncDownloadButton(node);
+        node.addEventListener('click', () => downloadTrack(track));
+        return node;
     }
 
-    function playArtistFromLibrary(artist) {
-        if (!artist) return;
-
-        addArtistSongsToPlaylistStart(artist);
-
-        if (!isPlaying) {
-            isPlaying = true;
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }
-
-        audioPlayer.play().catch(error => {
-            console.error('Ошибка воспроизведения:', error);
-            showNotification('Браузер заблокировал автозапуск. Нажми Play и повтори команду.');
-        });
-    }
-
-    function handleVoiceCommand(commandText) {
-        const command = normalizeVoiceText(commandText);
-        if (!command) return;
-
-        const isVolumeUpCommand = ['прибавь', 'громче', 'увеличь', 'volume up', 'louder', 'громкость выше']
-            .some(phrase => command.includes(phrase));
-        const isVolumeDownCommand = ['убавь', 'тише', 'уменьши', 'volume down', 'quieter', 'громкость ниже']
-            .some(phrase => command.includes(phrase));
-
-        if (isVolumeUpCommand) {
-            changeVolumeByVoice(0.1);
+    async function downloadTrack(track) {
+        if (!('caches' in window)) {
+            notify('Офлайн-загрузка доступна через HTTPS или localhost');
             return;
         }
+        if (pendingDownloads.has(track.file) || downloadFiles.has(track.file)) return;
 
-        if (isVolumeDownCommand) {
-            changeVolumeByVoice(-0.1);
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.shuffle)) {
-            shufflePlaylist();
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.next)) {
-            nextSong();
-            showNotification('Следующий трек');
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.prev)) {
-            prevSong();
-            showNotification('Предыдущий трек');
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.volumeUp)) {
-            changeVolumeByVoice(0.1);
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.volumeDown)) {
-            changeVolumeByVoice(-0.1);
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.play)) {
-            const query = stripVoiceCommand(command, VOICE_COMMANDS.play);
-            const artistMatch = query ? findBestArtistMatch(query) : null;
-            const song = query ? findSongByVoiceQuery(query) : null;
-
-            if (artistMatch && artistMatch.score >= 650) {
-                playArtistFromLibrary(artistMatch.artist);
-                showNotification(`Включаю артиста: ${artistMatch.artist.name}`);
-            } else if (song) {
-                playSongFromLibrary(song);
-                showNotification(`Включаю: ${song.title}`);
-            } else if (playlist.length > 0) {
-                if (!isPlaying) togglePlay();
-                showNotification('Воспроизведение');
-            } else {
-                showNotification('Не нашел трек. Попробуй назвать его точнее.');
-            }
-            return;
-        }
-
-        if (hasVoicePhrase(command, VOICE_COMMANDS.pause)) {
-            if (isPlaying) togglePlay();
-            showNotification('Пауза');
-            return;
-        }
-
-        const artistMatch = findBestArtistMatch(command);
-        if (artistMatch && artistMatch.score >= 650) {
-            playArtistFromLibrary(artistMatch.artist);
-            showNotification(`Включаю артиста: ${artistMatch.artist.name}`);
-            return;
-        }
-
-        const song = findSongByVoiceQuery(command);
-        if (song) {
-            playSongFromLibrary(song);
-            showNotification(`Включаю: ${song.title}`);
-            return;
-        }
-
-        showNotification('Не понял команду. Попробуй: "включи Sky", "следующий" или "пауза".');
-    }
-
-    function updateVoiceRoutingNote(message, isWarning = false) {
-        if (!voiceRoutingNote) return;
-
-        voiceRoutingNote.textContent = message;
-        voiceRoutingNote.classList.toggle('warning', isWarning);
-    }
-
-    function isBluetoothOutputDevice(device) {
-        return device.kind === 'audiooutput' && /bluetooth|bt|headset|науш|колонк|гарнитур/i.test(device.label || '');
-    }
-
-    async function initBluetoothAudioOutput() {
-        const defaultMessage = 'Bluetooth используется только для вывода музыки. Команды говорите в микрофон телефона.';
-        updateVoiceRoutingNote(defaultMessage);
-
-        if (!audioPlayer || typeof audioPlayer.setSinkId !== 'function') {
-            updateVoiceRoutingNote(`${defaultMessage} Если звук пошел не в Bluetooth, выберите Bluetooth как устройство вывода в настройках телефона.`, true);
-            return;
-        }
-
-        if (!navigator.mediaDevices || typeof navigator.mediaDevices.enumerateDevices !== 'function') {
-            updateVoiceRoutingNote(`${defaultMessage} Браузер не дал список аудиоустройств.`, true);
-            return;
-        }
-
+        pendingDownloads.add(track.file);
+        refreshDownloadButtons();
+        notify('Загружаю: ' + track.title);
         try {
-            let devices = await navigator.mediaDevices.enumerateDevices();
-            let bluetoothOutput = devices.find(isBluetoothOutputDevice);
+            const url = trackPath(track);
+            const response = await fetch(url, { cache: 'reload' });
+            if (!response.ok || response.status === 206) throw new Error('HTTP ' + response.status);
+            const cache = await caches.open(MUSIC_CACHES[0]);
+            await cache.put(url, response);
+            downloadFiles.add(track.file);
+            notify('Доступен офлайн: ' + track.title);
+        } catch (error) {
+            console.warn('Ошибка офлайн-загрузки', error);
+            notify('Не удалось загрузить трек');
+        } finally {
+            pendingDownloads.delete(track.file);
+            refreshDownloadButtons();
+        }
+    }
 
-            if (!bluetoothOutput) {
-                updateVoiceRoutingNote('Bluetooth-выход не найден. Подключите Bluetooth и выберите его для звука; команды говорите в микрофон телефона.', true);
+    async function restoreDownloads() {
+        if (!('caches' in window)) return;
+        try {
+            const names = await caches.keys();
+            const lists = await Promise.all(MUSIC_CACHES.filter(name => names.includes(name))
+                .map(async name => (await caches.open(name)).keys()));
+            const filenames = new Map(TRACKS.map(track => [track.file.normalize('NFC'), track.file]));
+            for (const request of lists.flat()) {
+                const encoded = new URL(request.url).pathname.split('/').pop();
+                let filename;
+                try {
+                    filename = decodeURIComponent(encoded);
+                } catch {
+                    filename = encoded.replace(/%20/g, ' ');
+                }
+                const file = filenames.get(filename.normalize('NFC'));
+                if (file) downloadFiles.add(file);
+            }
+            refreshDownloadButtons();
+        } catch (error) {
+            console.warn('Ошибка чтения офлайн-загрузок', error);
+        }
+    }
+
+    const editor = byId('playlist-editor');
+    const playlistForm = byId('playlist-form');
+    const playlistName = byId('playlist-name');
+    const playlistFilter = byId('playlist-filter');
+    const trackPicker = byId('track-picker');
+    const editorStatus = byId('editor-status');
+    let editingId;
+    let pickedFiles;
+    let pickerRows;
+
+    function filterPicker() {
+        const words = normalize(playlistFilter.value).split(' ').filter(Boolean);
+        let matches = 0;
+        for (const { row, file } of pickerRows) {
+            const fields = searchFields.get(file);
+            const visible = words.every(word => fields.some(field => field.includes(word)));
+            row.hidden = !visible;
+            if (visible) matches++;
+        }
+        byId('picker-empty').hidden = matches > 0;
+    }
+
+    function updatePickedCount() {
+        byId('selected-count').textContent = 'Выбрано: ' + trackCount(pickedFiles.size);
+    }
+
+    function openEditor(list) {
+        editingId = list?.id;
+        pickedFiles = new Set((list?.files || []).filter(file => trackByFile.has(file)));
+        byId('editor-title').textContent = list ? 'Редактировать плейлист' : 'Новый плейлист';
+        playlistName.value = list?.name || '';
+        playlistName.setCustomValidity('');
+        playlistFilter.value = '';
+        editorStatus.hidden = true;
+        pickerRows = TRACKS.map(track => {
+            const row = element('label', 'track-option');
+            const checkbox = element('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = track.file;
+            checkbox.checked = pickedFiles.has(track.file);
+            const text = track.title + ' — ' + artistText(track);
+            row.append(checkbox, element('span', null, text));
+            return { row, file: track.file };
+        });
+        trackPicker.replaceChildren(...pickerRows.map(entry => entry.row));
+        updatePickedCount();
+        filterPicker();
+        editor.showModal();
+    }
+
+    function initPlaylists() {
+        document.querySelectorAll('[data-create-playlist]').forEach(control =>
+            control.addEventListener('click', () => openEditor())
+        );
+        byId('edit-playlist').addEventListener('click', () => {
+            const list = customPlaylists.find(item => item.id === collection.id);
+            if (list) openEditor(list);
+        });
+        byId('cancel-playlist').addEventListener('click', () => editor.close());
+        playlistFilter.addEventListener('input', filterPicker);
+        playlistName.addEventListener('input', () => playlistName.setCustomValidity(''));
+        trackPicker.addEventListener('change', ({ target }) => {
+            if (target.checked) pickedFiles.add(target.value);
+            else pickedFiles.delete(target.value);
+            updatePickedCount();
+        });
+        playlistForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            const name = playlistName.value.trim();
+            if (!name) {
+                playlistName.setCustomValidity('Введите название плейлиста');
+                playlistName.reportValidity();
                 return;
             }
+            const saveButton = event.submitter;
+            if (saveButton.disabled) return;
+            saveButton.disabled = true;
+            const list = {
+                id: editingId || 'custom:' + crypto.getRandomValues(new Uint32Array(4)).join('-'),
+                name, files: [...pickedFiles]
+            };
+            try {
+                customPlaylists = await updateStorage(PLAYLISTS_KEY, customPlaylists, lists => {
+                    const index = lists.findIndex(item => item.id === list.id);
+                    if (index < 0) lists.push(list);
+                    else lists[index] = list;
+                    return lists;
+                });
+                editor.close();
+                renderPlaylists();
+                if (!editingId) activateTab('playlists');
+                if (collection.id === list.id) {
+                    replaceQueue(customCollection(list), false);
+                }
+                notify('Плейлист сохранён');
+            } catch {
+                editorStatus.textContent = 'Браузер не смог сохранить плейлист';
+                editorStatus.hidden = false;
+            } finally {
+                saveButton.disabled = false;
+            }
+        });
+        window.addEventListener('storage', event => {
+            if (event.key === PLAYLISTS_KEY || event.key === null) {
+                customPlaylists = readStorage(PLAYLISTS_KEY, []);
+                if (byId('playlists-grid').childElementCount) renderPlaylists();
+            }
+            if (event.key === LIKES_KEY || event.key === null) {
+                refreshLikes(readStorage(LIKES_KEY, []));
+            }
+            if (event.key === HISTORY_KEY || event.key === null) {
+                listens = readStorage(HISTORY_KEY, {});
+                refreshHome();
+            }
+        });
+    }
 
-            await audioPlayer.setSinkId(bluetoothOutput.deviceId);
-            updateVoiceRoutingNote(`Музыка выводится через Bluetooth: ${bluetoothOutput.label}. Команды слушает микрофон телефона.`);
-        } catch (error) {
-            console.warn('Не удалось настроить Bluetooth-вывод:', error);
-            updateVoiceRoutingNote('Не удалось автоматически выбрать Bluetooth-вывод. Выберите Bluetooth в настройках телефона, команды говорите в микрофон телефона.', true);
+    const VOICE_ACTIONS = [
+        { phrases: ['поставь паузу', 'пауза', 'стоп', 'останови', 'хватит', 'замолчи', 'заткнись', 'закрой рот', 'завали ебало', 'pause', 'stop'], run: () => audio.pause() },
+        { phrases: ['перемешай', 'перемешать', 'шафл', 'shuffle'], run: shuffleQueue },
+        { phrases: ['следующий', 'следующая', 'дальше', 'переключи', 'некст', 'next'], run: () => moveTrack(1) },
+        { phrases: ['предыдущий', 'предыдущая', 'назад', 'прошлый', 'прошлая', 'previous', 'prev'], run: () => moveTrack(-1) },
+        { phrases: ['прибавь', 'громче', 'увеличь', 'громкость выше', 'volume up', 'louder'], run: () => changeVolume(0.1) },
+        { phrases: ['убавь', 'тише', 'уменьши', 'громкость ниже', 'volume down', 'quieter'], run: () => changeVolume(-0.1) }
+    ];
+    const VOICE_PLAY = /^(?:включи|включить|вруби|врубай|поставь|поставить|запусти|запустить|сыграй|играй|продолжи|play)(?: |$)/;
+    const VOICE_FILLER = new Set(['трек', 'песню', 'песня', 'музыку', 'музыка', 'композицию', 'артиста', 'исполнителя', 'пожалуйста', 'давай']);
+
+    function changeVolume(delta) {
+        audio.volume = Math.min(1, Math.max(0, audio.volume + delta));
+        notify('Громкость: ' + Math.round(audio.volume * 100) + '%');
+    }
+
+    function handleVoice(command) {
+        const text = normalize(command).split(' ').filter(word => !VOICE_FILLER.has(word)).join(' ');
+        if (!text) return;
+        const action = VOICE_ACTIONS.find(item =>
+            item.phrases.some(phrase => text === phrase || text.startsWith(phrase + ' ')));
+        if (action) {
+            action.run();
+            return;
+        }
+        const query = text.replace(VOICE_PLAY, '').trim();
+        if (!query) {
+            playAudio();
+            return;
+        }
+        const artist = bestMatch(artistQueries, query);
+        const track = bestMatch(trackQueries, query, true);
+        if (artist && artist.score >= (track?.score || 0)) {
+            prioritizeTracks(shuffledTracks(artist.value.tracks));
+            selectTrack(0, true);
+        } else if (track) {
+            prioritizeTracks([track.value]);
+            selectTrack(0, true);
+        } else {
+            notify('Не удалось распознать команду или название трека');
         }
     }
 
     function initVoiceControl() {
-        if (!voiceControlBtn || !voiceControlText) return;
-
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SpeechRecognition) {
-            voiceControlBtn.disabled = true;
-            voiceControlText.textContent = 'Помощник недоступен';
+        const control = byId('voice-control');
+        const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!Recognition) {
+            control.disabled = true;
+            control.title = 'Голосовой помощник недоступен в этом браузере';
             return;
         }
 
-        const recognition = new SpeechRecognition();
+        const recognition = new Recognition();
         recognition.lang = 'ru-RU';
         recognition.continuous = true;
-        recognition.interimResults = true;
+        let listening = false;
+        let restartTimer;
 
-        let shouldKeepListening = false;
-        let isRecognitionRunning = false;
-        let restartTimer = null;
-
-        function updateVoiceButton(active, text) {
-            voiceControlBtn.classList.toggle('active', active);
-            voiceControlBtn.setAttribute('aria-pressed', String(active));
-            voiceControlText.textContent = text;
+        function updateVoiceState() {
+            control.setAttribute('aria-pressed', String(listening));
+            control.title = listening ? 'Голосовой помощник включён' : 'Голосовой помощник выключен';
         }
 
-        function stopListening(showMessage = true) {
-            shouldKeepListening = false;
-            clearTimeout(restartTimer);
-            updateVoiceButton(false, 'Включить помощника');
-
-            if (isRecognitionRunning) {
-                recognition.stop();
-            }
-
-            if (showMessage) {
-                showNotification('Голосовое управление выключено.');
-            }
-        }
-
-        function startListening(showMessage = false) {
-            if (!shouldKeepListening || isRecognitionRunning) {
-                return;
-            }
-
+        function listen() {
+            if (!listening) return;
             try {
                 recognition.start();
-                updateVoiceButton(true, 'Запуск помощника...');
-
-                if (showMessage) {
-                    showNotification('Разрешите микрофон, если браузер спросит. Помощник запускается...');
-                }
             } catch (error) {
-                if (error && error.name === 'InvalidStateError') {
-                    return;
-                }
-
-                console.error('Не удалось запустить голосовое управление:', error);
-                stopListening(false);
-                showNotification('Не удалось запустить помощника. Попробуйте нажать кнопку ещё раз.');
+                if (error.name === 'InvalidStateError') return;
+                listening = false;
+                updateVoiceState();
+                notify('Не удалось запустить помощника');
             }
         }
 
-        voiceControlBtn.addEventListener('click', () => {
-            if (shouldKeepListening || isRecognitionRunning) {
-                stopListening();
-                return;
-            }
-
-            shouldKeepListening = true;
-            startListening(true);
-        });
-
-        recognition.onstart = () => {
-            isRecognitionRunning = true;
-            updateVoiceButton(true, 'Помощник слушает');
-        };
-
-        recognition.onresult = event => {
-            let transcript = '';
-            let finalTranscript = '';
-
-            for (let index = event.resultIndex; index < event.results.length; index++) {
-                const result = event.results[index];
-                transcript += result[0].transcript;
-
-                if (result.isFinal) {
-                    finalTranscript += result[0].transcript;
-                }
-            }
-
-            if (transcript.trim()) {
-                updateVoiceButton(true, `Слышу: ${transcript.trim()}`);
-            }
-
-            if (finalTranscript.trim()) {
-                handleVoiceCommand(finalTranscript.trim());
-            }
-        };
-
-        recognition.onerror = event => {
-            if (event.error === 'not-allowed') {
-                shouldKeepListening = false;
-                updateVoiceButton(false, 'Разрешите микрофон');
-                showNotification('Разрешите доступ к микрофону в браузере.');
-                return;
-            }
-
-            if (event.error === 'audio-capture') {
-                shouldKeepListening = false;
-                updateVoiceButton(false, 'Микрофон не найден');
-                showNotification('Микрофон не найден или занят другим приложением.');
-                return;
-            }
-
-            if (event.error === 'no-speech') {
-                updateVoiceButton(true, 'Помощник слушает');
-            } else if (event.error !== 'no-speech') {
-                console.warn('Ошибка голосового управления:', event.error);
-            }
-        };
-
-        recognition.onend = () => {
-            isRecognitionRunning = false;
-
-            if (!shouldKeepListening) {
-                updateVoiceButton(false, 'Включить помощника');
-                return;
-            }
-
-            updateVoiceButton(true, 'Помощник слушает');
+        control.addEventListener('click', () => {
+            listening = !listening;
             clearTimeout(restartTimer);
-            restartTimer = setTimeout(() => startListening(false), 400);
+            updateVoiceState();
+            if (listening) listen();
+            else recognition.abort();
+        });
+        recognition.onstart = () => {
+            if (!listening) recognition.abort();
+        };
+        recognition.onresult = ({ results, resultIndex }) => {
+            if (!listening) return;
+            for (let i = resultIndex; i < results.length; i++) {
+                if (results[i].isFinal) handleVoice(results[i][0].transcript.trim());
+            }
+        };
+        recognition.onerror = ({ error }) => {
+            const messages = {
+                'not-allowed': 'Разрешите доступ к микрофону',
+                'service-not-allowed': 'Голосовой помощник недоступен',
+                'audio-capture': 'Микрофон не найден',
+                network: 'Не удалось подключиться к распознаванию речи'
+            };
+            if (!listening || !messages[error]) return;
+            listening = false;
+            clearTimeout(restartTimer);
+            updateVoiceState();
+            notify(messages[error]);
+        };
+        recognition.onend = () => {
+            if (listening) restartTimer = setTimeout(listen, 400);
         };
     }
 
-    // Инициализация
-    function init() {
-        initServiceWorker();
-        initVisualizer();
-        generatePlaylists();
-        generateArtistsList();
-        generatePopularPlaylist();
-        generateUserPlaylist();
-        initBluetoothAudioOutput();
-        initVoiceControl();
-        initSearch();
-        updateDownloadButtons();
-
-        // Добавляем обработчик для кнопки play/pause
-        playPauseBtn.addEventListener('click', togglePlay);
-
-        // Обработчики событий
-        prevBtn.addEventListener('click', prevSong);
-        nextBtn.addEventListener('click', nextSong);
-        shuffleBtn?.addEventListener('click', shufflePlaylist);
-        volumeSlider.addEventListener('input', setVolume);
-        progressContainer.addEventListener('click', updateProgress);
-        audioPlayer.addEventListener('timeupdate', updateTime);
-        audioPlayer.addEventListener('ended', nextSong);
-
-        // Загрузка первой песни при наличии
-        if (playlist.length > 0) {
-            loadSong(currentSongIndex);
+    async function initBluetoothOutput() {
+        if (!audio.setSinkId || !navigator.mediaDevices?.enumerateDevices) return;
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const bluetooth = devices.find(device => device.kind === 'audiooutput' &&
+                /bluetooth|\bbt\b|headset|науш|колонк|гарнитур/i.test(device.label));
+            if (bluetooth) await audio.setSinkId(bluetooth.deviceId);
+        } catch (error) {
+            console.warn('Не удалось выбрать Bluetooth-выход', error);
         }
     }
 
-    init();
-});
+    audio.volume = Number(volume.value);
+    initVolumeControls();
+    for (const tab of tabs) {
+        tab.addEventListener('click', () => {
+            const tabName = tab.dataset.tab;
+            if (tabName === 'user') {
+                showQueue = false;
+                renderQueue();
+            }
+            activateTab(tabName);
+        });
+    }
+    playButton.addEventListener('click', () => audio.paused ? playAudio() : audio.pause());
+    byId('prev').addEventListener('click', () => moveTrack(-1));
+    byId('next').addEventListener('click', () => moveTrack(1));
+    byId('shuffle').addEventListener('click', shuffleQueue);
+    seek.addEventListener('input', () => { audio.currentTime = Number(seek.value); });
+    for (const event of ['loadedmetadata', 'durationchange', 'emptied']) audio.addEventListener(event, updateProgress);
+    audio.addEventListener('timeupdate', () => {
+        updateProgress();
+        recordListen();
+    });
+    for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, updatePlayButton);
+    audio.addEventListener('ended', () => {
+        recordListen();
+        moveTrack(1, true);
+    });
+    audio.addEventListener('error', () => {
+        updatePlayButton();
+        if (audio.hasAttribute('src')) notify('Не удалось открыть аудиофайл');
+    });
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+        navigator.serviceWorker.register('service-worker.js').catch(error => console.warn('Ошибка офлайн-режима', error));
+    }
+    renderQueue();
+    byId('popular-section').addEventListener('toggle', event => {
+        if (event.target.open && !byId('popular-grid').childElementCount) renderPopular();
+    });
+    restoreDownloads();
+    initSearch();
+    initPlaylists();
+    initVoiceControl();
+    initBluetoothOutput();
+})();
