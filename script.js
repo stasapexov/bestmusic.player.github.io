@@ -430,11 +430,13 @@
         artwork(byId('album-art'), trackArt(track), null, false);
     }
 
-    function useCollection(nextCollection) {
-        const previousTrack = queue[currentIndex];
+    function useCollection(nextCollection, keepCurrentFirst = false) {
+        const currentTrack = queue[currentIndex];
         collection = nextCollection;
-        queue = [...collection.tracks];
-        currentIndex = queue.indexOf(previousTrack);
+        queue = keepCurrentFirst && currentTrack
+            ? [currentTrack, ...collection.tracks.filter(track => track !== currentTrack)]
+            : [...collection.tracks];
+        currentIndex = queue.indexOf(currentTrack);
     }
 
     function openQueue() {
@@ -450,21 +452,9 @@
     }
 
     function replaceQueue(nextCollection, switchTab = true) {
-        const wasPlaying = !audio.paused;
-        useCollection(nextCollection);
+        useCollection(nextCollection, true);
         if (switchTab) openQueue();
-        if (!queue.length) {
-            ++playRequest;
-            audio.pause();
-            audio.removeAttribute('src');
-            audio.load();
-            renderNowPlaying();
-            updateProgress();
-        } else if (currentIndex < 0) {
-            selectTrack(0, wasPlaying);
-        } else {
-            renderNowPlaying(queue[currentIndex]);
-        }
+        if (currentIndex < 0 && queue.length) selectTrack(0);
         renderQueue();
     }
 

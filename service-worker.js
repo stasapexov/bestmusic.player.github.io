@@ -1,4 +1,4 @@
-const SHELL_CACHE = 'smoker-shell-v7';
+const SHELL_CACHE = 'smoker-shell-v8';
 const COVER_CACHE = 'covers-v3';
 const MUSIC_CACHES = ['music-v3', 'music-v2'];
 const scope = new URL(self.registration.scope);
