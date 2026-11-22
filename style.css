@@ -361,7 +361,7 @@ input::placeholder { color: var(--muted); opacity: 1; }
     margin: 24px auto 0;
     gap: 5px;
 }
-.control-btn, .track-like-btn, .track-download-btn, .play-btn {
+.control-btn, .track-like-btn, .track-add-btn, .track-download-btn, .play-btn {
     display: inline-grid;
     place-items: center;
     flex: none;
@@ -373,7 +373,7 @@ input::placeholder { color: var(--muted); opacity: 1; }
     background: transparent;
     color: var(--text);
 }
-.control-btn:hover, .track-like-btn:hover, .track-download-btn:not(:disabled):hover, .play-btn:hover { background: var(--hover); }
+.control-btn:hover, .track-like-btn:hover, .track-add-btn:hover, .track-download-btn:not(:disabled):hover, .play-btn:hover { background: var(--hover); }
 .control-btn .icon { inline-size: 24px; block-size: 24px; }
 .control-btn.play-pause {
     inline-size: 61px;
@@ -384,8 +384,8 @@ input::placeholder { color: var(--muted); opacity: 1; }
 }
 .control-btn.play-pause:hover { filter: brightness(1.08); }
 .control-btn.play-pause .icon { inline-size: 27px; block-size: 27px; }
-.track-like-btn, .track-download-btn { color: var(--muted); }
-.track-like-btn .icon, .track-download-btn .icon { inline-size: 19px; block-size: 19px; }
+.track-like-btn, .track-add-btn, .track-download-btn { color: var(--muted); }
+.track-like-btn .icon, .track-add-btn .icon, .track-download-btn .icon { inline-size: 19px; block-size: 19px; }
 .track-like-btn[aria-pressed="true"] { color: var(--accent); }
 .track-like-btn[aria-pressed="true"] .icon { fill: currentColor; }
 .track-download-btn.downloaded { color: var(--success); }
@@ -457,7 +457,7 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .popular-song { display: flex; flex-direction: column; border: 1px solid var(--line); }
 .track-meta, .track-actions { display: flex; align-items: center; justify-content: space-between; gap: 3px; margin-block-start: 9px; }
 .track-meta { font-size: 0.78rem; }
-.track-actions { justify-content: flex-end; margin-block-start: auto; }
+.track-actions { justify-content: flex-end; flex-wrap: wrap; margin-block-start: auto; }
 .track-actions button { inline-size: 34px; }
 
 
@@ -483,7 +483,8 @@ input::placeholder { color: var(--muted); opacity: 1; }
     background: var(--input);
 }
 #selected-count { color: var(--muted); font-size: 0.82rem; }
-#editor-status { color: var(--error); font-size: 0.9rem; }
+.editor-status { color: var(--error); font-size: 0.9rem; }
+.chooser-track { color: var(--muted); font-size: 0.9rem; overflow-wrap: anywhere; }
 .track-picker {
     max-block-size: 34dvh;
     overflow-y: auto;
@@ -495,6 +496,23 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .track-option + .track-option { border-block-start: 1px solid var(--line); }
 .track-option:hover { background: var(--input); }
 .track-option input { accent-color: var(--accent-fill); inline-size: 17px; block-size: 17px; flex: none; }
+.playlist-choice {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    inline-size: 100%;
+    min-block-size: 46px;
+    padding: 7px 11px;
+    border: 0;
+    background: transparent;
+    text-align: start;
+    overflow-wrap: anywhere;
+}
+.playlist-choice + .playlist-choice { border-block-start: 1px solid var(--line); }
+.playlist-choice:not(:disabled):hover { background: var(--input); }
+.playlist-choice .icon, .choice-added { color: var(--muted); }
+.playlist-choice .choice-added { margin-inline-start: auto; font-size: 0.8rem; }
+.playlist-choice:focus-visible { outline-offset: -2px; }
 .editor-actions { display: flex; justify-content: flex-end; gap: 8px; margin-block-start: 8px; }
 
 .notification {
@@ -587,7 +605,7 @@ input::placeholder { color: var(--muted); opacity: 1; }
     .playlist-item { padding-inline: 3px; }
     .track-select { min-block-size: 60px; gap: 9px; }
     .track-art { flex-basis: 41px; }
-    .track-like-btn, .track-download-btn, .track-actions button { inline-size: 44px; }
+    .track-like-btn, .track-add-btn, .track-download-btn, .track-actions button { inline-size: 44px; }
 
     .player-section {
         position: relative;

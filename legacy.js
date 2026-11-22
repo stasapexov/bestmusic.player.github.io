@@ -390,11 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const playlists = [];
 
     // Элементы DOM
-    const LANGUAGE_LABELS = {
-        en: 'Английский',
-        ru: 'Русский',
-        mixed: 'Смешанный'
-    };
+    const LANGUAGE_MIX_NAMES = { en: 'В ритме', ru: 'На репите' };
     const DEFAULT_ARTIST_AVATAR = 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80';
 
     function normalizeText(text) {
@@ -460,7 +456,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         id: artistsByName.size + 1,
                         name,
                         avatar: existingMeta?.avatar || DEFAULT_ARTIST_AVATAR,
-                        genre: existingMeta?.genre || LANGUAGE_LABELS[song.language] || '',
+                        genre: existingMeta?.genre || '',
                         songs: []
                     });
                 }
@@ -493,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const languagePlaylists = [...playlistsByLanguage.entries()].map(([language, songs], index) => ({
             id: `language-${language}`,
-            name: `${LANGUAGE_LABELS[language] || language} треки`,
+            name: LANGUAGE_MIX_NAMES[language] || 'Микс',
             cover: index % 2 === 0
                 ? 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80'
                 : 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80',
@@ -550,14 +546,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return [
             {
                 id: 'eng',
-                name: 'English mix',
-                cover: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
+                name: LANGUAGE_MIX_NAMES.en,
+                cover: 'picture/cover-night.webp',
                 songs: uniqueSongs(englishSongs)
             },
             {
                 id: 'ru',
-                name: 'Ru микс',
-                cover: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg',
+                name: LANGUAGE_MIX_NAMES.ru,
+                cover: DEFAULT_ARTIST_AVATAR,
                 songs: uniqueSongs(russianSongs)
             },
             {
@@ -1263,7 +1259,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <div class="title">${song.title}</div>
                                 <div class="artist">${song.artist}</div>
                                 <div class="track-meta">
-                                    <span>${LANGUAGE_LABELS[song.language] || song.language || ''}</span>
                                     <span>${song.duration}</span>
                                 </div>
                                 <div class="track-actions">
@@ -1334,7 +1329,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <div class="artist">${song.artist}</div>
                                 </div>
                                 <div class="song-extra">
-                                    <span class="language">${LANGUAGE_LABELS[song.language] || song.language || ''}</span>
                                     <span class="duration">${song.duration}</span>
                                     <button class="track-download-btn ${isTrackDownloaded(song) ? 'downloaded' : ''}" data-download-url="${song.url}" title="${isTrackDownloaded(song) ? 'Трек загружен' : 'Загрузить трек'}" aria-label="${isTrackDownloaded(song) ? 'Трек загружен' : 'Загрузить трек'}">
                                         <i class="fas ${isTrackDownloaded(song) ? 'fa-check' : 'fa-download'}"></i>

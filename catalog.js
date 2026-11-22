@@ -38,7 +38,7 @@ const TRACKS = [
     { file: "A$AP Rocky - Trunks.mp3", title: "Trunks", artists: ["A$AP Rocky"], language: "en", duration: 224, emotion: "агрессивная" },
     { file: "abu_dhabi_vabu.mp3", title: "Abu Dhabi Ba6y", artists: ["Платина", "OG Buda", "MAYOT"], language: "ru", duration: 180, emotion: "агрессивная" },
     { file: "alien.mp3", title: "Инопланетянин", artists: ["GONE.Fludd"], language: "ru", duration: 196, emotion: "веселая" },
-    { file: "ameli.mp3", title: "Ameli", artists: ["Morgenshtern"], language: "ru", duration: 179, emotion: "грустная" },
+    { file: "ameli.mp3", title: "Ameli", artists: ["Kizaru", "Big Baby Tape"], language: "ru", duration: 179, emotion: "грустная" },
     { file: "ARISTOCRAT.mp3", title: "ARISTOCRAT", artists: ["Morgenshtern"], language: "ru", duration: 126, emotion: "веселая" },
     { file: "bebebe.mp3", title: "bebebe", artists: ["Morgenshtern"], language: "ru", duration: 128, emotion: "веселая" },
     { file: "BNYX®, Yeat, Superheaven - GO AGAIN (feat. Superheaven).mp3", title: "GO AGAIN (feat. Superheaven)", artists: ["BNYX®", "Yeat", "Superheaven"], language: "en", duration: 214, emotion: "агрессивная" },

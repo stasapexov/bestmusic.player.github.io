@@ -1,11 +1,11 @@
-const SHELL_CACHE = 'smoker-shell-v8';
+const SHELL_CACHE = 'smoker-shell-v9';
 const COVER_CACHE = 'covers-v3';
 const MUSIC_CACHES = ['music-v3', 'music-v2'];
 const scope = new URL(self.registration.scope);
 const asset = path => new URL(path, scope).href;
 const musicPath = new URL('music/', scope).pathname;
 const shell = [
-    './', 'index.html', 'index2.html', 'style.css', 'theme.js', 'catalog.js', 'script.js', 'video.js',
+    './', 'index.html', 'index2.html', 'style.css', 'theme.js', 'catalog.js', 'audius.js', 'script.js', 'video.js',
     'legacy.html', 'legacy-clips.html', 'legacy.css', 'legacy.js',
     'manifest.json', 'icon-192x192.png', 'icon-512x512.png', 'picture/cover-night.webp'
 ];

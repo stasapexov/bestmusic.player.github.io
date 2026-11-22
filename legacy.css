@@ -50,6 +50,21 @@ header p {
     margin: 0 auto 15px;
 }
 
+.modern-player-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.modern-player-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -542,16 +557,6 @@ header p {
     gap: 8px;
     margin-left: 10px;
     flex-shrink: 0;
-}
-
-.song-extra .language,
-.track-meta span:first-child {
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 999px;
-    padding: 3px 8px;
-    color: rgba(255, 255, 255, 0.74);
-    font-size: 0.75rem;
-    line-height: 1;
 }
 
 .track-meta {

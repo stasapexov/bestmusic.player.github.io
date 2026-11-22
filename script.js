@@ -15,20 +15,25 @@
     const PLAYLISTS_KEY = 'smoker.playlists';
     const HISTORY_KEY = 'smoker.listeningHistory';
     const LIKES_KEY = 'smoker.likedTracks';
+    const ONLINE_TRACKS_KEY = 'smoker.onlineTracks';
     const RECOMMENDATION_COUNT = 24;
     const MUSIC_CACHES = ['music-v3', 'music-v2'];
-    const LANGUAGE_LABELS = { en: 'английский', ru: 'русский', instrumental: 'инструментал' };
     const preferredLanguages = new Set(['ru', 'en']);
     const trackPlural = new Intl.PluralRules('ru');
     const normalize = text => text.toLowerCase().replace(/ё/g, 'е').normalize('NFKD')
         .replace(/\p{M}/gu, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
-    const trackPath = track => 'music/' + encodeURIComponent(track.file);
+    const trackPath = track => Audius.streamUrl(track.file) || 'music/' + encodeURIComponent(track.file);
     const trackByFile = new Map(TRACKS.map(track => [track.file, track]));
     const artistText = track => track.artists.join(', ') || 'Неизвестный артист';
-    const trackArt = track => track?.cover || ARTIST_AVATARS[track?.artists[0]];
-    const searchFields = new Map(TRACKS.map(track => [track.file, [
-        track.title, ...track.artists, track.artists.join(' '), track.file.replace(/\.[^.]+$/, '')
-    ].map(normalize)]));
+    const trackArt = track => {
+        const name = track?.artists[0];
+        return track?.cover || (Object.hasOwn(ARTIST_AVATARS, name) ? ARTIST_AVATARS[name] : undefined);
+    };
+    const titleFields = track => [
+        track.title, track.file.replace(/\.[^.]+$/, ''),
+        ...track.artists.flatMap(name => [name + ' ' + track.title, track.title + ' ' + name])
+    ].map(normalize);
+    const searchFields = new Map(TRACKS.map(track => [track.file, titleFields(track)]));
 
     const artistsByName = new Map();
     for (const track of TRACKS) {
@@ -49,10 +54,9 @@
     const chillKeywords = ['chill', 'dream', 'garden', 'ночь', 'night', 'homecoming', 'long time', 'dark thought', 'ratherlife'];
     const builtInPlaylists = [
         allTracks,
-        { id: 'english', name: 'English mix', tracks: TRACKS.filter(track => track.language === 'en'),
-            cover: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg' },
-        { id: 'russian', name: 'Ru микс', tracks: TRACKS.filter(track => track.language === 'ru'),
-            cover: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg' },
+        { id: 'english', name: 'В ритме', tracks: TRACKS.filter(track => track.language === 'en'),
+            cover: 'picture/cover-night.webp' },
+        { id: 'russian', name: 'На репите', tracks: TRACKS.filter(track => track.language === 'ru') },
         { id: 'chill', name: 'Mix chill', tracks: TRACKS.filter(track =>
             searchFields.get(track.file).some(field => chillKeywords.some(word => field.includes(word)))) },
         { id: 'yamash', name: 'Ямаш хит', tracks: artistsByName.get('Ямаш')?.tracks || [], cover: ARTIST_AVATARS['Ямаш'] }
@@ -62,6 +66,7 @@
     let customPlaylists = readStorage(PLAYLISTS_KEY, []);
     let listens = readStorage(HISTORY_KEY, {});
     let likedFiles = new Set(readStorage(LIKES_KEY, []));
+    restoreOnlineTracks();
     let home = homeCollection();
     let collection = home;
     let queue = home.tracks;
@@ -90,6 +95,31 @@
         };
         return navigator.locks && location.protocol !== 'file:'
             ? navigator.locks.request(key, save) : Promise.resolve().then(save);
+    }
+
+    function indexOnlineTrack(track) {
+        const existing = trackByFile.get(track.file);
+        if (existing) return existing;
+        trackByFile.set(track.file, track);
+        searchFields.set(track.file, titleFields(track));
+        return track;
+    }
+
+    function restoreOnlineTracks() {
+        for (const stored of readStorage(ONLINE_TRACKS_KEY, [])) {
+            const track = Audius.normalizeTrack(stored);
+            if (track) indexOnlineTrack(track);
+        }
+    }
+
+    async function rememberOnlineTracks(files) {
+        const online = files.filter(Audius.isTrack).map(file => trackByFile.get(file)).filter(Boolean);
+        if (!online.length) return;
+        await updateStorage(ONLINE_TRACKS_KEY, [], tracks => {
+            const saved = new Map(tracks.filter(track => Audius.isTrack(track?.file)).map(track => [track.file, track]));
+            for (const track of online) saved.set(track.file, track);
+            return [...saved.values()];
+        });
     }
 
     function addWeight(counts, key, weight = 1) {
@@ -335,11 +365,13 @@
             mark.append(icon('volume'));
             cover.append(mark);
             const details = element('span', 'song-details');
-            const subtitle = [artistText(track), LANGUAGE_LABELS[track.language]].filter(Boolean).join(' · ');
+            const online = Audius.isTrack(track.file);
+            const subtitle = artistText(track) + (online ? ' · Audius' : '');
             details.append(element('span', 'title', track.title), element('span', 'track-subtitle', subtitle));
             play.append(cover, details, element('span', 'duration', formatTime(track.duration)));
             play.addEventListener('click', () => select(track));
-            row.append(play, likeButton(track), downloadButton(track));
+            row.append(play, likeButton(track), addToPlaylistButton(track));
+            if (!online) row.append(downloadButton(track));
             return row;
         }));
     }
@@ -370,6 +402,7 @@
             };
             let files;
             try {
+                if (liked) await rememberOnlineTracks([track.file]);
                 files = await updateStorage(LIKES_KEY, [...likedFiles], change);
             } catch {
                 files = change([...likedFiles]);
@@ -383,14 +416,18 @@
         return node;
     }
 
+    function addToPlaylistButton(track) {
+        const node = button('track-add-btn', 'Добавить в плейлист', 'list-plus');
+        node.addEventListener('click', () => openPlaylistChooser(track));
+        return node;
+    }
+
     function renderPopular() {
         byId('popular-grid').replaceChildren(...TRACKS.filter(track => !track.recent).slice(0, 40).map(track => {
             const card = element('article', 'popular-song');
             const cover = element('div', 'cover');
             artwork(cover, trackArt(track), 'music');
-            const details = element('div', 'track-meta');
-            details.append(element('span', null, LANGUAGE_LABELS[track.language] || ''),
-                element('span', null, formatTime(track.duration)));
+            const details = element('div', 'track-meta', formatTime(track.duration));
             const actions = element('div', 'track-actions');
             const play = button('play-btn', 'Воспроизвести ' + track.title, 'play');
             play.addEventListener('click', () => {
@@ -403,7 +440,7 @@
                 }
                 selectTrack(index, true);
             });
-            actions.append(likeButton(track), downloadButton(track), play);
+            actions.append(likeButton(track), addToPlaylistButton(track), downloadButton(track), play);
             card.append(cover, element('div', 'title', track.title),
                 element('div', 'artist', artistText(track)), details, actions);
             return card;
@@ -605,35 +642,74 @@
     function initSearch() {
         const input = byId('search-input');
         const status = byId('search-status');
+        const content = byId('library-content');
         let timer;
         let preview;
+        let pending;
 
-        function search(commit = false) {
+        function showResult(track, commit) {
+            const current = queue[currentIndex];
+            // Replace a previous autocomplete result without adding it to the underlying queue.
+            const order = preview?.result === queue && (!current || preview.order.includes(current))
+                ? preview.order : queue;
+            prioritizeTracks([track], order);
+            preview = commit ? null : { order, result: queue };
+            const label = Audius.isTrack(track.file) ? 'Найдено в Audius: ' : 'Найдено: ';
+            status.textContent = label + track.title + ' — ' + artistText(track);
+        }
+
+        function cancelSearch() {
+            clearTimeout(timer);
+            pending?.abort();
+            pending = null;
+        }
+
+        async function search(commit = false) {
             const query = input.value.trim();
+            if (!normalize(query)) {
+                status.textContent = '';
+                return;
+            }
             const match = bestMatch(trackQueries, query, true);
-            if (match) {
-                const track = match.value;
-                const current = queue[currentIndex];
-                // Replace a previous autocomplete result without adding it to the underlying queue.
-                const order = preview?.result === queue && (!current || preview.order.includes(current))
-                    ? preview.order : queue;
-                prioritizeTracks([track], order);
-                preview = commit ? null : { order, result: queue };
-                status.textContent = 'Найдено: ' + track.title + ' — ' + artistText(track);
-            } else {
-                status.textContent = query ? 'Трек не найден' : '';
+            // A local title embedded in a longer query is not enough to match a different recording.
+            if (match && match.score !== 650) {
+                showResult(match.value, commit);
+                return;
+            }
+
+            const request = new AbortController();
+            pending = request;
+            const queueAtStart = queue;
+            const tabAtStart = content.dataset.tab;
+            const isSameView = () => queue === queueAtStart && tabAtStart === content.dataset.tab;
+            const timeout = setTimeout(() => request.abort(), 9000);
+            status.textContent = 'Ищу в Audius…';
+            try {
+                const tracks = await Audius.search(query, request.signal);
+                if (pending !== request) return;
+                status.textContent = '';
+                if (!isSameView()) return;
+                const online = bestMatch(tracks.map(track => ({ value: track, fields: titleFields(track) })), query, true);
+                const track = online?.value || tracks[0];
+                if (track) showResult(indexOnlineTrack(track), commit);
+                else status.textContent = 'Трек не найден';
+            } catch {
+                if (pending === request) status.textContent = isSameView() ? 'Онлайн-поиск недоступен. Попробуйте ещё раз.' : '';
+            } finally {
+                clearTimeout(timeout);
+                if (pending === request) pending = null;
             }
         }
 
         byId('track-search').addEventListener('submit', event => {
             event.preventDefault();
-            clearTimeout(timer);
+            cancelSearch();
             search(true);
         });
         input.addEventListener('input', () => {
             status.textContent = '';
-            clearTimeout(timer);
-            if (normalize(input.value).length >= 2) timer = setTimeout(search, 350);
+            cancelSearch();
+            if (normalize(input.value).length >= 2) timer = setTimeout(search, 500);
         });
     }
 
@@ -724,6 +800,61 @@
     let editingId;
     let pickedFiles;
     let pickerRows;
+    const playlistChooser = byId('playlist-chooser');
+    const chooserStatus = byId('playlist-chooser-status');
+    let trackToAdd;
+
+    function refreshEditedPlaylist(list) {
+        renderPlaylists();
+        if (collection.id === list.id) replaceQueue(customCollection(list), false);
+    }
+
+    async function addTrackToPlaylist(track, playlistId) {
+        const controls = [...playlistChooser.querySelectorAll('button:not(:disabled)')];
+        for (const control of controls) control.disabled = true;
+        playlistChooser.setAttribute('aria-busy', 'true');
+        chooserStatus.hidden = true;
+        try {
+            await rememberOnlineTracks([track.file]);
+            customPlaylists = await updateStorage(PLAYLISTS_KEY, customPlaylists, lists => {
+                const index = lists.findIndex(list => list.id === playlistId);
+                if (index < 0) throw new Error('Playlist unavailable');
+                const list = lists[index];
+                if (!list.files.includes(track.file)) lists[index] = { ...list, files: [...list.files, track.file] };
+                return lists;
+            });
+            const list = customPlaylists.find(item => item.id === playlistId);
+            playlistChooser.close();
+            refreshEditedPlaylist(list);
+            notify('Добавлено в «' + list.name + '»');
+        } catch {
+            chooserStatus.textContent = 'Не удалось добавить трек. Попробуйте ещё раз.';
+            chooserStatus.hidden = false;
+        } finally {
+            playlistChooser.removeAttribute('aria-busy');
+            for (const control of controls) control.disabled = false;
+        }
+    }
+
+    function openPlaylistChooser(track) {
+        trackToAdd = track;
+        byId('playlist-chooser-track').textContent = track.title + ' — ' + artistText(track);
+        chooserStatus.hidden = true;
+        const choices = byId('playlist-choices');
+        choices.replaceChildren(...customPlaylists.map(list => {
+            const row = button('playlist-choice');
+            row.append(icon('list-ul'), element('span', null, list.name));
+            if (list.files.includes(track.file)) {
+                row.disabled = true;
+                row.append(element('span', 'choice-added', 'Добавлено'));
+            }
+            row.addEventListener('click', () => addTrackToPlaylist(track, list.id));
+            return row;
+        }));
+        choices.hidden = !customPlaylists.length;
+        byId('playlist-chooser-empty').hidden = !choices.hidden;
+        playlistChooser.showModal();
+    }
 
     function filterPicker() {
         const words = normalize(playlistFilter.value).split(' ').filter(Boolean);
@@ -741,15 +872,16 @@
         byId('selected-count').textContent = 'Выбрано: ' + trackCount(pickedFiles.size);
     }
 
-    function openEditor(list) {
+    function openEditor(list, track) {
         editingId = list?.id;
         pickedFiles = new Set((list?.files || []).filter(file => trackByFile.has(file)));
+        if (track) pickedFiles.add(track.file);
         byId('editor-title').textContent = list ? 'Редактировать плейлист' : 'Новый плейлист';
         playlistName.value = list?.name || '';
         playlistName.setCustomValidity('');
         playlistFilter.value = '';
         editorStatus.hidden = true;
-        pickerRows = TRACKS.map(track => {
+        pickerRows = [...trackByFile.values()].map(track => {
             const row = element('label', 'track-option');
             const checkbox = element('input');
             checkbox.type = 'checkbox';
@@ -772,6 +904,13 @@
         byId('edit-playlist').addEventListener('click', () => {
             const list = customPlaylists.find(item => item.id === collection.id);
             if (list) openEditor(list);
+        });
+        byId('create-playlist-with-track').addEventListener('click', () => {
+            playlistChooser.close();
+            openEditor(undefined, trackToAdd);
+        });
+        playlistChooser.addEventListener('cancel', event => {
+            if (playlistChooser.hasAttribute('aria-busy')) event.preventDefault();
         });
         byId('cancel-playlist').addEventListener('click', () => editor.close());
         playlistFilter.addEventListener('input', filterPicker);
@@ -797,6 +936,7 @@
                 name, files: [...pickedFiles]
             };
             try {
+                await rememberOnlineTracks(list.files);
                 customPlaylists = await updateStorage(PLAYLISTS_KEY, customPlaylists, lists => {
                     const index = lists.findIndex(item => item.id === list.id);
                     if (index < 0) lists.push(list);
@@ -804,11 +944,8 @@
                     return lists;
                 });
                 editor.close();
-                renderPlaylists();
+                refreshEditedPlaylist(list);
                 if (!editingId) activateTab('playlists');
-                if (collection.id === list.id) {
-                    replaceQueue(customCollection(list), false);
-                }
                 notify('Плейлист сохранён');
             } catch {
                 editorStatus.textContent = 'Браузер не смог сохранить плейлист';
@@ -818,6 +955,7 @@
             }
         });
         window.addEventListener('storage', event => {
+            if (event.key === ONLINE_TRACKS_KEY || event.key === null) restoreOnlineTracks();
             if (event.key === PLAYLISTS_KEY || event.key === null) {
                 customPlaylists = readStorage(PLAYLISTS_KEY, []);
                 if (byId('playlists-grid').childElementCount) renderPlaylists();
@@ -982,7 +1120,10 @@
     });
     audio.addEventListener('error', () => {
         updatePlayButton();
-        if (audio.hasAttribute('src')) notify('Не удалось открыть аудиофайл');
+        if (audio.hasAttribute('src')) {
+            const online = Audius.isTrack(queue[currentIndex]?.file);
+            notify(online ? 'Трек Audius сейчас недоступен' : 'Не удалось открыть аудиофайл');
+        }
     });
     if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         navigator.serviceWorker.register('service-worker.js').catch(error => console.warn('Ошибка офлайн-режима', error));
